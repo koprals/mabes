@@ -13,7 +13,6 @@
 @import "dropzone/dropzone.css";
 @import "introjs/introjs.min.css";
 @import "animate/animate.min.css";
-@import "codemirror/custom.css";
 
 @-webkit-keyframes cardEnter {
   0%,

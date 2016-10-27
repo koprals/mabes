@@ -1,59 +1,58 @@
-<?php echo $this->start('header');?>
-<!-- HEADER -->
-<div class="topNav">
-    <div class="wrapper">
-        <div class="userNav">
-            <ul>
-                <li>
-					<a href="#">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					</a>
-				</li>
-            </ul>
+<div class="login-container login-v2">
+    <div class="login-box animated fadeInDown">
+        <div class="login-body">
+            <div class="login-logo"></div>
+            <div class="login-title"><strong>Welcome</strong>, Please login.</div>
+            <?php echo $this->Form->create("Admin",array("url"=>array("controller"=>"Account","action"=>"Login","?"=>"debug=0"),"class"=>"form-horizontal"));?>
+                  <div class="form-group">
+                      <div class="col-md-12">
+                          <div class="input-group">
+                              <div class="input-group-addon">
+                                  <span class="fa fa-user"></span>
+                              </div>
+                              <?php echo $this->Form->input("username",
+                         					array(
+                                    "label"         =>  false,
+                                    "class"         =>  "form-control",
+                                    "empty"         =>  "Username",
+                         						"autocomplete"	=>	"off",
+                         						"type"          =>	"text"
+                         					)
+                         				)?>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="col-md-12">
+                          <div class="input-group">
+                              <div class="input-group-addon">
+                                  <span class="fa fa-lock"></span>
+                              </div>
+                              <?php echo $this->Form->input("password",
+                         					array(
+                                    "label"         =>  false,
+                                    "class"         =>  "form-control",
+                                    "empty"         =>  "Password",
+                         						"autocomplete"	=>	"off",
+                         						"type"          =>	"password"
+                         					)
+                         				)?>
+                          </div>
+                      </div>
+                  </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                    </div>
+                </div>
+        		<?php echo $this->Form->end()?>
+        </div>
+        <div class="login-footer">
+            <div class="center">
+                <a href="#">About</a> |
+                <a href="#">Privacy</a> |
+                <a href="#">Contact Us</a>
+            </div>
         </div>
     </div>
-</div>
-<!-- HEADER -->
-<?php echo $this->end();?>
-
-<div class="loginWrapper" >
-	<div class="loginLogo" style="margin-left:-90px; margin-top:-80px;">
-		<img src="<?php echo $this->webroot?>img/logo.png" alt="" width="150"/>
-	</div>
-    <div class="widget" style="height:auto;">
-        <div class="title">
-			<img src="<?php echo $this->webroot?>img/icons/dark/files.png" alt="files" class="titleIcon" />
-			<h6>SIGN IN</h6>
-		</div>
-		<?php echo $this->Form->create("Admin",array("url"=>array("controller"=>"Account","action"=>"Login","?"=>"debug=0"),"class"=>"form"));?>
-            <fieldset>
-				 <?php echo $this->Form->input("username",
-					array(
-						"div"			=>	array("class"=>"formRow"),
-						"label"			=>	"Username",
-						"between"		=>	'<div class="loginInput">',
-						"after"			=>	"</div>",
-						"autocomplete"	=>	"off",
-						"type"			=>	"text"
-					)
-				)?>
-                <?php echo $this->Form->input("password",
-					array(
-						"div"			=>	array("class"=>"formRow"),
-						"label"			=>	"Password",
-						"between"		=>	'<div class="loginInput">',
-						"after"			=>	"</div>",
-						"autocomplete"	=>	"off",
-						"type"			=>	"password"
-					)
-				)?>
-				<div class="body textC">
-					<input class="wButton redwB ml15 m10" value="Log in" type="submit" />
-				</div>
-            </fieldset>
-		<?php echo $this->Form->end()?>
-    </div>
-</div>
-<div id="footer">
-    <!--div class="wrapper"><a href="http://www.centroone.com" title="" target="_blank">Centro Media Indonesia</a></div-->
 </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html lang="en" class="body-full-height">
 <head>
 	<!-- META SECTION -->
@@ -10,9 +10,12 @@
 	<!-- CSS INCLUDE -->
 	<link rel="stylesheet" type="text/css" id="theme" href="<?php echo $this->webroot; ?>css/theme-default.css"/>
 	<!-- EOF CSS INCLUDE -->
-
 	<!-- END META SECTION -->
 	<title><?php echo $settings['site_title']?></title>
+	<?php
+	//BLOCK CSS
+	echo $this->fetch('css');
+	?>
 </head>
 <body>
 <!-- CONTENT -->

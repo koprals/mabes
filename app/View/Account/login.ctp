@@ -14,7 +14,7 @@
                          					array(
                                     "label"         =>  false,
                                     "class"         =>  "form-control",
-                                    "empty"         =>  "Username",
+                                    "placeholder"   =>  "Username",
                          						"autocomplete"	=>	"off",
                          						"type"          =>	"text"
                          					)
@@ -32,12 +32,17 @@
                          					array(
                                     "label"         =>  false,
                                     "class"         =>  "form-control",
-                                    "empty"         =>  "Password",
+                                    "placeholder"   =>  "Password",
                          						"autocomplete"	=>	"off",
                          						"type"          =>	"password"
                          					)
                          				)?>
                           </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="col-md-12 center">
+                          <a href="#">Forgot your password?</a>
                       </div>
                   </div>
                 <div class="form-group">

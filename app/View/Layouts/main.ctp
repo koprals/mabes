@@ -1,76 +1,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<title><?php echo  $settings["site_title"] ?></title>
+	<!-- META SECTION -->
+	<title><?php echo  $settings["site_title"] ?></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- END META SECTION -->
 
+	<!-- CSS INCLUDE -->
+	<link rel="stylesheet" type="text/css" id="theme" href="<?php echo $this->webroot; ?>css/theme-default.css"/>
+	<!-- EOF CSS INCLUDE -->
+</head>
 <?php
-
 //FAVICON
 echo $this->Html->meta('icon',$this->webroot."img/favicon.png",array("type"=>"png"));
-
-//************ CSS NEEDED ****************//
-echo $this->Html->css("main");
-//************ CSS NEEDED ****************//
 
 //BLOCK CSS
 echo $this->fetch('css');
 
 //************ JS NEEDED ******************/
 echo $this->Html->script(array(
-	"jquery-1.7.2.min",
-	"jquery-ui-1.8.21.custom.min",
-	"/js/plugins/spinner/jquery.mousewheel.js",
+	/* START PLUGINS */
+	"js/plugins/jquery/jquery.min.js",
+	"js/plugins/jquery/jquery-ui.min.js",
+	"js/plugins/bootstrap/bootstrap.min.js",
+	/* END PLUGINS */
 
-	"/js/globalize/globalize.js",
-	"/js/globalize/globalize.culture.de-DE.js",
-	"/js/globalize/globalize.culture.ja-JP.js",
+	/* START THIS PAGE PLUGINS */
+	'js/plugins/icheck/icheck.min.js',
+	"js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js",
+	"js/plugins/scrolltotop/scrolltopcontrol.js",
 
-	"/js/plugins/charts/excanvas.min.js",
-	"/js/plugins/charts/jquery.flot.js",
-	"/js/plugins/charts/jquery.flot.orderBars.js",
-	"/js/plugins/charts/jquery.flot.pie.js",
-	"/js/plugins/charts/jquery.flot.resize.js",
-	"/js/plugins/charts/jquery.sparkline.min.js",
+	"js/plugins/morris/raphael-min.js",
+	"js/plugins/morris/morris.min.js",
+	"js/plugins/rickshaw/d3.v3.js",
+	"js/plugins/rickshaw/rickshaw.min.js",
+	'js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js',
+	'js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js',
+	'js/plugins/bootstrap/bootstrap-datepicker.js',
+	"js/plugins/owl/owl.carousel.min.js",
 
-	"/js/plugins/forms/uniform.js",
-	"/js/plugins/forms/jquery.cleditor.js",
-	"/js/plugins/forms/jquery.validationEngine-en.js",
-	"/js/plugins/forms/jquery.validationEngine.js",
-	"/js/plugins/forms/jquery.tagsinput.min.js",
-	"/js/plugins/forms/jquery.autosize.js",
-	"/js/plugins/forms/jquery.maskedinput.min.js",
-	"/js/plugins/forms/jquery.dualListBox.js",
-	"/js/plugins/forms/jquery.inputlimiter.min.js",
-	"/js/plugins/forms/chosen.jquery.min.js",
+	"js/plugins/moment.min.js",
+	"js/plugins/daterangepicker/daterangepicker.js",
+	/* END THIS PAGE PLUGINS */
 
-	"/js/plugins/wizard/jquery.form.js",
-	"/js/plugins/wizard/jquery.validate.min.js",
-	"/js/plugins/wizard/jquery.form.wizard.js",
-	"/js/plugins/uploader/plupload.js",
-	"/js/plugins/uploader/plupload.html5.js",
-	"/js/plugins/uploader/plupload.html4.js",
-	"/js/plugins/uploader/jquery.plupload.queue.js",
-	"/js/plugins/tables/datatable.js",
-	"/js/plugins/tables/tablesort.min.js",
-	"/js/plugins/tables/resizable.min.js",
-	"/js/plugins/ui/jquery.tipsy.js",
-	"/js/plugins/ui/jquery.collapsible.min.js",
-	"/js/plugins/ui/jquery.prettyPhoto.js",
-	"/js/plugins/ui/jquery.progress.js",
-	"/js/plugins/ui/jquery.timeentry.min.js",
-	"/js/plugins/ui/jquery.colorpicker.js",
-	"/js/plugins/ui/jquery.jgrowl.js",
-	"/js/plugins/ui/jquery.breadcrumbs.js",
-	"/js/plugins/ui/jquery.sourcerer.js",
-	"/js/plugins/jquery.fullcalendar.js",
-	"/js/plugins/jquery.elfinder.js",
-	"/js/jquery-ui.multidatespicker.js",
-	"/js/custom.js",
-	"/js/jquery.timeentry.js",
-	"/js/jquery.jCounter-0.1.4.js",
-	"/js/jquery.lazy.min.js" //http://jquery.eisbehr.de/lazy/
+	/* START TEMPLATE */
+	"js/plugins.js",
+	"js/actions.js",
+	"js/demo_dashboard.js",
+	/* END TEMPLATE */
 ));
 //************ JS NEEDED ******************/
 

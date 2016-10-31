@@ -65,36 +65,9 @@ echo $this->fetch('script');
 
 		<!-- START PAGE SIDEBAR -->
 		<div class="page-sidebar">
-			<!-- START X-NAVIGATION -->
-			<ul class="x-navigation">
-					<li class="xn-logo">
-							<a href="index-dashboard.html"></a>
-							<a href="#" class="x-navigation-control"></a>
-					</li>
-					<li class="xn-profile">
-							<a href="#" class="profile-mini">
-									<img src="assets/images/users/avatar.jpg" alt="John Doe"/>
-							</a>
-							<div class="profile">
-									<div class="profile-image">
-											<img src="assets/images/users/avatar.jpg" alt="John Doe"/>
-									</div>
-									<div class="profile-data">
-											<div class="profile-data-name">TNI ADMINISTRATOR</div>
-											<div class="profile-data-title">Superadmin</div>
-									</div>
-									<div class="profile-controls">
-											<a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
-											<a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
-									</div>
-							</div>
-					</li>
-					<li class="xn-title">Main Menu</li>
-					<?php
-						echo $this->element('leftnavigation',array("lft_menu_category_id"=>$lft_menu_category_id));
-					?>
-			</ul>
-			<!-- END X-NAVIGATION -->
+			<?php
+				echo $this->element('leftnavigation',array("lft_menu_category_id"=>$lft_menu_category_id));
+			?>
 		</div>
 		<!-- END PAGE SIDEBAR -->
 
@@ -102,6 +75,11 @@ echo $this->fetch('script');
 		<div class="page-content">
 			<!-- START X-NAVIGATION VERTICAL -->
 			<ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+					<!-- TOGGLE NAVIGATION
+					<li class="xn-icon-button">
+							<a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+					</li-->
+					<!--END TOGGLE NAVIGATION -->
 					<!-- SEARCH -->
 					<li class="xn-search">
 							<form role="form">
@@ -161,7 +139,6 @@ echo $this->fetch('script');
 							</div>
 					</li>
 					<!-- END MESSAGES -->
-
 					<!-- TASKS -->
 					<li class="xn-icon-button pull-right">
 							<a href="#"><span class="fa fa-tasks"></span></a>
@@ -208,64 +185,28 @@ echo $this->fetch('script');
 									</div>
 							</div>
 					</li>
+					<!-- END TASKS -->
+					<!-- LANG BAR
+					<li class="xn-icon-button pull-right">
+							<a href="#"><span class="flag flag-gb"></span></a>
+							<ul class="xn-drop-left xn-drop-white animated zoomIn">
+									<li><a href="#"><span class="flag flag-gb"></span> English</a></li>
+									<li><a href="#"><span class="flag flag-de"></span> Deutsch</a></li>
+									<li><a href="#"><span class="flag flag-cn"></span> Chinese</a></li>
+							</ul>
+					</li>
+					 END LANG BAR -->
 			</ul>
 			<!-- END X-NAVIGATION VERTICAL -->
+
+			<!-- CONTENT -->
+			<?php echo $this->fetch('content'); ?>
+			<!-- CONTENT -->
 		</div>
 		<!-- END PAGE CONTENT -->
-
 	</div>
 	<!-- END PAGE CONTAINER -->
 
-	<!-- Left side content -->
-	<div id="leftSide">
-		<div class="logo" style="text-align:center;">
-			<a href="javascript:void(0)">
-				<img src="<?php echo $this->webroot ?>img/logo.png" alt="" width="150"/>
-			</a>
-		</div>
-		<div class="sidebarSep mt0"></div>
-
-		<?php
-			echo $this->element('leftnavigation',array("lft_menu_category_id"=>$lft_menu_category_id));
-		?>
-
-	</div>
-	<!-- Right side -->
-	<div id="rightSide">
-		<div class="topNav">
-			<div class="wrapper">
-				<div class="welcome">
-					<span>
-						<?php echo $profile["Admin"]["fullname"]?>
-					</span>
-				</div>
-				<div class="userNav">
-					<ul>
-						<li>
-							<a href="<?php echo $settings["cms_url"]?>Account/Logout" title="">
-								<img src="<?php echo $this->webroot ?>img/icons/topnav/logout.png" alt="" />
-								<span>Logout</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<!-- Responsive header -->
-		<div class="resp">
-			<div class="respHead">
-				<a href="<?php echo $settings["cms_url"]?>" title="">
-					<img src="<?php echo $this->webroot ?>img/client_logo.png" alt="" />
-				</a>
-			</div>
-			<?php echo $this->element('leftnavigation_small'); ?>
-		</div>
-
-		<!-- CONTENT -->
-
-		<?php echo $this->fetch('content'); ?>
-		<!-- CONTENT -->
 		<?php /*
 		<!-- Footer line -->
 		<div id="footer">
@@ -276,7 +217,6 @@ echo $this->fetch('script');
 			</div>
 		</div>
 		*/ ?>
-	</div>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

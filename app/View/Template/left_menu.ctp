@@ -7,7 +7,7 @@
       <a href="<?php echo $this->webroot . $menu["CmsMenu"]["url"]?>" id="<?php echo $current; ?>"><span class="<?php echo $menu["CmsMenu"]["class"]?>"></span>
         <span class="xn-text"><?php echo $menu["CmsMenu"]["name"]; ?></span>
       </a>
-      <?php debug($menu["CmsSubmenu"]);?>
+      <?php //debug($menu["CmsSubmenu"]);?>
       <?php if(!empty($menu["CmsSubmenu"])):?>
 				<ul>
 					<?php foreach($menu["CmsSubmenu"] as $Submenu):?>

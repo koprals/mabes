@@ -1,83 +1,43 @@
-<!-- START BREADCRUMB -->
-    <ul class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Data Form Studi</a></li>
-        <li class="active">Jenis Pendidikan</li>
-    </ul>
-<!-- END BREADCRUMB -->
-<!-- PAGE TITLE -->
-                <div class="page-title">
-                    <h2><span class="fa fa-arrow-circle-o-left"></span> List Jenis Pendidikan</h2>
-                </div>
-<!-- END PAGE TITLE -->
-<!-- PAGE CONTENT WRAPPER -->
-                <div class="page-content-wrap">
+<?php if(!empty($data)): ?>
+<?php
+	$order		=	array_keys($this->params['paging'][$ModelName]['order']);
+	$direction	=	$this->params['paging'][$ModelName]["order"][$order[0]];
+	$ordered	=	($order[0]!==0) ? "/sort:".$order[0]."/direction:".$direction: "";
+?>
+<?php $this->Paginator->options(array(
+				'url'	=> array(
+					'controller'	=> $ControllerName,
+					'action'		=> 'ListItem/limit:'.$viewpage,
+				),
+				'onclick'=>"return onClickPage(this,'#contents_area');")
+			);
+?>
 
-                    <div class="row">
-                        <div class="col-md-12">
+<script>
+function ChangeStatus(msg,id,status)
+{
+	var a	=	confirm(msg);
+	if(a)
+	{
+		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
+			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
+		});
+	}
+	return false;
+}
 
-                            <!-- START RESPONSIVE TABLES -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
-
-                                <div class="panel-heading"> 
-                                    <h2 class="panel-title pull-right"><strong>Tambah Jenis Pendidikan</strong></h2>.
-                                    <button class="btn btn-danger btn-condensed pull-right"><i class="fa fa-plus"></i></button>
-                                </div>
-
-                                <div class="panel-body panel-body-table">
-
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-striped table-actions">
-                                            <thead>
-                                                <tr>
-                                                    <th width="50">No</th>
-                                                    <th>jenis Pendidikan</th>
-                                                    <th width="120">actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>                                            
-                                                <tr id="trow_1">
-                                                    <td class="text-center">1</td>
-                                                    <td><strong>Dikbangum</strong></td>
-                                                    <td>
-                                                        <button class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button>
-                                                        <button class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="delete_row('trow_1');"><span class="fa fa-times"></span></button>
-                                                    </td>
-                                                </tr>
-                                                <tr id="trow_2">
-                                                    <td class="text-center">2</td>
-                                                    <td><strong>Dikbangspes</strong></td>
-                                                    <td>
-                                                        <button class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button>
-                                                        <button class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="delete_row('trow_2');"><span class="fa fa-times"></span></button>
-                                                    </td>
-                                                </tr>
-                                                <tr id="trow_3">
-                                                    <td class="text-center">3</td>
-                                                    <td><strong>DikIptek</strong></td>
-                                                    <td>
-                                                        <button class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button>
-                                                        <button class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="delete_row('trow_3');"><span class="fa fa-times"></span></button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>                                
-
-                                </div>
-                            </div>                                                
-
-                        </div>
-                    </div>
-                    <!-- END RESPONSIVE TABLES -->
-
-                        </div>
-                    </div>
-
-                </div>
-<!-- PAGE CONTENT WRAPPER -->
+function Delete(msg,id)
+{
+	var a	=	confirm(msg);
+	if(a)
+	{
+		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/Delete/"+id,function(){
+			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
+		});
+	}
+	return false;
+}
+</script>
 <div class="widget">
 	<div class="title">
 		<img src="<?php echo $this->webroot ?>img/icons/dark/frames.png" alt="" class="titleIcon">

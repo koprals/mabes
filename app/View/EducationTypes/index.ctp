@@ -1,150 +1,280 @@
-<script>
-$(document).ready(function(){
-	$("#contents_area").css("opacity","0.5");
-	$("#contents_area").load("<?php echo $settings['cms_url'] . $ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage?>/?time=<?php echo time()?>",function(){
-		$("#contents_area").css("opacity","1");
-		$("a[rel^='lightbox']").prettyPhoto({
-			social_tools :''
-		});
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li class="active">Beranda</li>
+</ul>
+<!-- END BREADCRUMB -->
 
-		$("#view").uniform();
-		$('.tipS').tipsy({gravity: 's',fade: true});
-	});
-});
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
 
-function onClickPage(el,divName)
-{
-	$(divName).css("opacity","0.5");
-	$(divName).load(el.toString(),function(){
-		$(divName).css("opacity","1");
-		$("a[rel^='lightbox']").prettyPhoto({
-			social_tools :''
-		});
-		$("#view").uniform();
-		$('.tipS').tipsy({gravity: 's',fade: true});
-	});
-	return false;
-}
-function SearchAdvance()
-{
-	$("#SearchAdvance").ajaxSubmit({
-		url:"<?php echo $settings['cms_url'].$ControllerName ?>/ListItem",
-		type:'POST',
-		dataType: "html",
-		clearForm:false,
-		beforeSend:function()
-		{
-			$("#reset").val("0");
-			$("#contents_area").css("opacity","0.5");
-		},
-		complete:function(data,html)
-		{
-			$("#contents_area").css("opacity","1");
-		},
-		error:function(XMLHttpRequest, textStatus,errorThrown)
-		{
-			alert(textStatus);
-		},
-		success:function(data)
-		{
-			$("#contents_area").html(data);
-		}
-	});
+		<!-- START WIDGETS -->
+		<div class="row">
+				<div class="col-md-3">
 
-	return false;
-}
-function ClearSearchAdvance()
-{
-	$("#SearchId, #SearchName").val("");
-	$('#reset').val('1');
-	SearchAdvance();
-}
-</script>
-<!-- HEADER -->
-<div class="titleArea">
-    <div class="wrapper">
-        <div class="pageTitle">
-            <h5><?php echo $ControllerName?></h5>
-            <span>List</span>
-        </div>
-    </div>
-</div>
-<div class="line"></div>
-<div class="statsRow">
-	<div class="wrapper">
-		<div class="controlB">
-			<ul>
-				<!--li>
-					<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" title="Add New <?php echo $ControllerName?>">
-						<img src="<?php echo $this->webroot?>img/icons/control/32/plus.png" alt="" />
-					<span>Add new row</span></a>
-				</li-->
-			</ul>
+
+				</div>
+				<div class="col-md-3">
+
+
+				</div>
+				<div class="col-md-3">
+
+
+				</div>
+				<div class="col-md-3">
+
+
+				</div>
 		</div>
-	</div>
-</div>
-<div class="line"></div>
-<!-- HEADER -->
+		<!-- END WIDGETS -->
 
-<!-- CONTENT -->
-<div class="wrapper">
-	<!-- START SEARCH  -->
-	<div class="span6">
-		<div class="bc">
-	        <ul id="breadcrumbs" class="breadcrumbs">
-	             <li>
-	                  <a href="javascript:void(0)"><?php echo $ControllerName?></a>
-	             </li>
-	             <li class="current">
-	                  <a href="javascript:void(0)">List</a>
-	             </li>
-	        </ul>
-	    </div>
-		<div class="toggle" style="border-color:#a0a0a0;">
-			<div class="title closed" id="toggleOpened" style="border-color:#a0a0a0;">
-				<img src="<?php echo $this->webroot?>img/icons/dark/magnify.png" alt="" class="titleIcon"/>
-				<h6 class="red">Search</h6>
-			</div>
-			<div class="body" style="border-color:#a0a0a0;">
-				<?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance"))?>
-					<input name="data[Search][reset]" type="hidden" value="0" id="reset">
-					<fieldset>
+		<div class="row">
+				<div class="col-md-8">
 
-						<?php
-	                    	echo $this->Form->input('Search.id', array(
-								'label'			=>	'ID',
-	                    		'div'			=>	array("class"=>"dataTables_filter"),
-	                    		'between'		=>	'<div class="formRight"><span class="span3">',
-	                    		'after'			=>	'</span></div>',
-								"style"			=>	"width:50px"
-	                    	));
-						?>
-						<?php
-	                    	echo $this->Form->input('Search.name', array(
-								'label'			=>	'Name',
-	                    		'div'			=>	array("class"=>"dataTables_filter"),
-	                    		'between'		=>	'<div class="formRight"><span class="span3">',
-	                    		'after'			=>	'</span></div>'
-	                    	));
-						?>
-						<?php
-	                    	echo $this->Form->input('Search.parent_id', array(
-								'label'			=>	'Parent',
-	                    		'div'			=>	array("class"=>"dataTables_filter"),
-	                    		'between'		=>	'<div class="formRight">',
-	                    		'after'			=>	'</div>',
-								"options"		=>	$parent_id_list
-	                    	));
-						?>
-					</fieldset>
-				<?php echo $this->Form->end()?>
-				<a href="javascript:void(0);" title="" class="wButton bluewB ml15 m10" onclick="return SearchAdvance();"><span>Search</span></a>
-				<a href="javascript:void(0);" title="" class="wButton redwB ml15 m10" onclick="ClearSearchAdvance();"><span>Reset</span></a>
-			</div>
+						<!-- START SALES BLOCK -->
+						<div class="panel panel-default">
+								<div class="panel-heading">
+										<div class="panel-title-box">
+												<h3>Laporan Pelaksanaan Pendidikan</h3>
+												<span>Aktivitas Personel Selama Melakukan Studi</span>
+										</div>
+										<ul class="panel-controls panel-controls-title">
+												<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+												<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
+														<ul class="dropdown-menu">
+																<li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
+																<li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
+														</ul>
+												</li>
+										</ul>
+
+								</div>
+								<div class="panel-body">
+										<div class="row stacked">
+												<div class="col-md-4">
+														<div class="progress-list">
+																<div class="pull-left"><strong>Total Laporan Bulan Ini</strong></div>
+																<div class="pull-right">75%</div>
+																<div class="progress progress-small progress-striped active">
+																		<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">75%</div>
+																</div>
+														</div>
+														<div class="progress-list">
+																<div class="pull-left"><strong>Sudah Melapor</strong></div>
+																<div class="pull-right">450/500</div>
+																<div class="progress progress-small progress-striped active">
+																		<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">90%</div>
+																</div>
+														</div>
+														<div class="progress-list">
+																<div class="pull-left"><strong class="text-danger">Belum Melapor</strong></div>
+																<div class="pull-right">25/500</div>
+																<div class="progress progress-small progress-striped active">
+																		<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">5%</div>
+																</div>
+														</div>
+														<p style="text-align:justify"><span class="fa fa-warning"></span> Data akan di perbarui setiap jam. Anda dapat melihat update laporan dengan menekan tombol refresh di sisi kanan atas kolom ini.</p>
+												</div>
+												<div class="col-md-8">
+														<div id="dashboard-map-seles" style="width: 100%; height: 200px"></div>
+												</div>
+										</div>
+								</div>
+						</div>
+						<!-- END SALES BLOCK -->
+
+				</div>
+				<div class="col-md-4">
+
+						<!-- START PROJECTS BLOCK -->
+						<div class="panel panel-default">
+								<div class="panel-heading">
+										<div class="panel-title-box">
+												<h3>Status Personel Studi Terbaru</h3>
+												<span>Aktivitas Personel Studi</span>
+										</div>
+										<ul class="panel-controls" style="margin-top: 2px;">
+												<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+												<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
+														<ul class="dropdown-menu">
+																<li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
+																<li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
+														</ul>
+												</li>
+										</ul>
+								</div>
+								<div class="panel-body panel-body-table">
+
+										<div class="table-responsive">
+												<table class="table table-condensed table-bordered table-striped">
+														<thead>
+																<tr>
+																		<th width="50%">Nama</th>
+																		<th width="20%">Status</th>
+																		<th width="30%">Aktivitas</th>
+																</tr>
+														</thead>
+														<tbody>
+																<tr>
+																		<td><strong>Nama Personel 1</strong></td>
+																		<td><span class="label label-danger">Pulang</span></td>
+																		<td>
+																				<div class="progress progress-small progress-striped active">
+																						<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">85%</div>
+																				</div>
+																		</td>
+																</tr>
+																<tr>
+																		<td><strong>Nama Personel 2</strong></td>
+																		<td><span class="label label-warning">Berjalan</span></td>
+																		<td>
+																				<div class="progress progress-small progress-striped active">
+																						<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">40%</div>
+																				</div>
+																		</td>
+																</tr>
+																<tr>
+																		<td><strong>Nama Personel 3</strong></td>
+																		<td><span class="label label-warning">Berjalan</span></td>
+																		<td>
+																				<div class="progress progress-small progress-striped active">
+																						<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 72%;">72%</div>
+																				</div>
+																		</td>
+																</tr>
+																<tr>
+																		<td><strong>Nama Personel 4</strong></td>
+																		<td><span class="label label-success">Selesai</span></td>
+																		<td>
+																				<div class="progress progress-small progress-striped active">
+																						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
+																				</div>
+																		</td>
+																</tr>
+																<tr>
+																		<td><strong>Nama Personel 5</strong></td>
+																		<td><span class="label label-success">Selesai</span></td>
+																		<td>
+																				<div class="progress progress-small progress-striped active">
+																						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
+																				</div>
+																		</td>
+																</tr>
+																<tr>
+																		<td><strong>Nama Personel 6</strong></td>
+																		<td><span class="label label-success">Selesai</span></td>
+																		<td>
+																				<div class="progress progress-small progress-striped active">
+																						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
+																				</div>
+																		</td>
+																</tr>
+														</tbody>
+												</table>
+										</div>
+
+								</div>
+						</div>
+						<!-- END PROJECTS BLOCK -->
+
+				</div>
 		</div>
-	</div>
-	<!-- END SEARCH  -->
-	<div id="contents_area">
-	</div>
+
+		<div class="row">
+				<div class="col-md-4">
+
+						<!-- START SALES & EVENTS BLOCK -->
+						<div class="panel panel-default">
+								<div class="panel-heading">
+										<div class="panel-title-box">
+												<h3>Jumlah Personel Studi</h3>
+												<span>Personel Yang Berangkat Studi</span>
+										</div>
+										<ul class="panel-controls" style="margin-top: 2px;">
+												<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+												<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
+														<ul class="dropdown-menu">
+																<li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
+																<li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
+														</ul>
+												</li>
+										</ul>
+								</div>
+								<div class="panel-body padding-0">
+										<div class="chart-holder" id="dashboard-line-1" style="height: 200px;"></div>
+								</div>
+						</div>
+						<!-- END SALES & EVENTS BLOCK -->
+
+				</div>
+				<div class="col-md-4">
+
+						<!-- START USERS ACTIVITY BLOCK -->
+						<div class="panel panel-default">
+								<div class="panel-heading">
+										<div class="panel-title-box">
+												<h3>Aktivitas Pendaftar Studi</h3>
+												<span>Personel Diterima vs Personel Ditolak</span>
+										</div>
+										<ul class="panel-controls" style="margin-top: 2px;">
+												<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+												<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
+														<ul class="dropdown-menu">
+																<li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
+																<li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
+														</ul>
+												</li>
+										</ul>
+								</div>
+								<div class="panel-body padding-0">
+										<div class="chart-holder" id="dashboard-bar-1" style="height: 200px;"></div>
+								</div>
+						</div>
+						<!-- END USERS ACTIVITY BLOCK -->
+
+				</div>
+				<div class="col-md-4">
+
+						<!-- START VISITORS BLOCK -->
+						<div class="panel panel-default">
+								<div class="panel-heading">
+										<div class="panel-title-box">
+												<h3>Aplikasi Calon Personel</h3>
+												<span>Pendaftar Studi Saat Ini</span>
+										</div>
+										<ul class="panel-controls" style="margin-top: 2px;">
+												<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+												<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
+														<ul class="dropdown-menu">
+																<li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
+																<li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
+														</ul>
+												</li>
+										</ul>
+								</div>
+								<div class="panel-body padding-0">
+										<div class="chart-holder" id="dashboard-donut-1" style="height: 200px;"></div>
+								</div>
+						</div>
+						<!-- END VISITORS BLOCK -->
+
+				</div>
+		</div>
+
+		<!-- START DASHBOARD CHART -->
+		<div class="block-full-width">
+				<div id="dashboard-chart" style="height: 250px; width: 100%; float: left;"></div>
+				<div class="chart-legend">
+						<div id="dashboard-legend"></div>
+				</div>
+		</div>
+		<!-- END DASHBOARD CHART -->
+
 </div>
-<!-- CONTENT -->
+<!-- END PAGE CONTENT WRAPPER -->

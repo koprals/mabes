@@ -2,7 +2,7 @@
 <div class="titleArea">
     <div class="wrapper">
         <div class="pageTitle">
-            <h5>Success Edit Sales</h5>
+            <h5>Success Edit <?php echo $ControllerName?></h5>
             <span><?php echo $this->Html->link('Index', array('action' => 'index')); ?></span>
         </div>
         <div class="middleNav">
@@ -16,11 +16,11 @@
 <div class="line"></div>
 <div class="wrapper">
 	<div class="nNote nSuccess">
-		<p><strong>SUCCESS: </strong>Success edit sales</p>
+		<p><strong>SUCCESS: </strong>Success edit <?php echo strtolower($ControllerName)?></p>
 	</div>
 	<div class="widget">
 		<div class="body textC">
-			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Edit/<?php echo $ID?>/<?php echo $page?>/<?php echo $viewpage?>" title="Back to Edit" class="button redB" style="margin: 5px;"><span>Edit Again</span></a>
+			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Edit/<?php echo $ID?>/<?php echo $page?>/<?php echo $viewpage?>" title="Back to Edit" class="button redB" style="margin: 5px;"><span>Edit this <?php echo strtolower($ControllerName)?></span></a>
 			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" title="Back to List" class="button greyishB" style="margin: 5px;"><span>Add More</span></a>
 			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Index/<?php echo $page?>/<?php echo $viewpage?>" title="Back to List" class="button blueB" style="margin: 5px;"><span>Back to List</span></a>
 		</div>

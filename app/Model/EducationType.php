@@ -5,14 +5,14 @@ class EducationType extends AppModel
 	public $name = "EducationType";
 
   public $belongsTo = array(
-    'Admin' => array(
+    /*'Admin' => array(
       'className' => 'Admin',
       'foreignKey'  =>  'doctor_id'
     ),
     'Pasien'  =>  array(
       'className' =>  'Pasien',
       'foreignKey'  => 'pasien_id'
-    )
+    )*/
   );
 
 	/**public $validate 	= array(
@@ -79,7 +79,7 @@ class EducationType extends AppModel
 
 	public function BindImageBig($reset	=	true)
 	{
-		$this->bindModel(array(
+		/*$this->bindModel(array(
 			"hasOne"	=>	array(
 				"ImageBig"	=>	array(
 					"className"	=>	"Content",
@@ -90,7 +90,7 @@ class EducationType extends AppModel
 					)
 				)
 			)
-		),$reset);
+		),$reset);*/
 	}
 
 	public function BindImageThumb($reset	=	true)

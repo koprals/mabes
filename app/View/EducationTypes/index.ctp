@@ -7,7 +7,7 @@ $(document).ready(function(){
 			social_tools :''
 		});
 
-		$("#view, input:checkbox, #action").uniform();
+		$("#view").uniform();
 		$('.tipS').tipsy({gravity: 's',fade: true});
 	});
 });
@@ -20,7 +20,7 @@ function onClickPage(el,divName)
 		$("a[rel^='lightbox']").prettyPhoto({
 			social_tools :''
 		});
-		$("#view, input:checkbox, #action").uniform();
+		$("#view").uniform();
 		$('.tipS').tipsy({gravity: 's',fade: true});
 	});
 	return false;
@@ -48,8 +48,6 @@ function SearchAdvance()
 		success:function(data)
 		{
 			$("#contents_area").html(data);
-			$("#view, input:checkbox, #action").uniform();
-			$('.tipS').tipsy({gravity: 's',fade: true});
 		}
 	});
 
@@ -66,7 +64,7 @@ function ClearSearchAdvance()
 <div class="titleArea">
     <div class="wrapper">
         <div class="pageTitle">
-            <h5>Medical Records</h5>
+            <h5><?php echo $ControllerName?></h5>
             <span>List</span>
         </div>
     </div>
@@ -76,11 +74,11 @@ function ClearSearchAdvance()
 	<div class="wrapper">
 		<div class="controlB">
 			<ul>
-				<li>
-					<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" title="Add New Sales">
+				<!--li>
+					<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" title="Add New <?php echo $ControllerName?>">
 						<img src="<?php echo $this->webroot?>img/icons/control/32/plus.png" alt="" />
 					<span>Add new row</span></a>
-				</li>
+				</li-->
 			</ul>
 		</div>
 	</div>
@@ -95,7 +93,7 @@ function ClearSearchAdvance()
 		<div class="bc">
 	        <ul id="breadcrumbs" class="breadcrumbs">
 	             <li>
-	                  <a href="javascript:void(0)">Medical Records</a>
+	                  <a href="javascript:void(0)"><?php echo $ControllerName?></a>
 	             </li>
 	             <li class="current">
 	                  <a href="javascript:void(0)">List</a>
@@ -111,16 +109,33 @@ function ClearSearchAdvance()
 				<?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance"))?>
 					<input name="data[Search][reset]" type="hidden" value="0" id="reset">
 					<fieldset>
+
 						<?php
-							echo $this->Form->input('Search.name', array(
-								'label'			=>	'Nama Pasien',
-								'div'			=>	array("class"=>"dataTables_filter"),
-								'between'		=>	'<div class="formRight"><span class="span3">',
-								'after'			=>	'</span></div>'
-							));
-
+	                    	echo $this->Form->input('Search.id', array(
+								'label'			=>	'ID',
+	                    		'div'			=>	array("class"=>"dataTables_filter"),
+	                    		'between'		=>	'<div class="formRight"><span class="span3">',
+	                    		'after'			=>	'</span></div>',
+								"style"			=>	"width:50px"
+	                    	));
 						?>
-
+						<?php
+	                    	echo $this->Form->input('Search.name', array(
+								'label'			=>	'Name',
+	                    		'div'			=>	array("class"=>"dataTables_filter"),
+	                    		'between'		=>	'<div class="formRight"><span class="span3">',
+	                    		'after'			=>	'</span></div>'
+	                    	));
+						?>
+						<?php
+	                    	echo $this->Form->input('Search.parent_id', array(
+								'label'			=>	'Parent',
+	                    		'div'			=>	array("class"=>"dataTables_filter"),
+	                    		'between'		=>	'<div class="formRight">',
+	                    		'after'			=>	'</div>',
+								"options"		=>	$parent_id_list
+	                    	));
+						?>
 					</fieldset>
 				<?php echo $this->Form->end()?>
 				<a href="javascript:void(0);" title="" class="wButton bluewB ml15 m10" onclick="return SearchAdvance();"><span>Search</span></a>

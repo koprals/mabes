@@ -232,9 +232,11 @@ echo $this->Html->script(array(
 			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
 			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-datepicker.js'></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/owl/owl.carousel.min.js"></script>
-
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-select.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-datepicker.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/form/jquery.form.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-file-input.js"></script>
 
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/datatables/jquery.dataTables.min.js"></script>
 

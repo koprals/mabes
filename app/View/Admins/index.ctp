@@ -99,8 +99,8 @@ function ClearSearchAdvance()
 									<?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance", "role"=>"form"))?>
 										<input name="data[Search][reset]" type="hidden" value="0" id="reset">
 										<?php
-														echo $this->Form->input('Search.name', array(
-												'label'			=>	'Nama Admin',
+											echo $this->Form->input('Search.name', array(
+															'label'			=>	'Nama Admin',
 															'class'			=>	'form-control',
 															'between'		=>	'<div class="form-group">',
 															'after'			=>	'</div>'

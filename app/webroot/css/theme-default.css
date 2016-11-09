@@ -3471,11 +3471,13 @@ body.page-container-boxed.wall_10 {
 .profile .profile-controls a.profile-control-left {
   left: 15px;
   top: 53px;
+  padding-top: 5px;
   text-align: center;
 }
 .profile .profile-controls a.profile-control-right {
   right: 15px;
   top: 53px;
+  padding-top: 5px;
   text-align: center;
 }
 .profile .profile-controls a .fa,
@@ -4124,6 +4126,7 @@ ul.panel-controls > li > a {
   float: left;
   width: 30px;
   height: 30px;
+  padding-top: 8px;
   text-align: center;
   line-height: 28px;
   color: #656d78;
@@ -6071,6 +6074,9 @@ td.dataTables_empty {
 .widget .widget-controls a.widget-control-right {
   right: 10px;
   top: 10px;
+}
+.widget .widget-controls a.widget-control-right span {
+  margin: 7px auto;
 }
 .widget .widget-controls a:hover {
   opacity: 1;

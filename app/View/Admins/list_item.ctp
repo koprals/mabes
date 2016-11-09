@@ -5,12 +5,12 @@
 	$ordered	=	($order[0]!==0) ? "/sort:".$order[0]."/direction:".$direction: "";
 ?>
 <?php $this->Paginator->options(array(
-				'url'	=> array(
-					'controller'	=> $ControllerName,
-					'action'		=> 'ListItem/limit:'.$viewpage,
-				),
-				'onclick'=>"return onClickPage(this,'#contents_area');")
-			);
+	'url'	=> array(
+	'controller'	=> $ControllerName,
+	'action'		=> 'ListItem/limit:'.$viewpage,
+	),
+	'onclick'=>"return onClickPage(this,'#contents_area');")
+	);
 ?>
 
 <script>
@@ -38,6 +38,54 @@ function Delete(msg,id)
 	return false;
 }
 </script>
+<div class="panel-body panel-body-table">
+		<div class="table-responsive">
+				<table class="table table-bordered table-striped table-actions">
+						<thead>
+								<tr>
+										<th width="50">No</th>
+										<th>Nama Program</th>
+										<th>Kategori Program</th>
+										<th>Negara</th>
+										<th width="100">Tanggal Upload</th>
+										<th width="120">actions</th>
+								</tr>
+						</thead>
+						<tbody>
+								<tr id="trow_1">
+										<td class="text-center">1</td>
+										<td><strong>Program Master (S-2)</strong></td>
+										<td><strong>DIKIPTEK</strong></td>
+										<td><strong>AUSTRALIA</strong></td>
+										<td class="text-center">24/09/2015</td>
+										<td>
+												<button class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button>
+												<button class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="delete_row('trow_1');"><span class="fa fa-times"></span></button>
+										</td>
+								</tr>
+								<tr id="trow_2">
+										<td class="text-center">2</td>
+										<td><strong>Defence Service Commandand Staff College Course (DSCSC)</strong></td>
+										<td><strong>DIKBANGUM</strong></td>
+										<td><strong>SRILANKA</strong></td>
+										<td class="text-center">24/09/2015</td>
+										<td>
+												<button class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button>
+												<button class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="delete_row('trow_1');"><span class="fa fa-times"></span></button>
+										</td>
+								</tr>
+						</tbody>
+				</table>
+		</div>
+</div>
+<ul class="pagination pagination-sm pull-right push-down-20 push-up-20">
+	<li class="disabled"><a href="#">«</a></li>
+	<li class="active"><a href="#">1</a></li>
+	<li><a href="#">2</a></li>
+	<li><a href="#">3</a></li>
+	<li><a href="#">4</a></li>
+	<li><a href="#">»</a></li>
+</ul>
 <div class="widget">
 	<div class="title">
 		<img src="<?php echo $this->webroot ?>img/icons/dark/frames.png" alt="" class="titleIcon">

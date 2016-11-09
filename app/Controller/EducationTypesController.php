@@ -25,7 +25,7 @@ class EducationTypesController extends AppController
 		$this->set("aco_id",$this->aco_id);
 	}
 
-	function Index($page=1,$viewpage=200)
+	function Index($page=1,$viewpage=50)
 	{
 		if($this->access[$this->aco_id]["_read"] != "1")
 		{
@@ -55,12 +55,13 @@ class EducationTypesController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-   		$this->{$this->ModelName}->BindDefault();
+    	$this->{$this->ModelName}->BindDefault(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
+
 		//DEFINE LAYOUT, LIMIT AND OPERAND
-		$viewpage			=	empty($this->params['named']['limit']) ? 200 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.created" => "DESC");
+		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
+		$order				=	array("{$this->ModelName}.created" => "ASC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -127,6 +128,16 @@ class EducationTypesController extends AppController
 		$cond_search		=	array();
 		$filter_paginate	=	array();
 
+		/*
+    if(!empty($this->profile['City']['id'])) {
+			$filter_paginate = array(
+				'Customer.city_id' => $this->profile['City']['id']
+			);
+		} else {
+			$filter_paginate = array(
+			);
+		}
+    */
 
 		$this->paginate		=	array(
 									"{$this->ModelName}"	=>	array(
@@ -142,7 +153,7 @@ class EducationTypesController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-		debug($data);
+		//debug($data);
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
 

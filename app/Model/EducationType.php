@@ -65,7 +65,7 @@ class EducationType extends AppModel
 				'message' => 'Only (*.gif,*.jpeg,*.jpg,*.png) are allowed.'
 			)
 		)
-	);**/
+	);
 
 	public function BindImageBig($reset	=	true)
 	{

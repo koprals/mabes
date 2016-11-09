@@ -98,12 +98,12 @@ function Delete(msg,id)
 													$access[$aco_id]["_delete"] == 1
 												):
 												?>
-												<td style="text-align:center;">
+												<td>
 													<?php if($access[$aco_id]["_update"] == 1):?>
 														<button class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-														<button class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="javascript:alert('Cannot delete your self!')"; ?><span class="fa fa-times"></span></button>
+														<button class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="javascript:alert('Cannot delete your self!')"; ?></button>
 													<?php endif;?>
 												</td>
 												<?php endif;?>
@@ -153,12 +153,6 @@ function Delete(msg,id)
 								)
 							);
 						?>
-						<!--li class="disabled"><a href="#"></a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">»</a></li-->
 					</ul>
 					<?php endif;?>
 				</div>

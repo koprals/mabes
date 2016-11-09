@@ -25,7 +25,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Username</label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('username', array(
 														'type'					=>	'text',
@@ -43,7 +43,7 @@
 									<label class="col-md-3 col-xs-12 control-label">Password</label>
 									<div class="col-md-6 col-xs-12">
 											<div class="input-group">
-													<span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+													<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-unlock-alt"></span></span>
 													<?php
 														echo $this->Form->input('password', array(
 															'label'					=>	false,
@@ -77,7 +77,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Fullname</label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('fullname', array(
 														'type'					=>	'text',

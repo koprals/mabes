@@ -15,7 +15,7 @@ class EducationType extends AppModel
     )*/
   );
 
-	/**public $validate 	= array(
+	public $validate 	= array(
 		'id' => array(
 			'notEmpty' => array(
 				'rule' 		=>	"notEmpty",
@@ -35,16 +35,6 @@ class EducationType extends AppModel
 			'maxLength' 	=>	array(
 				'rule' 		=>	array("maxLength","100"),
 				'message'	=>	"Sales name is too long"
-			)
-		),
-		'description' => array(
-			'notEmpty'		=>	array(
-				'rule' 		=>	"notEmpty",
-				'message' 	=>	"Please insert sales description"
-			),
-			'minLength' 	=>	array(
-				'rule' 		=>	array("minLength","10"),
-				'message'	=>	"Sales description is to sort"
 			)
 		),
 		'sort' => array(

@@ -1,75 +1,132 @@
+
+<script>
+$(document).ready(function(){
+    $("#contents_area").css("opacity","1");
+    $("#contents_area").load("<?php echo $settings['cms_url'] . $ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage?>/?time=<?php echo time()?>",function(){
+        $("#contents_area").css("opacity","1");
+        $("a[rel^='lightbox']").prettyPhoto({
+            social_tools :''
+        });
+
+        $("#view").uniform();
+        $('.tipS').tipsy({gravity: 's',fade: true});
+    });
+});
+
+function onClickPage(el,divName)
+{
+    $(divName).css("opacity","0.5");
+    $(divName).load(el.toString(),function(){
+        $(divName).css("opacity","1");
+        $("a[rel^='lightbox']").prettyPhoto({
+            social_tools :''
+        });
+        $("#view").uniform();
+        $('.tipS').tipsy({gravity: 's',fade: true});
+    });
+    return false;
+}
+function SearchAdvance()
+{
+    $("#SearchAdvance").ajaxSubmit({
+        url:"<?php echo $settings['cms_url'].$ControllerName ?>/ListItem",
+        type:'POST',
+        dataType: "html",
+        clearForm:false,
+        beforeSend:function()
+        {
+            $("#reset").val("0");
+            $("#contents_area").css("opacity","0.5");
+        },
+        complete:function(data,html)
+        {
+            $("#contents_area").css("opacity","1");
+        },
+        error:function(XMLHttpRequest, textStatus,errorThrown)
+        {
+            alert(textStatus);
+        },
+        success:function(data)
+        {
+            $("#contents_area").html(data);
+        }
+    });
+
+    return false;
+}
+function ClearSearchAdvance()
+{
+    $("#SearchId, #SearchName").val("");
+    $('#reset').val('1');
+    SearchAdvance();
+}
+</script>
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
-		<li><a href="javascript:void(0)">Home</a></li>
-		<li class="active">Data Form Studi</li>
-		<li class="active">Jenis Pendidikan</li>
+    <li><a href="javascript:void(0)">Home</a></li>
+    <li class="active"><?php echo $ControllerName?></li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
-        <div class="page-title">
-                <h2><span class="fa fa-arrow-circle-o-left"></span> List Jenis Pendidikan</h2>
-        </div>
+<div class="page-title">
+    <h2><span class="fa fa-list-ul"></span> List Jenis Pendidikan</h2>
+</div>
 <!-- END PAGE TITLE -->
+
 <!-- PAGE CONTENT WRAPPER -->
-                <div class="page-content-wrap">
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="center-button center-block">
+                <a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" class="tile tile-primary "><span style="color:#ffffff;" class="fa fa-plus"></span><h3 style="color:#ffffff;">ADD</h3></a>
+            </div>
+        </div>
+    </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-
-                    <!-- START RESPONSIVE TABLES -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
-
-                                <div class="panel-heading"> 
-                                    <h2 class="panel-title pull-right">
-                                    	<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add"</a><strong>Tambah Jenis Pendidikan</strong>
-                                    </h2>
-                                    <button class="btn btn-danger btn-condensed pull-right"><i class="fa fa-plus"></i></button>
-                                </div>
-
-                                <div class="panel-body panel-body-table">
-
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-striped table-actions">
-                                        	<?php
-						                    	echo $this->Form->input('Search.name', array(
-													'label'			=>	'Name',
-						                    		'div'			=>	array("class"=>"table-responsive"),
-						                    		'between'		=>	'<div class="table table-bordered table-striped table-actions">>',
-						                    		'after'			=>	'</div>',
-													"style"			=>	"width:50px"
-						                    	));
-											?>
-                                            <thead>
-                                                <tr>
-                                                    <th width="50">No</th>
-                                                    <th>jenis Pendidikan</th>
-                                                    <th width="120">actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>                                            
-                                                <tr id="trow_1">
-                                                    <td class="text-center"></td>
-                                                    <td><strong></strong></td>
-                                                    <td>
-                                                        <button class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button>
-                                                        <button class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="delete_row('trow_1');"><span class="fa fa-times"></span></button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>                                
-
-                                </div>
-                            </div>                                                
-
-                        </div>
+    <!-- START ADVANCE SEARCH -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="faq panel panel-primary">
+                <div class="faq-item">
+                    <div class="faq-title">
+                        <span class="fa fa-angle-down"></span>Advance Search
                     </div>
-                    <!-- END RESPONSIVE TABLES -->
-
+                    <div class="faq-text">
+                        <!-- START VERTICAL FORM SAMPLE -->
+                        <div class="col-md-4">
+                            <div class="panel-default">
+                                <div class="panel-body">
+                                    <?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance", "role"=>"form"))?>
+                                        <input name="data[Search][reset]" type="hidden" value="0" id="reset">
+                                        <?php
+                                                        echo $this->Form->input('Search.name', array(
+                                                'label'         =>  'Nama Admin',
+                                                            'class'         =>  'form-control',
+                                                            'between'       =>  '<div class="form-group">',
+                                                            'after'         =>  '</div>'
+                                                ));
+                                        ?>
+                                    <?php echo $this->Form->end()?>
+                                    <div class="form-group">
+                                        <div class="pull-left">
+                                            <button type="button" class="btn btn-primary btn-rounded" href="javascript:void(0);" title="" onclick="return SearchAdvance();"><span class="fa fa-search"></span>Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- END VERTICAL FORM SAMPLE -->
                     </div>
-
                 </div>
-<!-- END PAGE CONTENT WRAPPER -->
+            </div>
+        </div>
+    </div>
+
+    <!-- START RESPONSIVE TABLES -->
+    <div id="contents_area">
+         <!-- LIST ITEM START FROM HERE -->
+    </div>
+    <!-- END RESPONSIVE TABLES -->
+
+</div>
+<!-- END CONTENT WRAPPER -->

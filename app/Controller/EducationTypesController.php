@@ -55,9 +55,8 @@ class EducationTypesController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-    $this->{$this->ModelName}->BindDefault();
+   		$this->{$this->ModelName}->BindDefault();
 		$this->{$this->ModelName}->VirtualFieldActivated();
-
 
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 200 : $this->params['named']['limit'];
@@ -128,16 +127,6 @@ class EducationTypesController extends AppController
 		$cond_search		=	array();
 		$filter_paginate	=	array();
 
-		/*
-    if(!empty($this->profile['City']['id'])) {
-			$filter_paginate = array(
-				'Customer.city_id' => $this->profile['City']['id']
-			);
-		} else {
-			$filter_paginate = array(
-			);
-		}
-    */
 
 		$this->paginate		=	array(
 									"{$this->ModelName}"	=>	array(
@@ -163,7 +152,7 @@ class EducationTypesController extends AppController
 		}
 		$page				=	empty($this->params['named']['page']) ? 1 : $this->params['named']['page'];
 		$this->Session->write('Search.'.$this->ControllerName.'Page',$page);
-		$this->set(compact('data','page','viewpage','interests','hangoutplaces','hangoutdays','favoritemusics'));
+		$this->set(compact('data','page','viewpage'));
 	}
 
 

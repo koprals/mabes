@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!-- END META SECTION -->
 	<link rel="stylesheet" type="text/css" id="theme" href="<?php echo $this->webroot; ?>css/theme-default.css"/>
+	<link rel="stylesheet" type="text/css" id="theme" href="<?php echo $this->webroot; ?>css/custom.css"/>
 
 	<?php
 	//BLOCK CSS

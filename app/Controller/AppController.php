@@ -22,7 +22,7 @@ class AppController extends Controller
 		$this->layout	=	"main";
 
 		if ($this->name == 'CakeError') {
-        	$this->layout = 'web';
+        	$this->layout = 'main';
        } else {
 			//SET GENERAL SETTINGS
 			if(isset($_GET['debug']) && $_GET['debug'] == "1")

@@ -1,10 +1,10 @@
 <?php
-class MatrasController extends AppController
+class OccupationsController extends AppController
 {
-	var $ControllerName		=	"Matras";
-	var $ModelName			=	"Matra";
+	var $ControllerName		=	"Occupations";
+	var $ModelName			=	"Occupation";
 	var $helpers			=	array("Text","Aimfox");
-	var $uses				=	"Matra";
+	var $uses				=	"Occupation";
 
 	function beforeFilter()
 	{
@@ -127,6 +127,17 @@ class MatrasController extends AppController
 
 		$cond_search		=	array();
 		$filter_paginate	=	array();
+
+		/*
+    if(!empty($this->profile['City']['id'])) {
+			$filter_paginate = array(
+				'Customer.city_id' => $this->profile['City']['id']
+			);
+		} else {
+			$filter_paginate = array(
+			);
+		}
+    */
 
 		$this->paginate		=	array(
 									"{$this->ModelName}"	=>	array(

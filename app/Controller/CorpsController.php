@@ -209,6 +209,14 @@ class CorpsController extends AppController
 			return;
 		}
 
+		//define matra
+		$this->loadModel("Matra");
+		$matra_id_list		=	$this->Matra->find("list",array(
+											"order"			=>	array(
+												"Matra.name ASC"
+											)
+										));
+
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
@@ -255,6 +263,7 @@ class CorpsController extends AppController
 				$this->redirect(array("action"=>'SuccessAdd', $ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
+		$this->set(compact("matra_id_list"));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)

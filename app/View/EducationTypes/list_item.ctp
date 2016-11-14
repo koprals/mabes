@@ -108,7 +108,6 @@ function Delete(msg,id)
 									</tbody>
 							</table>
 					</div>
-
 			</div>
 
 			<!-- START PAGINATION -->

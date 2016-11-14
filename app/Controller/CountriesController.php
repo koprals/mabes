@@ -57,7 +57,7 @@ class CountriesController extends AppController
 		//$this->{$this->ModelName}->BindDefault(false);
 		//$this->{$this->ModelName}->MyAro->VirtualFieldActivated();
 		//$this->{$this->ModelName}->BindImageContent();
-		//$this->{$this->ModelName}->VirtualFieldActivated();
+		$this->{$this->ModelName}->VirtualFieldActivated();
 
 
 		//DEFINE LAYOUT, LIMIT AND OPERAND
@@ -169,7 +169,7 @@ class CountriesController extends AppController
 
 		//DEFINE NEWS CATEGORY
 		$this->loadModel("MyAro");
-		$this->MyAro->VirtualFieldActivated();
+		//$this->MyAro->VirtualFieldActivated();
 		if(isset($ID) && $ID != $this->super_admin_id)
 			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
 		else
@@ -178,7 +178,7 @@ class CountriesController extends AppController
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
-			$this->{$this->ModelName}->ValidateAdd();
+			//$this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())
 			{
 				$save	=	$this->{$this->ModelName}->save($this->request->data);

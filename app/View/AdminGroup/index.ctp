@@ -4,9 +4,9 @@ $(document).ready(function(){
 	$("#contents_area").load("<?php echo $settings['cms_url'] . $ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage?>",function(){
 		$("#contents_area").css("opacity","1");
 		$("a[rel^='lightbox']").prettyPhoto({
-			social_tools :''									
+			social_tools :''
 		});
-		
+
 		$("#view").uniform();
 		$('.tipS').tipsy({gravity: 's',fade: true});
 	});
@@ -18,7 +18,7 @@ function onClickPage(el,divName)
 	$(divName).load(el.toString(),function(){
 		$(divName).css("opacity","1");
 		$("a[rel^='lightbox']").prettyPhoto({
-			social_tools :''									
+			social_tools :''
 		});
 		$("#view").uniform();
 		$('.tipS').tipsy({gravity: 's',fade: true});
@@ -50,7 +50,7 @@ function SearchAdvance()
 			$("#contents_area").html(data);
 		}
 	});
-	
+
 	return false;
 }
 function ClearSearchAdvance()
@@ -60,96 +60,72 @@ function ClearSearchAdvance()
 	SearchAdvance();
 }
 </script>
-<!-- HEADER -->
-<div class="titleArea">
-    <div class="wrapper">
-        <div class="pageTitle">
-            <h5>Module Object</h5>
-            <span>List</span>
-        </div>
-    </div>
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb">
+	<li><a href="javascript:void(0)">Home</a></li>
+	<li class="active"><?php echo $ControllerName?></li>
+</ul>
+<!-- END BREADCRUMB -->
+<!-- PAGE TITLE -->
+<div class="page-title">
+	<h2><span class="fa fa-list-ul"></span> List <?php echo $ControllerName; ?></h2>
 </div>
-<div class="line"></div>
-<div class="statsRow">
-	<div class="wrapper">
-		<div class="controlB">
-			<ul>
-				<li>
-					<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" title="Add New Module Object">
-						<img src="<?php echo $this->webroot?>img/icons/control/32/plus.png" alt="" />
-					<span>Add new row</span></a>
-				</li>
-				<li>
-					<a href="<?php echo $settings["cms_url"].$ControllerName?>/Excel" title="Export to Excel" target="_top">
-						<img src="<?php echo $this->webroot?>img/icons/control/32/spreadsheet.png" alt="" />
-					<span>Export to Excel</span></a>
-				</li>
-			</ul>
-		</div>
-	</div>
-</div>
-<div class="line"></div>
-<!-- HEADER -->
+<!-- END PAGE TITLE -->
 
-<!-- CONTENT -->
-<div class="wrapper">
-	<!-- START SEARCH  -->
-	<div class="span6">
-		<div class="bc">
-	        <ul id="breadcrumbs" class="breadcrumbs">
-	             <li>
-	                  <a href="javascript:void(0)">Module Object</a>
-	             </li>
-	             <li class="current">
-	                  <a href="javascript:void(0)">List</a>
-	             </li>
-	        </ul>
-	    </div>
-		<div class="toggle" style="border-color:#a0a0a0;">
-			<div class="title closed" id="toggleOpened" style="border-color:#a0a0a0;">
-				<img src="<?php echo $this->webroot?>img/icons/dark/magnify.png" alt="" class="titleIcon"/>
-				<h6 class="red">Search</h6>
-			</div>
-			<div class="body" style="border-color:#a0a0a0;">
-				<?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance"))?>
-					<input name="data[Search][reset]" type="hidden" value="0" id="reset">
-					<fieldset>
-						
-						<?php
-	                    	echo $this->Form->input('Search.id', array(
-								'label'			=>	'ID',
-	                    		'div'			=>	array("class"=>"dataTables_filter"),
-	                    		'between'		=>	'<div class="formRight"><span class="span3">',
-	                    		'after'			=>	'</span></div>',
-								"style"			=>	"width:50px"
-	                    	));
-						?>
-						<?php
-	                    	echo $this->Form->input('Search.name', array(
-								'label'			=>	'Name',
-	                    		'div'			=>	array("class"=>"dataTables_filter"),
-	                    		'between'		=>	'<div class="formRight"><span class="span3">',
-	                    		'after'			=>	'</span></div>'
-	                    	));
-						?>
-						<?php
-	                    	echo $this->Form->input('Search.parent_id', array(
-								'label'			=>	'Parent',
-	                    		'div'			=>	array("class"=>"dataTables_filter"),
-	                    		'between'		=>	'<div class="formRight">',
-	                    		'after'			=>	'</div>',
-								"options"		=>	$parent_id_list
-	                    	));
-						?>
-					</fieldset>
-				<?php echo $this->Form->end()?>
-				<a href="javascript:void(0);" title="" class="wButton bluewB ml15 m10" onclick="return SearchAdvance();"><span>Search</span></a>
-				<a href="javascript:void(0);" title="" class="wButton redwB ml15 m10" onclick="ClearSearchAdvance();"><span>Reset</span></a>
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="center-button center-block">
+				<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" class="tile tile-primary "><span style="color:#ffffff;" class="fa fa-plus"></span><h3 style="color:#ffffff;">ADD</h3></a>
 			</div>
 		</div>
 	</div>
-	<!-- END SEARCH  -->
-	<div id="contents_area">
+
+	<!-- START ADVANCE SEARCH -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="faq panel panel-primary">
+				<div class="faq-item">
+					<div class="faq-title">
+						<span class="fa fa-angle-down"></span>Advance Search
+					</div>
+					<div class="faq-text">
+						<!-- START VERTICAL FORM SAMPLE -->
+						<div class="col-md-4">
+							<div class="panel-default">
+								<div class="panel-body">
+									<?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance", "role"=>"form"))?>
+										<input name="data[Search][reset]" type="hidden" value="0" id="reset">
+										<?php
+											echo $this->Form->input('Search.name', array(
+															'label'			=>	'Nama Admin',
+															'class'			=>	'form-control',
+															'between'		=>	'<div class="form-group">',
+															'after'			=>	'</div>'
+												));
+										?>
+									<?php echo $this->Form->end()?>
+									<div class="form-group">
+										<div class="pull-left">
+											<button type="button" class="btn btn-primary btn-rounded" href="javascript:void(0);" title="" onclick="return SearchAdvance();"><span class="fa fa-search"></span>Search</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END VERTICAL FORM SAMPLE -->
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<!-- START RESPONSIVE TABLES -->
+	<div id="contents_area">
+		 <!-- LIST ITEM START FROM HERE -->
+	</div>
+	<!-- END RESPONSIVE TABLES -->
+
 </div>
-<!-- CONTENT -->
+<!-- END CONTENT WRAPPER -->

@@ -103,7 +103,7 @@ function Delete(msg,id)
 														<button class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-														<button class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="javascript:alert('Cannot delete your self!')"; ?><span class="fa fa-times"></span></button>
+														<button href="<?php echo $settings['cms_url']?>AccessControllList/Index/<?php echo $data[$ModelName]["id"]?>/<?php echo $page?>/<?php echo $viewpage?>" class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="javascript:alert('Cannot delete your self!')"; ?><span class="fa fa-times"></span></button>
 													<?php endif;?>
 												</td>
 												<?php endif;?>

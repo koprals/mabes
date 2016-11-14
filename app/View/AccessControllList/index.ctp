@@ -1,3 +1,29 @@
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb">
+	<li><a href="javascript:void(0)">Home</a></li>
+  <li><a href="javascript:void(0)">Module Object</a></li>
+  <li><a href="javascript:void(0)">Acces Control List</a></li>
+	<li class="active"><?php echo $detailAro["MyAro"]["alias_name"]?></li>
+</ul>
+<!-- END BREADCRUMB -->
+
+<!-- PAGE TITLE -->
+<div class="page-title">
+	<h2><span class="fa fa-user"></span> Module Object</h2>
+</div>
+<!-- END PAGE TITLE -->
+
+<?php echo $this->Form->create("AroAcos", array('url' => array("controller"=>$ControllerName,"action"=>"Index",$ID,"?"=>"debug=0"),'class' => 'form')); ?>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+      </div>
+    </div>
+  </div>
+</div>
+<?php echo $this->Form->end();?>
+
 <!-- HEADER -->
 <div class="titleArea">
     <div class="wrapper">
@@ -34,7 +60,7 @@
 				<thead>
 					<tr>
 						<td style="width:20%;">&nbsp;
-							
+
 						</td>
 						<td style="width:16%;">
 							<label style="font-weight:bold; cursor:pointer"><input type="checkbox" id="parent_col_1"/>View</label>
@@ -72,7 +98,7 @@
 								"div"		=>	false,
 								"required"	=>	""
 							));?>
-							
+
 						</td>
 						<td>
 							<?php echo $this->Form->input("AroAco.".$data["MyAco"]["id"]."._create",array(
@@ -96,7 +122,7 @@
 								"label"		=>	false,
 								"div"		=>	false,
 								"required"	=>	""
-							));?>						
+							));?>
 						</td>
 						<td>
 							<?php echo $this->Form->input("AroAco.".$data["MyAco"]["id"]."._delete",array(
@@ -108,7 +134,7 @@
 								"label"		=>	false,
 								"div"		=>	false,
 								"required"	=>	""
-							));?>							
+							));?>
 						</td>
 						<td>
 							<input type="checkbox" id="<?php echo "chk_".$count."_5"?>" col="col_5" row="row_<?php echo $count?>"/>
@@ -147,7 +173,7 @@ $(document).ready(function(){
 			$("input[col^=col_1]").parent("span").removeClass("checked");
 		}
 	});
-	
+
 	$("#parent_col_2").bind("click",function(){
 		if($(this).is(":checked"))
 		{
@@ -160,7 +186,7 @@ $(document).ready(function(){
 			$("input[col^=col_2]").parent("span").removeClass("checked");
 		}
 	});
-	
+
 	$("#parent_col_3").bind("click",function(){
 		if($(this).is(":checked"))
 		{
@@ -173,7 +199,7 @@ $(document).ready(function(){
 			$("input[col^=col_3]").parent("span").removeClass("checked");
 		}
 	});
-	
+
 	$("#parent_col_4").bind("click",function(){
 		if($(this).is(":checked"))
 		{
@@ -186,7 +212,7 @@ $(document).ready(function(){
 			$("input[col^=col_4]").parent("span").removeClass("checked");
 		}
 	});
-	
+
 	$("#parent_col_5").bind("click",function(){
 		if($(this).is(":checked"))
 		{
@@ -201,12 +227,12 @@ $(document).ready(function(){
 	});
 	$("input[col=col_5]").bind("click",function(){
 		var row	=	$(this).attr("row").split("_");
-		
+
 		if($(this).is(":checked"))
 		{
 			$("input[row=row_"+row[1]+"]").attr('checked', 'checked');
 			$("input[row=row_"+row[1]+"]").parent("span").addClass("checked");
-			
+
 		}
 		else
 		{
@@ -214,7 +240,7 @@ $(document).ready(function(){
 			$("input[row=row_"+row[1]+"]").parent("span").removeClass("checked");
 		}
 	});
-	
+
 });
 </script>
 <?php $this->end();?>

@@ -237,7 +237,7 @@ echo $this->Html->script(array(
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-datepicker.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/form/jquery.form.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-file-input.js"></script>
-
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/countries.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/datatables/jquery.dataTables.min.js"></script>
 
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/moment.min.js"></script>

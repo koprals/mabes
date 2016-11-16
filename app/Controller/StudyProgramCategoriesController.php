@@ -1,10 +1,10 @@
 <?php
-class AdminsController extends AppController
+class StudyProgramCategoriesController extends AppController
 {
-	var $ControllerName		=	"Admins";
-	var $ModelName			=	"Admin";
+	var $ControllerName		=	"StudyProgramCategories";
+	var $ModelName			=	"StudyProgramCategory";
 	var $helpers			=	array("Text","Aimfox");
-	var $uses				=	"Admin";
+	var $uses				=	"StudyProgramCategory";
 
 	function beforeFilter()
 	{
@@ -55,8 +55,6 @@ class AdminsController extends AppController
 
 		$this->loadModel($this->ModelName);
 		$this->{$this->ModelName}->BindDefault(false);
-		$this->{$this->ModelName}->MyAro->VirtualFieldActivated();
-		$this->{$this->ModelName}->BindImageContent();
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 
@@ -170,10 +168,6 @@ class AdminsController extends AppController
 		//DEFINE NEWS CATEGORY
 		$this->loadModel("MyAro");
 		$this->MyAro->VirtualFieldActivated();
-		if(isset($ID) && $ID != $this->super_admin_id)
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-		else
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
 
 		if(!empty($this->request->data))
 		{
@@ -251,11 +245,6 @@ class AdminsController extends AppController
 		//DEFINE ARO LIST
 		$this->loadModel("MyAro");
 		$this->MyAro->VirtualFieldActivated();
-		if($ID != $this->super_admin_id)
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-		else
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-
 
 		if (empty($this->data))
 		{
@@ -274,15 +263,15 @@ class AdminsController extends AppController
 				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
 				{
 					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp								=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
+					$tmp								  =	$this->request->data[$this->ModelName]["images"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["images"]["type"];
 
 					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
 						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
 
-					$ext								=	pathinfo($tmp_name,PATHINFO_EXTENSION);
-					$tmp_file_name						=	md5(time());
-					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
+					$ext								  =	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images1_img			=	$path_tmp.$tmp_file_name.".".$ext;
 					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
 					if($upload)
 					{

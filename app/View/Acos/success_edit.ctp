@@ -1,28 +1,31 @@
-<!-- Title area -->
-<div class="titleArea">
-    <div class="wrapper">
-        <div class="pageTitle">
-            <h5>Success Edit Module Object</h5>
-            <span><?php echo $this->Html->link('Index', array('action' => 'index')); ?></span>
-        </div>
-        <div class="middleNav">
-	        <ul>
-				<li class="mUser"><a href="<?php echo $settings["cms_url"].$ControllerName ?>" title="View List"><span class="list"></span></a></li>
-	        </ul>
-	    </div>
-    </div>
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb">
+	<li><a href="javascript:void(0)">Home</a></li>
+	<li class="active"><?php echo $ControllerName?></li>
+</ul>
+<!-- END BREADCRUMB -->
+<!-- PAGE TITLE -->
+<div class="page-title">
+	<h2>Success Edit <?php echo $ControllerName; ?></h2>
 </div>
+<!-- END PAGE TITLE -->
 
-<div class="line"></div>
-<div class="wrapper">
-	<div class="nNote nSuccess">
-		<p><strong>SUCCESS: </strong>Success edit Module Object</p>
-	</div>
-	<div class="widget">
-		<div class="body textC">
-			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Edit/<?php echo $ID?>/<?php echo $page?>/<?php echo $viewpage?>" title="Back to Edit" class="button redB" style="margin: 5px;"><span>Edit this module</span></a>
-			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" title="Back to List" class="button greyishB" style="margin: 5px;"><span>Add More</span></a>
-			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Index/<?php echo $page?>/<?php echo $viewpage?>" title="Back to List" class="button blueB" style="margin: 5px;"><span>Back to List</span></a>
-		</div>
-	</div>
+<div class="page-content-wrap">
+	<div class="row">
+			<div class="col-md-12">
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <strong>SUCCESS:</strong> Edit <?php echo $ControllerName?>.
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="panel-footer center-button">
+              <a href="<?php echo $settings["cms_url"].$ControllerName?>/Edit/<?php echo $ID?>" title="Back to Edit" class="btn btn-danger active" style="margin: 5px;"><span>Edit this <?php echo strtolower($ControllerName)?></span></a>
+        			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" title="Back to List" class="btn btn-success active" style="margin: 5px;"><span>Add More</span></a>
+        			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Index" title="Back to List" class="btn btn-primary active" style="margin: 5px;"><span>Back to List</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
 </div>

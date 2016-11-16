@@ -11,7 +11,7 @@
 		};
 		initEditor();
 	});
-	
+
 </script>
 <?php echo $this->end();?>
 
@@ -19,79 +19,85 @@
 <link rel="stylesheet" href="<?php echo $this->webroot?>wysiwyg/minified/themes/default.min.css" type="text/css" media="all" />
 <?php echo $this->end();?>
 
-<!-- Title area -->
-<div class="titleArea">
-    <div class="wrapper">
-        <div class="pageTitle">
-            <h5>Edit Module Object</h5>
-            <span><?php echo $detail[$ModelName]["alias"]?></span>
-        </div>
-        <div class="middleNav">
-	        <ul>
-				<li class="mUser"><a href="<?php echo $settings["cms_url"].$ControllerName ?>" title="View List"><span class="list"></span></a></li>
-	        </ul>
-	    </div>
-    </div>
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb">
+	<li><a href="javascript:void(0)">Home</a></li>
+	<li class="javascript:void(0)"><?php echo $ControllerName?></li>
+	<li class="javascript:void(0)"><?php echo "Edit Module Object"?></li>
+</ul>
+<!-- END BREADCRUMB -->
+<!-- PAGE TITLE -->
+<div class="page-title">
+	<h2><span class="fa fa-plus-circle"></span> Edit Module Object</h2>
 </div>
-<div class="line"></div>
+<!-- END PAGE TITLE -->
 
-<div class="wrapper">
-	<div class="fluid">
-		<div class="users form span8">
-			<?php echo $this->Form->create($ModelName, array("type"=>"file",'url' => array("controller"=>$ControllerName,"action"=>"Edit", $ID,$page,$viewpage),'class' => 'form')); ?>
-				<?php
-					echo $this->Form->input('id', array(
-						'type'			=>	'hidden',
-						'readonly'		=>	'readonly'
-					));
-				?>
-				<fieldset>
-					<div class="widget">
-						<div class="title">
-							<img src="<?php echo $this->webroot ?>img/icons/dark/list.png" alt="" class="titleIcon" />
-							<h6>Edit <?php echo $detail[$ModelName]["alias"]?></h6>
+<!-- START FORM -->
+<div class="page-content-wrap">
+	<div class="row">
+			<div class="col-md-12">
+				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Edit"),'class' => 'form-horizontal',"type"=>"file")); ?>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+								<h3 class="panel-title"><strong>Edit</strong> <?php echo $detail[$ModelName]['alias'] ?></h3>
 						</div>
-						<?php
-							echo $this->Form->input('alias', array(
-								'label'			=>	'Modul Name (*)',
-								'div' 			=>	'formRow',
-								'between'		=>	'<div class="formRight"><span class="span4">',
-								'after' 		=>	'</span></div>',
-								"required"		=>	"",
-								"autocomplete"	=>	"off",
-								"maxlength"		=>	30,
-								'error' 		=> array('attributes' => array('wrap' => 'label', 'class' => 'formRight error')),
-							));
-						?>
-						<?php
-							echo $this->Form->input('parent_id', array(
-								'label'			=> 'Parent (*)',
-								'div'			=> 'formRow',
-								'between'		=> '<div class="formRight">',
-								'after'			=> '</div>',
-								'error'			=> array('attributes' => array('wrap' => 'label', 'class' =>  'formRight error')),
-								'options'		=> $parent_id_list,
-								"required"		=>	"",
-								"empty"			=>	"Select Parent"
-								));
-						?>
-						<?php
-							echo $this->Form->input('description', array(
-								'label'			=>	'Description',
-								'div' 			=> 'formRow',
-								'between'		=> '<div class="formRight">',
-								'after' 		=> '</div>',
-								'error' 		=> array('attributes' => array('wrap' => 'label', 'class' => 'formRight error')),
-							));
-						?>
-						<div class="formSubmit">
-							<input type="submit" value="Edit" class="redB" />
-							<input type="reset" value="Reset" class="blueB"/>
-							<input type="button" value="Cancel" class="blackB" onclick="location.href = '<?php echo $settings["cms_url"].$ControllerName?>/Index/<?php echo $page?>/<?php echo $viewpage?>'"/>
-						</div>
+						<div class="panel-body">
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Modul Name</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
+												<?php
+													echo $this->Form->input('alias', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Parent</label>
+									<div class="col-md-6 col-xs-12">
+												<?php
+													echo $this->Form->input('parent_id', array(
+														'class'					=>	'form-control select',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														'options'				=> $parent_id_list,
+														'empty'					=> 'Select Parent'
+													));
+												?>
+										</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Description</label>
+									<div class="col-md-6 col-xs-12">
+												<?php
+													echo $this->Form->input('description', array(
+														'type'					=>	'textarea',
+														'class'					=>	'form-control select',
+														'label'					=>	false,
+														"autocomplete"	=>	"off",
+														'empty'					=> false,
+													));
+												?>
+										</div>
+							</div>
+							<div class="panel-footer center-button">
+								<input type="submit" value="Add" class="btn btn-success active" />
+								<input type="reset" value="Reset" class="btn btn-info active"/>
+								<input type="button" value="Cancel" class="btn btn-danger active" onclick="location.href = '<?php echo $settings["cms_url"].$ControllerName?>/Index'"/>
+							</div>
 					</div>
-				</fieldset>
-			</form>
-		</div>
+				</div>
+			</div>
 	</div>
 </div>
+<!-- END FORM -->

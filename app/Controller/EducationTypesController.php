@@ -128,17 +128,6 @@ class EducationTypesController extends AppController
 		$cond_search		=	array();
 		$filter_paginate	=	array();
 
-		/*
-    if(!empty($this->profile['City']['id'])) {
-			$filter_paginate = array(
-				'Customer.city_id' => $this->profile['City']['id']
-			);
-		} else {
-			$filter_paginate = array(
-			);
-		}
-    */
-
 		$this->paginate		=	array(
 									"{$this->ModelName}"	=>	array(
 										"order"				=>	$order,
@@ -266,7 +255,7 @@ class EducationTypesController extends AppController
 		}
 
 		$this->{$this->ModelName}->BindDefault(false);
-		$this->{$this->ModelName}->BindImageContent();
+		//$this->{$this->ModelName}->BindImageContent();
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID
@@ -410,11 +399,13 @@ class EducationTypesController extends AppController
 		if(empty($detail))
 		{
 			$message	=	"Item not found.";
+			$resultStatus	=	"0";
 		}
 		else
 		{
 			$this->{$this->ModelName}->delete($ID,false);
 			$message	=	"Data has deleted.";
+			$resultStatus	=	"1";
 		}
 
 		echo json_encode(array("data"=>array("message"=>$message)));

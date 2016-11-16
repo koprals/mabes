@@ -57,8 +57,11 @@ function Delete(msg,id)
 													<th width="50">
 														<?php echo $this->Paginator->sort("$ModelName.id",'ID');?>
 													</th>
-													<th>
+													<th width="150">
 														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
+													</th>
+													<th width="150">
+														<?php echo $this->Paginator->sort("$ModelName.matra_id",'Matra');?>
 													</th>
 													<th width="150">
 														<?php echo $this->Paginator->sort("$ModelName.SStatus",'Status');?>
@@ -86,6 +89,7 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
 												<td><?php echo $data[$ModelName]['name'] ?></td>
+												<td><?php echo $data['Matra']['name'] ?></td>
 												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
 												<td class="text-center"><?php echo date("d M Y",strtotime($data[$ModelName]['modified'])) ?></td>
 												<?php
@@ -96,10 +100,14 @@ function Delete(msg,id)
 												?>
 												<td>
 													<?php if($access[$aco_id]["_update"] == 1):?>
-														<button class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button>
+														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-success btn-condensed" title="Access Control">
+															<span class="fa fa-pencil"></span>
+														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-														<button class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="javascript:alert('Cannot delete your self!')"; ?></button>
+															<a href="<?php echo $settings['cms_url'].$ControllerName?>/Delete/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-danger btn-condensed" title="Access Control">
+																<span class="fa fa-times"></span>
+															</a>
 													<?php endif;?>
 												</td>
 												<?php endif;?>

@@ -40,11 +40,11 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Status</label>
+								<label class="col-md-3 col-xs-12 control-label">Matra</label>
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('matra_id_list', array(
-														'class'					=>	'ß select',
+														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",

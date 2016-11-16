@@ -266,7 +266,7 @@ class OccupationsController extends AppController
 		}
 
 		$this->{$this->ModelName}->BindDefault(false);
-		$this->{$this->ModelName}->BindImageContent();
+		//$this->{$this->ModelName}->BindImageContent();
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID

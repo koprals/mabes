@@ -55,7 +55,7 @@ class MatrasController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-    	$this->{$this->ModelName}->BindDefault(false);
+    	//$this->{$this->ModelName}->BindDefault(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 
@@ -255,7 +255,7 @@ class MatrasController extends AppController
 		}
 
 		$this->{$this->ModelName}->BindDefault(false);
-		$this->{$this->ModelName}->BindImageContent();
+		//$this->{$this->ModelName}->BindImageContent();
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID
@@ -332,7 +332,7 @@ class MatrasController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-		$this->{$this->ModelName}->BindImageBig(false);
+		//$this->{$this->ModelName}->BindImageBig(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 		$detail = $this->{$this->ControllerName}->find('first', array(

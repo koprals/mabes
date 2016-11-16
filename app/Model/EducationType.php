@@ -67,37 +67,6 @@ class EducationType extends AppModel
 		)
 	);
 
-	public function BindImageBig($reset	=	true)
-	{
-		/*$this->bindModel(array(
-			"hasOne"	=>	array(
-				"ImageBig"	=>	array(
-					"className"	=>	"Content",
-					"foreignKey"	=>	"model_id",
-					"conditions"	=>	array(
-						"ImageBig.model"	=>	$this->name,
-						"ImageBig.type"	=>	"big"
-					)
-				)
-			)
-		),$reset);*/
-	}
-
-	public function BindImageThumb($reset	=	true)
-	{
-		$this->bindModel(array(
-			"hasOne"	=>	array(
-				"ImageThumb"	=>	array(
-					"className"	=>	"Content",
-					"foreignKey"	=>	"model_id",
-					"conditions"	=>	array(
-						"ImageThumb.model"	=>	$this->name,
-						"ImageThumb.type"	=>	"thumb"
-					)
-				)
-			)
-		),$reset);
-	}
 
 	public function beforeSave($options = array())
 	{
@@ -144,10 +113,7 @@ class EducationType extends AppModel
 		return true;
 	}
 
-	public function BindImage($reset	=	true)
-	{
-	}
-
+	
 	function BindDefault($reset	=	true)
 	{
 	}

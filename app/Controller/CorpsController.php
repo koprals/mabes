@@ -33,6 +33,14 @@ class CorpsController extends AppController
 			return;
 		}
 
+		//DEFINE MATRA
+		$this->loadModel("Matra");
+		$matra_id_list		=	$this->Matra->find("list",array(
+									"order"			=>	array(
+										"Matra.name ASC"
+									)
+								));
+
 		$this->Session->delete("Search.".$this->ControllerName);
 		$this->Session->delete('Search.'.$this->ControllerName.'Operand');
 		$this->Session->delete('Search.'.$this->ControllerName.'ViewPage');
@@ -40,7 +48,7 @@ class CorpsController extends AppController
 		$this->Session->delete('Search.'.$this->ControllerName.'Page');
 		$this->Session->delete('Search.'.$this->ControllerName.'Conditions');
 		$this->Session->delete('Search.'.$this->ControllerName.'parent_id');
-		$this->set(compact("page","viewpage"));
+		$this->set(compact("page","viewpage","matra_id_list"));
 	}
 
 	function ListItem()
@@ -128,17 +136,6 @@ class CorpsController extends AppController
 		$cond_search		=	array();
 		$filter_paginate	=	array();
 
-		/*
-    if(!empty($this->profile['City']['id'])) {
-			$filter_paginate = array(
-				'Customer.city_id' => $this->profile['City']['id']
-			);
-		} else {
-			$filter_paginate = array(
-			);
-		}
-    */
-
 		$this->paginate		=	array(
 									"{$this->ModelName}"	=>	array(
 										"order"				=>	$order,
@@ -208,7 +205,6 @@ class CorpsController extends AppController
 			$this->layout	=	"no_access";
 			return;
 		}
-
 		//define matra
 		$this->loadModel("Matra");
 		$matra_id_list		=	$this->Matra->find("list",array(
@@ -216,7 +212,7 @@ class CorpsController extends AppController
 												"Matra.name ASC"
 											)
 										));
-
+		debug($matra_id_list);
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
@@ -260,7 +256,7 @@ class CorpsController extends AppController
 					@unlink($tmp_images1_img);
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				$this->redirect(array("action"=>'SuccessAdd', $ID));
+				//$this->redirect(array("action"=>'SuccessAdd', $ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 		$this->set(compact("matra_id_list"));
@@ -275,10 +271,17 @@ class CorpsController extends AppController
 		}
 
 		$this->{$this->ModelName}->BindDefault(false);
-		$this->{$this->ModelName}->BindImageContent();
+		//$this->{$this->ModelName}->BindImageContent();
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID
+									)
+								));
+		//DEFINE MATRA
+		$this->loadModel("Matra");
+		$matra_id_list		=	$this->Matra->find("list",array(
+									"order"			=>	array(
+										"Matra.name ASC"
 									)
 								));
 
@@ -340,7 +343,7 @@ class CorpsController extends AppController
 				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
 			}
 		}
-		$this->set(compact("ID","detail","aro_id_list","page","viewpage"));
+		$this->set(compact("ID","detail","aro_id_list","page","viewpage","matra_id_list"));
 	}
 
 	function View($ID=NULL)

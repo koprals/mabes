@@ -1,15 +1,13 @@
 <?php
-App::uses('Sanitize','Utility');
 class Corp extends AppModel
 {
 	public $name = "Corp";
 
   public $belongsTo = array(
-    /*'Matra' => array(
+    'Matra' => array(
       'className' => 'Matra',
       'foreignKey'  =>  'matra_id'
     )
-    */
   );
 
 	public $validate 	= array(

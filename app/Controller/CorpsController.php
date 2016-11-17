@@ -23,6 +23,9 @@ class CorpsController extends AppController
 
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
+
+		//define matra
+		$this->set('list_matra', $this->Corp->Matra->find('list'));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -63,7 +66,7 @@ class CorpsController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-    	$this->{$this->ModelName}->BindDefault(false);
+    $this->{$this->ModelName}->BindDefault(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 
@@ -205,21 +208,22 @@ class CorpsController extends AppController
 			$this->layout	=	"no_access";
 			return;
 		}
-		//define matra
-		$this->loadModel("Matra");
-		$matra_id_list		=	$this->Matra->find("list",array(
-											"order"			=>	array(
-												"Matra.name ASC"
-											)
-										));
-		debug($matra_id_list);
+
+		$this->loadModel('Matra');
+		$list_matra = $this->Matra->find('list');
+		debug($list_matra);
+
+
 		if(!empty($this->request->data))
 		{
+			var_dump($this->request->data);
 			$this->{$this->ModelName}->set($this->request->data);
 			//$this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())
 			{
+
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
+
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
@@ -259,7 +263,7 @@ class CorpsController extends AppController
 				//$this->redirect(array("action"=>'SuccessAdd', $ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
-		$this->set(compact("matra_id_list"));
+		$this->set(compact('list_matra'));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)

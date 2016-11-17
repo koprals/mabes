@@ -4,15 +4,8 @@ class Matra extends AppModel
 {
 	public $name = "Matra";
 
-  public $belongsTo = array(
-    /*'Admin' => array(
-      'className' => 'Admin',
-      'foreignKey'  =>  'doctor_id'
-    ),
-    'Pasien'  =>  array(
-      'className' =>  'Pasien',
-      'foreignKey'  => 'pasien_id'
-    )*/
+  public $hasMany = array(
+    "Corp"
   );
 
 	public $validate 	= array(

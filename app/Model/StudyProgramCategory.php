@@ -1,7 +1,7 @@
 <?php
 class StudyProgramCategory extends AppModel
 {
-  public $name="StudyProgramCategory"
+  public $name="StudyProgramCategory";
 
 	public function BindImageContent($reset	=	true)
 	{
@@ -22,8 +22,6 @@ class StudyProgramCategory extends AppModel
 	public function BindDefault($reset	=	true)
 	{
 		$this->bindModel(array(
-				)
-			),
 			"hasOne"	=>	array(
 				"Image"	=>	array(
 					"className"	=>	"Content",

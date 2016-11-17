@@ -17,7 +17,7 @@ class StudyProgramCategoriesController extends AppController
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("Admin")
+											"LOWER(MyAco.alias)"	=>	strtolower("ProgramCategory")
 										)
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];

@@ -58,16 +58,10 @@ function Delete(msg,id)
 														<?php echo $this->Paginator->sort("$ModelName.id",'ID');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.fullname",'Name');?>
-													</th>
-													<th width="150">
-														<?php echo $this->Paginator->sort("MyAro.alias", 'Admin Group');?>
+														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
 													</th>
 													<th width="150">
 														<?php echo $this->Paginator->sort("$ModelName.SStatus",'Status');?>
-													</th>
-													<th width="150">
-														<?php echo $this->Paginator->sort("$ModelName.modified",'Modified');?>
 													</th>
 													<?php
 													if(
@@ -88,26 +82,20 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
-												<td><?php echo $data[$ModelName]['fullname'] ?></td>
-												<td><?php echo $data["MyAro"]['alias_name'] ?></td>
+												<td><?php echo $data[$ModelName]['name'] ?></td>
 												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
-												<td class="text-center"><?php echo date("d M Y",strtotime($data[$ModelName]['modified'])) ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or
 													$access[$aco_id]["_delete"] == 1
 												):
 												?>
-												<td>
+												<td style="text-align:center;">
 													<?php if($access[$aco_id]["_update"] == 1):?>
-														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-success btn-condensed" title="Access Control">
-															<span class="fa fa-pencil"></span>
-														</a>
+														<button class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-															<a href="<?php echo $settings['cms_url'].$ControllerName?>/Delete/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-danger btn-condensed" title="Access Control">
-																<span class="fa fa-times"></span>
-															</a>
+														<button href="<?php echo $settings['cms_url']?>AccessControllList/Index/<?php echo $data[$ModelName]["id"]?>/<?php echo $page?>/<?php echo $viewpage?>" class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="javascript:alert('Cannot delete your self!')"; ?><span class="fa fa-times"></span></button>
 													<?php endif;?>
 												</td>
 												<?php endif;?>

@@ -28,9 +28,23 @@
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('id', array(
-														'type'					=>	'hidden',
+														'type'					=>	'type',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
 													));
 												?>
+										</div>
+									</div>
+							</div>
+						<div class="panel-body">
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Username</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('username', array(
 														'type'					=>	'text',

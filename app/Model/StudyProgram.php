@@ -1,10 +1,25 @@
 <?php
 App::uses('Sanitize','Utility');
-class Matra extends AppModel
+class StudyProgram extends AppModel
 {
-	public $name = "Matra";
+	public $name = "StudyProgram";
 
-	public $validate 	= array(
+	public $belongsTo = array(
+    'Admin' => array(
+     'className' => 'StudyProgramCategory',
+      'foreignKey'  =>  'study_program_category_id'
+    ),
+    // 'Pasien'  =>  array(
+    //   'className' =>  'Pasien',
+    //   'foreignKey'  => 'pasien_id'
+    // ),
+		// 'LetterType'	=>	array(
+		// 	'className'	=>	'LetterType',
+		// 	'foreignKey'	=>	'letter_type_id'
+		// )
+  );
+
+	/**public $validate 	= array(
 		'id' => array(
 			'notEmpty' => array(
 				'rule' 		=>	"notEmpty",
@@ -18,19 +33,57 @@ class Matra extends AppModel
 				'message' 	=>	"Please insert sales name"
 			),
 			'minLength' 	=>	array(
-				'rule' 		=>	array("minLength","2"),
+				'rule' 		=>	array("minLength","3"),
 				'message'	=>	"Sales name is to sort"
 			),
 			'maxLength' 	=>	array(
 				'rule' 		=>	array("maxLength","100"),
 				'message'	=>	"Sales name is too long"
 			)
+		),
+		'description' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert sales description"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","10"),
+				'message'	=>	"Sales description is to sort"
+			)
+		),
+		'sort' => array(
+			'notEmpty' => array(
+				'rule' 		=> 'notEmpty',
+				'message' 	=> 'Sort cannot be empty'
+			),
+			'numeric' => array(
+				'rule' 		=> 'numeric',
+				'message' 	=> 'Please provide valid numbers'
+			),
+			'between' => array(
+				'rule'	=> array('between', 1, 999),
+				'message'	=> 'Between 1 to 999 numbers'
+			)
+		),
+		'image1' => array(
+			'imagewidth'	=> array(
+				'rule' 		=> array('imagewidth',600),
+				'message' 	=> 'Please upload image with minimum width is 600px'
+			),
+			'size' => array(
+				'rule' 		=> array('size',3145728),
+				'message' 	=> 'Your image size is too big, please upload less than 3 Mb.'
+			),
+			'extension' => array(
+				'rule' => array('validateName', array('gif','jpeg','jpg','png')),
+				'message' => 'Only (*.gif,*.jpeg,*.jpg,*.png) are allowed.'
+			)
 		)
-	);
+	);**/
 
 	public function BindImageBig($reset	=	true)
 	{
-		/*$this->bindModel(array(
+		$this->bindModel(array(
 			"hasOne"	=>	array(
 				"ImageBig"	=>	array(
 					"className"	=>	"Content",
@@ -41,7 +94,7 @@ class Matra extends AppModel
 					)
 				)
 			)
-		),$reset);*/
+		),$reset);
 	}
 
 	public function BindImageThumb($reset	=	true)

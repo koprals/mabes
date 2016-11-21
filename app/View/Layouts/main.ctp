@@ -23,24 +23,6 @@ echo $this->Html->script(array(
 	"/js/globalize/globalize.js",
 	"/js/globalize/globalize.culture.de-DE.js",
 	"/js/globalize/globalize.culture.ja-JP.js",
-
-	"/js/plugins/charts/excanvas.min.js",
-	"/js/plugins/charts/jquery.flot.js",
-	"/js/plugins/charts/jquery.flot.orderBars.js",
-	"/js/plugins/charts/jquery.flot.pie.js",
-	"/js/plugins/charts/jquery.flot.resize.js",
-	"/js/plugins/charts/jquery.sparkline.min.js",
-
-	"/js/plugins/forms/uniform.js",
-	"/js/plugins/forms/jquery.cleditor.js",
-	"/js/plugins/forms/jquery.validationEngine-en.js",
-	"/js/plugins/forms/jquery.validationEngine.js",
-	"/js/plugins/forms/jquery.tagsinput.min.js",
-	"/js/plugins/forms/jquery.autosize.js",
-	"/js/plugins/forms/jquery.maskedinput.min.js",
-	"/js/plugins/forms/jquery.dualListBox.js",
-	"/js/plugins/forms/jquery.inputlimiter.min.js",
-	"/js/plugins/forms/chosen.jquery.min.js",
 ));
 //************ JS NEEDED ******************/
 
@@ -228,17 +210,14 @@ echo $this->Html->script(array(
 
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/morris/raphael-min.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/morris/morris.min.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/rickshaw/d3.v3.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/rickshaw/rickshaw.min.js"></script>
 			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
 			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
 			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-datepicker.js'></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/owl/owl.carousel.min.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-select.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-datepicker.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/form/jquery.form.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-file-input.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/countries.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/datatables/jquery.dataTables.min.js"></script>
+			<!-- <script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-select.js"></script> -->
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/owl/owl.carousel.min.js"></script>
 
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/moment.min.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/daterangepicker/daterangepicker.js"></script>

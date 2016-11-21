@@ -1,31 +1,37 @@
 <?php
-class CorpsController extends AppController
+class StudyProgramsController extends AppController
 {
-	var $ControllerName		=	"Corps";
-	var $ModelName			=	"Corp";
+	var $ControllerName		=	"StudyPrograms";
+	var $ModelName			=	"StudyProgram";
 	var $helpers			=	array("Text","Aimfox");
-	var $uses				=	"Corp";
+	var $uses				=	"StudyProgram";
 
 	function beforeFilter()
 	{
 		parent::beforeFilter();
 		$this->set("ControllerName",$this->ControllerName);
 		$this->set("ModelName",$this->ModelName);
-		$this->set('lft_menu_category_id',"6");
+		$this->set('lft_menu_category_id',"3");
 
 		//CHECK PRIVILEGES
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("EducationTypes")
+											"LOWER(MyAco.alias)"	=>	strtolower("StudyProgram")
 										)
 									));
-
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
 
-		//define matra
-		$this->set('list_matra', $this->Corp->Matra->find('list'));
+    //DEFINE COUNTRY
+		$this->loadModel('Country');
+		$list_country	=	$this->Country->find('list');
+
+		//DEFINE PROGRAM CATEGORY
+		$this->loadModel('StudyProgramCategory');
+		$list_category	=	$this->StudyProgramCategory->find('list');
+
+		$this->set(compact("list_category", "list_country"));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -36,14 +42,6 @@ class CorpsController extends AppController
 			return;
 		}
 
-		//DEFINE MATRA
-		$this->loadModel("Matra");
-		$matra_id_list		=	$this->Matra->find("list",array(
-									"order"			=>	array(
-										"Matra.name ASC"
-									)
-								));
-
 		$this->Session->delete("Search.".$this->ControllerName);
 		$this->Session->delete('Search.'.$this->ControllerName.'Operand');
 		$this->Session->delete('Search.'.$this->ControllerName.'ViewPage');
@@ -51,7 +49,7 @@ class CorpsController extends AppController
 		$this->Session->delete('Search.'.$this->ControllerName.'Page');
 		$this->Session->delete('Search.'.$this->ControllerName.'Conditions');
 		$this->Session->delete('Search.'.$this->ControllerName.'parent_id');
-		$this->set(compact("page","viewpage","matra_id_list"));
+		$this->set(compact("page","viewpage"));
 	}
 
 	function ListItem()
@@ -66,13 +64,13 @@ class CorpsController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-    $this->{$this->ModelName}->BindDefault(false);
+		$this->{$this->ModelName}->BindDefault(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.created" => "ASC");
+		$order				=	array("{$this->ModelName}.name" => "ASC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -82,48 +80,14 @@ class CorpsController extends AppController
 			$operand		=	$this->request->data[$this->ModelName]['operator'];
 			$this->Session->delete('Search.'.$this->ControllerName);
 
-			/*if(!empty($this->request->data['Search']['id']))
+			if(!empty($this->request->data['Search']['id']))
 			{
 				$cond_search["{$this->ModelName}.id"]					=	$this->data['Search']['id'];
-			}*/
-
-			if(!empty($this->request->data['Search']['start_date'])) {
-				if(!empty($this->request->data['Search']['end_date'])) {
-
-
-					$startDateExplode = explode("-", $this->request->data['Search']['start_date']);
-					$startTime = date("Y-m-d H:i:s", mktime(3, 0, 0, $startDateExplode[1], $startDateExplode[2] ,$startDateExplode[0]));
-
-					$endDateExplode = explode("-", $this->request->data['Search']['end_date']);
-					$endTime = date("Y-m-d H:i:s", mktime(2, 59, 59, $endDateExplode[1], 1 + $endDateExplode[2], $endDateExplode[0]));
-
-					$cond_search["and"] = array("Customer.created >=" => $startTime, "Customer.created <=" => $endTime);
-				} else {
-
-					$startDateExplode = explode("-", $this->request->data['Search']['start_date']);
-					$startTime = date("Y-m-d H:i:s", mktime(3, 0, 0, $startDateExplode[1], $startDateExplode[2] ,$startDateExplode[0]));
-
-					$endDateExplode = explode("-", $this->request->data['Search']['start_date']);
-					$endTime = date("Y-m-d H:i:s", mktime(2, 59, 59, $endDateExplode[1], $endDateExplode[2] + 1 ,$endDateExplode[0]));
-
-					$cond_search["and"] = array("Customer.created >=" => $startTime, "Customer.created <=" => $endTime);
-				}
-
-
 			}
 
 			if(!empty($this->request->data['Search']['name']))
 			{
-				$cond_search["{$this->ModelName}.name LIKE "]			=	"%".$this->data['Search']['name']."%";
-			}
-			if(!empty($this->request->data['Search']['email']))
-			{
-				$cond_search["{$this->ModelName}.email LIKE "]			=	"%".$this->data['Search']['email']."%";
-			}
-
-			if(!empty($this->request->data['Search']['customer_email_status_id']))
-			{
-				$cond_search["{$this->ModelName}.customer_email_status_id"]				=	$this->data['Search']['customer_email_status_id'];
+				$cond_search["{$this->ModelName}.fullname LIKE "]			=	"%".$this->data['Search']['name']."%";
 			}
 
 			if($this->request->data["Search"]['reset']=="0")
@@ -138,12 +102,10 @@ class CorpsController extends AppController
 
 		$cond_search		=	array();
 		$filter_paginate	=	array();
-
 		$this->paginate		=	array(
 									"{$this->ModelName}"	=>	array(
 										"order"				=>	$order,
-										'limit'				=>	$viewpage,
-										"recursive" 	=> 1
+										'limit'				=>	$viewpage
 									)
 								);
 
@@ -153,7 +115,7 @@ class CorpsController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-		//debug($data);
+
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
 
@@ -175,9 +137,15 @@ class CorpsController extends AppController
 			return;
 		}
 
+		if(isset($_GET['debug']) && $_GET['debug'] == "1")
+			$this->layout		=	"ajax";
+		else
+			$this->layout		=	"xls";
 
-		$this->layout		=	"ajax";
-		$this->{$this->ModelName}->BindDefault();
+		$this->response->type(array('xls' => 'application/vnd.ms-excel'));
+    	$this->response->type('xls');
+
+		$this->{$this->ModelName}->BindDefault(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 		$order				=	$this->Session->read("Search.".$this->ControllerName."Sort");
@@ -193,11 +161,9 @@ class CorpsController extends AppController
 										"page"				=>	$page
 									)
 								);
-
-
-		$data           =	$this->paginate("{$this->ModelName}",$conditions);
-		$title				  =	$this->ModelName;
-		$filename			  =	"Customer_Report_".date("dMY").".xlsx";
+		$data				=	$this->paginate("{$this->ModelName}",$conditions);
+		$title				=	$this->ModelName;
+		$filename			=	$this->ModelName."_".date("dMY");
 		$this->set(compact("data","title","page","viewpage","filename"));
 	}
 
@@ -209,54 +175,28 @@ class CorpsController extends AppController
 			return;
 		}
 
-		$this->loadModel('Matra');
-		$list_matra = $this->Matra->find('list', array(
-			'conditions' => array(
-				'Matra.status' => 1
-			),
-			'field'	=> 'Matra.id'
-		));
-		// Configure::write(
-		// 	'debug', 2
-		// );
-		//
-		// $temp = array();
-		// foreach($list_matra as $key => $value) {
-		// 	$stringNew = strval($key);
-		// 	var_dump($stringNew);
-		// 	$temp["".$stringNew.""] = $value;
-		//
-		// }
-		//
-		// $list_matra = $temp;
-		// debug($list_matra);
-		// debug($this->request->data);
-
 		if(!empty($this->request->data))
 		{
-			// var_dump($this->request->data);
 			$this->{$this->ModelName}->set($this->request->data);
-			//$this->{$this->ModelName}->ValidateAdd();
+			// $this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())
 			{
-
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
-
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
 				{
 					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp								=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
+					$tmp									=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["images"]["type"];
 
 					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
 						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
 
-					$ext								=	pathinfo($tmp_name,PATHINFO_EXTENSION);
-					$tmp_file_name						=	md5(time());
-					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
+					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images1_img			=	$path_tmp.$tmp_file_name.".".$ext;
 					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
 					if($upload)
 					{
@@ -278,10 +218,11 @@ class CorpsController extends AppController
 					@unlink($tmp_images1_img);
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				$this->redirect(array("action"=>'SuccessAdd', $ID));
+				$this->redirect(array("action"=>"SuccessAdd",$ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
-		$this->set(compact('list_matra'));
+
+		$this->set(compact("aro_id_list"));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)
@@ -293,17 +234,10 @@ class CorpsController extends AppController
 		}
 
 		$this->{$this->ModelName}->BindDefault(false);
-		//$this->{$this->ModelName}->BindImageContent();
+		$this->{$this->ModelName}->BindImageContent();
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID
-									)
-								));
-		//DEFINE MATRA
-		$this->loadModel("Matra");
-		$matra_id_list		=	$this->Matra->find("list",array(
-									"order"			=>	array(
-										"Matra.name ASC"
 									)
 								));
 
@@ -314,6 +248,10 @@ class CorpsController extends AppController
 			return;
 		}
 
+		//DEFINE ARO LIST
+		$this->loadModel("MyAro");
+		$this->MyAro->VirtualFieldActivated();
+
 		if (empty($this->data))
 		{
 			$this->data = $detail;
@@ -321,7 +259,7 @@ class CorpsController extends AppController
 		else
 		{
 			$this->{$this->ModelName}->set($this->data);
-			//$this->{$this->ModelName}->ValidateEdit();
+			$this->{$this->ModelName}->ValidateEdit();
 
 			if($this->{$this->ModelName}->validates())
 			{
@@ -331,15 +269,15 @@ class CorpsController extends AppController
 				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
 				{
 					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp								=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
+					$tmp								  =	$this->request->data[$this->ModelName]["images"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["images"]["type"];
 
 					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
 						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
 
-					$ext								=	pathinfo($tmp_name,PATHINFO_EXTENSION);
-					$tmp_file_name						=	md5(time());
-					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
+					$ext								  =	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images1_img			=	$path_tmp.$tmp_file_name.".".$ext;
 					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
 					if($upload)
 					{
@@ -365,7 +303,7 @@ class CorpsController extends AppController
 				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
 			}
 		}
-		$this->set(compact("ID","detail","aro_id_list","page","viewpage","matra_id_list"));
+		$this->set(compact("ID","detail","aro_id_list","page","viewpage"));
 	}
 
 	function View($ID=NULL)
@@ -404,6 +342,13 @@ class CorpsController extends AppController
 			return;
 		}
 
+		if($ID == $this->profile["Admin"]["id"])
+		{
+			echo json_encode(array("data"=>array("message"=>"Cannot change status for your self")));
+			$this->autoRender	=	false;
+			return;
+		}
+
 		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
 				"{$this->ModelName}.id"		=>	$ID
@@ -428,12 +373,24 @@ class CorpsController extends AppController
 
 	function Delete($ID=NULL)
 	{
-		if($this->access[$this->aco_id]["_delete"] != "1")
+		if(
+			$this->access[$this->aco_id]["_delete"] != "1"
+				or
+			($this->super_admin_id != $this->profile["Admin"]["id"] && $ID == $this->super_admin_id)
+		)
 		{
 			echo json_encode(array("data"=>array("message"=>"No privileges")));
 			$this->autoRender	=	false;
 			return;
 		}
+
+		if($ID == $this->profile["Admin"]["id"])
+		{
+			echo json_encode(array("data"=>array("message"=>"Cannot delete your self")));
+			$this->autoRender	=	false;
+			return;
+		}
+
 
 		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
@@ -447,7 +404,7 @@ class CorpsController extends AppController
 		}
 		else
 		{
-			$this->{$this->ModelName}->delete($ID,false);
+			//$this->{$this->ModelName}->delete($ID,false);
 			$message	=	"Data has deleted.";
 		}
 

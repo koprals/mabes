@@ -27,7 +27,7 @@
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('name', array(
-														'type'					=>	'select',
+														'class'					=>	'form-control select',
 														'id'						=>	'country',
 														'class'					=>	'form-control select',
 														'label'					=>	false,

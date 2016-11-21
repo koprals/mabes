@@ -15,7 +15,7 @@
 <div class="page-content-wrap">
 	<div class="row">
 			<div class="col-md-12">
-				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add"),'class' => 'form-horizontal',"type"=>"file")); ?>
+				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add" ),'class' => 'form-horizontal',"type"=>"file")); ?>
 					<div class="panel panel-default">
 						<div class="panel-heading">
 								<h3 class="panel-title"><strong>Tambah Korps</strong></h3>
@@ -25,13 +25,13 @@
 								<label class="col-md-3 col-xs-12 control-label">Name</label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('name', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														"required"			=>	"",
+														"required"			=>	false,
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
 													));
@@ -43,15 +43,14 @@
 								<label class="col-md-3 col-xs-12 control-label">Matra</label>
 									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('matra_id_list', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> $matra_id_list,
-														'empty'					=> "Select Matra",
-													));
+												echo $this->Form->input('matra_id', array(
+													'label'					=>	false,
+													'class'					=>	'form-control select',
+													"required"			=>	"",
+													"autocomplete"	=>	"off",
+													"maxlength"			=>	20,
+													'options'				=>  $list_matra,
+												));
 												?>
 										</div>
 							</div>
@@ -66,7 +65,7 @@
 														'default'				=>	1,
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
-														'options'				=> array("0"=>"Not Active","1"=>"Active"),
+														'options'				=> array("4"=>"Not Active","1"=>"Active"),
 														'empty'					=> false,
 													));
 												?>
@@ -79,7 +78,9 @@
 							</div>
 					</div>
 				</div>
+				<?php echo $this->Form->end; ?>
 			</div>
 	</div>
 </div>
+<!-- <script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-select.js"></script> -->
 <!-- END FORM -->

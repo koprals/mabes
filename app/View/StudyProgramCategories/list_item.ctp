@@ -58,16 +58,10 @@ function Delete(msg,id)
 														<?php echo $this->Paginator->sort("$ModelName.id",'ID');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.fullname",'Name');?>
-													</th>
-													<th width="150">
-														<?php echo $this->Paginator->sort("MyAro.alias", 'Admin Group');?>
+														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
 													</th>
 													<th width="150">
 														<?php echo $this->Paginator->sort("$ModelName.SStatus",'Status');?>
-													</th>
-													<th width="150">
-														<?php echo $this->Paginator->sort("$ModelName.modified",'Modified');?>
 													</th>
 													<?php
 													if(
@@ -88,10 +82,8 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
-												<td><?php echo $data[$ModelName]['fullname'] ?></td>
-												<td><?php echo $data["MyAro"]['alias_name'] ?></td>
+												<td><?php echo $data[$ModelName]['name'] ?></td>
 												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
-												<td class="text-center"><?php echo date("d M Y",strtotime($data[$ModelName]['modified'])) ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or

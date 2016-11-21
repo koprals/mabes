@@ -22,89 +22,16 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Username</label>
+								<label class="col-md-3 col-xs-12 control-label">Name</label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('username', array(
+													echo $this->Form->input('name', array(
 														'type'					=>	'text',
-														'class'					=>	'form-control',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-													));
-												?>
-										</div>
-									</div>
-							</div>
-							<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Password</label>
-									<div class="col-md-6 col-xs-12">
-											<div class="input-group">
-													<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-unlock-alt"></span></span>
-													<?php
-														echo $this->Form->input('password', array(
-															'label'					=>	false,
-															'class' 				=> 'form-control',
-															"required"			=>	"",
-															"autocomplete"	=>	"off",
-															"maxlength"			=>	16,
-															'type'					=>	'text'
-														));
-													?>
-											</div>
-									</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Admin Group</label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('aro_id', array(
 														'class'					=>	'form-control select',
 														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> $aro_id_list,
-														'empty'					=> 'Select Admin Group'
 													));
 												?>
 										</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Fullname</label>
-									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
-												<?php
-													echo $this->Form->input('fullname', array(
-														'type'					=>	'text',
-														'class'					=>	'form-control',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-													));
-												?>
-										</div>
-									</div>
-							</div>
-							<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Photo</label>
-									<div class="col-md-6 col-xs-12">
-										<?php
-											echo $this->Form->input('images', array(
-												'class'				=> 'fileinput btn-primary',
-												'label'				=> false,
-												"type"				=>	"file",
-												"required"		=>	"",
-												'title'				=>	"Browse File"
-											));
-										?>
-											<span class="help-block">(Width: 300px, Height: 300px)</span>
-									</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Status</label>

@@ -1,13 +1,18 @@
 <?php
-class Corp extends AppModel
+App::uses('Sanitize','Utility');
+class Personel extends AppModel
 {
-	public $name = "Corp";
+	public $name = "Personel";
 
   public $belongsTo = array(
-    'Matra' => array(
-      'className' => 'Matra',
-      'foreignKey'  =>  'matra_id'
-    )
+    /*'Admin' => array(
+      'className' => 'Admin',
+      'foreignKey'  =>  'doctor_id'
+    ),
+    'Pasien'  =>  array(
+      'className' =>  'Pasien',
+      'foreignKey'  => 'pasien_id'
+    )*/
   );
 
 	public $validate 	= array(
@@ -32,45 +37,36 @@ class Corp extends AppModel
 				'message'	=>	"Sales name is too long"
 			)
 		),
-		'matra_id' => array(
-				'notEmpty' => array(
-					'rule'				=>	"notEmpty",
-					'message'			=>	"Please select matra"
-				)
+		'sort' => array(
+			'notEmpty' => array(
+				'rule' 		=> 'notEmpty',
+				'message' 	=> 'Sort cannot be empty'
+			),
+			'numeric' => array(
+				'rule' 		=> 'numeric',
+				'message' 	=> 'Please provide valid numbers'
+			),
+			'between' => array(
+				'rule'	=> array('between', 1, 999),
+				'message'	=> 'Between 1 to 999 numbers'
 			)
+		),
+		'image1' => array(
+			'imagewidth'	=> array(
+				'rule' 		=> array('imagewidth',600),
+				'message' 	=> 'Please upload image with minimum width is 600px'
+			),
+			'size' => array(
+				'rule' 		=> array('size',3145728),
+				'message' 	=> 'Your image size is too big, please upload less than 3 Mb.'
+			),
+			'extension' => array(
+				'rule' => array('validateName', array('gif','jpeg','jpg','png')),
+				'message' => 'Only (*.gif,*.jpeg,*.jpg,*.png) are allowed.'
+			)
+		)
 	);
 
-	public function BindImageBig($reset	=	true)
-	{
-		/*$this->bindModel(array(
-			"hasOne"	=>	array(
-				"ImageBig"	=>	array(
-					"className"	=>	"Content",
-					"foreignKey"	=>	"model_id",
-					"conditions"	=>	array(
-						"ImageBig.model"	=>	$this->name,
-						"ImageBig.type"	=>	"big"
-					)
-				)
-			)
-		),$reset);*/
-	}
-
-	public function BindImageThumb($reset	=	true)
-	{
-		$this->bindModel(array(
-			"hasOne"	=>	array(
-				"ImageThumb"	=>	array(
-					"className"	=>	"Content",
-					"foreignKey"	=>	"model_id",
-					"conditions"	=>	array(
-						"ImageThumb.model"	=>	$this->name,
-						"ImageThumb.type"	=>	"thumb"
-					)
-				)
-			)
-		),$reset);
-	}
 
 	public function beforeSave($options = array())
 	{
@@ -117,13 +113,9 @@ class Corp extends AppModel
 		return true;
 	}
 
-	public function BindImage($reset	=	true)
-	{
-	}
-
+	
 	function BindDefault($reset	=	true)
 	{
-			
 	}
 
 	function UnBindDefault($reset	=	true)

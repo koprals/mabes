@@ -56,7 +56,7 @@ function ClearSearchAdvance()
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-    <h2><span class="fa fa-list-ul"></span> List Jenis Pendidikan</h2>
+    <h2><span class="fa fa-list-ul"></span> List Data Personel</h2>
 </div>
 <!-- END PAGE TITLE -->
 
@@ -87,7 +87,7 @@ function ClearSearchAdvance()
                                         <input name="data[Search][reset]" type="hidden" value="0" id="reset">
                                         <?php
                                                         echo $this->Form->input('Search.name', array(
-                                                'label'         =>  'Nama',
+                                                'label'         =>  'Nama Admin',
                                                             'class'         =>  'form-control',
                                                             'between'       =>  '<div class="form-group">',
                                                             'after'         =>  '</div>'

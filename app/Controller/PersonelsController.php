@@ -52,6 +52,13 @@ class PersonelsController extends AppController
 										"Corp.name ASC"
 									)
 								));
+		//DEFINE NEGARA	
+		$this->loadModel("Countries");
+		$countries_id_list		=	$this->Countries->find("list",array(
+									"order"			=>	array(
+										"Countries.name ASC"
+									)
+								));
 
 		$this->Session->delete("Search.".$this->ControllerName);
 		$this->Session->delete('Search.'.$this->ControllerName.'Operand');
@@ -60,7 +67,7 @@ class PersonelsController extends AppController
 		$this->Session->delete('Search.'.$this->ControllerName.'Page');
 		$this->Session->delete('Search.'.$this->ControllerName.'Conditions');
 		$this->Session->delete('Search.'.$this->ControllerName.'parent_id');
-		$this->set(compact("page","viewpage","matra_id_list","occupation_id_list","corp_id_list"));
+		$this->set(compact("page","viewpage","matra_id_list","occupation_id_list","corp_id_list","countries_id_list"));
 	}
 
 	function ListItem()
@@ -209,6 +216,13 @@ class PersonelsController extends AppController
 										"Corp.name ASC"
 									)
 								));
+		//DEFINE NEGARA	
+		$this->loadModel("Countries");
+		$countries_id_list		=	$this->Countries->find("list",array(
+									"order"			=>	array(
+										"Countries.name ASC"
+									)
+								));
 
 		//DEFINE NEWS CATEGORY
 		$this->loadModel("MyAro");
@@ -265,7 +279,7 @@ class PersonelsController extends AppController
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 
-		$this->set(compact("aro_id_list","matra_id_list","occupation_id_list","corp_id_list"));
+		$this->set(compact("aro_id_list","matra_id_list","occupation_id_list","corp_id_list","countries_id_list"));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)

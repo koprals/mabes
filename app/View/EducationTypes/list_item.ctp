@@ -4,13 +4,14 @@
 	$direction	=	$this->params['paging'][$ModelName]["order"][$order[0]];
 	$ordered	=	($order[0]!==0) ? "/sort:".$order[0]."/direction:".$direction: "";
 ?>
+
 <?php $this->Paginator->options(array(
-	'url'	=> array(
-	'controller'	=> $ControllerName,
-	'action'		=> 'ListItem/limit:'.$viewpage,
-	),
-	'onclick'=>"return onClickPage(this,'#contents_area');")
-	);
+				'url'	=> array(
+					'controller'	=> $ControllerName,
+					'action'		=> 'ListItem/limit:'.$viewpage.'/parent_id:'.$parent_id,
+				),
+				'onclick'=>"return onClickPage(this,'#contents_area');")
+			);
 ?>
 
 <script>

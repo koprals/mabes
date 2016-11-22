@@ -109,7 +109,7 @@ function ClearSearchAdvance()
 									<?php echo $this->Form->end()?>
 									<div class="form-group">
 										<div class="pull-left">
-											<button type="button" class="btn btn-primary btn-rounded" href="javascript:void(0);" title="" onclick="return SearchAdvance();"><span class="fa fa-search"></span>Search</button>
+											<a class="btn btn-primary btn-rounded" href="javascript:void(0);" title="" onclick="return SearchAdvance();"><span class="fa fa-search"></span>Search</a>
 										</div>
 									</div>
 								</div>

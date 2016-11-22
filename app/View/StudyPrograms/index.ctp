@@ -69,7 +69,7 @@ function ClearSearchAdvance()
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-	<h2><span class="fa fa-list-ul"></span> List Program Kategori</h2>
+	<h2><span class="fa fa-list-ul"></span> List Program Studi</h2>
 </div>
 <!-- END PAGE TITLE -->
 

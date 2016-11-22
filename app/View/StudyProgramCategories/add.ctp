@@ -2,12 +2,12 @@
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
 	<li class="javascript:void(0)"><?php echo $ControllerName?></li>
-	<li class="javascript:void(0)"><?php echo "Tambah $ControllerName"?></li>
+	<li class="javascript:void(0)"><?php echo "Tambah Program Kategori"?></li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-	<h2><span class="fa fa-plus-circle"></span> Tambah <?php echo $ModelName; ?></h2>
+	<h2><span class="fa fa-plus-circle"></span> Tambah Program Kategori</h2>
 </div>
 <!-- END PAGE TITLE -->
 
@@ -18,7 +18,7 @@
 				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add"),'class' => 'form-horizontal',"type"=>"file")); ?>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-								<h3 class="panel-title"><strong>Tambah</strong> Admin Baru</h3>
+								<h3 class="panel-title"><strong>Tambah</strong> Program Kategori Baru</h3>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">

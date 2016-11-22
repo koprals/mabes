@@ -19,7 +19,7 @@
 				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add"),'class' => 'form-horizontal',"type"=>"file")); ?>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-								<h3 class="panel-title"><strong>Tambah</strong> Admin Baru</h3>
+								<h3 class="panel-title"><strong>Tambah</strong> Negara Baru</h3>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">

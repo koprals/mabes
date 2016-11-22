@@ -11,7 +11,7 @@ class EducationTypesController extends AppController
 		parent::beforeFilter();
 		$this->set("ControllerName",$this->ControllerName);
 		$this->set("ModelName",$this->ModelName);
-		$this->set('lft_menu_category_id',"6");
+		$this->set('lft_menu_category_id',"9");
 
 		//CHECK PRIVILEGES
 		$this->loadModel("MyAco");

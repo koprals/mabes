@@ -90,12 +90,16 @@ function Delete(msg,id)
 													$access[$aco_id]["_delete"] == 1
 												):
 												?>
-												<td style="text-align:center;">
+												<td>
 													<?php if($access[$aco_id]["_update"] == 1):?>
-														<button class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></button>
+														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-success btn-condensed" title="Access Control">
+															<span class="fa fa-pencil"></span>
+														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-														<button href="<?php echo $settings['cms_url']?>AccessControllList/Index/<?php echo $data[$ModelName]["id"]?>/<?php echo $page?>/<?php echo $viewpage?>" class="btn btn-danger btn-rounded btn-condensed btn-sm" onClick="javascript:alert('Cannot delete your self!')"; ?><span class="fa fa-times"></span></button>
+															<a href="<?php echo $settings['cms_url'].$ControllerName?>/Delete/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-danger btn-condensed" title="Access Control">
+																<span class="fa fa-times"></span>
+															</a>
 													<?php endif;?>
 												</td>
 												<?php endif;?>

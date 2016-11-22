@@ -11,13 +11,13 @@ class MatrasController extends AppController
 		parent::beforeFilter();
 		$this->set("ControllerName",$this->ControllerName);
 		$this->set("ModelName",$this->ModelName);
-		$this->set('lft_menu_category_id',"6");
+		$this->set('lft_menu_category_id',"9");
 
 		//CHECK PRIVILEGES
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("EducationTypes")
+											"LOWER(MyAco.alias)"	=>	strtolower("Matra")
 										)
 									));
 
@@ -385,7 +385,7 @@ class MatrasController extends AppController
 	{
 		if($this->access[$this->aco_id]["_delete"] != "1")
 		{
-			echo json_encode(array("data"=>array("message"=>"No privileges")));
+			echo json_encode(array("data"=>array("status" => "0","message"=>"No privileges")));
 			$this->autoRender	=	false;
 			return;
 		}
@@ -395,19 +395,23 @@ class MatrasController extends AppController
 				"{$this->ModelName}.id"		=>	$ID
 			)
 		));
+		$resultStatus		=	"0";
 
 		if(empty($detail))
 		{
-			$message	=	"Item not found.";
+			$message		=	"Item not found.";
+			$resultStatus	=	"0";
 		}
 		else
 		{
 			$this->{$this->ModelName}->delete($ID,false);
-			$message	=	"Data has deleted.";
+			$message		=	"Data has deleted.";
+			$resultStatus	=	"1";
 		}
 
-		echo json_encode(array("data"=>array("message"=>$message)));
+		echo json_encode(array("data"=>array("status" => $resultStatus ,"message"=>$message)));
 		$this->autoRender	=	false;
+
 	}
 
 	function SuccessAdd($ID=NULL)

@@ -72,11 +72,6 @@ class AdminsController extends AppController
 			$operand		=	$this->request->data[$this->ModelName]['operator'];
 			$this->Session->delete('Search.'.$this->ControllerName);
 
-			if(!empty($this->request->data['Search']['id']))
-			{
-				$cond_search["{$this->ModelName}.id"]					=	$this->data['Search']['id'];
-			}
-
 			if(!empty($this->request->data['Search']['name']))
 			{
 				$cond_search["{$this->ModelName}.fullname LIKE "]			=	"%".$this->data['Search']['name']."%";

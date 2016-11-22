@@ -244,12 +244,9 @@ class CorpsController extends AppController
 
 		if(!empty($this->request->data))
 		{
-<<<<<<< HEAD
 			// var_dump($this->request->data);
-=======
 			var_dump($this->request->data);
 
->>>>>>> 90d2f1b679cc78eacc2b3347acf0b50dbfdabc51
 			$this->{$this->ModelName}->set($this->request->data);
 			//$this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())

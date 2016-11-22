@@ -59,6 +59,13 @@ class PersonelsController extends AppController
 										"Countries.name ASC"
 									)
 								));
+		//DEFINE NEGARA	
+		$this->loadModel("Countries");
+		$countries_id_list		=	$this->Countries->find("list",array(
+									"order"			=>	array(
+										"Countries.name ASC"
+									)
+								));
 
 		$this->Session->delete("Search.".$this->ControllerName);
 		$this->Session->delete('Search.'.$this->ControllerName.'Operand');

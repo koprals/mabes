@@ -198,6 +198,22 @@
 													));
 												?>
 										</div>
+							</div>  
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Nama Pendidikan <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+												<?php
+													echo $this->Form->input('countries_id_list', array(
+														'class'					=>	'form-control select',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+														'options'				=> $countries_id_list,
+														'empty'					=> "Select Corps",
+													));
+												?>
+										</div>
 							</div>        
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Status</label>

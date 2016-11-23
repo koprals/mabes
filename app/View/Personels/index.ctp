@@ -103,7 +103,7 @@ function ClearSearchAdvance()
                                         ?>
                                         <?php
                                                      echo $this->Form->input('Search.status', array(
-                                                'label'         =>  'status',
+                                                'label'         =>  'Status',
                                                             'class'         =>  'form-control',
                                                             'between'       =>  '<div class="form-group">',
                                                             'after'         =>  '</div>',

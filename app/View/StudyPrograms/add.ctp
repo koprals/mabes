@@ -74,12 +74,14 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('state', array(
+													echo $this->Form->input('state_id', array(
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
+														'options'				=> $list_country,
+														'empty'					=> "Pilih State",
 													));
 												?>
 											</div>

@@ -11,13 +11,13 @@ class PersonelsController extends AppController
 		parent::beforeFilter();
 		$this->set("ControllerName",$this->ControllerName);
 		$this->set("ModelName",$this->ModelName);
-		$this->set('lft_menu_category_id',"38");
+		$this->set('lft_menu_category_id',"11");
 
 		//CHECK PRIVILEGES
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("Country")
+											"LOWER(MyAco.alias)"	=>	strtolower("Personels")
 										)
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
@@ -38,35 +38,35 @@ class PersonelsController extends AppController
 										"Matra.name ASC"
 									)
 								));
-		//DEFINE PANGKAT	
+		//DEFINE PANGKAT
 		$this->loadModel("Occupation");
 		$occupation_id_list		=	$this->Occupation->find("list",array(
 									"order"			=>	array(
 										"Occupation.name ASC"
 									)
 								));
-		//DEFINE CORPS	
+		//DEFINE CORPS
 		$this->loadModel("Corp");
 		$corp_id_list		=	$this->Corp->find("list",array(
 									"order"			=>	array(
 										"Corp.name ASC"
 									)
 								));
-		//DEFINE NEGARA	
+		//DEFINE NEGARA
 		$this->loadModel("Countries");
 		$countries_id_list		=	$this->Countries->find("list",array(
 									"order"			=>	array(
 										"Countries.name ASC"
 									)
 								));
-		//DEFINE Study Program	
+		//DEFINE Study Program
 		$this->loadModel("StudyProgram");
 		$study_program_id_list		=	$this->StudyProgram->find("list",array(
 									"order"			=>	array(
 										"StudyProgram.name ASC"
 									)
 								));
-		//DEFINE Jenis Pendidikan	
+		//DEFINE Jenis Pendidikan
 		$this->loadModel("EducationType");
 		$education_type_id_list		=	$this->EducationType->find("list",array(
 									"order"			=>	array(
@@ -216,35 +216,35 @@ class PersonelsController extends AppController
 										"Matra.name ASC"
 									)
 								));
-		//DEFINE PANGKAT	
+		//DEFINE PANGKAT
 		$this->loadModel("Occupation");
 		$occupation_id_list		=	$this->Occupation->find("list",array(
 									"order"			=>	array(
 										"Occupation.name ASC"
 									)
 								));
-		//DEFINE PANGKAT	
+		//DEFINE PANGKAT
 		$this->loadModel("Corp");
 		$corp_id_list		=	$this->Corp->find("list",array(
 									"order"			=>	array(
 										"Corp.name ASC"
 									)
 								));
-		//DEFINE NEGARA	
+		//DEFINE NEGARA
 		$this->loadModel("Countries");
 		$countries_id_list		=	$this->Countries->find("list",array(
 									"order"			=>	array(
 										"Countries.name ASC"
 									)
 								));
-		//DEFINE Study Program	
+		//DEFINE Study Program
 		$this->loadModel("StudyProgram");
 		$study_program_id_list		=	$this->StudyProgram->find("list",array(
 									"order"			=>	array(
 										"StudyProgram.name ASC"
 									)
 								));
-		//DEFINE Jenis Pendidikan	
+		//DEFINE Jenis Pendidikan
 		$this->loadModel("EducationType");
 		$education_type_id_list		=	$this->EducationType->find("list",array(
 									"order"			=>	array(

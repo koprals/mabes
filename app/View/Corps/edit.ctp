@@ -51,6 +51,7 @@
 													"autocomplete"	=>	"off",
 													"maxlength"			=>	20,
 													'options'				=>  $list_matra,
+													'empty'					=>	"Pilih Matra"
 												));
 												?>
 										</div>

@@ -31,7 +31,11 @@ class StudyProgramsController extends AppController
 		$this->loadModel('StudyProgramCategory');
 		$list_category	=	$this->StudyProgramCategory->find('list');
 
-		$this->set(compact("list_category", "list_country"));
+		//DEFINE STATE
+		$this->loadModel('State');
+		$list_state	=	$this->State->find('list');
+
+		$this->set(compact("list_category", "list_country", "list_state"));
 	}
 
 	function Index($page=1,$viewpage=50)

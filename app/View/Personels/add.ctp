@@ -89,7 +89,7 @@
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
 														'options'				=> $matra_id_list,
-														'empty'					=> "Select Matra",
+														'empty'					=> "Pilih Matra",
 													));
 												?>
 										</div>
@@ -105,7 +105,7 @@
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
 														'options'				=> $occupation_id_list,
-														'empty'					=> "Select Pangkat",
+														'empty'					=> "Pilih Pangkat",
 													));
 												?>
 										</div>
@@ -121,7 +121,7 @@
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
 														'options'				=> $corp_id_list,
-														'empty'					=> "Select Corps",
+														'empty'					=> "Pilih Corps",
 													));
 												?>
 										</div>
@@ -194,7 +194,7 @@
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
 														'options'				=> $countries_id_list,
-														'empty'					=> "Select Corps",
+														'empty'					=> "Pilih Negara",
 													));
 												?>
 										</div>
@@ -203,18 +203,346 @@
 								<label class="col-md-3 col-xs-12 control-label">Nama Pendidikan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('countries_id_list', array(
+													echo $this->Form->input('study_program_id_list', array(
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
-														'options'				=> $countries_id_list,
-														'empty'					=> "Select Corps",
+														'options'				=> $study_program_id_list,
+														'empty'					=> "Pilih Nama Pendidikan",
 													));
 												?>
 										</div>
-							</div>        
+							</div>   
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Jenis Pendidikan <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+												<?php
+													echo $this->Form->input('education_type_id_list', array(
+														'class'					=>	'form-control select',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+														'options'				=> $education_type_id_list,
+														'empty'					=> "Pilih Jenis Pendidikan",
+													));
+												?>
+										</div>
+							</div> 
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Berangkat <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+												<?php
+													echo $this->Form->input('date_of_birth', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control datepicker',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Kembali <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+												<?php
+													echo $this->Form->input('date_of_birth', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control datepicker',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>      
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Status Pendidikan <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+												<?php
+													echo $this->Form->input('education_status', array(
+														'class'					=>	'form-control select',
+														'label'					=>	false,
+														"required"			=>	"",
+														'default'				=>	1,
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+														'options'				=> array("1"=>"Berjalan","2"=>"Selesai","3"=>"Tidak Selesai"),
+														'empty'					=> false,
+
+													));
+												?>
+										</div>
+							</div>
+							<div class="form-group">
+                                        <label class="col-md-6 col-xs-12 control-label"><h5>Administrasi</h5></label>
+                                    </div>
+                            <div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Kepala Panglima TNI </label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('commander_tni', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Sprin Angkatan </label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('sprin_force', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Medical Record </label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('medical_record', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Pasport </label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('pasport', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Security Clearance </label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('security_clearance', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Alamat Kantor <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('office_address', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">TLP Kantor <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('tlp_office', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Alamat Rumah <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('home_address', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">TLP Rumah <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('tlp_home', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Email <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('email', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+                                        <label class="col-md-7 col-xs-12 control-label"><h5>Keluarga Yang Bisa Dihubungi di Indonesia</h5></label>
+                                    </div>
+                            <div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Hubungan <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('relationship', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Alamat Rumah <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('home_adress_a', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">TLP/HP <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('tlp_hp', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">No. Rekening Bank di Indonesia </label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('no_rek', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Status</label>
 									<div class="col-md-6 col-xs-12">
@@ -232,6 +560,14 @@
 												?>
 										</div>
 							</div>
+							<div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"><span style="color:red;">*</span>Photo</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <div class="btn btn-primary btn-file"><i class="glyphicon glyphicon-folder-open"></i> &nbsp;Browse Photo<input type="file" multiple="" id="file-simple"></div>
+                                            </div>                                            
+                                        </div>
+                                    </div>
 							<div class="panel-footer center-button">
 								<input type="submit" value="Add" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

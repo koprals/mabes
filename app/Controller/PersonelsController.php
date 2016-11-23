@@ -59,11 +59,18 @@ class PersonelsController extends AppController
 										"Countries.name ASC"
 									)
 								));
-		//DEFINE NEGARA	
-		$this->loadModel("Countries");
-		$countries_id_list		=	$this->Countries->find("list",array(
+		//DEFINE Study Program	
+		$this->loadModel("StudyProgram");
+		$study_program_id_list		=	$this->StudyProgram->find("list",array(
 									"order"			=>	array(
-										"Countries.name ASC"
+										"StudyProgram.name ASC"
+									)
+								));
+		//DEFINE Jenis Pendidikan	
+		$this->loadModel("EducationType");
+		$education_type_id_list		=	$this->EducationType->find("list",array(
+									"order"			=>	array(
+										"EducationType.name ASC"
 									)
 								));
 
@@ -74,7 +81,7 @@ class PersonelsController extends AppController
 		$this->Session->delete('Search.'.$this->ControllerName.'Page');
 		$this->Session->delete('Search.'.$this->ControllerName.'Conditions');
 		$this->Session->delete('Search.'.$this->ControllerName.'parent_id');
-		$this->set(compact("page","viewpage","matra_id_list","occupation_id_list","corp_id_list","countries_id_list"));
+		$this->set(compact("page","viewpage","matra_id_list","occupation_id_list","corp_id_list","countries_id_list","study_program_id_list","education_type_id_list"));
 	}
 
 	function ListItem()
@@ -230,6 +237,20 @@ class PersonelsController extends AppController
 										"Countries.name ASC"
 									)
 								));
+		//DEFINE Study Program	
+		$this->loadModel("StudyProgram");
+		$study_program_id_list		=	$this->StudyProgram->find("list",array(
+									"order"			=>	array(
+										"StudyProgram.name ASC"
+									)
+								));
+		//DEFINE Jenis Pendidikan	
+		$this->loadModel("EducationType");
+		$education_type_id_list		=	$this->EducationType->find("list",array(
+									"order"			=>	array(
+										"EducationType.name ASC"
+									)
+								));
 
 		//DEFINE NEWS CATEGORY
 		$this->loadModel("MyAro");
@@ -286,7 +307,7 @@ class PersonelsController extends AppController
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 
-		$this->set(compact("aro_id_list","matra_id_list","occupation_id_list","corp_id_list","countries_id_list"));
+		$this->set(compact("aro_id_list","matra_id_list","occupation_id_list","corp_id_list","countries_id_list","study_program_id_list","education_type_id_list"));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)

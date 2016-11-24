@@ -60,7 +60,7 @@ class StudyProgramCategoriesController extends AppController
 
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.fullname" => "ASC");
+		$order				=	array("{$this->ModelName}.name" => "ASC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA

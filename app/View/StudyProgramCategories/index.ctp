@@ -1,15 +1,48 @@
-
 <script>
 $(document).ready(function(){
-	$("#contents_area").css("opacity","1");
+	$("#contents_area").css("opacity","0.5");
 	$("#contents_area").load("<?php echo $settings['cms_url'] . $ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage?>/?time=<?php echo time()?>",function(){
 		$("#contents_area").css("opacity","1");
 		$("a[rel^='lightbox']").prettyPhoto({
 			social_tools :''
 		});
 
-		$("#view").uniform();
+		$("#view, input:checkbox, #action").uniform();
 		$('.tipS').tipsy({gravity: 's',fade: true});
+	});
+
+	/**DATE PICKER**/
+	$( "#SearchStartDate" ).datepicker({
+		dateFormat:"yy-mm-dd",
+		changeMonth: false,
+		changeYear: false,
+		maxDate: "0",
+		onSelect: function(){
+			$("#SearchEndDate").removeAttr('disabled');
+			$("#SearchEndDate").attr('readonly','readonly');
+			$( "#SearchEndDate" ).val('');
+		}
+	}).focus(function() {
+	  //$(".ui-datepicker-prev, .ui-datepicker-next").remove();
+	});
+
+	$( "#SearchEndDate" ).datepicker({
+		dateFormat:"yy-mm-dd",
+		changeMonth: false,
+		changeYear: false,
+		maxDate: "0",
+		onSelect: function(){
+			var start_date	=	$( "#SearchStartDate" ).val();
+			var end_date	=	$( "#SearchEndDate" ).val();
+			var diff 		= 	Math.floor(( Date.parse(end_date) - Date.parse(start_date) ) / 86400000)+1;
+			if(diff < 0)
+			{
+				alert("\"Created To\" must be greater than \"Created From\"");
+				$( "#SearchEndDate" ).val('');
+			}
+		}
+	}).focus(function() {
+	 // $(".ui-datepicker-prev, .ui-datepicker-next").remove();
 	});
 });
 
@@ -21,7 +54,7 @@ function onClickPage(el,divName)
 		$("a[rel^='lightbox']").prettyPhoto({
 			social_tools :''
 		});
-		$("#view").uniform();
+		$("#view, input:checkbox, #action").uniform();
 		$('.tipS').tipsy({gravity: 's',fade: true});
 	});
 	return false;
@@ -30,7 +63,7 @@ function SearchAdvance()
 {
 	$("#SearchAdvance").ajaxSubmit({
 		url:"<?php echo $settings['cms_url'].$ControllerName ?>/ListItem",
-		type:'POST',
+		type:"POST",
 		dataType: "html",
 		clearForm:false,
 		beforeSend:function()
@@ -38,7 +71,7 @@ function SearchAdvance()
 			$("#reset").val("0");
 			$("#contents_area").css("opacity","0.5");
 		},
-		complete:function(data,html)
+		complete:function(data, html)
 		{
 			$("#contents_area").css("opacity","1");
 		},
@@ -49,15 +82,26 @@ function SearchAdvance()
 		success:function(data)
 		{
 			$("#contents_area").html(data);
+			$("#view, input:checkbox, #action").uniform();
+			$("a[rel^='lightbox']").prettyPhoto({
+				social_tools :''
+			});
 		}
 	});
 
 	return false;
 }
+
 function ClearSearchAdvance()
 {
-	$("#SearchId, #SearchName").val("");
+	$("#SearchNip, #SearchName, #SearchEmail, #SearchStartDate, #SearchEndDate, #SearchCityId").val("");
 	$('#reset').val('1');
+	$.uniform.update();
+
+	$("#SearchEndDate").removeAttr('readonly');
+	$("#SearchEndDate").attr('disabled','disabled');
+	$("#SearchEndDate").val('');
+
 	SearchAdvance();
 }
 </script>

@@ -333,14 +333,57 @@ class PersonelsController extends AppController
 			return;
 		}
 
+		//DEFINE MATRA
+		$this->loadModel("Matra");
+		$matra_id_list		=	$this->Matra->find("list",array(
+									"order"			=>	array(
+										"Matra.name ASC"
+									)
+								));
+		//DEFINE PANGKAT	
+		$this->loadModel("Occupation");
+		$occupation_id_list		=	$this->Occupation->find("list",array(
+									"order"			=>	array(
+										"Occupation.name ASC"
+									)
+								));
+		//DEFINE CORPS	
+		$this->loadModel("Corp");
+		$corp_id_list		=	$this->Corp->find("list",array(
+									"order"			=>	array(
+										"Corp.name ASC"
+									)
+								));
+		//DEFINE NEGARA	
+		$this->loadModel("Countries");
+		$countries_id_list		=	$this->Countries->find("list",array(
+									"order"			=>	array(
+										"Countries.name ASC"
+									)
+								));
+		//DEFINE Study Program	
+		$this->loadModel("StudyProgram");
+		$study_program_id_list		=	$this->StudyProgram->find("list",array(
+									"order"			=>	array(
+										"StudyProgram.name ASC"
+									)
+								));
+		//DEFINE Jenis Pendidikan	
+		$this->loadModel("EducationType");
+		$education_type_id_list		=	$this->EducationType->find("list",array(
+									"order"			=>	array(
+										"EducationType.name ASC"
+									)
+								));
 		//DEFINE ARO LIST
+		/*
 		$this->loadModel("MyAro");
 		$this->MyAro->VirtualFieldActivated();
 		if($ID != $this->super_admin_id)
 			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
 		else
 			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-
+		*/	
 
 		if (empty($this->data))
 		{

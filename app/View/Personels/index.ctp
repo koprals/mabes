@@ -87,12 +87,29 @@ function ClearSearchAdvance()
                                         <input name="data[Search][reset]" type="hidden" value="0" id="reset">
                                         <?php
                                                         echo $this->Form->input('Search.name', array(
-                                                'label'         =>  'Nama Admin',
+                                                'label'         =>  'Nama Siswa',
                                                             'class'         =>  'form-control',
                                                             'between'       =>  '<div class="form-group">',
                                                             'after'         =>  '</div>'
                                                 ));
                                         ?>
+                                        <?php
+                                                        echo $this->Form->input('Search.contries_id', array(
+                                                'label'         =>  'Negara',
+                                                            'class'         =>  'form-control',
+                                                            'between'       =>  '<div class="form-group">',
+                                                            'after'         =>  '</div>'
+                                                ));
+                                        ?>
+                                        <?php
+                                                     echo $this->Form->input('Search.status', array(
+                                                'label'         =>  'Status',
+                                                            'class'         =>  'form-control',
+                                                            'between'       =>  '<div class="form-group">',
+                                                            'after'         =>  '</div>',
+                                                            'option'        =>  '$education_type_id_list'
+                                                ));
+                                                ?>
                                     <?php echo $this->Form->end()?>
                                     <div class="form-group">
                                         <div class="pull-left">

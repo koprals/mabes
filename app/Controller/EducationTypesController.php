@@ -55,7 +55,7 @@ class EducationTypesController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-    	$this->{$this->ModelName}->BindDefault(false);
+    $this->{$this->ModelName}->BindDefault(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 

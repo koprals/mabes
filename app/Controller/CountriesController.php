@@ -57,12 +57,12 @@ class CountriesController extends AppController
 		//$this->{$this->ModelName}->BindDefault(false);
 		//$this->{$this->ModelName}->MyAro->VirtualFieldActivated();
 		//$this->{$this->ModelName}->BindImageContent();
-		$this->{$this->ModelName}->VirtualFieldActivated();
+		//$this->{$this->ModelName}->VirtualFieldActivated();
 
 
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.fullname" => "ASC");
+		$order				=	array("{$this->ModelName}.name" => "ASC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA

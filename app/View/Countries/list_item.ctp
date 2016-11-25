@@ -14,17 +14,17 @@
 ?>
 
 <script>
-function ChangeStatus(msg,id,status)
-{
-	var a	=	confirm(msg);
-	if(a)
-	{
-		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
-			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
-		});
-	}
-	return false;
-}
+// function ChangeStatus(msg,id,status)
+// {
+// 	var a	=	confirm(msg);
+// 	if(a)
+// 	{
+// 		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
+// 			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
+// 		});
+// 	}
+// 	return false;
+// }
 
 function Delete(msg,id)
 {
@@ -61,7 +61,7 @@ function Delete(msg,id)
 														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
 													</th>
 													<th width="150">
-														<?php echo $this->Paginator->sort("$ModelName.SStatus",'Status');?>
+														<?php echo $this->Paginator->sort("$ModelName.sortname",'Sortname');?>
 													</th>
 													<?php
 													if(
@@ -83,7 +83,7 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
 												<td><?php echo $data[$ModelName]['name'] ?></td>
-												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
+												<td><?php echo $data[$ModelName]['sortname'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or
@@ -128,7 +128,6 @@ function Delete(msg,id)
 								)
 							);
 						?>
-
 						<?php
 							echo $this->Paginator->numbers(array(
 								'separator'		=>	null,

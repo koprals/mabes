@@ -18,7 +18,7 @@
 	//************ JS NEEDED ******************/
 echo $this->Html->script(array(
 	"jquery-1.7.2.min",
-	"jquery-ui-1.8.21.custom.min",
+	"jquery-ui-1.8.21.custom.m in",
 	"/js/plugins/spinner/jquery.mousewheel.js",
 
 	"/js/globalize/globalize.js",

@@ -46,10 +46,13 @@ function Delete(msg,id)
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="dataTables_length" id="DataTables_Table_0_length ">
-					<label>Show Entries</label>
-					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
-				</div>
+				<?php if(!empty($check[$ModelName]['parent_id'])):?>
+					<div class="horControlB" style="width:auto; height:100%; display:block; float:left; padding:0px; margin-top:15px; margin-left:10px;">
+						<a href="javascript:void(0);" class="button redB" onclick="onClickPage('<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>/parent_id:<?php echo $check[$ModelName]['parent_id']?>','#contents_area');">
+							<span ><img src="<?php echo $this->webroot?>/img/icons/control/16/back.png" style="float:left; margin-right:5px; margin-top:-2px;"/>BACK</span>
+						</a>
+					</div>
+				<?php endif;?>
 			</div>
 
 			<div class="panel-body panel-body-table">
@@ -110,10 +113,21 @@ function Delete(msg,id)
 															<span class="fa fa-pencil"></span>
 														</a>
 													<?php endif;?>
-													<?php if($access[$aco_id]["_update"] == 1):?>
-														<a href="<?php echo $settings['cms_url']?>AccessControllList/Index/<?php echo $data[$ModelName]["id"]?>/<?php echo $page?>/<?php echo $viewpage?>" class="btn btn-primary btn-condensed" title="Access Control">
-															<span class="fa fa-cog"></span>
+													<?php if($access[$aco_id]["_delete"] == 1):?>
+														<a href="javascript:void(0);" onclick="Delete('All child from this module will be up one level, Do you realy want delete this Module?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-primary btn-condensed" title="Access Control">
+															<span class="fa fa-close"></span>
 														</a>
+													<?php endif;?>
+													<?php if($access[$aco_id]["_read"] == 1):?>
+														<?php if($data[$ModelName]['rght']-$data[$ModelName]['lft'] > 1):?>
+															<a href="javascript:void(0);" class="btn btn-info btn-condensed" title="See Child" onclick="$(this).tipsy('hide');onClickPage('<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>/parent_id:<?php echo $data[$ModelName]['id']?>','#contents_area');">
+																<span class="fa fa-folder-open"></span>
+															</a>
+														<?php else:?>
+															<a href="javascript:void(0);" class="btn btn-info btn-condensed" title="See Child" style=" cursor:default;">
+																<span class="fa fa-folder-open"></span>
+															</a>
+														<?php endif;?>
 													<?php endif;?>
 												</td>
 												<?php endif;?>

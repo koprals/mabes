@@ -25,14 +25,37 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Name</label>
 									<div class="col-md-6 col-xs-12">
+												<div class="input-group">
+														<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+														<?php
+															echo $this->Form->input('name', array(
+																'type'					=>	'text',
+																'class'					=>	'form-control',
+																'label'					=>	false,
+																"required"			=>	"",
+																"autocomplete"	=>	"off",
+																"maxlength"			=>	20,
+															));
+														?>
+											</div>
+										</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Code</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('name', array(
-														'class'					=>	'form-control select',
-														'id'						=>	'country',
-														'class'					=>	'form-control select',
+													echo $this->Form->input('sortname', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
 														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
 													));
 												?>
+									</div>
 										</div>
 							</div>
 							<div class="form-group">

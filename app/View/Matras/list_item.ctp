@@ -111,9 +111,9 @@ function Delete(msg,id)
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-															<a href="<?php echo $settings['cms_url'].$ControllerName?>/Delete/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-danger btn-condensed" title="Access Control">
-																<span class="fa fa-times"></span>
-															</a>
+														<a href="javascript:void(0);" onclick="Delete('All child from this module will be up one level, Do you realy want delete this Module?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
+															<span class="fa fa-close"></span>
+														</a>
 													<?php endif;?>
 												</td>
 												<?php endif;?>

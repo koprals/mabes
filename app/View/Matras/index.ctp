@@ -1,7 +1,6 @@
-
 <script>
 $(document).ready(function(){
-    $("#contents_area").css("opacity","1");
+    $("#contents_area").css("opacity","0.5");
     $("#contents_area").load("<?php echo $settings['cms_url'] . $ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage?>/?time=<?php echo time()?>",function(){
         $("#contents_area").css("opacity","1");
         $("a[rel^='lightbox']").prettyPhoto({

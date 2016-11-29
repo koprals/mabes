@@ -411,7 +411,6 @@ class MatrasController extends AppController
 
 		echo json_encode(array("data"=>array("status" => $resultStatus ,"message"=>$message)));
 		$this->autoRender	=	false;
-
 	}
 
 	function SuccessAdd($ID=NULL)

@@ -385,7 +385,7 @@ class EducationTypesController extends AppController
 	{
 		if($this->access[$this->aco_id]["_delete"] != "1")
 		{
-			echo json_encode(array("data"=>array("message"=>"No privileges")));
+			echo json_encode(array("data"=>array("status" => "0","message"=>"No privileges")));
 			$this->autoRender	=	false;
 			return;
 		}
@@ -395,20 +395,21 @@ class EducationTypesController extends AppController
 				"{$this->ModelName}.id"		=>	$ID
 			)
 		));
+		$resultStatus		=	"0";
 
 		if(empty($detail))
 		{
-			$message	=	"Item not found.";
+			$message		=	"Item not found.";
 			$resultStatus	=	"0";
 		}
 		else
 		{
 			$this->{$this->ModelName}->delete($ID,false);
-			$message	=	"Data has deleted.";
+			$message		=	"Data has deleted.";
 			$resultStatus	=	"1";
 		}
 
-		echo json_encode(array("data"=>array("message"=>$message)));
+		echo json_encode(array("data"=>array("status" => $resultStatus ,"message"=>$message)));
 		$this->autoRender	=	false;
 	}
 

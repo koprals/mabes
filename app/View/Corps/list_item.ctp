@@ -31,8 +31,18 @@ function Delete(msg,id)
 	var a	=	confirm(msg);
 	if(a)
 	{
-		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/Delete/"+id,function(){
-			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
+		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/Delete/"+id,function(result){
+			alert(result.data.message);
+			if(result.data.status == "1")
+			{
+				$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>",function(){
+					$("#view, input:checkbox, #action").uniform();
+					$('.tipS').tipsy({gravity: 's',fade: true});
+					$("a[rel^='lightbox']").prettyPhoto({
+						social_tools :''
+					});
+				});
+			}
 		});
 	}
 	return false;
@@ -105,7 +115,7 @@ function Delete(msg,id)
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-															<a href="<?php echo $settings['cms_url'].$ControllerName?>/Delete/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-danger btn-condensed" title="Access Control">
+															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
 																<span class="fa fa-times"></span>
 															</a>
 													<?php endif;?>

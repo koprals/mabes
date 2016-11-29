@@ -397,15 +397,18 @@ class AdminsController extends AppController
 				"{$this->ModelName}.id"		=>	$ID
 			)
 		));
+		$resultStatus		=	"0";
 
 		if(empty($detail))
 		{
-			$message	=	"Item not found.";
+			$message		=	"Item not found.";
+			$resultStatus	=	"0";
 		}
 		else
 		{
-			//$this->{$this->ModelName}->delete($ID,false);
-			$message	=	"Data has deleted.";
+			$this->{$this->ModelName}->delete($ID,false);
+			$message		=	"Data has deleted.";
+			$resultStatus	=	"1";
 		}
 
 		echo json_encode(array("data"=>array("message"=>$message)));

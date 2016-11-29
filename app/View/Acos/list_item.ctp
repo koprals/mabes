@@ -32,11 +32,18 @@ function Delete(msg,id)
 	var a	=	confirm(msg);
 	if(a)
 	{
-		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/Delete/"+id,function(){
-			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>/parent_id:<?php echo $parent_id?>",function(){
-				$("#view").uniform();
-				$('.tipS').tipsy({gravity: 's',fade: true});
-			});
+		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/Delete/"+id,function(result){
+			alert(result.data.message);
+			if(result.data.status == "1")
+			{
+				$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>",function(){
+					$("#view, input:checkbox, #action").uniform();
+					$('.tipS').tipsy({gravity: 's',fade: true});
+					$("a[rel^='lightbox']").prettyPhoto({
+						social_tools :''
+					});
+				});
+			}
 		});
 	}
 	return false;
@@ -109,22 +116,22 @@ function Delete(msg,id)
 												?>
 												<td style="text-align:center;">
 													<?php if($access[$aco_id]["_update"] == 1):?>
-														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/<?php echo $page?>/<?php echo $viewpage?>" class="btn btn-danger btn-condensed" title="Access Control">
+														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/<?php echo $page?>/<?php echo $viewpage?>" class="btn btn-success btn-condensed" title="Access Control">
 															<span class="fa fa-pencil"></span>
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-														<a href="javascript:void(0);" onclick="Delete('All child from this module will be up one level, Do you realy want delete this Module?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-primary btn-condensed" title="Access Control">
+														<a href="javascript:void(0);" onclick="Delete('All child from this module will be up one level, Do you realy want delete this Module?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
 															<span class="fa fa-close"></span>
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_read"] == 1):?>
 														<?php if($data[$ModelName]['rght']-$data[$ModelName]['lft'] > 1):?>
-															<a href="javascript:void(0);" class="btn btn-info btn-condensed" title="See Child" onclick="$(this).tipsy('hide');onClickPage('<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>/parent_id:<?php echo $data[$ModelName]['id']?>','#contents_area');">
+															<a href="javascript:void(0);" class="btn btn-primary btn-condensed" title="See Child" onclick="$(this).tipsy('hide');onClickPage('<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>/parent_id:<?php echo $data[$ModelName]['id']?>','#contents_area');">
 																<span class="fa fa-folder-open"></span>
 															</a>
 														<?php else:?>
-															<a href="javascript:void(0);" class="btn btn-info btn-condensed" title="See Child" style=" cursor:default;">
+															<a href="javascript:void(0);" class="btn btn-primary btn-condensed" title="See Child" style=" cursor:default;">
 																<span class="fa fa-folder-open"></span>
 															</a>
 														<?php endif;?>

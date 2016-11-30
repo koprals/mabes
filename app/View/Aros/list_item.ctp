@@ -56,6 +56,9 @@ function Delete(msg,id)
 									<thead>
 											<tr>
 													<th width="50">
+														No
+													</th>
+													<th width="50">
 														<?php echo $this->Paginator->sort("$ModelName.id",'ID');?>
 													</th>
 													<th>
@@ -86,6 +89,7 @@ function Delete(msg,id)
 											<?php $count++;?>
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
+												<td class="text-center"><?php echo $no ?></td>
 												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
 												<td><?php echo $data[$ModelName]['alias_name'] ?></td>
 												<td><?php echo $this->Text->truncate($this->Aimfox->IsEmptyText($data[$ModelName]['description']),100,array("html"=>true))?></td>

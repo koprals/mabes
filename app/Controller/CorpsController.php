@@ -72,7 +72,7 @@ class CorpsController extends AppController
 
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.created" => "ASC");
+		$order				=	array("{$this->ModelName}.created" => "DESC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA

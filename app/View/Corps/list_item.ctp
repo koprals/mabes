@@ -64,6 +64,9 @@ function Delete(msg,id)
 							<table class="table table-bordered table-striped table-actions">
 									<thead>
 											<tr>
+													<th width="50">
+														No
+													</th>
 													<th>
 														<?php echo $this->Paginator->sort("$ModelName.id",'ID');?>
 													</th>
@@ -97,6 +100,7 @@ function Delete(msg,id)
 											<?php $count++;?>
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
+												<td class="text-center"><?php echo $no ?></td>
 												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
 												<td><?php echo $data[$ModelName]['name'] ?></td>
 												<td><?php echo $data['Matra']['name'] ?></td>

@@ -55,13 +55,37 @@ function Delete(msg,id)
 									<thead>
 											<tr>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.id",'ID');?>
+														<?php echo $this->Paginator->sort("$ModelName.id",'NO');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
+														<?php echo $this->Paginator->sort("$ModelName.name",'Name Siswa');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'Matra');?>
+														<?php echo $this->Paginator->sort("$ModelName.matra_id",'PANGKAT/KOPRS/NRP');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.matra_id",'KESATUAN/JABATAN');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.matra_id",'NAMA PENDIDIKAN');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.matra_id",'NEGARA');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.matra_id",'JENIS PENDIDIKAN');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.matra_id",'BERANGKAT');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.matra_id",'KEMBALI');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.matra_id",'LAMA PENDIDIKAN');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.matra_id",'STATUS PENDIDIKAN');?>
 													</th>
 													<th>
 														<?php echo $this->Paginator->sort("$ModelName.SStatus",'Status');?>
@@ -89,7 +113,8 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
 												<td><?php echo $data[$ModelName]['name'] ?></td>
-												<td><?php echo $data['Matra']['name'] ?></td>
+												<td><?php echo $data[$ModelName]['place_of_birth'] ?></td>
+												<td><?php echo $data[$ModelName]['date_of_birth'] ?></td>
 												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
 												<td class="text-center"><?php echo date("d M Y",strtotime($data[$ModelName]['modified'])) ?></td>
 												<?php

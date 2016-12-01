@@ -1,4 +1,3 @@
-
 <script>
 $(document).ready(function(){
     $("#contents_area").css("opacity","1");
@@ -12,6 +11,20 @@ $(document).ready(function(){
         $('.tipS').tipsy({gravity: 's',fade: true});
     });
 });
+
+function onClickPage(el,divName)
+{
+	$(divName).css("opacity","0.5");
+	$(divName).load(el.toString(),function(){
+		$(divName).css("opacity","1");
+		$("a[rel^='lightbox']").prettyPhoto({
+			social_tools :''
+		});
+		$("#view").uniform();
+		$('.tipS').tipsy({gravity: 's',fade: true});
+	});
+	return false;
+}
 
 function SearchAdvance()
 {

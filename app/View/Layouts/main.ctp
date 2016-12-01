@@ -207,6 +207,7 @@ echo $this->Html->script(array(
 			<!-- END THIS PAGE PLUGINS-->
 
 			<!-- START TEMPLATE -->
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/demo_dashboard.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/actions.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/faq.js"></script>

@@ -5,6 +5,7 @@ class Matra extends AppModel
 	public $name = "Matra";
 
 	public $validate 	= array(
+	/*	
 		'id' => array(
 			'notEmpty' => array(
 				'rule' 		=>	"notEmpty",
@@ -15,17 +16,18 @@ class Matra extends AppModel
 		'name' => array(
 			'notEmpty'		=>	array(
 				'rule' 		=>	"notEmpty",
-				'message' 	=>	"Please insert sales name"
+				'message' 	=>	"Please insert name"
 			),
 			'minLength' 	=>	array(
 				'rule' 		=>	array("minLength","2"),
-				'message'	=>	"Sales name is to sort"
+				'message'	=>	"Name is to sort"
 			),
 			'maxLength' 	=>	array(
 				'rule' 		=>	array("maxLength","100"),
-				'message'	=>	"Sales name is too long"
+				'message'	=>	"Name is too long"
 			)
 		)
+		*/
 	);
 
 	public function BindImageBig($reset	=	true)

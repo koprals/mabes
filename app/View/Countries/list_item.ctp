@@ -67,9 +67,6 @@ function Delete(msg,id)
 													<th width="50">
 														No
 													</th>
-													<th width="50">
-														<?php echo $this->Paginator->sort("$ModelName.id",'ID');?>
-													</th>
 													<th>
 														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
 													</th>
@@ -82,7 +79,7 @@ function Delete(msg,id)
 														$access[$aco_id]["_delete"] == 1
 													):
 													?>
-													<th width="120">
+													<th width="120" class="text-center">
 														actions
 													</th>
 													<?php endif;?>
@@ -95,7 +92,6 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
-												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
 												<td><?php echo $data[$ModelName]['name'] ?></td>
 												<td><?php echo $data[$ModelName]['sortname'] ?></td>
 												<?php

@@ -34,15 +34,12 @@
                         )?>
                     </div>
                   </div>
-<<<<<<< HEAD
-=======
 
                   <div class="form-group">
                       <div class="col-md-12 center">
                           <!-- <a href="#">Forgot your password?</a> -->
                       </div>
                   </div>
->>>>>>> c513d16343cfeef319149da032a3a1da05104f5f
                 <div class="form-group">
                     <div class="col-md-12">
                         <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>

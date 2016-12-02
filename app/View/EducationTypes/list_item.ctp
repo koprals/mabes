@@ -51,7 +51,7 @@ function Delete(msg,id)
 </script>
 <div class="row">
 	<div class="col-md-12">
-		<div class="panel panel-default">
+		<div class="panel panel-info">
 			<div class="panel-heading ">
 				<div class="dataTables_length" id="DataTables_Table_0_length ">
 					<label>Show Entries</label><b>
@@ -71,19 +71,13 @@ function Delete(msg,id)
 													<th>
 														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
 													</th>
-													<th width="150">
-														<?php echo $this->Paginator->sort("$ModelName.SStatus",'Status');?>
-													</th>
-													<th width="150">
-														<?php echo $this->Paginator->sort("$ModelName.modified",'Modified');?>
-													</th>
 													<?php
 													if(
 														$access[$aco_id]["_update"] == 1 or
 														$access[$aco_id]["_delete"] == 1
 													):
 													?>
-													<th width="120">
+													<th width="120" class="text-center">
 														actions
 													</th>
 													<?php endif;?>
@@ -97,8 +91,6 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
 												<td><?php echo $data[$ModelName]['name'] ?></td>
-												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
-												<td class="text-center"><?php echo date("d M Y",strtotime($data[$ModelName]['modified'])) ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or
@@ -107,12 +99,12 @@ function Delete(msg,id)
 												?>
 												<td>
 													<?php if($access[$aco_id]["_update"] == 1):?>
-														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-success btn-condensed" title="Access Control">
+														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-success btn-condensed text-center" title="Access Control">
 															<span class="fa fa-pencil"></span>
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-														<a href="javascript:void(0);" onclick="Delete('All child from this module will be up one level, Do you realy want delete this Module?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
+														<a href="javascript:void(0);" onclick="Delete('All child from this module will be up one level, Do you realy want delete this Module?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed text-center" title="Access Control">
 															<span class="fa fa-close"></span>
 														</a>
 													<?php endif;?>

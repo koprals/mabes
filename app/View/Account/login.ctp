@@ -40,11 +40,6 @@
                           </div>
                       </div>
                   </div>
-                  <div class="form-group">
-                      <div class="col-md-12 center">
-                          <a href="#">Forgot your password?</a>
-                      </div>
-                  </div>
                 <div class="form-group">
                     <div class="col-md-12">
                         <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>

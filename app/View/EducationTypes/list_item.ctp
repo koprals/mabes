@@ -52,10 +52,10 @@ function Delete(msg,id)
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default">
-			<div class="panel-heading">
+			<div class="panel-heading ">
 				<div class="dataTables_length" id="DataTables_Table_0_length ">
-					<label>Show Entries</label>
-					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
+					<label>Show Entries</label><b>
+					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?></b>
 				</div>
 			</div>
 
@@ -67,9 +67,6 @@ function Delete(msg,id)
 											<tr>
 													<th width="50">
 														No
-													</th>
-													<th width="50">
-														<?php echo $this->Paginator->sort("$ModelName.id",'ID');?>
 													</th>
 													<th>
 														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
@@ -99,7 +96,6 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
-												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
 												<td><?php echo $data[$ModelName]['name'] ?></td>
 												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
 												<td class="text-center"><?php echo date("d M Y",strtotime($data[$ModelName]['modified'])) ?></td>

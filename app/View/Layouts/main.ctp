@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="icon" href="favicon.png" type="image/x-icon" />
+	<link rel="icon" href="<?php $this->webroot; ?>favicon.png" type="image/x-icon" />
 	<!-- END META SECTION -->
 	<link rel="stylesheet" type="text/css" id="theme" href="<?php echo $this->webroot; ?>css/theme-default.css"/>
 	<link rel="stylesheet" type="text/css" id="theme" href="<?php echo $this->webroot; ?>css/custom.css"/>
@@ -207,7 +207,6 @@ echo $this->Html->script(array(
 			<!-- END THIS PAGE PLUGINS-->
 
 			<!-- START TEMPLATE -->
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/demo_dashboard.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/actions.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/faq.js"></script>

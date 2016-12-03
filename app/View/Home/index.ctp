@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo $this->webroot; ?>js/demo_dashboard.js"></script>
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 		<li><a href="#">Home</a></li>

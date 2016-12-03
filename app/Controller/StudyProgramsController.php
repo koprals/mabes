@@ -237,8 +237,8 @@ class StudyProgramsController extends AppController
 			return;
 		}
 
-		$this->{$this->ModelName}->BindDefault(false);
-		$this->{$this->ModelName}->BindImageContent();
+		//$this->{$this->ModelName}->BindDefault(false);
+		//$this->{$this->ModelName}->BindImageContent();
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID

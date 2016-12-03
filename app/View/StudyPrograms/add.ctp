@@ -36,22 +36,23 @@
 											</div>
 										</div>
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Kategori Program Studi</label>
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('study_program_category_id', array(
+														'type'					=>	'hidden',
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
-														'options'				=> $list_category,
-														'empty'					=> "Pilih Program Kategori",
+														'options'				=>  $list_category,
+														'empty'					=>  NULL,
 													));
 												?>
 										</div>
-							</div>
+							</div> -->
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Negara</label>
 									<div class="col-md-6 col-xs-12">
@@ -78,7 +79,7 @@
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
-														'options'				=> $list_country,
+														'options'				=> $list_state,
 														'empty'					=> "Pilih State",
 													));
 												?>

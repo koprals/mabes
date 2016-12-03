@@ -216,6 +216,8 @@ class PersonelsController extends AppController
 										"Matra.name ASC"
 									)
 								));
+		
+		Debugger::dump($matra_id_list);
 		//DEFINE PANGKAT
 		$this->loadModel("Occupation");
 		$occupation_id_list		=	$this->Occupation->find("list",array(
@@ -319,7 +321,7 @@ class PersonelsController extends AppController
 		}
 
 		$this->{$this->ModelName}->BindDefault(false);
-		$this->{$this->ModelName}->BindImageContent();
+		//$this->{$this->ModelName}->BindImageContent();
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID

@@ -88,10 +88,7 @@ function Delete(msg,id)
 														<?php echo $this->Paginator->sort("$ModelName.matra_id",'STATUS PENDIDIKAN');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.SStatus",'Status');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.modified",'Modified');?>
+														<?php echo $this->Paginator->sort("$ModelName.SStatus",'Status AKUN');?>
 													</th>
 													<?php
 													if(
@@ -113,10 +110,12 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
 												<td><?php echo $data[$ModelName]['name'] ?></td>
-												<td><?php echo $data[$ModelName]['place_of_birth'] ?></td>
-												<td><?php echo $data[$ModelName]['date_of_birth'] ?></td>
+												<td><?php echo $data[$ModelName]['study_programs'] ?></td>
+												<td><?php echo $data['Countries']['name'] ?></td>
+												<td><?php echo $data[$ModelName]['depart'] ?></td>
+												<td><?php echo $data[$ModelName]['arrived'] ?></td>
+												<td><?php echo $data[$ModelName]['education_status'] ?></td>
 												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
-												<td class="text-center"><?php echo date("d M Y",strtotime($data[$ModelName]['modified'])) ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or

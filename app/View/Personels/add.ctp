@@ -28,7 +28,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Name <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon " style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('name', array(
 														'type'					=>	'text',
@@ -46,7 +46,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Tempat Lahir <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('place_of_birth', array(
 														'type'					=>	'text',
@@ -64,7 +64,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Tanggal Lahir <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
 												<?php
 													echo $this->Form->input('date_of_birth', array(
 														'type'					=>	'text',
@@ -130,7 +130,7 @@
 								<label class="col-md-3 col-xs-12 control-label">NRP/NIP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('name', array(
 														'type'					=>	'text',
@@ -148,7 +148,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Kesatuan/Jabatan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('unity', array(
 														'type'					=>	'text',
@@ -166,7 +166,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Sumber Dikma/Diktuk & TMT Prajurit <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('source_dikma', array(
 														'type'					=>	'text',
@@ -235,7 +235,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Berangkat <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
 												<?php
 													echo $this->Form->input('date_of_birth', array(
 														'type'					=>	'text',
@@ -253,7 +253,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Kembali <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
 												<?php
 													echo $this->Form->input('date_of_birth', array(
 														'type'					=>	'text',
@@ -292,7 +292,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Kepala Panglima TNI </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('commander_tni', array(
 														'type'					=>	'text',
@@ -310,7 +310,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Sprin Angkatan </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('sprin_force', array(
 														'type'					=>	'text',
@@ -328,7 +328,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Medical Record </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('medical_record', array(
 														'type'					=>	'text',
@@ -346,7 +346,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Pasport </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('pasport', array(
 														'type'					=>	'text',
@@ -364,7 +364,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Security Clearance </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('security_clearance', array(
 														'type'					=>	'text',
@@ -382,7 +382,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Alamat Kantor <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('office_address', array(
 														'type'					=>	'text',
@@ -400,7 +400,7 @@
 								<label class="col-md-3 col-xs-12 control-label">TLP Kantor <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('tlp_office', array(
 														'type'					=>	'text',
@@ -418,7 +418,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Alamat Rumah <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('home_address', array(
 														'type'					=>	'text',
@@ -436,7 +436,7 @@
 								<label class="col-md-3 col-xs-12 control-label">TLP Rumah <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('tlp_home', array(
 														'type'					=>	'text',
@@ -454,7 +454,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Email <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('email', array(
 														'type'					=>	'text',
@@ -475,7 +475,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Hubungan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('relationship', array(
 														'type'					=>	'text',
@@ -493,7 +493,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Alamat Rumah <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('home_adress_a', array(
 														'type'					=>	'text',
@@ -511,7 +511,7 @@
 								<label class="col-md-3 col-xs-12 control-label">TLP/HP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('tlp_hp', array(
 														'type'					=>	'text',
@@ -529,7 +529,7 @@
 								<label class="col-md-3 col-xs-12 control-label">No. Rekening Bank di Indonesia </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
-												<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('no_rek', array(
 														'type'					=>	'text',

@@ -26,7 +26,7 @@ class Personel extends AppModel
 		'name' => array(
 			'notEmpty'		=>	array(
 				'rule' 		=>	"notEmpty",
-				'message' 	=>	"Please insert sales name"
+				'message' 	=>	"Please insert name"
 			),
 			'minLength' 	=>	array(
 				'rule' 		=>	array("minLength","3"),

@@ -13,6 +13,20 @@ $(document).ready(function(){
     });
 });
 
+function onClickPage(el,divName)
+{
+    $(divName).css("opacity","0.5");
+    $(divName).load(el.toString(),function(){
+        $(divName).css("opacity","1");
+        $("a[rel^='lightbox']").prettyPhoto({
+            social_tools :''
+        });
+        $("#view").uniform();
+        $('.tipS').tipsy({gravity: 's',fade: true});
+    });
+    return false;
+}
+
 function SearchAdvance()
 {
     $("#SearchAdvance").ajaxSubmit({
@@ -72,41 +86,7 @@ function ClearSearchAdvance()
 
     <!-- START ADVANCE SEARCH -->
     <div class="row">
-        <div class="col-md-12">
-            <div class="faq panel panel-primary">
-                <div class="faq-item">
-                    <div class="faq-title">
-                        <span class="fa fa-angle-down"></span>Advance Search
-                    </div>
-                    <div class="faq-text">
-                        <!-- START VERTICAL FORM SAMPLE -->
-                        <div class="col-md-4">
-                            <div class="panel-default">
-                                <div class="panel-body">
-                                    <?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance", "role"=>"form"))?>
-                                        <input name="data[Search][reset]" type="hidden" value="0" id="reset">
-                                        <?php
-                                                        echo $this->Form->input('Search.name', array(
-                                                'label'         =>  'Nama',
-                                                            'class'         =>  'form-control',
-                                                            'between'       =>  '<div class="form-group">',
-                                                            'after'         =>  '</div>'
-                                                ));
-                                        ?>
-                                    <?php echo $this->Form->end()?>
-                                    <div class="form-group">
-                                        <div class="pull-left">
-                                            <button type="button" class="btn btn-primary btn-rounded" href="javascript:void(0);" title="" onclick="return SearchAdvance();"><span class="fa fa-search"></span>Search</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END VERTICAL FORM SAMPLE -->
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <!-- START RESPONSIVE TABLES -->

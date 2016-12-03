@@ -50,7 +50,7 @@ function Delete(msg,id)
 </script>
 <div class="row">
 	<div class="col-md-12">
-		<div class="panel panel-default">
+		<div class="panel panel-info">
 			<div class="panel-heading">
 				<div class="dataTables_length" id="DataTables_Table_0_length ">
 					<label>Show Entries</label>
@@ -67,14 +67,8 @@ function Delete(msg,id)
 													<th width="50">
 														No
 													</th>
-													<th width="50">
-														<?php echo $this->Paginator->sort("$ModelName.id",'ID');?>
-													</th>
 													<th>
 														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
-													</th>
-													<th width="150">
-														<?php echo $this->Paginator->sort("$ModelName.SStatus",'Status');?>
 													</th>
 													<?php
 													if(
@@ -82,7 +76,7 @@ function Delete(msg,id)
 														$access[$aco_id]["_delete"] == 1
 													):
 													?>
-													<th width="120">
+													<th width="120" class="text-center">
 														actions
 													</th>
 													<?php endif;?>
@@ -95,9 +89,7 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
-												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
 												<td><?php echo $data[$ModelName]['name'] ?></td>
-												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or

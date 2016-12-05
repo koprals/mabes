@@ -17,7 +17,7 @@ class OccupationsController extends AppController
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("EducationTypes")
+											"LOWER(MyAco.alias)"	=>	strtolower("Occupation")
 										)
 									));
 

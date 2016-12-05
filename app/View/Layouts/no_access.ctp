@@ -27,7 +27,7 @@
 
 		<div class="page-content">
 			<!-- START X-NAVIGATION VERTICAL -->
-			<ul class="x-navigation x-navigation-horizontal x-navigation-panel"
+			<ul class="x-navigation x-navigation-horizontal x-navigation-panel">
 					<!-- SEARCH -->
 					<!-- <li class="xn-search">
 							<form role="form">

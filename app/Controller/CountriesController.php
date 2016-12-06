@@ -233,8 +233,6 @@ class CountriesController extends AppController
 			return;
 		}
 
-		$this->{$this->ModelName}->BindDefault(false);
-		$this->{$this->ModelName}->BindImageContent();
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID
@@ -248,15 +246,6 @@ class CountriesController extends AppController
 			return;
 		}
 
-		//DEFINE ARO LIST
-		$this->loadModel("MyAro");
-		$this->MyAro->VirtualFieldActivated();
-		if($ID != $this->super_admin_id)
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-		else
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-
-
 		if (empty($this->data))
 		{
 			$this->data = $detail;
@@ -264,7 +253,6 @@ class CountriesController extends AppController
 		else
 		{
 			$this->{$this->ModelName}->set($this->data);
-			$this->{$this->ModelName}->ValidateEdit();
 
 			if($this->{$this->ModelName}->validates())
 			{

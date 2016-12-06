@@ -23,19 +23,19 @@ class StudyProgramsController extends AppController
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
 
+		//DEFINE EDUCATION TYPE
+		$this->loadModel('EducationType');
+		$list_education	=	$this->EducationType->find('list');
+
     //DEFINE COUNTRY
 		$this->loadModel('Country');
 		$list_country	=	$this->Country->find('list');
-
-		//DEFINE PROGRAM CATEGORY
-		$this->loadModel('StudyProgramCategory');
-		$list_category	=	$this->StudyProgramCategory->find('list');
 
 		//DEFINE STATE
 		$this->loadModel('State');
 		$list_state	=	$this->State->find('list');
 
-		$this->set(compact("list_category", "list_country", "list_state"));
+		$this->set(compact("list_education", "list_country", "list_state"));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -182,51 +182,13 @@ class StudyProgramsController extends AppController
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
-			// $this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())
 			{
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
-
-				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
-				{
-					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp									=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type						=	$this->request->data[$this->ModelName]["images"]["type"];
-
-					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
-						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
-
-					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
-					$tmp_file_name				=	md5(time());
-					$tmp_images1_img			=	$path_tmp.$tmp_file_name.".".$ext;
-					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
-					if($upload)
-					{
-						//RESIZE BIG
-						$error_upload["original"]		=	"Sorry, there is problem when upload file.";
-						$resize							=	$this->General->ResizeImageContent(
-																$tmp_images1_img,
-																$this->settings["cms_url"],
-																$ID,
-																$this->ModelName,
-																"original",
-																$mime_type,
-																300,
-																300,
-																"cropRatio"
-															);
-
-					}
-					@unlink($tmp_images1_img);
-				}
-				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				$this->redirect(array("action"=>"SuccessAdd",$ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
-
-		$this->set(compact("aro_id_list"));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)
@@ -237,9 +199,7 @@ class StudyProgramsController extends AppController
 			return;
 		}
 
-		//$this->{$this->ModelName}->BindDefault(false);
-		//$this->{$this->ModelName}->BindImageContent();
-		$detail 			=	$this->{$this->ModelName}->find('first', array(
+		$detail =	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID
 									)
@@ -252,10 +212,6 @@ class StudyProgramsController extends AppController
 			return;
 		}
 
-		//DEFINE ARO LIST
-		$this->loadModel("MyAro");
-		$this->MyAro->VirtualFieldActivated();
-
 		if (empty($this->data))
 		{
 			$this->data = $detail;
@@ -263,7 +219,6 @@ class StudyProgramsController extends AppController
 		else
 		{
 			$this->{$this->ModelName}->set($this->data);
-			$this->{$this->ModelName}->ValidateEdit();
 
 			if($this->{$this->ModelName}->validates())
 			{
@@ -307,7 +262,7 @@ class StudyProgramsController extends AppController
 				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
 			}
 		}
-		$this->set(compact("ID","detail","aro_id_list","page","viewpage"));
+		$this->set(compact("ID","detail","page","viewpage"));
 	}
 
 	function View($ID=NULL)

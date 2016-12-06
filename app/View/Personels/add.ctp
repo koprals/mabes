@@ -22,8 +22,8 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-                                        <label class="col-md-6 col-xs-12 control-label"><h5>Data Pribadi</h5></label>
-                                    </div>
+                <label class="col-md-6 col-xs-12 control-label"><h5>Data Pribadi</h5></label>
+              </div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Name <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
@@ -82,7 +82,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Matra/PNS <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('matra_id_list', array(
+													echo $this->Form->input('matra_id', array(
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
@@ -98,7 +98,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Pangkat <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('occupation_id_list', array(
+													echo $this->Form->input('occupation_id', array(
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
@@ -114,7 +114,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Corps <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('corp_id_list', array(
+													echo $this->Form->input('corp_id', array(
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
@@ -132,7 +132,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('name', array(
+													echo $this->Form->input('personel_nrp', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
@@ -150,7 +150,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('unity', array(
+													echo $this->Form->input('personel_unity', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
@@ -168,7 +168,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('source_dikma', array(
+													echo $this->Form->input('dikma_diktuk', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
@@ -181,13 +181,13 @@
 									</div>
 							</div>
 							<div class="form-group">
-                                        <label class="col-md-6 col-xs-12 control-label"><h5>Pendidikan</h5></label>
-                                    </div>
-                            <div class="form-group">
+                	<label class="col-md-6 col-xs-12 control-label"><h5>Pendidikan</h5></label>
+              </div>
+              <div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Negara <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('countries_id_list', array(
+													echo $this->Form->input('country_id', array(
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
@@ -198,12 +198,12 @@
 													));
 												?>
 										</div>
-							</div>  
+							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Jenis Pendidikan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('education_type_id_list', array(
+													echo $this->Form->input('education_type_id', array(
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
@@ -214,12 +214,12 @@
 													));
 												?>
 										</div>
-							</div> 
+							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Nama Pendidikan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('study_program_id_list', array(
+													echo $this->Form->input('study_program_id', array(
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
@@ -230,14 +230,14 @@
 													));
 												?>
 										</div>
-							</div>   
+							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Berangkat <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
 												<?php
-													echo $this->Form->input('depart', array(
+													echo $this->Form->input('education_start', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control datepicker',
 														'label'					=>	false,
@@ -255,7 +255,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
 												<?php
-													echo $this->Form->input('arrived', array(
+													echo $this->Form->input('education_end', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control datepicker',
 														'label'					=>	false,
@@ -266,7 +266,7 @@
 												?>
 										</div>
 									</div>
-							</div>      
+							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Status Pendidikan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
@@ -286,15 +286,15 @@
 										</div>
 							</div>
 							<div class="form-group">
-                                        <label class="col-md-6 col-xs-12 control-label"><h5>Administrasi</h5></label>
-                                    </div>
-                            <div class="form-group">
+                  <label class="col-md-6 col-xs-12 control-label"><h5>Administrasi</h5></label>
+              </div>
+              <div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Kepala Panglima TNI </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('commander_tni', array(
+													echo $this->Form->input('commander_name', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
@@ -348,7 +348,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('pasport', array(
+													echo $this->Form->input('passport', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
@@ -381,11 +381,9 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Alamat Kantor <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('office_address', array(
-														'type'					=>	'text',
+														'type'					=>	'textarea',
 														'class'					=>	'form-control',
 														'label'					=>	false,
 														"required"			=>	"",
@@ -393,7 +391,6 @@
 														"maxlength"			=>	20,
 													));
 												?>
-										</div>
 									</div>
 							</div>
 							<div class="form-group">
@@ -402,7 +399,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('tlp_office', array(
+													echo $this->Form->input('office_phone_number', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
@@ -417,11 +414,9 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Alamat Rumah <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
 													echo $this->Form->input('home_address', array(
-														'type'					=>	'text',
+														'type'					=>	'textarea',
 														'class'					=>	'form-control',
 														'label'					=>	false,
 														"required"			=>	"",
@@ -429,7 +424,6 @@
 														"maxlength"			=>	20,
 													));
 												?>
-										</div>
 									</div>
 							</div>
 							<div class="form-group">
@@ -438,7 +432,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('tlp_home', array(
+													echo $this->Form->input('home_phone_number', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
@@ -469,15 +463,15 @@
 									</div>
 							</div>
 							<div class="form-group">
-                                        <label class="col-md-7 col-xs-12 control-label"><h5>Keluarga Yang Bisa Dihubungi di Indonesia</h5></label>
-                                    </div>
-                            <div class="form-group">
+                  	<label class="col-md-7 col-xs-12 control-label"><h5>Keluarga Yang Bisa Dihubungi di Indonesia</h5></label>
+              </div>
+              <div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Hubungan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('relationship', array(
+													echo $this->Form->input('family_relationship', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
@@ -492,11 +486,9 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Alamat Rumah <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('home_adress_a', array(
-														'type'					=>	'text',
+													echo $this->Form->input('family_address', array(
+														'type'					=>	'textarea',
 														'class'					=>	'form-control',
 														'label'					=>	false,
 														"required"			=>	"",
@@ -504,7 +496,6 @@
 														"maxlength"			=>	20,
 													));
 												?>
-										</div>
 									</div>
 							</div>
 							<div class="form-group">
@@ -513,7 +504,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('tlp_hp', array(
+													echo $this->Form->input('family_phone_number', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
@@ -531,7 +522,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('no_rek', array(
+													echo $this->Form->input('bank_account_number', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
@@ -561,22 +552,16 @@
 										</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label"></label> 
+								<label class="col-md-3 col-xs-12 control-label">Browse Photo</label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span  style="padding-bottom:6px;"></span>
-												<?php
-													echo $this->Form->input('images', array(
-														'class'					=>	'',
-														'label'					=> 'Photo',
-														'div' 			=> 'form-group',
-														'between'		=> '',
-														'id'					=> "user_image",
-														'type'					=> 'file',
-														"required"			=>	"",
-													));
-												?>
-										</div>
+											<?php
+												echo $this->Form->input('images', array(
+													'type'					=> 	'file',
+													'class'					=>	'fileinput btn-primary',
+													'label'					=>	false,
+												));
+											?>
+											<span class="help-block">(Width: 300px, Height: 300px)</span>
 									</div>
 							</div>
 							<div class="panel-footer center-button">

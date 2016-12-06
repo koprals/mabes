@@ -4,17 +4,6 @@ class Personel extends AppModel
 {
 public $name = "Personel";
 
-  public $belongsTo = array(
-    /*'Admin' => array(
-      'className' => 'Admin',
-      'foreignKey'  =>  'doctor_id'
-    ),
-    'Pasien'  =>  array(
-      'className' =>  'Pasien',
-      'foreignKey'  => 'pasien_id'
-    )*/
-  );
-
 	public $validate 	= array(
 		'id' => array(
 			'notEmpty' => array(
@@ -67,60 +56,42 @@ public $name = "Personel";
 		)
 	);
 
-
-	public function beforeSave($options = array())
-	{
-		if(!empty($this->data))
-		{
-			foreach($this->data[$this->name] as $key => $name)
-			{
-				if(isset($this->data[$this->name][$key]) && !is_array($this->data[$this->name][$key]))
-					$this->data[$this->name][$key]		=	trim($this->data[$this->name][$key]);
-
-				if($key == "name")
-				{
-					$this->data[$this->name][$key]	=	Sanitize::html($this->data[$this->name][$key]);
-				}
-
-				if($key == "description")
-				{
-					$this->data[$this->name][$key]	=	Sanitize::html($this->data[$this->name][$key]);
-				}
-
-				if($key == "position")
-				{
-					$this->data[$this->name][$key]	=	Sanitize::html($this->data[$this->name][$key]);
-				}
-			}
-		}
-	}
-
-	public function afterFind($results, $primary = false)
-	{
-		return $results;
-	}
-
-	public function afterDelete()
-	{
-		//DELETE IMAGE CONTENT
-		App::import('Component','General');
-		$General		=	new GeneralComponent();
-		$General->DeleteContent($this->id,$this->name);
-	}
-
 	public function beforeValidate($options = array())
 	{
 		return true;
 	}
 
-	
-	function BindDefault($reset	=	true)
-	{
-	}
+  public function BindImageContent($reset	=	true)
+  {
+    $this->bindModel(array(
+      "hasOne"	=>	array(
+        "Image"	=>	array(
+          "className"	=>	"Content",
+          "foreignKey"	=>	"model_id",
+          "conditions"	=>	array(
+            "Image.model"	=>	$this->name,
+            "Image.type"	=>	"original"
+          )
+        )
+      )
+    ),$reset);
+  }
 
-	function UnBindDefault($reset	=	true)
-	{
-	}
+  public function BindDefault($reset	=	true)
+  {
+    $this->bindModel(array(
+      "hasOne"	=>	array(
+        "Image"	=>	array(
+          "className"	=>	"Content",
+          "foreignKey"	=>	"model_id",
+          "conditions"	=>	array(
+            "Image.model"	=>	$this->name,
+            "Image.type"	=>	"original"
+          )
+        )
+      )
+    ),$reset);
+  }
 
 	function VirtualFieldActivated()
 	{
@@ -183,26 +154,6 @@ public $name = "Personel";
 			}
 		}
 
-		return true;
-	}
-
-	function validateName($file=array(),$ext=array())
-	{
-		$err	=	array();
-		$i=0;
-
-		foreach($file as $file)
-		{
-			$i++;
-
-			if(!empty($file['name']))
-			{
-				if(!Validation::extension($file['name'], $ext))
-				{
-					return false;
-				}
-			}
-		}
 		return true;
 	}
 

@@ -246,10 +246,23 @@
 										</div>
 							</div>
 							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Browse File</label>
+									<div class="col-md-6 col-xs-12">
+											<?php
+												echo $this->Form->input('file', array(
+													'type'					=> 'file',
+													'class'					=>	'fileinput btn-primary',
+													'label'					=>	false,
+												));
+											?>
+										</div>
+							</div>
+							<!-- div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Status</label>
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('status', array(
+														'type'					=>	'hidden',
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
@@ -261,7 +274,7 @@
 													));
 												?>
 										</div>
-							</div>
+							</div-->
 							<div class="panel-footer center-button">
 								<input type="submit" value="Add" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

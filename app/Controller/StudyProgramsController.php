@@ -5,6 +5,7 @@ class StudyProgramsController extends AppController
 	var $ModelName			=	"StudyProgram";
 	var $helpers			=	array("Text","Aimfox");
 	var $uses				=	"StudyProgram";
+	var $components = array('RequestHandler');
 
 	function beforeFilter()
 	{
@@ -36,6 +37,27 @@ class StudyProgramsController extends AppController
 		$list_state	=	$this->State->find('list');
 
 		$this->set(compact("list_education", "list_country", "list_state"));
+	}
+
+	function GetState()
+	{
+		$country_id	=	$_REQUEST['country_id'];
+
+		//DEFINE REGION
+		$this->loadModel('State');
+		$state_id_list			=	$this->State->find('all',array(
+										'order'	=>	array(
+											'State.name ASC'
+										),
+										'conditions'	=>	array(
+											'State.country_id'	=>	$country_id
+										)
+									));
+		$out					=	array("data"	=>	$state_id_list);
+
+		echo json_encode($out);
+		pr($out);
+		$this->autoRender	=	false;
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -184,9 +206,36 @@ class StudyProgramsController extends AppController
 			$this->{$this->ModelName}->set($this->request->data);
 			if($this->{$this->ModelName}->validates())
 			{
+				Configure::write('debug', 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
-				$this->redirect(array("action"=>"SuccessAdd",$ID));
+
+				if(!empty($this->request->data[$this->ModelName]["file"]["name"])) {
+					$saveData[$this->ModelName] = array(
+	          'file_name' => $this->request->data[$this->ModelName]['file']['name'],
+	          'file_size' => $this->request->data[$this->ModelName]['file']['size'],
+	          'file_type' => $this->request->data[$this->ModelName]['file']['type'],
+	        );
+
+	        $saveFile = $this->{$this->ModelName}->save($saveData);
+	        $url = 'content/StudyProgram/'.$this->{$this->ModelName}->id.'/';
+
+	        $folder = ROOT.DS.'app'.DS.'webroot'.DS.'contents'.DS.$this->ModelName;
+	        if(!is_dir($folder)) mkdir($folder,0755);
+
+	        $folder = $folder.DS.$this->{$this->ModelName}->id;
+	        if(!is_dir($folder)) mkdir($folder,0755);
+
+	        $fileLocation = $folder.DS.$saveData[$this->ModelName]['file_name'];
+					//debug($fileLocation);
+
+	        $upload = move_uploaded_file($this->request->data[$this->ModelName]['file']['tmp_name'],$fileLocation);
+	        if($upload) {
+						//var_dump("sukses");
+	          $this->{$this->ModelName}->saveField('url', $url);
+	        }
+				}
+				//$this->redirect(array("action"=>"SuccessAdd",$ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 	}

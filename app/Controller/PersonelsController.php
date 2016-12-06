@@ -96,9 +96,6 @@ class PersonelsController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-		//$this->{$this->ModelName}->BindDefault(false);
-		//$this->{$this->ModelName}->MyAro->VirtualFieldActivated();
-		//$this->{$this->ModelName}->BindImageContent();
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 
@@ -216,8 +213,7 @@ class PersonelsController extends AppController
 										"Matra.name ASC"
 									)
 								));
-		
-		Debugger::dump($matra_id_list);
+
 		//DEFINE PANGKAT
 		$this->loadModel("Occupation");
 		$occupation_id_list		=	$this->Occupation->find("list",array(
@@ -233,10 +229,10 @@ class PersonelsController extends AppController
 									)
 								));
 		//DEFINE NEGARA
-		$this->loadModel("Countries");
-		$countries_id_list		=	$this->Countries->find("list",array(
+		$this->loadModel("Country");
+		$countries_id_list		=	$this->Country->find("list",array(
 									"order"			=>	array(
-										"Countries.name ASC"
+										"Country.name ASC"
 									)
 								));
 		//DEFINE Study Program
@@ -254,13 +250,6 @@ class PersonelsController extends AppController
 									)
 								));
 
-		//DEFINE NEWS CATEGORY
-		//$this->loadModel("MyAro");
-		//$this->MyAro->VirtualFieldActivated();
-		//if(isset($ID) && $ID != $this->super_admin_id)
-		//	$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-		//else
-		//	$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
 
 		if(!empty($this->request->data))
 		{
@@ -268,23 +257,24 @@ class PersonelsController extends AppController
 			//$this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())
 			{
+				//Configure::write('debug', 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
 				{
-					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp								=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
+					$tmp_name								=	$this->request->data[$this->ModelName]["images"]["name"];
+					$tmp										=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
 					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
 
-					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
+					$path_tmp								=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
 						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
 
-					$ext								=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$ext											=	pathinfo($tmp_name,PATHINFO_EXTENSION);
 					$tmp_file_name						=	md5(time());
 					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
-					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
+					$upload 									=	move_uploaded_file($tmp,$tmp_images1_img);
 					if($upload)
 					{
 						//RESIZE BIG
@@ -306,7 +296,6 @@ class PersonelsController extends AppController
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				$this->redirect(array("action"=>"SuccessAdd",$ID));
-				$this->layout('default');
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 
@@ -343,35 +332,35 @@ class PersonelsController extends AppController
 										"Matra.name ASC"
 									)
 								));
-		//DEFINE PANGKAT	
+		//DEFINE PANGKAT
 		$this->loadModel("Occupation");
 		$occupation_id_list		=	$this->Occupation->find("list",array(
 									"order"			=>	array(
 										"Occupation.name ASC"
 									)
 								));
-		//DEFINE CORPS	
+		//DEFINE CORPS
 		$this->loadModel("Corp");
 		$corp_id_list		=	$this->Corp->find("list",array(
 									"order"			=>	array(
 										"Corp.name ASC"
 									)
 								));
-		//DEFINE NEGARA	
+		//DEFINE NEGARA
 		$this->loadModel("Countries");
 		$countries_id_list		=	$this->Countries->find("list",array(
 									"order"			=>	array(
 										"Countries.name ASC"
 									)
 								));
-		//DEFINE Study Program	
+		//DEFINE Study Program
 		$this->loadModel("StudyProgram");
 		$study_program_id_list		=	$this->StudyProgram->find("list",array(
 									"order"			=>	array(
 										"StudyProgram.name ASC"
 									)
 								));
-		//DEFINE Jenis Pendidikan	
+		//DEFINE Jenis Pendidikan
 		$this->loadModel("EducationType");
 		$education_type_id_list		=	$this->EducationType->find("list",array(
 									"order"			=>	array(
@@ -386,7 +375,7 @@ class PersonelsController extends AppController
 			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
 		else
 			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-		*/	
+		*/
 
 		if (empty($this->data))
 		{

@@ -2,7 +2,7 @@
 App::uses('Sanitize','Utility');
 class Personel extends AppModel
 {
-	public $name = "Personel";
+public $name = "Personel";
 
   public $belongsTo = array(
     /*'Admin' => array(

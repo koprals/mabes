@@ -112,9 +112,11 @@ function Delete(msg,id)
 												<td><?php echo $data[$ModelName]['name'] ?></td>
 												<td><?php echo $data[$ModelName]['study_programs'] ?></td>
 												<td><?php echo $data['Countries']['name'] ?></td>
+												<td><?php echo $data['EducationType']['name'] ?></td>
 												<td><?php echo $data[$ModelName]['depart'] ?></td>
 												<td><?php echo $data[$ModelName]['arrived'] ?></td>
-												<td><?php echo $data[$ModelName]['education_status'] ?></td>
+												<td><?php echo 'masuk sini gk ' ?></td>
+												<td><?php echo $data[$ModelName]['education_status']['name'] ?></td>
 												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
 												<?php
 												if(

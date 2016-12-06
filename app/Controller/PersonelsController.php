@@ -255,12 +255,12 @@ class PersonelsController extends AppController
 								));
 
 		//DEFINE NEWS CATEGORY
-		$this->loadModel("MyAro");
+		//$this->loadModel("MyAro");
 		//$this->MyAro->VirtualFieldActivated();
-		if(isset($ID) && $ID != $this->super_admin_id)
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-		else
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
+		//if(isset($ID) && $ID != $this->super_admin_id)
+		//	$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
+		//else
+		//	$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
 
 		if(!empty($this->request->data))
 		{
@@ -306,6 +306,7 @@ class PersonelsController extends AppController
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				$this->redirect(array("action"=>"SuccessAdd",$ID));
+				$this->layout('default');
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 

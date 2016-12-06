@@ -118,7 +118,7 @@ function Delete(msg,id)
 			</div>
 
 			<!-- START PAGINATION -->
-			<div class="panel-heading">
+			<div class="">
 				<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite"><?php echo $this->Paginator->counter(array('format' => 'Showing %start% to %end% of %count% entries'));?></div>
 					<?php if($this->Paginator->hasPrev() or $this->Paginator->hasNext()):?>
 					<ul class="pagination pagination-sm pull-right">
@@ -127,7 +127,7 @@ function Delete(msg,id)
 									"escape"	=>	false,
 									'tag'		=>	"li",
 								),
-								"<a href='javascript:void(0)'></a>",
+								"<a href=''></a>",
 								array(
 									'tag'		=>	"li",
 									"escape"	=>	false,
@@ -148,7 +148,7 @@ function Delete(msg,id)
 									"escape"	=>	false,
 									'tag'		=>	"li",
 								),
-								"<a href='javascript:void(0)'></a>",
+								"<a href=''></a>",
 								array(
 									'tag'		=>"li",
 									"escape"	=>	false,

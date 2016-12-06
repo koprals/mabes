@@ -200,22 +200,6 @@
 										</div>
 							</div>  
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Nama Pendidikan <span style="color:red;">(*)</span></label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('study_program_id_list', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> $study_program_id_list,
-														'empty'					=> "Pilih Nama Pendidikan",
-													));
-												?>
-										</div>
-							</div>   
-							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Jenis Pendidikan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
@@ -232,12 +216,28 @@
 										</div>
 							</div> 
 							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Nama Pendidikan <span style="color:red;">(*)</span></label>
+									<div class="col-md-6 col-xs-12">
+												<?php
+													echo $this->Form->input('study_program_id_list', array(
+														'class'					=>	'form-control select',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+														'options'				=> $study_program_id_list,
+														'empty'					=> "Pilih Nama Pendidikan",
+													));
+												?>
+										</div>
+							</div>   
+							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Berangkat <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
 												<?php
-													echo $this->Form->input('date_of_birth', array(
+													echo $this->Form->input('depart', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control datepicker',
 														'label'					=>	false,
@@ -255,7 +255,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
 												<?php
-													echo $this->Form->input('date_of_birth', array(
+													echo $this->Form->input('arrived', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control datepicker',
 														'label'					=>	false,

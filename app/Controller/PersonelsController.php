@@ -250,31 +250,32 @@ class PersonelsController extends AppController
 									)
 								));
 
+		$this->{$this->ModelName}->BindDefault(false);
+		$this->{$this->ModelName}->BindImageContent();
 
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
-			//$this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())
 			{
-				//Configure::write('debug', 2);
+				Configure::write('debug',2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
 				{
-					$tmp_name								=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp										=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
+					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
+					$tmp									=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["images"]["type"];
 
-					$path_tmp								=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
+					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
 						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
 
-					$ext											=	pathinfo($tmp_name,PATHINFO_EXTENSION);
-					$tmp_file_name						=	md5(time());
-					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
-					$upload 									=	move_uploaded_file($tmp,$tmp_images1_img);
+					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images1_img			=	$path_tmp.$tmp_file_name.".".$ext;
+					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
 					if($upload)
 					{
 						//RESIZE BIG
@@ -299,7 +300,7 @@ class PersonelsController extends AppController
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 
-		$this->set(compact("aro_id_list","matra_id_list","occupation_id_list","corp_id_list","countries_id_list","study_program_id_list","education_type_id_list"));
+		$this->set(compact("aro_id_list"));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)

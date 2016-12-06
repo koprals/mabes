@@ -330,6 +330,225 @@
 									</div>
 							</div>
 							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Medical Record</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('medical_record', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Pasport</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('pasport', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Security Clearance</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('security_clearance', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Alamat Kantor</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('office_address', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">TELP Kantor</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('tlp_office', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Alamat Rumah</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('home_address', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">TLP Rumah</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('tlp_home', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Email</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('email', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+                                        <label class="col-md-7 col-xs-12 control-label"><h5>Keluarga Yang Bisa Dihubungi di Indonesia</h5></label>
+                                    </div>
+                            <div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Hubungan</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('relationship', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Alamat Rumah</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('home_adress_a', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">TLP/HP</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('tlp_hp', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">No. Rekening Bank di Indonesia</label>
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+												<?php
+													echo $this->Form->input('no_rek', array(
+														'type'					=>	'text',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+													));
+												?>
+										</div>
+									</div>
+							</div>
+							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Status</label>
 									<div class="col-md-6 col-xs-12">
 												<?php
@@ -346,6 +565,14 @@
 												?>
 									</div>
 							</div>
+							<div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"><span style="color:red;">*</span>Photo</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <div class="btn btn-primary btn-file"><i class="glyphicon glyphicon-folder-open"></i> &nbsp;Browse Photo<input type="file" multiple="" id="file-simple"></div>
+                                            </div>                                            
+                                        </div>
+                            </div>
 							<div class="panel-footer center-button">
 								<input type="submit" value="Edit" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

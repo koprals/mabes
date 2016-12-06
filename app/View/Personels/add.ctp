@@ -397,7 +397,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TLP Kantor <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">TELP Kantor <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -561,13 +561,24 @@
 										</div>
 							</div>
 							<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label"><span style="color:red;">*</span>Photo</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <div class="btn btn-primary btn-file"><i class="glyphicon glyphicon-folder-open"></i> &nbsp;Browse Photo<input type="file" multiple="" id="file-simple"></div>
-                                            </div>                                            
-                                        </div>
-                                    </div>
+								<label class="col-md-3 col-xs-12 control-label"></label> 
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group">
+												<span  style="padding-bottom:6px;"></span>
+												<?php
+													echo $this->Form->input('images', array(
+														'class'					=>	'',
+														'label'					=> 'Photo',
+														'div' 			=> 'form-group',
+														'between'		=> '',
+														'id'					=> "user_image",
+														'type'					=> 'file',
+														"required"			=>	"",
+													));
+												?>
+										</div>
+									</div>
+							</div>
 							<div class="panel-footer center-button">
 								<input type="submit" value="Add" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

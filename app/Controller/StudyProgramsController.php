@@ -4,7 +4,7 @@ class StudyProgramsController extends AppController
 	var $ControllerName		=	"StudyPrograms";
 	var $ModelName			=	"StudyProgram";
 	var $helpers			=	array("Text","Aimfox");
-	var $uses				=	"StudyProgram";
+	var $uses				=	"ProgramStudy";
 	var $components = array('RequestHandler');
 
 	function beforeFilter()
@@ -209,33 +209,7 @@ class StudyProgramsController extends AppController
 				Configure::write('debug', 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
-
-				if(!empty($this->request->data[$this->ModelName]["file"]["name"])) {
-					$saveData[$this->ModelName] = array(
-	          'file_name' => $this->request->data[$this->ModelName]['file']['name'],
-	          'file_size' => $this->request->data[$this->ModelName]['file']['size'],
-	          'file_type' => $this->request->data[$this->ModelName]['file']['type'],
-	        );
-
-	        $saveFile = $this->{$this->ModelName}->save($saveData);
-	        $url = 'content/StudyProgram/'.$this->{$this->ModelName}->id.'/';
-
-	        $folder = ROOT.DS.'app'.DS.'webroot'.DS.'contents'.DS.$this->ModelName;
-	        if(!is_dir($folder)) mkdir($folder,0755);
-
-	        $folder = $folder.DS.$this->{$this->ModelName}->id;
-	        if(!is_dir($folder)) mkdir($folder,0755);
-
-	        $fileLocation = $folder.DS.$saveData[$this->ModelName]['file_name'];
-					//debug($fileLocation);
-
-	        $upload = move_uploaded_file($this->request->data[$this->ModelName]['file']['tmp_name'],$fileLocation);
-	        if($upload) {
-						//var_dump("sukses");
-	          $this->{$this->ModelName}->saveField('url', $url);
-	        }
-				}
-				//$this->redirect(array("action"=>"SuccessAdd",$ID));
+				$this->redirect(array("action"=>"SuccessAdd",$ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 	}

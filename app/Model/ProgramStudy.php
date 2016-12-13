@@ -1,9 +1,10 @@
 <?php
-class Personel extends AppModel
+App::uses('Sanitize','Utility');
+class ProgramStudy extends AppModel
 {
-public $name = "Personel";
+	public $name = "ProgramStudy";
 
-	public $validate 	= array(
+	/**public $validate 	= array(
 		'id' => array(
 			'notEmpty' => array(
 				'rule' 		=>	"notEmpty",
@@ -14,7 +15,7 @@ public $name = "Personel";
 		'name' => array(
 			'notEmpty'		=>	array(
 				'rule' 		=>	"notEmpty",
-				'message' 	=>	"Please insert name"
+				'message' 	=>	"Please insert sales name"
 			),
 			'minLength' 	=>	array(
 				'rule' 		=>	array("minLength","3"),
@@ -23,6 +24,16 @@ public $name = "Personel";
 			'maxLength' 	=>	array(
 				'rule' 		=>	array("maxLength","100"),
 				'message'	=>	"Sales name is too long"
+			)
+		),
+		'description' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert sales description"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","10"),
+				'message'	=>	"Sales description is to sort"
 			)
 		),
 		'sort' => array(
@@ -53,38 +64,95 @@ public $name = "Personel";
 				'message' => 'Only (*.gif,*.jpeg,*.jpg,*.png) are allowed.'
 			)
 		)
-	);
+	);**/
 
-	public function BindImageContent($reset	=	true)
+	public function BindImageBig($reset	=	true)
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
-				"Image"	=>	array(
+				"ImageBig"	=>	array(
 					"className"	=>	"Content",
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
-						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"original"
+						"ImageBig.model"	=>	$this->name,
+						"ImageBig.type"	=>	"big"
 					)
 				)
 			)
 		),$reset);
 	}
 
-	public function BindDefault($reset	=	true)
+	public function BindImageThumb($reset	=	true)
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
-				"Image"	=>	array(
+				"ImageThumb"	=>	array(
 					"className"	=>	"Content",
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
-						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"original"
+						"ImageThumb.model"	=>	$this->name,
+						"ImageThumb.type"	=>	"thumb"
 					)
 				)
 			)
 		),$reset);
+	}
+
+	public function beforeSave($options = array())
+	{
+		if(!empty($this->data))
+		{
+			foreach($this->data[$this->name] as $key => $name)
+			{
+				if(isset($this->data[$this->name][$key]) && !is_array($this->data[$this->name][$key]))
+					$this->data[$this->name][$key]		=	trim($this->data[$this->name][$key]);
+
+				if($key == "name")
+				{
+					$this->data[$this->name][$key]	=	Sanitize::html($this->data[$this->name][$key]);
+				}
+
+				if($key == "description")
+				{
+					$this->data[$this->name][$key]	=	Sanitize::html($this->data[$this->name][$key]);
+				}
+
+				if($key == "position")
+				{
+					$this->data[$this->name][$key]	=	Sanitize::html($this->data[$this->name][$key]);
+				}
+			}
+		}
+	}
+
+	public function afterFind($results, $primary = false)
+	{
+		return $results;
+	}
+
+	public function afterDelete()
+	{
+		//DELETE IMAGE CONTENT
+		App::import('Component','General');
+		$General		=	new GeneralComponent();
+		$General->DeleteContent($this->id,$this->name);
+	}
+
+	public function beforeValidate($options = array())
+	{
+		return true;
+	}
+
+	public function BindImage($reset	=	true)
+	{
+	}
+
+	function BindDefault($reset	=	true)
+	{
+	}
+
+	function UnBindDefault($reset	=	true)
+	{
 	}
 
 	function VirtualFieldActivated()
@@ -148,6 +216,26 @@ public $name = "Personel";
 			}
 		}
 
+		return true;
+	}
+
+	function validateName($file=array(),$ext=array())
+	{
+		$err	=	array();
+		$i=0;
+
+		foreach($file as $file)
+		{
+			$i++;
+
+			if(!empty($file['name']))
+			{
+				if(!Validation::extension($file['name'], $ext))
+				{
+					return false;
+				}
+			}
+		}
 		return true;
 	}
 

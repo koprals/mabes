@@ -1,10 +1,10 @@
 <?php
-class CountriesController extends AppController
+class ProgramStudiesController extends AppController
 {
-	var $ControllerName		=	"Countries";
-	var $ModelName			=	"Country";
+	var $ControllerName		=	"ProgramStudies";
+	var $ModelName			=	"ProgramStudy";
 	var $helpers			=	array("Text","Aimfox");
-	var $uses				=	"Country";
+	var $uses				=	"ProgramStudy";
 
 	function beforeFilter()
 	{
@@ -17,7 +17,7 @@ class CountriesController extends AppController
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("Country")
+											"LOWER(MyAco.alias)"	=>	strtolower("ProgramStudy")
 										)
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
@@ -163,16 +163,9 @@ class CountriesController extends AppController
 
 		//DEFINE NEWS CATEGORY
 		$this->loadModel("MyAro");
-		//$this->MyAro->VirtualFieldActivated();
-		if(isset($ID) && $ID != $this->super_admin_id)
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-		else
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
-			//$this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())
 			{
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
@@ -215,11 +208,9 @@ class CountriesController extends AppController
 				$this->redirect(array("action"=>"SuccessAdd",$ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
-
-		$this->set(compact("aro_id_list"));
 	}
 
-	function Edit($ID=NULL,$page=1,$viewpage=50)
+  function Edit($ID=NULL,$page=1,$viewpage=50)
 	{
 		if(($ID == $this->super_admin_id && $this->profile["Admin"]["id"] != $this->super_admin_id) or $this->access[$this->aco_id]["_update"] != "1")
 		{
@@ -247,7 +238,6 @@ class CountriesController extends AppController
 		else
 		{
 			$this->{$this->ModelName}->set($this->data);
-
 			if($this->{$this->ModelName}->validates())
 			{
 				$save		=	$this->{$this->ModelName}->save($this->data,false);
@@ -290,7 +280,7 @@ class CountriesController extends AppController
 				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
 			}
 		}
-		$this->set(compact("ID","detail","aro_id_list","page","viewpage"));
+		$this->set(compact("ID","detail","aro_id_list","page","viewpage","matra_id_list"));
 	}
 
 	function View($ID=NULL)

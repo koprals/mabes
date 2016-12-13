@@ -552,15 +552,17 @@
 										</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Browse Photo</label>
+									<label class="col-md-3 col-xs-12 control-label">Photo</label>
 									<div class="col-md-6 col-xs-12">
-											<?php
-												echo $this->Form->input('images', array(
-													'type'					=> 	'file',
-													'class'					=>	'fileinput btn-primary',
-													'label'					=>	false,
-												));
-											?>
+										<?php
+											echo $this->Form->input('images', array(
+												'class'				=> 'fileinput btn-primary',
+												'label'				=> false,
+												"type"				=> "file",
+												"required"		=> "",
+												'title'				=> "Browse File"
+											));
+										?>
 											<span class="help-block">(Width: 300px, Height: 300px)</span>
 									</div>
 							</div>

@@ -14,17 +14,17 @@
 ?>
 
 <script>
-// function ChangeStatus(msg,id,status)
-// {
-// 	var a	=	confirm(msg);
-// 	if(a)
-// 	{
-// 		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
-// 			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
-// 		});
-// 	}
-// 	return false;
-// }
+function ChangeStatus(msg,id,status)
+{
+	var a	=	confirm(msg);
+	if(a)
+	{
+		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
+			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
+		});
+	}
+	return false;
+}
 
 function Delete(msg,id)
 {
@@ -134,6 +134,7 @@ function Delete(msg,id)
 								)
 							);
 						?>
+
 						<?php
 							echo $this->Paginator->numbers(array(
 								'separator'		=>	null,

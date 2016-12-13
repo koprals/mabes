@@ -250,9 +250,6 @@ class PersonelsController extends AppController
 									)
 								));
 
-		$this->{$this->ModelName}->BindDefault(false);
-		$this->{$this->ModelName}->BindImageContent();
-
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
@@ -300,7 +297,7 @@ class PersonelsController extends AppController
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 
-		$this->set(compact("aro_id_list"));
+		$this->set(compact("aro_id_list", "matra_id_list", "occupation_id_list", "corp_id_list", "countries_id_list", "study_program_id_list", "education_type_id_list"));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)
@@ -312,7 +309,7 @@ class PersonelsController extends AppController
 		}
 
 		$this->{$this->ModelName}->BindDefault(false);
-		//$this->{$this->ModelName}->BindImageContent();
+		$this->{$this->ModelName}->BindImageContent();
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID

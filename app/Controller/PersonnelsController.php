@@ -1,10 +1,10 @@
 <?php
-class PersonelsController extends AppController
+class PersonnelsController extends AppController
 {
-	var $ControllerName		=	"Personels";
-	var $ModelName			=	"Personel";
+	var $ControllerName		=	"Personnels";
+	var $ModelName			=	"Personnel";
 	var $helpers			=	array("Text","Aimfox");
-	var $uses				=	"Personel";
+	var $uses				=	"Personnel";
 
 	function beforeFilter()
 	{
@@ -17,7 +17,7 @@ class PersonelsController extends AppController
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("Personels")
+											"LOWER(MyAco.alias)"	=>	strtolower("Personnels")
 										)
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
@@ -60,10 +60,10 @@ class PersonelsController extends AppController
 									)
 								));
 		//DEFINE Study Program
-		$this->loadModel("StudyProgram");
-		$study_program_id_list		=	$this->StudyProgram->find("list",array(
+		$this->loadModel("ProgramStudy");
+		$study_program_id_list		=	$this->ProgramStudy->find("list",array(
 									"order"			=>	array(
-										"StudyProgram.name ASC"
+										"ProgramStudy.name ASC"
 									)
 								));
 		//DEFINE Jenis Pendidikan
@@ -97,11 +97,9 @@ class PersonelsController extends AppController
 
 		$this->loadModel($this->ModelName);
 		$this->{$this->ModelName}->VirtualFieldActivated();
-
-
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.fullname" => "ASC");
+		$order				=	array("{$this->ModelName}.created" => "ASC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -136,7 +134,8 @@ class PersonelsController extends AppController
 		$this->paginate		=	array(
 									"{$this->ModelName}"	=>	array(
 										"order"				=>	$order,
-										'limit'				=>	$viewpage
+										'limit'				=>	$viewpage,
+										'recursive'		=>	2
 									)
 								);
 
@@ -146,6 +145,7 @@ class PersonelsController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
+		debug($data);
 
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
@@ -236,10 +236,10 @@ class PersonelsController extends AppController
 									)
 								));
 		//DEFINE Study Program
-		$this->loadModel("StudyProgram");
-		$study_program_id_list		=	$this->StudyProgram->find("list",array(
+		$this->loadModel("ProgramStudy");
+		$study_program_id_list		=	$this->ProgramStudy->find("list",array(
 									"order"			=>	array(
-										"StudyProgram.name ASC"
+										"ProgramStudy.name ASC"
 									)
 								));
 		//DEFINE Jenis Pendidikan
@@ -308,8 +308,7 @@ class PersonelsController extends AppController
 			return;
 		}
 
-		$this->{$this->ModelName}->BindDefault(false);
-		$this->{$this->ModelName}->BindImageContent();
+		//this->{$this->ModelName}->BindDefault(false);
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID
@@ -352,10 +351,10 @@ class PersonelsController extends AppController
 									)
 								));
 		//DEFINE Study Program
-		$this->loadModel("StudyProgram");
-		$study_program_id_list		=	$this->StudyProgram->find("list",array(
+		$this->loadModel("ProgramStudy");
+		$study_program_id_list		=	$this->ProgramStudy->find("list",array(
 									"order"			=>	array(
-										"StudyProgram.name ASC"
+										"ProgramStudy.name ASC"
 									)
 								));
 		//DEFINE Jenis Pendidikan
@@ -365,15 +364,6 @@ class PersonelsController extends AppController
 										"EducationType.name ASC"
 									)
 								));
-		//DEFINE ARO LIST
-		/*
-		$this->loadModel("MyAro");
-		$this->MyAro->VirtualFieldActivated();
-		if($ID != $this->super_admin_id)
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-		else
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-		*/
 
 		if (empty($this->data))
 		{
@@ -382,8 +372,6 @@ class PersonelsController extends AppController
 		else
 		{
 			$this->{$this->ModelName}->set($this->data);
-			$this->{$this->ModelName}->ValidateEdit();
-
 			if($this->{$this->ModelName}->validates())
 			{
 				$save		=	$this->{$this->ModelName}->save($this->data,false);

@@ -61,34 +61,28 @@ function Delete(msg,id)
 														<?php echo $this->Paginator->sort("$ModelName.name",'Name Siswa');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'PANGKAT/KOPRS/NRP');?>
+														PANGKAT/KOPRS/NRP
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'KESATUAN/JABATAN');?>
+														<?php echo $this->Paginator->sort("$ModelName.personel_unity",'KESATUAN');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'NAMA PENDIDIKAN');?>
+														<?php echo $this->Paginator->sort("ProgramStudy.name",'NAMA PENDIDIKAN');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'NEGARA');?>
+														<?php echo $this->Paginator->sort("Country.name",'NEGARA');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'JENIS PENDIDIKAN');?>
+														<?php echo $this->Paginator->sort("EducationType.name",'JENIS PENDIDIKAN');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'BERANGKAT');?>
+														<?php echo $this->Paginator->sort("$ModelName.personel_course_depart",'BERANGKAT');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'KEMBALI');?>
+														<?php echo $this->Paginator->sort("$ModelName.personel_course_arrived",'KEMBALI');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'LAMA PENDIDIKAN');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'STATUS PENDIDIKAN');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.SStatus",'Status AKUN');?>
+														<?php echo $this->Paginator->sort("$ModelName.SStatus",'STATUS PENDIDIKAN');?>
 													</th>
 													<?php
 													if(
@@ -109,14 +103,14 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
-												<td><?php echo $data[$ModelName]['name'] ?></td>
-												<td><?php echo $data[$ModelName]['study_programs'] ?></td>
-												<td><?php echo $data['Countries']['name'] ?></td>
+												<td><?php echo $data[$ModelName]['personnel_name'] ?></td>
+												<td><?php echo $data[$ModelName]['personel_occupation'] ?>/<?php echo $data[$ModelName]['SCorps'] ?>/<?php echo $data[$ModelName]['personel_nrp'] ?></td>
+												<td><?php echo $data[$ModelName]['personel_unity'] ?>
+												<td><?php echo $data['ProgramStudy']['name'] ?></td>
+												<td><?php echo $data['Country']['name'] ?></td>
 												<td><?php echo $data['EducationType']['name'] ?></td>
-												<td><?php echo $data[$ModelName]['depart'] ?></td>
-												<td><?php echo $data[$ModelName]['arrived'] ?></td>
-												<td><?php echo 'masuk sini gk ' ?></td>
-												<td><?php echo $data[$ModelName]['education_status']['name'] ?></td>
+												<td><?php echo $data[$ModelName]['personel_course_depart'] ?></td>
+												<td><?php echo $data[$ModelName]['personel_course_arrived'] ?></td>
 												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
 												<?php
 												if(
@@ -162,7 +156,6 @@ function Delete(msg,id)
 								)
 							);
 						?>
-
 						<?php
 							echo $this->Paginator->numbers(array(
 								'separator'		=>	null,

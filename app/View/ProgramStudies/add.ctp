@@ -37,6 +37,38 @@
 										</div>
 							</div>
 							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Negara </label>
+									<div class="col-md-6 col-xs-12">
+												<?php
+													echo $this->Form->input('country_id', array(
+														'class'					=>	'form-control select',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+														'options'				=>  $list_country,
+														'empty'					=> "Pilih Negara",
+													));
+												?>
+										</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Jenis Pendidikan </label>
+									<div class="col-md-6 col-xs-12">
+												<?php
+													echo $this->Form->input('education_type_id', array(
+														'class'					=>	'form-control select',
+														'label'					=>	false,
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+														'options'				=>  $list_education,
+														'empty'					=> "Pilih Jenis Pendidikan",
+													));
+												?>
+										</div>
+							</div>
+							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">State</label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">

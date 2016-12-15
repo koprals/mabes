@@ -108,11 +108,13 @@ function Delete(msg,id)
 											<?php $count++;?>
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
-												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
-												<td><?php echo $data[$ModelName]['name'] ?></td>
+												<td class="text-center"><?php echo $no ?></td>
+												<td><a href="<?php echo $this->webroot ?>Personels/view/<?php echo $ts['Personel']['id'] ?>"><?php echo $data[$ModelName]['name'] ?></td>
 												<td><?php echo $data[$ModelName]['study_programs'] ?></td>
+												<td><?php echo $data[$ModelName]['unity'] ?></td>
+												<td><?php echo 'masuk lagi gk '//$data['EducationType']['name'] ?></td>
 												<td><?php echo $data['Countries']['name'] ?></td>
-												<td><?php echo $data['EducationType']['name'] ?></td>
+												<td><?php echo ''?></td>
 												<td><?php echo $data[$ModelName]['depart'] ?></td>
 												<td><?php echo $data[$ModelName]['arrived'] ?></td>
 												<td><?php echo 'masuk sini gk ' ?></td>

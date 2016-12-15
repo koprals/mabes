@@ -441,14 +441,10 @@ class PersonelsController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-		$this->{$this->ModelName}->BindImageBig(false);
+		//$this->{$this->ModelName}->BindImageBig(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
-		$detail = $this->{$this->ControllerName}->find('first', array(
-			'conditions' => array(
-				"{$this->ControllerName}.id"		=>	$ID
-			)
-		));
+		
 		if(empty($detail))
 		{
 			$this->layout	=	"ajax";
@@ -457,6 +453,7 @@ class PersonelsController extends AppController
 			return;
 		}
 		$this->set(compact("ID","detail"));
+		var_dump($detail);
 	}
 
 	function ChangeStatus($ID=NULL,$status)

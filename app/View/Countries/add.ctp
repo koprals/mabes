@@ -40,41 +40,6 @@
 											</div>
 										</div>
 							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Code</label>
-									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
-												<?php
-													echo $this->Form->input('sortname', array(
-														'type'					=>	'text',
-														'class'					=>	'form-control',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-													));
-												?>
-									</div>
-										</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Status</label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('status', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														'default'				=>	1,
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> array("0"=>"Not Active","1"=>"Active"),
-														'empty'					=> false,
-													));
-												?>
-										</div>
-							</div>
 							<div class="panel-footer center-button">
 								<input type="submit" value="Add" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

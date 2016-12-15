@@ -1,23 +1,23 @@
 <?php
-class CountriesController extends AppController
+class PersonnelsController extends AppController
 {
-	var $ControllerName		=	"Countries";
-	var $ModelName			=	"Country";
+	var $ControllerName		=	"Personnels";
+	var $ModelName			=	"Personnel";
 	var $helpers			=	array("Text","Aimfox");
-	var $uses				=	"Country";
+	var $uses				=	"Personnel";
 
 	function beforeFilter()
 	{
 		parent::beforeFilter();
 		$this->set("ControllerName",$this->ControllerName);
 		$this->set("ModelName",$this->ModelName);
-		$this->set('lft_menu_category_id',"10");
+		$this->set('lft_menu_category_id',"11");
 
 		//CHECK PRIVILEGES
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("Country")
+											"LOWER(MyAco.alias)"	=>	strtolower("Personnels")
 										)
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
@@ -31,6 +31,48 @@ class CountriesController extends AppController
 			$this->layout	=	"no_access";
 			return;
 		}
+		//DEFINE MATRA
+		$this->loadModel("Matra");
+		$matra_id_list		=	$this->Matra->find("list",array(
+									"order"			=>	array(
+										"Matra.name ASC"
+									)
+								));
+		//DEFINE PANGKAT
+		$this->loadModel("Occupation");
+		$occupation_id_list		=	$this->Occupation->find("list",array(
+									"order"			=>	array(
+										"Occupation.name ASC"
+									)
+								));
+		//DEFINE CORPS
+		$this->loadModel("Corp");
+		$corp_id_list		=	$this->Corp->find("list",array(
+									"order"			=>	array(
+										"Corp.name ASC"
+									)
+								));
+		//DEFINE NEGARA
+		$this->loadModel("Countries");
+		$countries_id_list		=	$this->Countries->find("list",array(
+									"order"			=>	array(
+										"Countries.name ASC"
+									)
+								));
+		//DEFINE Study Program
+		$this->loadModel("ProgramStudy");
+		$study_program_id_list		=	$this->ProgramStudy->find("list",array(
+									"order"			=>	array(
+										"ProgramStudy.name ASC"
+									)
+								));
+		//DEFINE Jenis Pendidikan
+		$this->loadModel("EducationType");
+		$education_type_id_list		=	$this->EducationType->find("list",array(
+									"order"			=>	array(
+										"EducationType.name ASC"
+									)
+								));
 
 		$this->Session->delete("Search.".$this->ControllerName);
 		$this->Session->delete('Search.'.$this->ControllerName.'Operand');
@@ -39,7 +81,7 @@ class CountriesController extends AppController
 		$this->Session->delete('Search.'.$this->ControllerName.'Page');
 		$this->Session->delete('Search.'.$this->ControllerName.'Conditions');
 		$this->Session->delete('Search.'.$this->ControllerName.'parent_id');
-		$this->set(compact("page","viewpage"));
+		$this->set(compact("page","viewpage","matra_id_list","occupation_id_list","corp_id_list","countries_id_list","study_program_id_list","education_type_id_list"));
 	}
 
 	function ListItem()
@@ -54,9 +96,10 @@ class CountriesController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
+		$this->{$this->ModelName}->VirtualFieldActivated();
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.name" => "ASC");
+		$order				=	array("{$this->ModelName}.created" => "ASC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -91,7 +134,8 @@ class CountriesController extends AppController
 		$this->paginate		=	array(
 									"{$this->ModelName}"	=>	array(
 										"order"				=>	$order,
-										'limit'				=>	$viewpage
+										'limit'				=>	$viewpage,
+										'recursive'		=>	2
 									)
 								);
 
@@ -101,6 +145,7 @@ class CountriesController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
+		debug($data);
 
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
@@ -161,20 +206,56 @@ class CountriesController extends AppController
 			return;
 		}
 
-		//DEFINE NEWS CATEGORY
-		$this->loadModel("MyAro");
-		//$this->MyAro->VirtualFieldActivated();
-		if(isset($ID) && $ID != $this->super_admin_id)
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-		else
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
+		//DEFINE MATRA
+		$this->loadModel("Matra");
+		$matra_id_list		=	$this->Matra->find("list",array(
+									"order"			=>	array(
+										"Matra.name ASC"
+									)
+								));
+
+		//DEFINE PANGKAT
+		$this->loadModel("Occupation");
+		$occupation_id_list		=	$this->Occupation->find("list",array(
+									"order"			=>	array(
+										"Occupation.name ASC"
+									)
+								));
+		//DEFINE PANGKAT
+		$this->loadModel("Corp");
+		$corp_id_list		=	$this->Corp->find("list",array(
+									"order"			=>	array(
+										"Corp.name ASC"
+									)
+								));
+		//DEFINE NEGARA
+		$this->loadModel("Country");
+		$countries_id_list		=	$this->Country->find("list",array(
+									"order"			=>	array(
+										"Country.name ASC"
+									)
+								));
+		//DEFINE Study Program
+		$this->loadModel("ProgramStudy");
+		$study_program_id_list		=	$this->ProgramStudy->find("list",array(
+									"order"			=>	array(
+										"ProgramStudy.name ASC"
+									)
+								));
+		//DEFINE Jenis Pendidikan
+		$this->loadModel("EducationType");
+		$education_type_id_list		=	$this->EducationType->find("list",array(
+									"order"			=>	array(
+										"EducationType.name ASC"
+									)
+								));
 
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
-			//$this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())
 			{
+				Configure::write('debug',2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
@@ -182,15 +263,15 @@ class CountriesController extends AppController
 				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
 				{
 					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp								=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
+					$tmp									=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["images"]["type"];
 
 					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
 						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
 
-					$ext								=	pathinfo($tmp_name,PATHINFO_EXTENSION);
-					$tmp_file_name						=	md5(time());
-					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
+					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images1_img			=	$path_tmp.$tmp_file_name.".".$ext;
 					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
 					if($upload)
 					{
@@ -216,7 +297,7 @@ class CountriesController extends AppController
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 
-		$this->set(compact("aro_id_list"));
+		$this->set(compact("aro_id_list", "matra_id_list", "occupation_id_list", "corp_id_list", "countries_id_list", "study_program_id_list", "education_type_id_list"));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)
@@ -227,6 +308,7 @@ class CountriesController extends AppController
 			return;
 		}
 
+		//this->{$this->ModelName}->BindDefault(false);
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID
@@ -240,6 +322,49 @@ class CountriesController extends AppController
 			return;
 		}
 
+		//DEFINE MATRA
+		$this->loadModel("Matra");
+		$matra_id_list		=	$this->Matra->find("list",array(
+									"order"			=>	array(
+										"Matra.name ASC"
+									)
+								));
+		//DEFINE PANGKAT
+		$this->loadModel("Occupation");
+		$occupation_id_list		=	$this->Occupation->find("list",array(
+									"order"			=>	array(
+										"Occupation.name ASC"
+									)
+								));
+		//DEFINE CORPS
+		$this->loadModel("Corp");
+		$corp_id_list		=	$this->Corp->find("list",array(
+									"order"			=>	array(
+										"Corp.name ASC"
+									)
+								));
+		//DEFINE NEGARA
+		$this->loadModel("Countries");
+		$countries_id_list		=	$this->Countries->find("list",array(
+									"order"			=>	array(
+										"Countries.name ASC"
+									)
+								));
+		//DEFINE Study Program
+		$this->loadModel("ProgramStudy");
+		$study_program_id_list		=	$this->ProgramStudy->find("list",array(
+									"order"			=>	array(
+										"ProgramStudy.name ASC"
+									)
+								));
+		//DEFINE Jenis Pendidikan
+		$this->loadModel("EducationType");
+		$education_type_id_list		=	$this->EducationType->find("list",array(
+									"order"			=>	array(
+										"EducationType.name ASC"
+									)
+								));
+
 		if (empty($this->data))
 		{
 			$this->data = $detail;
@@ -247,7 +372,6 @@ class CountriesController extends AppController
 		else
 		{
 			$this->{$this->ModelName}->set($this->data);
-
 			if($this->{$this->ModelName}->validates())
 			{
 				$save		=	$this->{$this->ModelName}->save($this->data,false);
@@ -290,7 +414,7 @@ class CountriesController extends AppController
 				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
 			}
 		}
-		$this->set(compact("ID","detail","aro_id_list","page","viewpage"));
+		$this->set(compact("ID","detail","aro_id_list","page","viewpage","matra_id_list","occupation_id_list","corp_id_list","countries_id_list","study_program_id_list","education_type_id_list"));
 	}
 
 	function View($ID=NULL)
@@ -302,14 +426,10 @@ class CountriesController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-		$this->{$this->ModelName}->BindImageBig(false);
+		//$this->{$this->ModelName}->BindImageBig(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
-		$detail = $this->{$this->ControllerName}->find('first', array(
-			'conditions' => array(
-				"{$this->ControllerName}.id"		=>	$ID
-			)
-		));
+		
 		if(empty($detail))
 		{
 			$this->layout	=	"ajax";
@@ -318,6 +438,7 @@ class CountriesController extends AppController
 			return;
 		}
 		$this->set(compact("ID","detail"));
+		var_dump($detail);
 	}
 
 	function ChangeStatus($ID=NULL,$status)
@@ -360,33 +481,42 @@ class CountriesController extends AppController
 
 	function Delete($ID=NULL)
 	{
-		if($this->access[$this->aco_id]["_delete"] != "1")
+		if(
+			$this->access[$this->aco_id]["_delete"] != "1"
+				or
+			($this->super_admin_id != $this->profile["Admin"]["id"] && $ID == $this->super_admin_id)
+		)
 		{
-			echo json_encode(array("data"=>array("status" => "0","message"=>"No privileges")));
+			echo json_encode(array("data"=>array("message"=>"No privileges")));
 			$this->autoRender	=	false;
 			return;
 		}
+
+		if($ID == $this->profile["Admin"]["id"])
+		{
+			echo json_encode(array("data"=>array("message"=>"Cannot delete your self")));
+			$this->autoRender	=	false;
+			return;
+		}
+
 
 		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
 				"{$this->ModelName}.id"		=>	$ID
 			)
 		));
-		$resultStatus		=	"0";
 
 		if(empty($detail))
 		{
-			$message		=	"Item not found.";
-			$resultStatus	=	"0";
+			$message	=	"Item not found.";
 		}
 		else
 		{
-			$this->{$this->ModelName}->delete($ID,false);
-			$message		=	"Data has deleted.";
-			$resultStatus	=	"1";
+			//$this->{$this->ModelName}->delete($ID,false);
+			$message	=	"Data has deleted.";
 		}
 
-		echo json_encode(array("data"=>array("status" => $resultStatus ,"message"=>$message)));
+		echo json_encode(array("data"=>array("message"=>$message)));
 		$this->autoRender	=	false;
 	}
 

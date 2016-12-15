@@ -27,6 +27,13 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
+													echo $this->Form->input('id', array(
+														'type'					=>	'hidden',
+														'class'					=>	'form-control select',
+														'label'					=>	false,
+													));
+												?>
+												<?php
 													echo $this->Form->input('name', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control select',
@@ -36,41 +43,8 @@
 											</div>
 										</div>
 							</div>
-							<!-- <div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Kategori Program Studi</label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('study_program_category_id', array(
-														'type'					=>	'hidden',
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=>  $list_category,
-														'empty'					=>  NULL,
-													));
-												?>
-										</div>
-							</div> -->
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Jenis Pendidikan</label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('education_type_id', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> $list_education,
-														'empty'					=> "Pilih Jenis Pendidikan",
-													));
-												?>
-										</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Negara</label>
+								<label class="col-md-3 col-xs-12 control-label">Negara <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('country_id', array(
@@ -79,28 +53,43 @@
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
-														'options'				=> $list_country,
-														'empty'					=> "Pilih Negara",
+														'options'				=>  $list_country,
+														'empty'					=> "Pilih Matra",
 													));
 												?>
 										</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">State</label>
+								<label class="col-md-3 col-xs-12 control-label">Jenis Pendidikan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('state_id', array(
+													echo $this->Form->input('education_type_id', array(
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
-														'options'				=> $list_state,
-														'empty'					=> "Pilih State",
+														'options'				=>  $list_education,
+														'empty'					=> "Pilih Matra",
 													));
 												?>
 										</div>
 							</div>
+								<div class="form-group">
+									<label class="col-md-3 col-xs-12 control-label">State</label>
+										<div class="col-md-6 col-xs-12">
+											<div class="input-group">
+													<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+													<?php
+														echo $this->Form->input('state', array(
+															'type'					=>	'text',
+															'class'					=>	'form-control select',
+															'label'					=>	false,
+														));
+													?>
+												</div>
+											</div>
+								</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Address</label>
 									<div class="col-md-6 col-xs-12">
@@ -111,23 +100,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-													));
-												?>
-										</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Status</label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('status', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														'default'				=>	1,
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> array("0"=>"Not Active","1"=>"Active"),
-														'empty'					=> false,
 													));
 												?>
 										</div>

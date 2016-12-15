@@ -45,23 +45,6 @@
 										</div>
 									</div>
 							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Description</label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('status', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														'default'				=>	1,
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> array("0"=>"Not Active","1"=>"Active"),
-														'empty'					=> false,
-													));
-												?>
-									</div>
-							</div>
 							<div class="panel-footer center-button">
 								<input type="submit" value="Edit" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

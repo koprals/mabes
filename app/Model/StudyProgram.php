@@ -2,6 +2,7 @@
 App::uses('Sanitize','Utility');
 class StudyProgram extends AppModel
 {
+	public $uses = "ProgramStudy";
 	public $name = "StudyProgram";
 
 	public $belongsTo = array(

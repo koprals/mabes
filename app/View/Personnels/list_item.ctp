@@ -14,35 +14,25 @@
 ?>
 
 <script>
-// function ChangeStatus(msg,id,status)
-// {
-// 	var a	=	confirm(msg);
-// 	if(a)
-// 	{
-// 		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
-// 			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
-// 		});
-// 	}
-// 	return false;
-// }
+function ChangeStatus(msg,id,status)
+{
+	var a	=	confirm(msg);
+	if(a)
+	{
+		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
+			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
+		});
+	}
+	return false;
+}
 
 function Delete(msg,id)
 {
 	var a	=	confirm(msg);
 	if(a)
 	{
-		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/Delete/"+id,function(result){
-			alert(result.data.message);
-			if(result.data.status == "1")
-			{
-				$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>",function(){
-					$("#view, input:checkbox, #action").uniform();
-					$('.tipS').tipsy({gravity: 's',fade: true});
-					$("a[rel^='lightbox']").prettyPhoto({
-						social_tools :''
-					});
-				});
-			}
+		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/Delete/"+id,function(){
+			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
 		});
 	}
 	return false;
@@ -50,7 +40,7 @@ function Delete(msg,id)
 </script>
 <div class="row">
 	<div class="col-md-12">
-		<div class="panel panel-info">
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="dataTables_length" id="DataTables_Table_0_length ">
 					<label>Show Entries</label>
@@ -64,11 +54,35 @@ function Delete(msg,id)
 							<table class="table table-bordered table-striped table-actions">
 									<thead>
 											<tr>
-													<th width="50">
-														No
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.id",'NO');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
+														<?php echo $this->Paginator->sort("$ModelName.name",'Name Siswa');?>
+													</th>
+													<th>
+														PANGKAT/KOPRS/NRP
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.personel_unity",'KESATUAN');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("ProgramStudy.name",'NAMA PENDIDIKAN');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("Country.name",'NEGARA');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("EducationType.name",'JENIS PENDIDIKAN');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.personel_course_depart",'BERANGKAT');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.personel_course_arrived",'KEMBALI');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("$ModelName.SStatus",'STATUS PENDIDIKAN');?>
 													</th>
 													<?php
 													if(
@@ -76,7 +90,7 @@ function Delete(msg,id)
 														$access[$aco_id]["_delete"] == 1
 													):
 													?>
-													<th width="120" class="text-center">
+													<th width="120">
 														actions
 													</th>
 													<?php endif;?>
@@ -88,8 +102,30 @@ function Delete(msg,id)
 											<?php $count++;?>
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
+<<<<<<< HEAD:app/View/Personels/list_item.ctp
 												<td class="text-center"><?php echo $no ?></td>
-												<td><?php echo $data[$ModelName]['name'] ?></td>
+												<td><a href="<?php echo $this->webroot ?>Personels/view/<?php echo $ts['Personel']['id'] ?>"><?php echo $data[$ModelName]['name'] ?></td>
+												<td><?php echo $data[$ModelName]['study_programs'] ?></td>
+												<td><?php echo $data[$ModelName]['unity'] ?></td>
+												<td><?php echo 'masuk lagi gk '//$data['EducationType']['name'] ?></td>
+												<td><?php echo $data['Countries']['name'] ?></td>
+												<td><?php echo ''?></td>
+												<td><?php echo $data[$ModelName]['depart'] ?></td>
+												<td><?php echo $data[$ModelName]['arrived'] ?></td>
+												<td><?php echo 'masuk sini gk ' ?></td>
+												<td><?php echo $data[$ModelName]['education_status']['name'] ?></td>
+=======
+												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
+												<td><?php echo $data[$ModelName]['personnel_name'] ?></td>
+												<td><?php echo $data[$ModelName]['personel_occupation'] ?>/<?php echo $data[$ModelName]['SCorps'] ?>/<?php echo $data[$ModelName]['personel_nrp'] ?></td>
+												<td><?php echo $data[$ModelName]['personel_unity'] ?>
+												<td><?php echo $data['ProgramStudy']['name'] ?></td>
+												<td><?php echo $data['Country']['name'] ?></td>
+												<td><?php echo $data['EducationType']['name'] ?></td>
+												<td><?php echo $data[$ModelName]['personel_course_depart'] ?></td>
+												<td><?php echo $data[$ModelName]['personel_course_arrived'] ?></td>
+>>>>>>> 256c92bdbf608dd3d527a4814c4d61185f991c39:app/View/Personnels/list_item.ctp
+												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or
@@ -103,7 +139,7 @@ function Delete(msg,id)
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
+															<a href="<?php echo $settings['cms_url'].$ControllerName?>/Delete/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-danger btn-condensed" title="Access Control">
 																<span class="fa fa-times"></span>
 															</a>
 													<?php endif;?>
@@ -154,12 +190,6 @@ function Delete(msg,id)
 								)
 							);
 						?>
-						<!--li class="disabled"><a href="#"></a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">»</a></li-->
 					</ul>
 					<?php endif;?>
 				</div>

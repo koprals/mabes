@@ -31,8 +31,18 @@ function Delete(msg,id)
 	var a	=	confirm(msg);
 	if(a)
 	{
-		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/Delete/"+id,function(){
-			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
+		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/Delete/"+id,function(result){
+			alert(result.data.message);
+			if(result.data.status == "1")
+			{
+				$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>",function(){
+					$("#view, input:checkbox, #action").uniform();
+					$('.tipS').tipsy({gravity: 's',fade: true});
+					$("a[rel^='lightbox']").prettyPhoto({
+						social_tools :''
+					});
+				});
+			}
 		});
 	}
 	return false;
@@ -40,7 +50,7 @@ function Delete(msg,id)
 </script>
 <div class="row">
 	<div class="col-md-12">
-		<div class="panel panel-default">
+		<div class="panel panel-info">
 			<div class="panel-heading">
 				<div class="dataTables_length" id="DataTables_Table_0_length ">
 					<label>Show Entries</label>
@@ -54,41 +64,11 @@ function Delete(msg,id)
 							<table class="table table-bordered table-striped table-actions">
 									<thead>
 											<tr>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.id",'NO');?>
+													<th width="50">
+														No
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.name",'Name Siswa');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'PANGKAT/KOPRS/NRP');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'KESATUAN/JABATAN');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'NAMA PENDIDIKAN');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'NEGARA');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'JENIS PENDIDIKAN');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'BERANGKAT');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'KEMBALI');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'LAMA PENDIDIKAN');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'STATUS PENDIDIKAN');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.SStatus",'Status AKUN');?>
+														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
 													</th>
 													<?php
 													if(
@@ -96,7 +76,7 @@ function Delete(msg,id)
 														$access[$aco_id]["_delete"] == 1
 													):
 													?>
-													<th width="120">
+													<th width="120" class="text-center">
 														actions
 													</th>
 													<?php endif;?>
@@ -109,17 +89,7 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
-												<td><a href="<?php echo $this->webroot ?>Personels/view/<?php echo $ts['Personel']['id'] ?>"><?php echo $data[$ModelName]['name'] ?></td>
-												<td><?php echo $data[$ModelName]['study_programs'] ?></td>
-												<td><?php echo $data[$ModelName]['unity'] ?></td>
-												<td><?php echo 'masuk lagi gk '//$data['EducationType']['name'] ?></td>
-												<td><?php echo $data['Countries']['name'] ?></td>
-												<td><?php echo ''?></td>
-												<td><?php echo $data[$ModelName]['depart'] ?></td>
-												<td><?php echo $data[$ModelName]['arrived'] ?></td>
-												<td><?php echo 'masuk sini gk ' ?></td>
-												<td><?php echo $data[$ModelName]['education_status']['name'] ?></td>
-												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
+												<td><?php echo $data[$ModelName]['name'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or
@@ -133,7 +103,7 @@ function Delete(msg,id)
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-															<a href="<?php echo $settings['cms_url'].$ControllerName?>/Delete/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-danger btn-condensed" title="Access Control">
+															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
 																<span class="fa fa-times"></span>
 															</a>
 													<?php endif;?>
@@ -185,6 +155,12 @@ function Delete(msg,id)
 								)
 							);
 						?>
+						<!--li class="disabled"><a href="#"></a></li>
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">»</a></li-->
 					</ul>
 					<?php endif;?>
 				</div>

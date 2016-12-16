@@ -161,20 +161,13 @@ class CountriesController extends AppController
 			return;
 		}
 
-		//DEFINE NEWS CATEGORY
-		$this->loadModel("MyAro");
-		//$this->MyAro->VirtualFieldActivated();
-		if(isset($ID) && $ID != $this->super_admin_id)
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.parent_id IS NOT NULL AND MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-		else
-			$aro_id_list	=	$this->MyAro->generateTreeList("MyAro.status = 1","{n}.MyAro.id","{n}.MyAro.alias_name");
-
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
 			//$this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())
 			{
+				//Configure::write('debug', 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
@@ -229,7 +222,7 @@ class CountriesController extends AppController
 
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
-										"{$this->ModelName}.id"		=>	$ID
+										"{$this->ModelName}.id_country"		=>	$ID
 									)
 								));
 
@@ -394,7 +387,7 @@ class CountriesController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id"		=> $ID
+				"{$this->ModelName}.id_country"		=> $ID
 			)
 		));
 		if(empty($data))
@@ -409,7 +402,7 @@ class CountriesController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id" 		=> $ID
+				"{$this->ModelName}.id_country" 		=> $ID
 			)
 		));
 

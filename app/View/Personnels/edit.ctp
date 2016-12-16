@@ -17,7 +17,7 @@
 			<div class="col-md-12">
 				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Edit", $ID,$page,$viewpage),'class' => 'form-horizontal',"type"=>"file")); ?>
 						<?php
-							echo $this->Form->input('id', array(
+							echo $this->Form->input('id_personnel', array(
 								'type'			=>	'hidden',
 								'readonly'		=>	'readonly'
 							));

@@ -27,7 +27,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('name', array(
+													echo $this->Form->input('edu_type', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,

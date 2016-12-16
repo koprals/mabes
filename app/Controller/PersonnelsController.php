@@ -22,6 +22,52 @@ class PersonnelsController extends AppController
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
+
+		// //DEFINE MATRA
+		// $this->loadModel("Matra");
+		// $matra_list		=	$this->Matra->find("list",array(
+		// 							"order"			=>	array(
+		// 								"Matra.name ASC"
+		// 							)
+		// 						));
+		//
+		// //DEFINE PANGKAT
+		// $this->loadModel("Occupation");
+		// $occupation_list		=	$this->Occupation->find("list",array(
+		// 							"order"			=>	array(
+		// 								"Occupation.name ASC"
+		// 							)
+		// 						));
+		// //DEFINE PANGKAT
+		// $this->loadModel("Corp");
+		// $corp_list		=	$this->Corp->find("list",array(
+		// 							"order"			=>	array(
+		// 								"Corp.name ASC"
+		// 							)
+		// 						));
+		// //DEFINE NEGARA
+		// $this->loadModel("Country");
+		// $countries_list		=	$this->Country->find("list",array(
+		// 							"order"			=>	array(
+		// 								"Country.name ASC"
+		// 							)
+		// 						));
+		// //DEFINE Study Program
+		// $this->loadModel("ProgramStudy");
+		// $study_program_list		=	$this->ProgramStudy->find("list",array(
+		// 							"order"			=>	array(
+		// 								"ProgramStudy.name ASC"
+		// 							)
+		// 						));
+		// //DEFINE Jenis Pendidikan
+		// $this->loadModel("EducationType");
+		// $education_type_list		=	$this->EducationType->find("list",array(
+		// 							"order"			=>	array(
+		// 								"EducationType.name ASC"
+		// 							)
+		// 						));
+		//
+		// $this->set(compact("matra_list","occupation_list","corp_list","countries_list","study_program_list","education_type_list"));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -31,48 +77,6 @@ class PersonnelsController extends AppController
 			$this->layout	=	"no_access";
 			return;
 		}
-		//DEFINE MATRA
-		$this->loadModel("Matra");
-		$matra_id_list		=	$this->Matra->find("list",array(
-									"order"			=>	array(
-										"Matra.name ASC"
-									)
-								));
-		//DEFINE PANGKAT
-		$this->loadModel("Occupation");
-		$occupation_id_list		=	$this->Occupation->find("list",array(
-									"order"			=>	array(
-										"Occupation.name ASC"
-									)
-								));
-		//DEFINE CORPS
-		$this->loadModel("Corp");
-		$corp_id_list		=	$this->Corp->find("list",array(
-									"order"			=>	array(
-										"Corp.name ASC"
-									)
-								));
-		//DEFINE NEGARA
-		$this->loadModel("Countries");
-		$countries_id_list		=	$this->Countries->find("list",array(
-									"order"			=>	array(
-										"Countries.name ASC"
-									)
-								));
-		//DEFINE Study Program
-		$this->loadModel("ProgramStudy");
-		$study_program_id_list		=	$this->ProgramStudy->find("list",array(
-									"order"			=>	array(
-										"ProgramStudy.name ASC"
-									)
-								));
-		//DEFINE Jenis Pendidikan
-		$this->loadModel("EducationType");
-		$education_type_id_list		=	$this->EducationType->find("list",array(
-									"order"			=>	array(
-										"EducationType.name ASC"
-									)
-								));
 
 		$this->Session->delete("Search.".$this->ControllerName);
 		$this->Session->delete('Search.'.$this->ControllerName.'Operand');
@@ -81,7 +85,7 @@ class PersonnelsController extends AppController
 		$this->Session->delete('Search.'.$this->ControllerName.'Page');
 		$this->Session->delete('Search.'.$this->ControllerName.'Conditions');
 		$this->Session->delete('Search.'.$this->ControllerName.'parent_id');
-		$this->set(compact("page","viewpage","matra_id_list","occupation_id_list","corp_id_list","countries_id_list","study_program_id_list","education_type_id_list"));
+		$this->set(compact("page","viewpage"));
 	}
 
 	function ListItem()
@@ -206,50 +210,6 @@ class PersonnelsController extends AppController
 			return;
 		}
 
-		//DEFINE MATRA
-		$this->loadModel("Matra");
-		$matra_id_list		=	$this->Matra->find("list",array(
-									"order"			=>	array(
-										"Matra.name ASC"
-									)
-								));
-
-		//DEFINE PANGKAT
-		$this->loadModel("Occupation");
-		$occupation_id_list		=	$this->Occupation->find("list",array(
-									"order"			=>	array(
-										"Occupation.name ASC"
-									)
-								));
-		//DEFINE PANGKAT
-		$this->loadModel("Corp");
-		$corp_id_list		=	$this->Corp->find("list",array(
-									"order"			=>	array(
-										"Corp.name ASC"
-									)
-								));
-		//DEFINE NEGARA
-		$this->loadModel("Country");
-		$countries_id_list		=	$this->Country->find("list",array(
-									"order"			=>	array(
-										"Country.name ASC"
-									)
-								));
-		//DEFINE Study Program
-		$this->loadModel("ProgramStudy");
-		$study_program_id_list		=	$this->ProgramStudy->find("list",array(
-									"order"			=>	array(
-										"ProgramStudy.name ASC"
-									)
-								));
-		//DEFINE Jenis Pendidikan
-		$this->loadModel("EducationType");
-		$education_type_id_list		=	$this->EducationType->find("list",array(
-									"order"			=>	array(
-										"EducationType.name ASC"
-									)
-								));
-
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
@@ -296,8 +256,6 @@ class PersonnelsController extends AppController
 				$this->redirect(array("action"=>"SuccessAdd",$ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
-
-		$this->set(compact("aro_id_list", "matra_id_list", "occupation_id_list", "corp_id_list", "countries_id_list", "study_program_id_list", "education_type_id_list"));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)
@@ -308,10 +266,9 @@ class PersonnelsController extends AppController
 			return;
 		}
 
-		//this->{$this->ModelName}->BindDefault(false);
-		$detail 			=	$this->{$this->ModelName}->find('first', array(
+		$detail =	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
-										"{$this->ModelName}.id"		=>	$ID
+										"{$this->ModelName}.id_personnel"		=>	$ID
 									)
 								));
 
@@ -321,49 +278,6 @@ class PersonnelsController extends AppController
 			$this->render("/errors/error404");
 			return;
 		}
-
-		//DEFINE MATRA
-		$this->loadModel("Matra");
-		$matra_id_list		=	$this->Matra->find("list",array(
-									"order"			=>	array(
-										"Matra.name ASC"
-									)
-								));
-		//DEFINE PANGKAT
-		$this->loadModel("Occupation");
-		$occupation_id_list		=	$this->Occupation->find("list",array(
-									"order"			=>	array(
-										"Occupation.name ASC"
-									)
-								));
-		//DEFINE CORPS
-		$this->loadModel("Corp");
-		$corp_id_list		=	$this->Corp->find("list",array(
-									"order"			=>	array(
-										"Corp.name ASC"
-									)
-								));
-		//DEFINE NEGARA
-		$this->loadModel("Countries");
-		$countries_id_list		=	$this->Countries->find("list",array(
-									"order"			=>	array(
-										"Countries.name ASC"
-									)
-								));
-		//DEFINE Study Program
-		$this->loadModel("ProgramStudy");
-		$study_program_id_list		=	$this->ProgramStudy->find("list",array(
-									"order"			=>	array(
-										"ProgramStudy.name ASC"
-									)
-								));
-		//DEFINE Jenis Pendidikan
-		$this->loadModel("EducationType");
-		$education_type_id_list		=	$this->EducationType->find("list",array(
-									"order"			=>	array(
-										"EducationType.name ASC"
-									)
-								));
 
 		if (empty($this->data))
 		{
@@ -414,7 +328,7 @@ class PersonnelsController extends AppController
 				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
 			}
 		}
-		$this->set(compact("ID","detail","aro_id_list","page","viewpage","matra_id_list","occupation_id_list","corp_id_list","countries_id_list","study_program_id_list","education_type_id_list"));
+		$this->set(compact("ID","detail","aro_id_list","page","viewpage"));
 	}
 
 	function View($ID=NULL)
@@ -426,10 +340,9 @@ class PersonnelsController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-		//$this->{$this->ModelName}->BindImageBig(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
-		
+
 		if(empty($detail))
 		{
 			$this->layout	=	"ajax";
@@ -524,7 +437,7 @@ class PersonnelsController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id"		=> $ID
+				"{$this->ModelName}.id_personnel"		=> $ID
 			)
 		));
 		if(empty($data))
@@ -539,7 +452,7 @@ class PersonnelsController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id" 		=> $ID
+				"{$this->ModelName}.id_personnel" 		=> $ID
 			)
 		));
 

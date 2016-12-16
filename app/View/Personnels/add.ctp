@@ -185,57 +185,9 @@
 										</div>
 									</div>
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
                 	<label class="col-md-6 col-xs-12 control-label"><h5>Pendidikan</h5></label>
-              </div>
-              <div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Negara <span style="color:red;">(*)</span></label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('country_id', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> $countries_id_list,
-														'empty'					=> "Pilih Negara",
-													));
-												?>
-										</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Jenis Pendidikan <span style="color:red;">(*)</span></label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('education_type_id', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> $education_type_id_list,
-														'empty'					=> "Pilih Jenis Pendidikan",
-													));
-												?>
-										</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Nama Pendidikan <span style="color:red;">(*)</span></label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('program_study_id', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> $study_program_id_list,
-														'empty'					=> "Pilih Nama Pendidikan",
-													));
-												?>
-										</div>
-							</div>
+              </div> -->
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Berangkat <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">

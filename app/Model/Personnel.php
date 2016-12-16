@@ -3,9 +3,9 @@ class Personnel extends AppModel
 {
 public $name = "Personnel";
 
-public $belongsTo	=	array(
-	'Country', 'ProgramStudy', 'EducationType'
-);
+// public $belongsTo	=	array(
+// 	'Country', 'ProgramStudy', 'EducationType'
+// );
 
 	// public $validate 	= array(
 	// 	'id' => array(

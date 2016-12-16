@@ -90,7 +90,7 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
-												<td><?php echo $data[$ModelName]['name'] ?></td>
+												<td><?php echo $data[$ModelName]['edu_type'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or

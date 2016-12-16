@@ -68,7 +68,7 @@ function Delete(msg,id)
 														No
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
+														<?php echo $this->Paginator->sort("$ModelName.edu_name",'Name');?>
 													</th>
 													<?php
 													if(
@@ -89,7 +89,7 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
-												<td><?php echo $data[$ModelName]['name'] ?></td>
+												<td><?php echo $data[$ModelName]['edu_name'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or

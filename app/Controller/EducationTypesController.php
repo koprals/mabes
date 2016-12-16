@@ -182,7 +182,7 @@ class EducationTypesController extends AppController
 			{
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
-
+				var_dump($ID);
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
 				{
@@ -231,10 +231,9 @@ class EducationTypesController extends AppController
 		}
 
 		$this->{$this->ModelName}->BindDefault(false);
-		//$this->{$this->ModelName}->BindImageContent();
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
-										"{$this->ModelName}.id"		=>	$ID
+										"{$this->ModelName}.id_edu_type"		=>	$ID
 									)
 								));
 
@@ -252,8 +251,6 @@ class EducationTypesController extends AppController
 		else
 		{
 			$this->{$this->ModelName}->set($this->data);
-			//$this->{$this->ModelName}->ValidateEdit();
-
 			if($this->{$this->ModelName}->validates())
 			{
 				$save		=	$this->{$this->ModelName}->save($this->data,false);
@@ -393,7 +390,7 @@ class EducationTypesController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id"		=> $ID
+				"{$this->ModelName}.id_edu_type"		=> $ID
 			)
 		));
 		if(empty($data))
@@ -408,7 +405,7 @@ class EducationTypesController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id" 		=> $ID
+				"{$this->ModelName}.id_edu_type" 		=> $ID
 			)
 		));
 

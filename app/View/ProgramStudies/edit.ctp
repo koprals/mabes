@@ -34,7 +34,7 @@
 													));
 												?>
 												<?php
-													echo $this->Form->input('name', array(
+													echo $this->Form->input('edu_name', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control select',
 														'label'					=>	false,

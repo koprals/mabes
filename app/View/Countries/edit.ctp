@@ -27,7 +27,7 @@
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 															<?php
-																echo $this->Form->input('id', array(
+																echo $this->Form->input('id_country', array(
 																	'type'					=>	'hidden',
 																	'class'					=>	'form-control',
 																	'label'					=>	false,
@@ -37,7 +37,7 @@
 																));
 															?>
 															<?php
-																echo $this->Form->input('name', array(
+																echo $this->Form->input('country_name', array(
 																	'type'					=>	'text',
 																	'class'					=>	'form-control',
 																	'label'					=>	false,

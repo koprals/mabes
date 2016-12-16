@@ -27,74 +27,13 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('name', array(
+													echo $this->Form->input('edu_name', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
 													));
 												?>
 											</div>
-										</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Negara </label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('country_id', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=>  $list_country,
-														'empty'					=> "Pilih Negara",
-													));
-												?>
-										</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Jenis Pendidikan </label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('education_type_id', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=>  $list_education,
-														'empty'					=> "Pilih Jenis Pendidikan",
-													));
-												?>
-										</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">State</label>
-									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
-												<?php
-													echo $this->Form->input('state', array(
-														'type'					=>	'text',
-														'class'					=>	'form-control',
-														'label'					=>	false,
-													));
-												?>
-											</div>
-										</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Address</label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('address', array(
-														'type'					=> 'textarea',
-														'class'					=>	'form-control',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-													));
-												?>
 										</div>
 							</div>
 							<div class="panel-footer center-button">

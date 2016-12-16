@@ -17,7 +17,7 @@
 			<div class="col-md-12">
 				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Edit", $ID,$page,$viewpage),'class' => 'form-horizontal',"type"=>"file")); ?>
 						<?php
-							echo $this->Form->input('id', array(
+							echo $this->Form->input('id_edu_type', array(
 								'type'			=>	'hidden',
 								'readonly'		=>	'readonly'
 							));
@@ -33,7 +33,7 @@
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php
-													echo $this->Form->input('name', array(
+													echo $this->Form->input('edu_type', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,

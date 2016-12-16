@@ -22,16 +22,6 @@ class ProgramStudiesController extends AppController
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
-
-		//DEFINE EDUCATION TYPE
-		$this->loadModel('EducationType');
-		$list_education	=	$this->EducationType->find('list');
-
-    //DEFINE COUNTRY
-		$this->loadModel('Country');
-		$list_country	=	$this->Country->find('list');
-
-		$this->set(compact("list_education", "list_country"));
 	}
 
 	function Index($page=1,$viewpage=50)

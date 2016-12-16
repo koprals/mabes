@@ -102,21 +102,8 @@ function Delete(msg,id)
 											<?php $count++;?>
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
-<<<<<<< HEAD:app/View/Personels/list_item.ctp
 												<td class="text-center"><?php echo $no ?></td>
-												<td><a href="<?php echo $this->webroot ?>Personels/view/<?php echo $ts['Personel']['id'] ?>"><?php echo $data[$ModelName]['name'] ?></td>
-												<td><?php echo $data[$ModelName]['study_programs'] ?></td>
-												<td><?php echo $data[$ModelName]['unity'] ?></td>
-												<td><?php echo 'masuk lagi gk '//$data['EducationType']['name'] ?></td>
-												<td><?php echo $data['Countries']['name'] ?></td>
-												<td><?php echo ''?></td>
-												<td><?php echo $data[$ModelName]['depart'] ?></td>
-												<td><?php echo $data[$ModelName]['arrived'] ?></td>
-												<td><?php echo 'masuk sini gk ' ?></td>
-												<td><?php echo $data[$ModelName]['education_status']['name'] ?></td>
-=======
-												<td class="text-center"><?php echo $data[$ModelName]['id'] ?></td>
-												<td><?php echo $data[$ModelName]['personnel_name'] ?></td>
+												<td><a href="<?php echo $settings['cms_url'].$ControllerName?>/View/<?php echo $data[$ModelName]["id"]?>/"><?php echo $data[$ModelName]['personnel_name'] ?></td>
 												<td><?php echo $data[$ModelName]['personel_occupation'] ?>/<?php echo $data[$ModelName]['SCorps'] ?>/<?php echo $data[$ModelName]['personel_nrp'] ?></td>
 												<td><?php echo $data[$ModelName]['personel_unity'] ?>
 												<td><?php echo $data['ProgramStudy']['name'] ?></td>
@@ -124,7 +111,6 @@ function Delete(msg,id)
 												<td><?php echo $data['EducationType']['name'] ?></td>
 												<td><?php echo $data[$ModelName]['personel_course_depart'] ?></td>
 												<td><?php echo $data[$ModelName]['personel_course_arrived'] ?></td>
->>>>>>> 256c92bdbf608dd3d527a4814c4d61185f991c39:app/View/Personnels/list_item.ctp
 												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
 												<?php
 												if(

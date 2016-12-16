@@ -7,7 +7,7 @@
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-	<h2><span class="fa fa-plus-circle"></span> Edit <?php echo $ModelName; ?></h2>
+	<h2><span class="fa fa-plus-circle"></span> Edit Jenis Pendidikan</h2>
 </div>
 <!-- END PAGE TITLE -->
 
@@ -24,7 +24,7 @@
 						?>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-								<h3 class="panel-title"><strong>Edit</strong> Admin Group</h3>
+								<h3 class="panel-title"><strong>Edit</strong> Jenis Pendidikan</h3>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">

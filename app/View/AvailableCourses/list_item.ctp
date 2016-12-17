@@ -68,7 +68,13 @@ function Delete(msg,id)
 														No
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
+														<?php echo $this->Paginator->sort("Country.country_name",'Negara');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("EducationType.edu_type",'Jenis Pendidikan');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("ProgramStudy.edu_name",'Nama Pendidikan');?>
 													</th>
 													<?php
 													if(
@@ -89,7 +95,9 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
-												<td><?php echo $data[$ModelName]['country_name'] ?></td>
+												<td><?php echo $data['Country']['country_name'] ?></td>
+												<td><?php echo $data['EducationType']['edu_type'] ?></td>
+												<td><?php echo $data['ProgramStudy']['edu_name'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or
@@ -98,12 +106,12 @@ function Delete(msg,id)
 												?>
 												<td>
 													<?php if($access[$aco_id]["_update"] == 1):?>
-														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id_country"]?>/" class="btn btn-success btn-condensed" title="Access Control">
+														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id_course"]?>/" class="btn btn-success btn-condensed" title="Access Control">
 															<span class="fa fa-pencil"></span>
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id_country']?>')" class="btn btn-danger btn-condensed" title="Access Control">
+															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id_course']?>')" class="btn btn-danger btn-condensed" title="Access Control">
 																<span class="fa fa-times"></span>
 															</a>
 													<?php endif;?>

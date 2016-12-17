@@ -17,11 +17,31 @@ class AvailableCoursesController extends AppController
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("Country")
+											"LOWER(MyAco.alias)"	=>	strtolower("AvailableCourse")
 										)
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
+
+		//DEFINE JENIS PENDIDIKAN
+		$this->loadModel('EducationType');
+		$list_education	=	$this->EducationType->find('list', array(
+			'fields'	=> array('EducationType.edu_type')
+		));
+
+		//DEFINE COUNTRY
+		$this->loadModel('Country');
+		$list_country =	$this->Country->find('list', array(
+			'fields'	=>	array('Country.country_name')
+		));
+
+		//DEFINE PROGRAM STUDY
+		$this->loadModel('ProgramStudy');
+		$list_program	=	$this->ProgramStudy->find('list', array(
+			'fields'	=>	array('ProgramStudy.edu_name')
+		));
+
+		$this->set(compact('list_education', 'list_country', 'list_program'));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -101,7 +121,7 @@ class AvailableCoursesController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-
+		//debug($data);
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
 
@@ -164,7 +184,6 @@ class AvailableCoursesController extends AppController
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
-			//$this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())
 			{
 				//Configure::write('debug', 2);
@@ -222,7 +241,7 @@ class AvailableCoursesController extends AppController
 
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
-										"{$this->ModelName}.id_country"		=>	$ID
+										"{$this->ModelName}.id_course"		=>	$ID
 									)
 								));
 
@@ -300,7 +319,7 @@ class AvailableCoursesController extends AppController
 
 		$detail = $this->{$this->ControllerName}->find('first', array(
 			'conditions' => array(
-				"{$this->ControllerName}.id"		=>	$ID
+				"{$this->ControllerName}.id_course"		=>	$ID
 			)
 		));
 		if(empty($detail))
@@ -362,7 +381,7 @@ class AvailableCoursesController extends AppController
 
 		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id"		=>	$ID
+				"{$this->ModelName}.id_course"		=>	$ID
 			)
 		));
 		$resultStatus		=	"0";
@@ -387,7 +406,7 @@ class AvailableCoursesController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id_country"		=> $ID
+				"{$this->ModelName}.id_course"		=> $ID
 			)
 		));
 		if(empty($data))
@@ -402,7 +421,7 @@ class AvailableCoursesController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id_country" 		=> $ID
+				"{$this->ModelName}.id_course" 		=> $ID
 			)
 		));
 

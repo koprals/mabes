@@ -4,6 +4,8 @@ class EducationType extends AppModel
 {
 	public $name = "EducationType";
 
+	public $primaryKey	=	'id_edu_type';
+
   public $belongsTo = array(
     /*'Admin' => array(
       'className' => 'Admin',
@@ -113,7 +115,7 @@ class EducationType extends AppModel
 		return true;
 	}
 
-	
+
 	function BindDefault($reset	=	true)
 	{
 	}

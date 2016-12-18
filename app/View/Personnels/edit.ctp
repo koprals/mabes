@@ -28,8 +28,8 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-                <label class="col-md-6 col-xs-12 control-label"><h5>Data Pribadi</h5></label>
-              </div>
+                				<label class="col-md-6 col-xs-12 control-label"><h5>Data Pribadi</h5></label>
+              				</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Name <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
@@ -40,9 +40,9 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
+														"required"				=>	"",
+														"autocomplete"			=>	"off",
+														"maxlength"				=>	20,
 													));
 												?>
 										</div>

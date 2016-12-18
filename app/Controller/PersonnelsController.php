@@ -340,6 +340,7 @@ class PersonnelsController extends AppController
 			return;
 		}
 
+		
 		$detail =	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID

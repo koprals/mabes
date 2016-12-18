@@ -173,11 +173,7 @@
                                     <h3><span class="fa fa-info-circle"></span> Quick Info</h3>
                                     <p>Some quick info about this personel</p>
                                 </div>
-                                <div class="panel-body form-group-separated"> 
-                                <div class="form-group">
-                                        <label class="col-md-5 col-xs-5 control-label">Negara</label>
-                                        <div class="col-md-7 col-xs-7 line-height-30"><?php echo $detail['Country']['name']?></div>
-                                    </div>                                   
+                                <div class="panel-body form-group-separated">                                  
                                     <div class="form-group">
                                         <label class="col-md-5 col-xs-5 control-label">Keberangkatan</label>
                                         <div class="col-md-7 col-xs-7 line-height-30"><?php echo $detail[$ModelName]['personel_course_depart']?></div>

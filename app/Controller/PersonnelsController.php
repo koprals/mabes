@@ -169,7 +169,7 @@ class PersonnelsController extends AppController
 			$this->{$this->ModelName}->set($this->request->data);
 			if($this->{$this->ModelName}->validates())
 			{
-				Configure::write('debug',2);
+				//Configure::write('debug',2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
@@ -205,10 +205,9 @@ class PersonnelsController extends AppController
 
 					}
 					@unlink($tmp_images1_img);
-					var_dump($this->request->data[$this->ModelName]["images"]["name"]);
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				//$this->redirect(array("action"=>"SuccessAdd",$ID));
+				$this->redirect(array("action"=>"SuccessAdd",$ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 	}
@@ -291,62 +290,25 @@ class PersonnelsController extends AppController
 		if($this->access[$this->aco_id]["_read"] != "1")
 		{
 			$this->layout	=	"no_access";
-			$this->set(compact("data"));
 			return;
 		}
 
 		$this->loadModel($this->ModelName);
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
-		//DEFINE LAYOUT, LIMIT AND OPERAND
-		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.created" => "ASC");
-		$operand			=	"AND";
-
+		$detail = $this->{$this->ModelName}->find('first', array(
+			'conditions' => array(
+				"{$this->ModelName}.id_personnel"		=>	$ID
+			)
+		));
 		if(empty($detail))
 		{
 			$this->layout	=	"ajax";
+			$this->set(compact("ID","data"));
 			$this->render("/errors/error404");
 			return;
 		}
-
-		//DEFINE SEARCH DATA
-		if(!empty($this->request->data))
-		{
-			$cond_search	=	array();
-			$operand		=	$this->request->data[$this->ModelName]['operator'];
-			$this->Session->delete('Search.'.$this->ControllerName);
-
-			if(!empty($this->request->data['Search']['id']))
-			{
-				$cond_search["{$this->ModelName}.id"]					=	$this->data['Search']['id'];
-			}
-
-			if(!empty($this->request->data['Search']['name']))
-			{
-				$cond_search["{$this->ModelName}.fullname LIKE "]			=	"%".$this->data['Search']['name']."%";
-			}
-
-			if($this->request->data["Search"]['reset']=="0")
-			{
-				$this->Session->write("Search.".$this->ControllerName,$cond_search);
-				$this->Session->write('Search.'.$this->ControllerName.'Operand',$operand);
-			}
-		}
-
-		$this->Session->write('Search.'.$this->ControllerName.'Viewpage',$viewpage);
-		$this->Session->write('Search.'.$this->ControllerName.'Sort',(empty($this->params['named']['sort']) or !isset($this->params['named']['sort'])) ? $order : $this->params['named']['sort']." ".$this->params['named']['direction']);
-
-		$cond_search		=	array();
-		$filter_paginate	=	array();
-		$this->paginate		=	array(
-									"{$this->ModelName}"	=>	array(
-										"order"				=>	$order,
-										'limit'				=>	$viewpage,
-										'recursive'		=>	2
-								));
-
-		$this->set(compact("detail"));
+		$this->set(compact("ID","detail"));
 	}
 
 	function ChangeStatus($ID=NULL,$status)

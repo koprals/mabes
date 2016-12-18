@@ -185,7 +185,7 @@
 										</div>
 									</div>
 							</div>
-							
+
 							<div class="form-group">
                   <label class="col-md-6 col-xs-12 control-label"><h5>Administrasi</h5></label>
               </div>
@@ -435,21 +435,6 @@
 										</div>
 									</div>
 							</div>
-							<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label"><span style="color:red;">*</span>Photo</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                            	<?php
-                                            		echo $this->Form->input('images', array(	
-                                            			'type'			=> 'file',
-                                            			'class' 		=> 'btn btn-file',
-                                            			'id'			=> 'file-simple',
-                                            			'required'		=> ''
-                                            		));
-                                            	?>
-                                            </div>     
-                                        </div>
-                                    </div>
 							<div class="panel-footer center-button">
 								<input type="submit" value="Add" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

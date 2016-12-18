@@ -40,6 +40,75 @@
 											</div>
 										</div>
 							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Position Top</label>
+									<div class="col-md-6 col-xs-12">
+												<div class="input-group">
+														<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+														<?php
+															echo $this->Form->input('country_top', array(
+																'type'					=>	'text',
+																'class'					=>	'form-control',
+																'label'					=>	false,
+																"required"			=>	"",
+																"autocomplete"	=>	"off",
+																"maxlength"			=>	20,
+															));
+														?>
+											</div>
+										</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Position Bottom</label>
+									<div class="col-md-6 col-xs-12">
+												<div class="input-group">
+														<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+														<?php
+															echo $this->Form->input('country_bottom', array(
+																'type'					=>	'text',
+																'class'					=>	'form-control',
+																'label'					=>	false,
+																"required"			=>	"",
+																"autocomplete"	=>	"off",
+																"maxlength"			=>	20,
+															));
+														?>
+											</div>
+										</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Position Left</label>
+									<div class="col-md-6 col-xs-12">
+												<div class="input-group">
+														<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+														<?php
+															echo $this->Form->input('country_left', array(
+																'type'					=>	'text',
+																'class'					=>	'form-control',
+																'label'					=>	false,
+															));
+														?>
+											</div>
+										</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Position Right</label>
+									<div class="col-md-6 col-xs-12">
+												<div class="input-group">
+														<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+														<?php
+															echo $this->Form->input('country_right', array(
+																'type'					=>	'text',
+																'class'					=>	'form-control',
+																'label'					=>	false,
+																"required"			=>	"",
+																"autocomplete"	=>	"off",
+																"maxlength"			=>	20,
+															));
+														?>
+											</div>
+										</div>
+							</div>
 							<div class="panel-footer center-button">
 								<input type="submit" value="Add" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

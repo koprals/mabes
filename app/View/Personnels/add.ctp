@@ -185,62 +185,7 @@
 										</div>
 									</div>
 							</div>
-							<!-- <div class="form-group">
-                	<label class="col-md-6 col-xs-12 control-label"><h5>Pendidikan</h5></label>
-              </div> -->
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Berangkat <span style="color:red;">(*)</span></label>
-									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
-												<?php
-													echo $this->Form->input('personel_course_depart', array(
-														'type'					=>	'text',
-														'class'					=>	'form-control datepicker',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-													));
-												?>
-										</div>
-									</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Kembali <span style="color:red;">(*)</span></label>
-									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
-												<?php
-													echo $this->Form->input('personel_course_arrived', array(
-														'type'					=>	'text',
-														'class'					=>	'form-control datepicker',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-													));
-												?>
-										</div>
-									</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Status Pendidikan <span style="color:red;">(*)</span></label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('personel_course_status', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> array('0' => 'Berjalan', '1' => 'Selesai', '2' => 'Tidak Selesai'),
-														'empty'					=> false,
-
-													));
-												?>
-										</div>
-							</div>
+							
 							<div class="form-group">
                   <label class="col-md-6 col-xs-12 control-label"><h5>Administrasi</h5></label>
               </div>

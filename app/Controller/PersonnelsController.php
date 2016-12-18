@@ -17,7 +17,7 @@ class PersonnelsController extends AppController
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("Personnels")
+											"LOWER(MyAco.alias)"	=>	strtolower("DataPersonnels")
 										)
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
@@ -103,7 +103,7 @@ class PersonnelsController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-		debug($data);
+		//debug($data);
 
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
@@ -343,7 +343,6 @@ class PersonnelsController extends AppController
 										"order"				=>	$order,
 										'limit'				=>	$viewpage,
 										'recursive'		=>	2
-									)
 								));
 
 

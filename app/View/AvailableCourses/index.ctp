@@ -1,4 +1,3 @@
-
 <script>
 $(document).ready(function(){
 	$("#contents_area").css("opacity","1");

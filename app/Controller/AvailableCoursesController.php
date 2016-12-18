@@ -76,7 +76,7 @@ class AvailableCoursesController extends AppController
 		$this->loadModel($this->ModelName);
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.id_course" => "ASC");
+		$order				=	array("{$this->ModelName}.id_course" => "DESC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -239,7 +239,7 @@ class AvailableCoursesController extends AppController
 			return;
 		}
 
-		$detail 			=	$this->{$this->ModelName}->find('first', array(
+		$detail	=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id_course"		=>	$ID
 									)
@@ -263,46 +263,10 @@ class AvailableCoursesController extends AppController
 			if($this->{$this->ModelName}->validates())
 			{
 				$save		=	$this->{$this->ModelName}->save($this->data,false);
-
-				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
-				{
-					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp								=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
-
-					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
-						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
-
-					$ext								=	pathinfo($tmp_name,PATHINFO_EXTENSION);
-					$tmp_file_name						=	md5(time());
-					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
-					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
-					if($upload)
-					{
-						//RESIZE BIG
-						$error_upload["original"]		=	"Sorry, there is problem when upload file.";
-						$resize							=	$this->General->ResizeImageContent(
-																$tmp_images1_img,
-																$this->settings["cms_url"],
-																$ID,
-																$this->ModelName,
-																"original",
-																$mime_type,
-																300,
-																300,
-																"cropRatio"
-															);
-
-					}
-					@unlink($tmp_images1_img);
-				}
-				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-
 				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
 			}
 		}
-		$this->set(compact("ID","detail","aro_id_list","page","viewpage"));
+		$this->set(compact("ID","detail","page","viewpage"));
 	}
 
 	function View($ID=NULL)

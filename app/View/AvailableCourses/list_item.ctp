@@ -4,27 +4,28 @@
 	$direction	=	$this->params['paging'][$ModelName]["order"][$order[0]];
 	$ordered	=	($order[0]!==0) ? "/sort:".$order[0]."/direction:".$direction: "";
 ?>
+
 <?php $this->Paginator->options(array(
-	'url'	=> array(
-	'controller'	=> $ControllerName,
-	'action'		=> 'ListItem/limit:'.$viewpage,
-	),
-	'onclick'=>"return onClickPage(this,'#contents_area');")
-	);
+				'url'	=> array(
+					'controller'	=> $ControllerName,
+					'action'		=> 'ListItem/limit:'.$viewpage,
+				),
+				'onclick'=>"return onClickPage(this,'#contents_area');")
+			);
 ?>
 
 <script>
-// function ChangeStatus(msg,id,status)
-// {
-// 	var a	=	confirm(msg);
-// 	if(a)
-// 	{
-// 		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
-// 			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
-// 		});
-// 	}
-// 	return false;
-// }
+function ChangeStatus(msg,id,status)
+{
+	var a	=	confirm(msg);
+	if(a)
+	{
+		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
+			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
+		});
+	}
+	return false;
+}
 
 function Delete(msg,id)
 {

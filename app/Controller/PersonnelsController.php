@@ -22,52 +22,6 @@ class PersonnelsController extends AppController
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
-
-		// //DEFINE MATRA
-		// $this->loadModel("Matra");
-		// $matra_list		=	$this->Matra->find("list",array(
-		// 							"order"			=>	array(
-		// 								"Matra.name ASC"
-		// 							)
-		// 						));
-		//
-		// //DEFINE PANGKAT
-		// $this->loadModel("Occupation");
-		// $occupation_list		=	$this->Occupation->find("list",array(
-		// 							"order"			=>	array(
-		// 								"Occupation.name ASC"
-		// 							)
-		// 						));
-		// //DEFINE PANGKAT
-		// $this->loadModel("Corp");
-		// $corp_list		=	$this->Corp->find("list",array(
-		// 							"order"			=>	array(
-		// 								"Corp.name ASC"
-		// 							)
-		// 						));
-		// //DEFINE NEGARA
-		// $this->loadModel("Country");
-		// $countries_list		=	$this->Country->find("list",array(
-		// 							"order"			=>	array(
-		// 								"Country.name ASC"
-		// 							)
-		// 						));
-		// //DEFINE Study Program
-		// $this->loadModel("ProgramStudy");
-		// $study_program_list		=	$this->ProgramStudy->find("list",array(
-		// 							"order"			=>	array(
-		// 								"ProgramStudy.name ASC"
-		// 							)
-		// 						));
-		// //DEFINE Jenis Pendidikan
-		// $this->loadModel("EducationType");
-		// $education_type_list		=	$this->EducationType->find("list",array(
-		// 							"order"			=>	array(
-		// 								"EducationType.name ASC"
-		// 							)
-		// 						));
-		//
-		// $this->set(compact("matra_list","occupation_list","corp_list","countries_list","study_program_list","education_type_list"));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -353,7 +307,7 @@ class PersonnelsController extends AppController
 			$this->render("/errors/error404");
 			return;
 		}
-		
+
 		//DEFINE SEARCH DATA
 		if(!empty($this->request->data))
 		{

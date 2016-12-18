@@ -1,27 +1,55 @@
 <?php
-class PersonnelsController extends AppController
+class ProcessController extends AppController
 {
-	var $ControllerName		=	"Personnels";
-	var $ModelName			=	"Personnel";
+	var $ControllerName		=	"Process";
+	var $ModelName			=	"Process";
 	var $helpers			=	array("Text","Aimfox");
-	var $uses				=	"Personnel";
+	var $uses				=	"Process";
 
 	function beforeFilter()
 	{
 		parent::beforeFilter();
 		$this->set("ControllerName",$this->ControllerName);
 		$this->set("ModelName",$this->ModelName);
-		$this->set('lft_menu_category_id',"11");
+		$this->set('lft_menu_category_id',"10");
 
 		//CHECK PRIVILEGES
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("DataPersonnels")
+											"LOWER(MyAco.alias)"	=>	strtolower("Process")
 										)
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
+
+    //DEFINE COURSE
+    $this->loadModel('AvailableCourse');
+    $list_courses = $this->AvailableCourse->ProgramStudy->find('list', array(
+      'fields'  =>  array('ProgramStudy.edu_name'),
+    ));
+
+    //debug($list_courses);
+
+		//DEFINE JENIS PENDIDIKAN
+		$this->loadModel('EducationType');
+		$list_education	=	$this->EducationType->find('list', array(
+			'fields'	=> array('EducationType.edu_type')
+		));
+
+		//DEFINE PROGRAM STUDY
+		$this->loadModel('ProgramStudy');
+		$list_program	=	$this->ProgramStudy->find('list', array(
+			'fields'	=>	array('ProgramStudy.edu_name')
+		));
+
+    //DEFINE PERSONEL
+    $this->loadModel('Personnel');
+    $list_personnel = $this->Personnel->find('list', array(
+      'fields'  =>  array('Personnel.personnel_name')
+    ));
+
+		$this->set(compact('list_education', 'list_country', 'list_program', 'list_personnel', 'list_courses'));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -55,9 +83,10 @@ class PersonnelsController extends AppController
 
 		$this->loadModel($this->ModelName);
 		$this->{$this->ModelName}->VirtualFieldActivated();
+		$this->{$this->ModelName}->Personnel->VirtualFieldActivated();
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.created" => "ASC");
+		$order				=	array("{$this->ModelName}.id" => "DESC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -93,7 +122,7 @@ class PersonnelsController extends AppController
 									"{$this->ModelName}"	=>	array(
 										"order"				=>	$order,
 										'limit'				=>	$viewpage,
-										'recursive'		=>	2
+                    'recursive'   =>  2
 									)
 								);
 
@@ -103,8 +132,7 @@ class PersonnelsController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-		//debug($data);
-
+		debug($data);
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
 
@@ -169,81 +197,9 @@ class PersonnelsController extends AppController
 			$this->{$this->ModelName}->set($this->request->data);
 			if($this->{$this->ModelName}->validates())
 			{
-				Configure::write('debug',2);
+        Configure::write('debug', 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
-
-				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
-				{
-					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp									=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type						=	$this->request->data[$this->ModelName]["images"]["type"];
-
-					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
-						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
-
-					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
-					$tmp_file_name				=	md5(time());
-					$tmp_images1_img			=	$path_tmp.$tmp_file_name.".".$ext;
-					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
-					if($upload)
-					{
-						//RESIZE BIG
-						$error_upload["original"]		=	"Sorry, there is problem when upload file.";
-						$resize							=	$this->General->ResizeImageContent(
-																$tmp_images1_img,
-																$this->settings["cms_url"],
-																$ID,
-																$this->ModelName,
-																"original",
-																$mime_type,
-																300,
-																300,
-																"cropRatio"
-															);
-
-					}
-					@unlink($tmp_images1_img);
-					var_dump($this->request->data[$this->ModelName]["images"]["name"]);
-				}
-				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				//$this->redirect(array("action"=>"SuccessAdd",$ID));
-			}//END IF VALIDATE
-		}//END IF NOT EMPTY
-	}
-
-	function Edit($ID=NULL,$page=1,$viewpage=50)
-	{
-		if(($ID == $this->super_admin_id && $this->profile["Admin"]["id"] != $this->super_admin_id) or $this->access[$this->aco_id]["_update"] != "1")
-		{
-			$this->layout	=	"no_access";
-			return;
-		}
-
-		$detail =	$this->{$this->ModelName}->find('first', array(
-									'conditions' => array(
-										"{$this->ModelName}.id_personnel"		=>	$ID
-									)
-								));
-
-		if(empty($detail))
-		{
-			$this->layout	=	"ajax";
-			$this->render("/errors/error404");
-			return;
-		}
-
-		if (empty($this->data))
-		{
-			$this->data = $detail;
-		}
-		else
-		{
-			$this->{$this->ModelName}->set($this->data);
-			if($this->{$this->ModelName}->validates())
-			{
-				$save		=	$this->{$this->ModelName}->save($this->data,false);
 
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
@@ -279,29 +235,26 @@ class PersonnelsController extends AppController
 					@unlink($tmp_images1_img);
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
+				$this->redirect(array("action"=>"SuccessAdd",$ID));
+			}//END IF VALIDATE
+		}//END IF NOT EMPTY
 
-				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
-			}
-		}
-		$this->set(compact("ID","detail","aro_id_list","page","viewpage"));
+		$this->set(compact("aro_id_list"));
 	}
 
-	function View($ID=NULL)
+	function Edit($ID=NULL,$page=1,$viewpage=50)
 	{
-		if($this->access[$this->aco_id]["_read"] != "1")
+		if(($ID == $this->super_admin_id && $this->profile["Admin"]["id"] != $this->super_admin_id) or $this->access[$this->aco_id]["_update"] != "1")
 		{
 			$this->layout	=	"no_access";
-			$this->set(compact("data"));
 			return;
 		}
 
-		$this->loadModel($this->ModelName);
-		$this->{$this->ModelName}->VirtualFieldActivated();
-
-		//DEFINE LAYOUT, LIMIT AND OPERAND
-		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.created" => "ASC");
-		$operand			=	"AND";
+		$detail	=	$this->{$this->ModelName}->find('first', array(
+									'conditions' => array(
+										"{$this->ModelName}.id"		=>	$ID
+									)
+								));
 
 		if(empty($detail))
 		{
@@ -310,43 +263,48 @@ class PersonnelsController extends AppController
 			return;
 		}
 
-		//DEFINE SEARCH DATA
-		if(!empty($this->request->data))
+		if (empty($this->data))
 		{
-			$cond_search	=	array();
-			$operand		=	$this->request->data[$this->ModelName]['operator'];
-			$this->Session->delete('Search.'.$this->ControllerName);
+			$this->data = $detail;
+		}
+		else
+		{
+			$this->{$this->ModelName}->set($this->data);
 
-			if(!empty($this->request->data['Search']['id']))
+			if($this->{$this->ModelName}->validates())
 			{
-				$cond_search["{$this->ModelName}.id"]					=	$this->data['Search']['id'];
-			}
-
-			if(!empty($this->request->data['Search']['name']))
-			{
-				$cond_search["{$this->ModelName}.fullname LIKE "]			=	"%".$this->data['Search']['name']."%";
-			}
-
-			if($this->request->data["Search"]['reset']=="0")
-			{
-				$this->Session->write("Search.".$this->ControllerName,$cond_search);
-				$this->Session->write('Search.'.$this->ControllerName.'Operand',$operand);
+				$save		=	$this->{$this->ModelName}->save($this->data,false);
+				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
 			}
 		}
+		$this->set(compact("ID","detail","page","viewpage"));
+	}
 
-		$this->Session->write('Search.'.$this->ControllerName.'Viewpage',$viewpage);
-		$this->Session->write('Search.'.$this->ControllerName.'Sort',(empty($this->params['named']['sort']) or !isset($this->params['named']['sort'])) ? $order : $this->params['named']['sort']." ".$this->params['named']['direction']);
+	function View($ID=NULL)
+	{
+		if($this->access[$this->aco_id]["_read"] != "1")
+		{
+			$this->layout	=	"no_access";
+			return;
+		}
 
-		$cond_search		=	array();
-		$filter_paginate	=	array();
-		$this->paginate		=	array(
-									"{$this->ModelName}"	=>	array(
-										"order"				=>	$order,
-										'limit'				=>	$viewpage,
-										'recursive'		=>	2
-								));
+		$this->loadModel($this->ModelName);
+		$this->{$this->ModelName}->BindImageBig(false);
+		$this->{$this->ModelName}->VirtualFieldActivated();
 
-		$this->set(compact("detail"));
+		$detail = $this->{$this->ControllerName}->find('first', array(
+			'conditions' => array(
+				"{$this->ControllerName}.id"		=>	$ID
+			)
+		));
+		if(empty($detail))
+		{
+			$this->layout	=	"ajax";
+			$this->set(compact("ID","data"));
+			$this->render("/errors/error404");
+			return;
+		}
+		$this->set(compact("ID","detail"));
 	}
 
 	function ChangeStatus($ID=NULL,$status)
@@ -389,42 +347,33 @@ class PersonnelsController extends AppController
 
 	function Delete($ID=NULL)
 	{
-		if(
-			$this->access[$this->aco_id]["_delete"] != "1"
-				or
-			($this->super_admin_id != $this->profile["Admin"]["id"] && $ID == $this->super_admin_id)
-		)
+		if($this->access[$this->aco_id]["_delete"] != "1")
 		{
-			echo json_encode(array("data"=>array("message"=>"No privileges")));
+			echo json_encode(array("data"=>array("status" => "0","message"=>"No privileges")));
 			$this->autoRender	=	false;
 			return;
 		}
-
-		if($ID == $this->profile["Admin"]["id"])
-		{
-			echo json_encode(array("data"=>array("message"=>"Cannot delete your self")));
-			$this->autoRender	=	false;
-			return;
-		}
-
 
 		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
 				"{$this->ModelName}.id"		=>	$ID
 			)
 		));
+		$resultStatus		=	"0";
 
 		if(empty($detail))
 		{
-			$message	=	"Item not found.";
+			$message		=	"Item not found.";
+			$resultStatus	=	"0";
 		}
 		else
 		{
-			//$this->{$this->ModelName}->delete($ID,false);
-			$message	=	"Data has deleted.";
+			$this->{$this->ModelName}->delete($ID,false);
+			$message		=	"Data has deleted.";
+			$resultStatus	=	"1";
 		}
 
-		echo json_encode(array("data"=>array("message"=>$message)));
+		echo json_encode(array("data"=>array("status" => $resultStatus ,"message"=>$message)));
 		$this->autoRender	=	false;
 	}
 
@@ -432,7 +381,7 @@ class PersonnelsController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id_personnel"		=> $ID
+				"{$this->ModelName}.id"		=> $ID
 			)
 		));
 		if(empty($data))
@@ -447,7 +396,7 @@ class PersonnelsController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id_personnel" 		=> $ID
+				"{$this->ModelName}.id" 		=> $ID
 			)
 		));
 

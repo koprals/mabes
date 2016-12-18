@@ -1,12 +1,12 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
-	<li class="active"><?php echo $ControllerName?></li>
+	<li class="active">Negara</li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-	<h2>Success Add New <?php echo $ControllerName; ?></h2>
+	<h2>Success Add New Negara</h2>
 </div>
 <!-- END PAGE TITLE -->
 
@@ -15,7 +15,7 @@
 			<div class="col-md-12">
         <div class="alert alert-success" role="alert">
             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <strong>SUCCESS:</strong> add new <?php echo $ControllerName?>.
+            <strong>SUCCESS:</strong> add new Negara.
         </div>
         <div class="panel panel-default">
           <div class="panel-body">

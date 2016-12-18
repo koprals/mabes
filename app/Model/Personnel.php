@@ -1,63 +1,9 @@
 <?php
 class Personnel extends AppModel
 {
-public $name = "Personnel";
+	public $name = "Personnel";
 
-// public $belongsTo	=	array(
-// 	'Country', 'ProgramStudy', 'EducationType'
-// );
-
-	// public $validate 	= array(
-	// 	'id' => array(
-	// 		'notEmpty' => array(
-	// 			'rule' 		=>	"notEmpty",
-	// 			'message' 	=>	"Data not found",
-	// 			"on"		=>	"update"
-	// 		)
-	// 	),
-	// 	'name' => array(
-	// 		'notEmpty'		=>	array(
-	// 			'rule' 		=>	"notEmpty",
-	// 			'message' 	=>	"Please insert name"
-	// 		),
-	// 		'minLength' 	=>	array(
-	// 			'rule' 		=>	array("minLength","3"),
-	// 			'message'	=>	"Sales name is to sort"
-	// 		),
-	// 		'maxLength' 	=>	array(
-	// 			'rule' 		=>	array("maxLength","100"),
-	// 			'message'	=>	"Sales name is too long"
-	// 		)
-	// 	),
-	// 	'sort' => array(
-	// 		'notEmpty' => array(
-	// 			'rule' 		=> 'notEmpty',
-	// 			'message' 	=> 'Sort cannot be empty'
-	// 		),
-	// 		'numeric' => array(
-	// 			'rule' 		=> 'numeric',
-	// 			'message' 	=> 'Please provide valid numbers'
-	// 		),
-	// 		'between' => array(
-	// 			'rule'	=> array('between', 1, 999),
-	// 			'message'	=> 'Between 1 to 999 numbers'
-	// 		)
-	// 	),
-	// 	'image1' => array(
-	// 		'imagewidth'	=> array(
-	// 			'rule' 		=> array('imagewidth',600),
-	// 			'message' 	=> 'Please upload image with minimum width is 600px'
-	// 		),
-	// 		'size' => array(
-	// 			'rule' 		=> array('size',3145728),
-	// 			'message' 	=> 'Your image size is too big, please upload less than 3 Mb.'
-	// 		),
-	// 		'extension' => array(
-	// 			'rule' => array('validateName', array('gif','jpeg','jpg','png')),
-	// 			'message' => 'Only (*.gif,*.jpeg,*.jpg,*.png) are allowed.'
-	// 		)
-	// 	)
-	// );
+	public $primaryKey	=	"id_personnel";
 
 	public function BindImageContent($reset	=	true)
 	{
@@ -127,7 +73,6 @@ public $name = "Personnel";
 											IF((".$this->name.".personel_corps='29'), 'KES',
 											IF((".$this->name.".personel_corps='30'), 'PAS',
 											IF((".$this->name.".personel_corps='31'), 'POM', 'SUS'))))))))))))))))))))))))))))))))",
-			'SStatus'		=> "IF((".$this->name.".personel_course_status='0'), 'Berjalan', IF((".$this->name.".personel_course_status='1'), 'Selesai', 'Tidak Selesai'))",
 		);
 	}
 

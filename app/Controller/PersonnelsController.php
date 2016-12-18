@@ -351,42 +351,33 @@ class PersonnelsController extends AppController
 
 	function Delete($ID=NULL)
 	{
-		if(
-			$this->access[$this->aco_id]["_delete"] != "1"
-				or
-			($this->super_admin_id != $this->profile["Admin"]["id"] && $ID == $this->super_admin_id)
-		)
+		if($this->access[$this->aco_id]["_delete"] != "1")
 		{
-			echo json_encode(array("data"=>array("message"=>"No privileges")));
+			echo json_encode(array("data"=>array("status" => "0","message"=>"No privileges")));
 			$this->autoRender	=	false;
 			return;
 		}
-
-		if($ID == $this->profile["Admin"]["id"])
-		{
-			echo json_encode(array("data"=>array("message"=>"Cannot delete your self")));
-			$this->autoRender	=	false;
-			return;
-		}
-
 
 		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id"		=>	$ID
+				"{$this->ModelName}.id_personnel"		=>	$ID
 			)
 		));
+		$resultStatus		=	"0";
 
 		if(empty($detail))
 		{
-			$message	=	"Item not found.";
+			$message		=	"Item not found.";
+			$resultStatus	=	"0";
 		}
 		else
 		{
-			//$this->{$this->ModelName}->delete($ID,false);
-			$message	=	"Data has deleted.";
+			$this->{$this->ModelName}->delete($ID,false);
+			$message		=	"Data has deleted.";
+			$resultStatus	=	"1";
 		}
 
-		echo json_encode(array("data"=>array("message"=>$message)));
+		echo json_encode(array("data"=>array("status" => $resultStatus ,"message"=>$message)));
 		$this->autoRender	=	false;
 	}
 

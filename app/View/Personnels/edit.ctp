@@ -24,7 +24,7 @@
 						?>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-								<h3 class="panel-title"><strong>Edit</strong> Personil</h3>
+								<h3 class="panel-title"><strong>Edit</strong> Personel</h3>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">

@@ -3,6 +3,8 @@ class Country extends AppModel
 {
   public $name = "Country";
 
+  public $primaryKey  = 'id_country';
+
   function VirtualFieldActivated()
 	{
 		$this->virtualFields = array(

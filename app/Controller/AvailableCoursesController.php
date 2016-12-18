@@ -1,11 +1,10 @@
 <?php
-class ProgramStudiesController extends AppController
+class AvailableCoursesController extends AppController
 {
-	var $ControllerName		=	"ProgramStudies";
-	var $ModelName			=	"ProgramStudy";
+	var $ControllerName		=	"AvailableCourses";
+	var $ModelName			=	"AvailableCourse";
 	var $helpers			=	array("Text","Aimfox");
-	var $uses				=	"ProgramStudy";
-	var $components = array('RequestHandler');
+	var $uses				=	"AvailableCourse";
 
 	function beforeFilter()
 	{
@@ -18,11 +17,31 @@ class ProgramStudiesController extends AppController
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("ProgramStudy")
+											"LOWER(MyAco.alias)"	=>	strtolower("AvailableCourse")
 										)
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
+
+		//DEFINE JENIS PENDIDIKAN
+		$this->loadModel('EducationType');
+		$list_education	=	$this->EducationType->find('list', array(
+			'fields'	=> array('EducationType.edu_type')
+		));
+
+		//DEFINE COUNTRY
+		$this->loadModel('Country');
+		$list_country =	$this->Country->find('list', array(
+			'fields'	=>	array('Country.country_name')
+		));
+
+		//DEFINE PROGRAM STUDY
+		$this->loadModel('ProgramStudy');
+		$list_program	=	$this->ProgramStudy->find('list', array(
+			'fields'	=>	array('ProgramStudy.edu_name')
+		));
+
+		$this->set(compact('list_education', 'list_country', 'list_program'));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -57,7 +76,7 @@ class ProgramStudiesController extends AppController
 		$this->loadModel($this->ModelName);
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.name" => "ASC");
+		$order				=	array("{$this->ModelName}.id_course" => "ASC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -102,7 +121,7 @@ class ProgramStudiesController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-
+		//debug($data);
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
 
@@ -162,48 +181,57 @@ class ProgramStudiesController extends AppController
 			return;
 		}
 
-		//DEFINE NEWS CATEGORY
-		$this->loadModel("MyAro");
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
 			if($this->{$this->ModelName}->validates())
-			{\
-				Configure::write('debug' , 2);
+			{
+				//Configure::write('debug', 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
-				if(!empty($this->request->data[$this->ModelName]["file"]["name"])) {
- 					$saveData[$this->ModelName] = array(
- 	          'file_name' => $this->request->data[$this->ModelName]['file']['name'],
- 	          'file_size' => $this->request->data[$this->ModelName]['file']['size'],
- 	          'file_type' => $this->request->data[$this->ModelName]['file']['type'],
- 	        );
+				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
+				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
+				{
+					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
+					$tmp								=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
+					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
 
- 	        $saveFile = $this->{$this->ModelName}->save($saveData);
- 	        $url = 'content/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
+					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
+						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
 
- 	        $folder = ROOT.DS.'app'.DS.'webroot'.DS.'contents'.DS.$this->ModelName;
- 	        if(!is_dir($folder)) mkdir($folder,0755);
+					$ext								=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name						=	md5(time());
+					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
+					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
+					if($upload)
+					{
+						//RESIZE BIG
+						$error_upload["original"]		=	"Sorry, there is problem when upload file.";
+						$resize							=	$this->General->ResizeImageContent(
+																$tmp_images1_img,
+																$this->settings["cms_url"],
+																$ID,
+																$this->ModelName,
+																"original",
+																$mime_type,
+																300,
+																300,
+																"cropRatio"
+															);
 
- 	        $folder = $folder.DS.$this->{$this->ModelName}->id;
- 	        if(!is_dir($folder)) mkdir($folder,0755);
-
- 	        $fileLocation = $folder.DS.$saveData[$this->ModelName]['file_name'];
- 					//debug($fileLocation);
-
- 	        $upload = move_uploaded_file($this->request->data[$this->ModelName]['file']['tmp_name'],$fileLocation);
- 	        if($upload) {
- 						//var_dump("sukses");
- 	          $this->{$this->ModelName}->saveField('url', $url);
- 	        }
- 				}
- 				$this->redirect(array("action"=>"SuccessAdd",$ID));
+					}
+					@unlink($tmp_images1_img);
+				}
+				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
+				$this->redirect(array("action"=>"SuccessAdd",$ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
+
+		$this->set(compact("aro_id_list"));
 	}
 
-  function Edit($ID=NULL,$page=1,$viewpage=50)
+	function Edit($ID=NULL,$page=1,$viewpage=50)
 	{
 		if(($ID == $this->super_admin_id && $this->profile["Admin"]["id"] != $this->super_admin_id) or $this->access[$this->aco_id]["_update"] != "1")
 		{
@@ -213,7 +241,7 @@ class ProgramStudiesController extends AppController
 
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
-										"{$this->ModelName}.id"		=>	$ID
+										"{$this->ModelName}.id_course"		=>	$ID
 									)
 								));
 
@@ -231,6 +259,7 @@ class ProgramStudiesController extends AppController
 		else
 		{
 			$this->{$this->ModelName}->set($this->data);
+
 			if($this->{$this->ModelName}->validates())
 			{
 				$save		=	$this->{$this->ModelName}->save($this->data,false);
@@ -273,7 +302,7 @@ class ProgramStudiesController extends AppController
 				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
 			}
 		}
-		$this->set(compact("ID","detail","aro_id_list","page","viewpage","matra_id_list"));
+		$this->set(compact("ID","detail","aro_id_list","page","viewpage"));
 	}
 
 	function View($ID=NULL)
@@ -290,7 +319,7 @@ class ProgramStudiesController extends AppController
 
 		$detail = $this->{$this->ControllerName}->find('first', array(
 			'conditions' => array(
-				"{$this->ControllerName}.id"		=>	$ID
+				"{$this->ControllerName}.id_course"		=>	$ID
 			)
 		));
 		if(empty($detail))
@@ -352,7 +381,7 @@ class ProgramStudiesController extends AppController
 
 		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id"		=>	$ID
+				"{$this->ModelName}.id_course"		=>	$ID
 			)
 		));
 		$resultStatus		=	"0";
@@ -377,7 +406,7 @@ class ProgramStudiesController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id"		=> $ID
+				"{$this->ModelName}.id_course"		=> $ID
 			)
 		));
 		if(empty($data))
@@ -392,7 +421,7 @@ class ProgramStudiesController extends AppController
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id" 		=> $ID
+				"{$this->ModelName}.id_course" 		=> $ID
 			)
 		));
 

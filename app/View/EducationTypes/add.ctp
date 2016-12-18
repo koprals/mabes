@@ -7,7 +7,7 @@
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-	<h2><span class="fa fa-plus-circle"></span> Tambah <?php echo $ModelName; ?></h2>
+	<h2><span class="fa fa-plus-circle"></span> Tambah Jenis Pendidikan</h2>
 </div>
 <!-- END PAGE TITLE -->
 

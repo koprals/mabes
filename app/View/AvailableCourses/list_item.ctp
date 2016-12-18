@@ -4,28 +4,27 @@
 	$direction	=	$this->params['paging'][$ModelName]["order"][$order[0]];
 	$ordered	=	($order[0]!==0) ? "/sort:".$order[0]."/direction:".$direction: "";
 ?>
-
 <?php $this->Paginator->options(array(
-				'url'	=> array(
-					'controller'	=> $ControllerName,
-					'action'		=> 'ListItem/limit:'.$viewpage.'/parent_id:'.$parent_id,
-				),
-				'onclick'=>"return onClickPage(this,'#contents_area');")
-			);
+	'url'	=> array(
+	'controller'	=> $ControllerName,
+	'action'		=> 'ListItem/limit:'.$viewpage,
+	),
+	'onclick'=>"return onClickPage(this,'#contents_area');")
+	);
 ?>
 
 <script>
-function ChangeStatus(msg,id,status)
-{
-	var a	=	confirm(msg);
-	if(a)
-	{
-		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
-			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
-		});
-	}
-	return false;
-}
+// function ChangeStatus(msg,id,status)
+// {
+// 	var a	=	confirm(msg);
+// 	if(a)
+// 	{
+// 		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
+// 			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
+// 		});
+// 	}
+// 	return false;
+// }
 
 function Delete(msg,id)
 {
@@ -52,10 +51,10 @@ function Delete(msg,id)
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-info">
-			<div class="panel-heading ">
+			<div class="panel-heading">
 				<div class="dataTables_length" id="DataTables_Table_0_length ">
-					<label>Show Entries</label><b>
-					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?></b>
+					<label>Show Entries</label>
+					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
 				</div>
 			</div>
 
@@ -69,7 +68,13 @@ function Delete(msg,id)
 														No
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
+														<?php echo $this->Paginator->sort("Country.country_name",'Negara');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("EducationType.edu_type",'Jenis Pendidikan');?>
+													</th>
+													<th>
+														<?php echo $this->Paginator->sort("ProgramStudy.edu_name",'Nama Pendidikan');?>
 													</th>
 													<?php
 													if(
@@ -90,7 +95,9 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
-												<td><?php echo $data[$ModelName]['edu_type'] ?></td>
+												<td><?php echo $data['Country']['country_name'] ?></td>
+												<td><?php echo $data['EducationType']['edu_type'] ?></td>
+												<td><?php echo $data['ProgramStudy']['edu_name'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or
@@ -99,14 +106,14 @@ function Delete(msg,id)
 												?>
 												<td>
 													<?php if($access[$aco_id]["_update"] == 1):?>
-														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id_edu_type"]?>/" class="btn btn-success btn-condensed text-center" title="Access Control">
+														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id_course"]?>/" class="btn btn-success btn-condensed" title="Access Control">
 															<span class="fa fa-pencil"></span>
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-														<a href="javascript:void(0);" onclick="Delete('All child from this module will be up one level, Do you realy want delete this Module?','<?php echo $data[$ModelName]['id_edu_type']?>')" class="btn btn-danger btn-condensed text-center" title="Access Control">
-															<span class="fa fa-close"></span>
-														</a>
+															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id_course']?>')" class="btn btn-danger btn-condensed" title="Access Control">
+																<span class="fa fa-times"></span>
+															</a>
 													<?php endif;?>
 												</td>
 												<?php endif;?>
@@ -115,10 +122,11 @@ function Delete(msg,id)
 									</tbody>
 							</table>
 					</div>
+
 			</div>
 
 			<!-- START PAGINATION -->
-			<div class="">
+			<div class="panel-heading">
 				<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite"><?php echo $this->Paginator->counter(array('format' => 'Showing %start% to %end% of %count% entries'));?></div>
 					<?php if($this->Paginator->hasPrev() or $this->Paginator->hasNext()):?>
 					<ul class="pagination pagination-sm pull-right">
@@ -127,14 +135,13 @@ function Delete(msg,id)
 									"escape"	=>	false,
 									'tag'		=>	"li",
 								),
-								"<a href=''></a>",
+								"<a href='javascript:void(0)'></a>",
 								array(
 									'tag'		=>	"li",
 									"escape"	=>	false,
 								)
 							);
 						?>
-
 						<?php
 							echo $this->Paginator->numbers(array(
 								'separator'		=>	null,
@@ -148,13 +155,19 @@ function Delete(msg,id)
 									"escape"	=>	false,
 									'tag'		=>	"li",
 								),
-								"<a href=''></a>",
+								"<a href='javascript:void(0)'></a>",
 								array(
 									'tag'		=>"li",
 									"escape"	=>	false,
 								)
 							);
 						?>
+						<!--li class="disabled"><a href="#"></a></li>
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">»</a></li-->
 					</ul>
 					<?php endif;?>
 				</div>

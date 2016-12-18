@@ -340,15 +340,15 @@ class PersonnelsController extends AppController
 			return;
 		}
 
-		
+		$this->loadModel($this->ModelName); 
+		$this->{$this->ModelName}->VirtualFieldActivated();
 		$detail =	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID
 									)
 								));
 		
-		$this->loadModel($this->ModelName); 
-		$this->{$this->ModelName}->VirtualFieldActivated();
+		
 		$this->set(compact("detail"));
 	}
 	

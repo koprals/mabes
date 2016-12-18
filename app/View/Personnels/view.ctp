@@ -80,7 +80,7 @@
                                         <label class="col-md-3 col-xs-5 control-label">Matra/PNS</label>
                                         <div class="col-md-9 col-xs-7">
                                             <select class="form-control select">
-                                                    <option><?php echo $detail[$ModelName]['personel_matra']?></option>
+                                                    <option><?php echo $detail[$ModelName]['SMatra']?></option>
                                                 </select>
                                         </div>
                                     </div>

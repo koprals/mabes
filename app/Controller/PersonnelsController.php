@@ -205,9 +205,10 @@ class PersonnelsController extends AppController
 
 					}
 					@unlink($tmp_images1_img);
+					var_dump($this->request->data[$this->ModelName]["images"]["name"]);
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				$this->redirect(array("action"=>"SuccessAdd",$ID));
+				//$this->redirect(array("action"=>"SuccessAdd",$ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 	}
@@ -338,13 +339,13 @@ class PersonnelsController extends AppController
 
 		$cond_search		=	array();
 		$filter_paginate	=	array();
-		$this->paginate		=	array(
-									"{$this->ModelName}"	=>	array(
-										"order"				=>	$order,
-										'limit'				=>	$viewpage,
-										'recursive'		=>	2
-									)
-								));
+		//$this->paginate		=	array(
+		//							"{$this->ModelName}"	=>	array(
+		//								"order"				=>	$order,
+		//								'limit'				=>	$viewpage,
+		//								'recursive'		=>	2
+		//							)
+		//						));
 
 
 		$this->set(compact("detail"));

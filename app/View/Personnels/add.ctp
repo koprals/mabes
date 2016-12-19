@@ -289,7 +289,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 									</div>

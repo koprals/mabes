@@ -19,17 +19,17 @@
 										<div>
 												<div class="widget-title">Total Personel</div>
 												<div class="widget-title">Studi</div>
-												<div class="widget-int">52</div>
+												<div class="widget-int">15</div>
 										</div>
 									<div>
 												<div class="widget-title">Total Personel</div>
 												<div class="widget-title">Studi</div>
-												<div class="widget-int">52</div>
+												<div class="widget-int">15</div>
 										</div>
 										<div>
 												<div class="widget-title">Total Personel</div>
 												<div class="widget-title">Studi</div>
-												<div class="widget-int">52</div>
+												<div class="widget-int">15</div>
 										</div>
 								</div>
 								<div class="widget-controls">
@@ -47,7 +47,7 @@
 										<span class="fa fa-envelope"></span>
 								</div>
 								<div class="widget-data">
-										<div class="widget-int num-count">48</div>
+										<div class="widget-int num-count">0</div>
 										<div class="widget-title">Pesan Baru</div>
 										<div class="widget-subtitle">Di dalam inbox</div>
 								</div>
@@ -66,7 +66,7 @@
 										<span class="fa fa-user"></span>
 								</div>
 								<div class="widget-data">
-										<div class="widget-int num-count">375</div>
+										<div class="widget-int num-count">15</div>
 										<div class="widget-title">Personel Terdaftar</div>
 								</div>
 								<div class="widget-controls">

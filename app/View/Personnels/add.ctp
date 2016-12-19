@@ -36,7 +36,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -54,7 +53,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -72,7 +70,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -87,7 +84,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 														'options'				=>  array('0' => 'AD', '1' => 'AU', '2' => 'AL'),
 														'empty'					=> "Pilih Matra",
 													));
@@ -106,7 +102,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -143,7 +138,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -161,7 +155,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -179,7 +172,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -201,7 +193,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -219,7 +210,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -237,7 +227,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -255,7 +244,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -273,7 +261,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -305,7 +292,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -321,7 +307,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 									</div>
@@ -338,7 +323,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -356,7 +340,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -377,7 +360,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -393,7 +375,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 									</div>
@@ -410,7 +391,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>
@@ -428,7 +408,6 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
 										</div>

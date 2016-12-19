@@ -176,11 +176,11 @@
                                 <div class="panel-body form-group-separated">                                  
                                     <div class="form-group">
                                         <label class="col-md-5 col-xs-5 control-label">Keberangkatan</label>
-                                        <div class="col-md-7 col-xs-7 line-height-30"><?php echo $detail[$ModelName]['personel_course_depart']?></div>
+                                        <div class="col-md-7 col-xs-7 line-height-30"><?php echo $detail['Process']['depart'] ?></div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-5 col-xs-5 control-label">Kepulangan</label>
-                                        <div class="col-md-7 col-xs-7 line-height-30"><?php echo $detail[$ModelName]['personel_course_arrived']?></div>
+                                        <div class="col-md-7 col-xs-7 line-height-30"><?php echo $detail[$ModelName]['arrive']?></div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-5 col-xs-5 control-label">No. Paspor</label>

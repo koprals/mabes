@@ -4709,7 +4709,7 @@ input[type=checkbox] {
 }
 .form-control[disabled],
 .form-control[readonly] {
-  color: #CCC;
+  color: #a9a9a9;
 }
 .form-control[disabled]:focus,
 .form-control[readonly]:focus {

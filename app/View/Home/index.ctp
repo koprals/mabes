@@ -19,17 +19,17 @@
 										<div>
 												<div class="widget-title">Total Personel</div>
 												<div class="widget-title">Studi</div>
-												<div class="widget-int">15</div>
+												<div class="widget-int">6</div>
 										</div>
 									<div>
 												<div class="widget-title">Total Personel</div>
 												<div class="widget-title">Studi</div>
-												<div class="widget-int">15</div>
+												<div class="widget-int">6</div>
 										</div>
 										<div>
 												<div class="widget-title">Total Personel</div>
 												<div class="widget-title">Studi</div>
-												<div class="widget-int">15</div>
+												<div class="widget-int">6</div>
 										</div>
 								</div>
 								<div class="widget-controls">

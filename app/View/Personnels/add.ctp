@@ -84,7 +84,7 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														'options'				=>  array('0' => 'AD', '1' => 'AU', '2' => 'AL'),
+														'options'				=>  array('0' => 'AD', '1' => 'AU', '2' => 'AL', '3' => 'PNS'),
 														'empty'					=> "Pilih Matra",
 													));
 												?>

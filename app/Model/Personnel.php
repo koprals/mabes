@@ -3,7 +3,7 @@ class Personnel extends AppModel
 {
 	public $name = "Personnel";
 
-	public $primaryKey	=	"id_personnel";
+	public $primaryKey	= "id_personnel";
 
 	public function BindImageContent($reset	=	true)
 	{

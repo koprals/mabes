@@ -47,7 +47,7 @@
 										<span class="fa fa-envelope"></span>
 								</div>
 								<div class="widget-data">
-										<div class="widget-int num-count">0</div>
+										<div class="widget-int num-count">2</div>
 										<div class="widget-title">Pesan Baru</div>
 										<div class="widget-subtitle">Di dalam inbox</div>
 								</div>

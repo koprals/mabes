@@ -232,46 +232,38 @@ class ProgramStudiesController extends AppController
 		{
 			$this->{$this->ModelName}->set($this->data);
 			if($this->{$this->ModelName}->validates())
-			{
-				$save		=	$this->{$this->ModelName}->save($this->data,false);
+			{\
+				Configure::write('debug' , 2);
+				$save	=	$this->{$this->ModelName}->save($this->request->data);
+				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
-				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
-				{
-					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp								=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
+				if(!empty($this->request->data[$this->ModelName]["file"]["name"])) {
+ 					$saveData[$this->ModelName] = array(
+ 	          'file_name' => $this->request->data[$this->ModelName]['file']['name'],
+ 	          'file_size' => $this->request->data[$this->ModelName]['file']['size'],
+ 	          'file_type' => $this->request->data[$this->ModelName]['file']['type'],
+ 	        );
 
-					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
-						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
+ 	        $saveFile = $this->{$this->ModelName}->save($saveData);
+ 	        $url = 'content/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
 
-					$ext								=	pathinfo($tmp_name,PATHINFO_EXTENSION);
-					$tmp_file_name						=	md5(time());
-					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
-					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
-					if($upload)
-					{
-						//RESIZE BIG
-						$error_upload["original"]		=	"Sorry, there is problem when upload file.";
-						$resize							=	$this->General->ResizeImageContent(
-																$tmp_images1_img,
-																$this->settings["cms_url"],
-																$ID,
-																$this->ModelName,
-																"original",
-																$mime_type,
-																300,
-																300,
-																"cropRatio"
-															);
+ 	        $folder = ROOT.DS.'app'.DS.'webroot'.DS.'contents'.DS.$this->ModelName;
+ 	        if(!is_dir($folder)) mkdir($folder,0755);
 
-					}
-					@unlink($tmp_images1_img);
-				}
-				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
+ 	        $folder = $folder.DS.$this->{$this->ModelName}->id;
+ 	        if(!is_dir($folder)) mkdir($folder,0755);
 
-				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
-			}
+ 	        $fileLocation = $folder.DS.$saveData[$this->ModelName]['file_name'];
+ 					//debug($fileLocation);
+
+ 	        $upload = move_uploaded_file($this->request->data[$this->ModelName]['file']['tmp_name'],$fileLocation);
+ 	        if($upload) {
+ 						//var_dump("sukses");
+ 	          $this->{$this->ModelName}->saveField('url', $url);
+ 	        }
+ 				}
+ 				$this->redirect(array("action"=>"SuccessEdit",$ID,$page,$viewpage));
+			}//END IF VALIDATE
 		}
 		$this->set(compact("ID","detail","aro_id_list","page","viewpage","matra_id_list"));
 	}

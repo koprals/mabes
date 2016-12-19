@@ -56,6 +56,9 @@ function Delete(msg,id)
 					<label>Show Entries</label>
 					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
 				</div>
+				<div class="pull-right">
+                                    <button type="submit" class="btn btn-danger">Export File</button>
+                                </div>
 			</div>
 
 			<div class="panel-body panel-body-table">

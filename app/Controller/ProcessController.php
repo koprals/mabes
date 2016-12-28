@@ -154,6 +154,30 @@ class ProcessController extends AppController
 			return;
 		}
 
+		$this->loadModel('AvailableCourse');
+   		$list_courses = $this->AvailableCourse->ProgramStudy->find('list', array(
+    		'fields'  =>  array('ProgramStudy.edu_name'),
+  		));
+
+		//DEFINE JENIS PENDIDIKAN
+		$this->loadModel('EducationType');
+		$list_education	=	$this->EducationType->find('list', array(
+			'fields'	=> array('EducationType.edu_type')
+		));
+
+		//DEFINE PROGRAM STUDY
+		$this->loadModel('ProgramStudy');
+		$list_program	=	$this->ProgramStudy->find('list', array(
+			'fields'	=>	array('ProgramStudy.edu_name')
+		));
+
+		//DEFINE PERSONEL
+   		$this->loadModel('Personnel');
+    	$list_personnel = $this->Personnel->find('list', array(
+      		'fields'  =>  array('Personnel.personnel_name')
+    	));
+
+
 		if(isset($_GET['debug']) && $_GET['debug'] == "1")
 			$this->layout		=	"ajax";
 		else
@@ -175,13 +199,14 @@ class ProcessController extends AppController
 										"order"				=>	$order,
 										"limit"				=>	$viewpage,
 										"conditions"		=>	$conditions,
-										"page"				=>	$page
+										"page"				=>	$page,
+										'recursive'  		=>  2
 									)
 								);
 		$data				=	$this->paginate("{$this->ModelName}",$conditions);
 		$title				=	$this->ModelName;
 		$filename			=	$this->ModelName."_".date("dMY");
-		$this->set(compact("data","title","page","viewpage","filename"));
+		$this->set(compact("data","title","page","viewpage","filename","list_courses","list_education","list_program","list_personnel"));
 	}
 
 	function Add()

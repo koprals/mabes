@@ -57,7 +57,7 @@ function Delete(msg,id)
 					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
 				</div>
 				<div class="pull-right">
-                                    <button type="submit" class="btn btn-danger">Export File</button>
+                                    <a href="<?php echo $settings['cms_url'].$ControllerName?>/Excel" type="submit" class="btn btn-danger">Export File</a>
                                 </div>
 			</div>
 
@@ -78,6 +78,9 @@ function Delete(msg,id)
 												</th>
 												<th>
 													Kesatuan
+												</th>
+												<th>
+													Lama Pendidikan
 												</th>
 												<th>
 													Nama Pendidikan
@@ -119,6 +122,7 @@ function Delete(msg,id)
 												<td><?php echo $data['Personnel']['personnel_name'] ?></td>
 												<td><?php echo $data['Personnel']['personel_occupation'] ?>/<?php echo $data['Personnel']['SCorps'] ?>/<?php echo $data['Personnel']['personel_nrp'] ?></td>
 												<td><?php echo $data['Personnel']['personel_unity'] ?>
+												<td><?php echo $data[$ModelName]['long_term_education'] ?></td>
 												<td><?php echo $data['AvailableCourse']['ProgramStudy']['edu_name'] ?></td>
 												<td><?php echo $data['AvailableCourse']['Country']['country_name'] ?></td>
 												<td><?php echo $data['AvailableCourse']['EducationType']['edu_type'] ?></td>

@@ -102,8 +102,8 @@ echo $this->Html->script(array(
 			                <div class="profile-data-title">Superadmin</div>
 			            </div>
 			            <div class="profile-controls">
-			                <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
-			                <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
+			                <a href="" class="profile-control-left"><span class="fa fa-info"></span></a>
+			                <a href="" class="profile-control-right"><span class="fa fa-envelope"></span></a>
 			            </div>
 			        </div>
 			    </li>

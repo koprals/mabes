@@ -24,16 +24,19 @@ tr.genap{
 
 </style>
 
-<h2 style="text-align:center;"><?php echo $ControllerName?></h2>
-<table width="850" border="1" cellspacing="0" cellpadding="0">
+<h5 style="text-align:Left;"><?php echo "TENTARA NASIONAL INDONESIA"?> <br> <?php echo "MARKAS BESAR"?></h5>
+<h3 style="text-align:Center;"><?php echo "Control Siswa Luar Negeri Berdasarkan Negara untuk Periode 2016"?> <br> <?php echo "Nama Negara : Amerika Serikat"?></h3>
+<table width="1350" border="1" cellspacing="0" cellpadding="0">
 	<tr class="header">
 		<td width="50">No</td>
-		<td width="50">ID</td>
-		<td width="150">Name</td>
-		<td width="250">Description</td>
-		<td width="150">Parent</td>
-		<td width="100">Status</td>
-		<td width="100">Modified</td>
+		<td width="150">Nama Siswa</td>
+		<td width="150">NRP Kesatuan</td>
+		<td width="100">Pangkat</td>
+		<td width="250">Nama Pendidikan</td>
+		<td width="150">Jenis Pendidikan</td>
+		<td width="150">Lama DIK bulan/hari</td>
+		<td width="150">Berangkat</td>
+		<td width="150">Kembali</td>
 	</tr>
 	
 	<?php if(!empty($data)):?>
@@ -44,12 +47,14 @@ tr.genap{
 	<?php $class = ($count % 2 == 0) ? "ganjil" : "genap";?>
   	<tr class="<?php echo $class?>">
 		<td style="text-align:center;"><?php echo $no; ?></td>
-		<td style="text-align:center;"><?php echo $data[$ModelName]['id'] ?></td>
-		<td><?php echo $data[$ModelName]['name'] ?></td>
-		<td><?php echo $this->Text->truncate($data[$ModelName]['description'],100,array("html"=>true))?></td>
-		<td><?php echo $data["Parent"]['name'] ?></td>
-		<td><?php echo $data[$ModelName]['SStatus'] ?></td>
-		<td><?php echo date("d M Y",strtotime($data[$ModelName]['modified'])) ?></td>
+		<td style="text-align:center;"><?php echo $data['Personnel']['personnel_name'] ?></td>
+		<td style="text-align:center;"><?php echo $data['Personnel']['personel_nrp'] ?></td>
+		<td style="text-align:center;"><?php echo $data['Personnel']['personel_occupation'] ?></td>
+		<td style="text-align:center;"><?php echo $data['AvailableCourse']['ProgramStudy']['edu_name'] ?></td>
+		<td style="text-align:center;"><?php echo $data['AvailableCourse']['EducationType']['edu_type'] ?></td>
+		<td style="text-align:center;"><?php echo $data[$ModelName]['long_term_education'] ?></td>
+		<td style="text-align:center;"><?php echo $data[$ModelName]['depart'] ?></td>
+		<td style="text-align:center;"><?php echo $data[$ModelName]['arrive'] ?></td>
 	</tr>
 	<?php endforeach;?>
 	<?php else:?>

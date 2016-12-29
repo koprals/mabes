@@ -29,7 +29,6 @@ class ProcessController extends AppController
       'fields'  =>  array('ProgramStudy.edu_name'),
     ));
 
-    //debug($list_courses);
 
 		//DEFINE JENIS PENDIDIKAN
 		$this->loadModel('EducationType');

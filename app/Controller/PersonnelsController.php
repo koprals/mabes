@@ -169,7 +169,7 @@ class PersonnelsController extends AppController
 			$this->{$this->ModelName}->set($this->request->data);
 			if($this->{$this->ModelName}->validates())
 			{
-				//Configure::write('debug',2);
+				Configure::write('debug',2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
@@ -205,6 +205,7 @@ class PersonnelsController extends AppController
 
 					}
 					@unlink($tmp_images1_img);
+					debug($upload);
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				$this->redirect(array("action"=>"SuccessAdd",$ID));

@@ -66,6 +66,13 @@ class ProgramStudy extends AppModel
 		)
 	);**/
 
+	public $hasOne = array(
+		'AvailableCourse'	=>	array(
+			'className'	=>	'AvailableCourse',
+			'foreignKey'	=>	'program_study_id'
+		)
+	);
+
 	public function BindImageBig($reset	=	true)
 	{
 		$this->bindModel(array(

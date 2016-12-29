@@ -90,7 +90,7 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														'options'				=>  array('0' => 'AD', '1' => 'AU', '2' => 'AL', '3' => 'PNS'),
+														'options'				=>  array('0' => 'AD', '1' => 'AU', '2' => 'AL'),
 														'empty'					=> "Pilih Matra",
 													));
 												?>
@@ -187,7 +187,7 @@
                   <label class="col-md-6 col-xs-12 control-label"><h5>Administrasi</h5></label>
               </div>
               <div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Kepala Panglima TNI </label>
+								<label class="col-md-3 col-xs-12 control-label">Keputusan Panglima TNI </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -235,6 +235,7 @@
 													));
 												?>
 										</div>
+										<input type="button" value="Browse FIle" class="btn btn-primary help-block" />
 									</div>
 							</div>
 							<div class="form-group">
@@ -252,6 +253,7 @@
 													));
 												?>
 										</div>
+										<input type="button" value="Browse FIle" class="btn btn-primary help-block" />
 									</div>
 							</div>
 							<div class="form-group">
@@ -269,6 +271,7 @@
 													));
 												?>
 										</div>
+										<input type="button" value="Browse FIle" class="btn btn-primary help-block" />
 									</div>
 							</div>
 							<div class="form-group">
@@ -317,7 +320,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TLP Rumah <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">TLP Rumah/HP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -385,7 +388,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TLP/HP <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">TLP Rumah/HP Keluarga <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>

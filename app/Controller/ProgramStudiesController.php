@@ -57,7 +57,7 @@ class ProgramStudiesController extends AppController
 		$this->loadModel($this->ModelName);
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.name" => "ASC");
+		$order				=	array("{$this->ModelName}.id" => "DESC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -92,7 +92,8 @@ class ProgramStudiesController extends AppController
 		$this->paginate		=	array(
 									"{$this->ModelName}"	=>	array(
 										"order"				=>	$order,
-										'limit'				=>	$viewpage
+										'limit'				=>	$viewpage,
+										'recursive'		=>	2
 									)
 								);
 
@@ -102,6 +103,7 @@ class ProgramStudiesController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
+		debug($data);
 
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
@@ -168,8 +170,8 @@ class ProgramStudiesController extends AppController
 		{
 			$this->{$this->ModelName}->set($this->request->data);
 			if($this->{$this->ModelName}->validates())
-			{\
-				Configure::write('debug' , 2);
+			{
+				//Configure::write('debug' , 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
@@ -232,10 +234,9 @@ class ProgramStudiesController extends AppController
 		{
 			$this->{$this->ModelName}->set($this->data);
 			if($this->{$this->ModelName}->validates())
-			{\
-				Configure::write('debug' , 2);
+			{
+				//Configure::write('debug' , 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
-				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
 				if(!empty($this->request->data[$this->ModelName]["file"]["name"])) {
  					$saveData[$this->ModelName] = array(

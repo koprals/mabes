@@ -70,6 +70,9 @@ function Delete(msg,id)
 													<th>
 														<?php echo $this->Paginator->sort("$ModelName.edu_name",'Name');?>
 													</th>
+													<th>
+														<?php echo $this->Paginator->sort("AvailableCourse.Country.country_name",'Negara');?>
+													</th>
 													<?php
 													if(
 														$access[$aco_id]["_update"] == 1 or
@@ -90,6 +93,15 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
 												<td><?php echo $data[$ModelName]['edu_name'] ?></td>
+												<td>
+													<?php
+													 	if(empty($data['AvailableCourse']['id_course'])) {
+															echo "Not Integrated";
+														} else {
+															echo $data['AvailableCourse']['Country']['country_name'];
+														}
+													?>
+												</td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or

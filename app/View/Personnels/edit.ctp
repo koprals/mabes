@@ -434,7 +434,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Foto Personel <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label"></label>
 									<div class="col-md-6 col-xs-12">
 										<a href="#">
 												<img src="assets/images/gallery/music-2.jpg" class="img-responsive img-text"/>

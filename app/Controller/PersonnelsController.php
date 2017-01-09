@@ -169,16 +169,16 @@ class PersonnelsController extends AppController
 			$this->{$this->ModelName}->set($this->request->data);
 			if($this->{$this->ModelName}->validates())
 			{
-				Configure::write('debug',2);
+				//Configure::write('debug',2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
+				if(!empty($this->request->data[$this->ModelName]["image1"]["name"]))
 				{
-					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp									=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type						=	$this->request->data[$this->ModelName]["images"]["type"];
+					$tmp_name							=	$this->request->data[$this->ModelName]["image1"]["name"];
+					$tmp									=	$this->request->data[$this->ModelName]["image1"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["image1"]["type"];
 
 					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
 						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
@@ -190,13 +190,13 @@ class PersonnelsController extends AppController
 					if($upload)
 					{
 						//RESIZE BIG
-						$error_upload["original"]		=	"Sorry, there is problem when upload file.";
+						$error_upload["profil"]		=	"Sorry, there is problem when upload file.";
 						$resize							=	$this->General->ResizeImageContent(
 																$tmp_images1_img,
 																$this->settings["cms_url"],
 																$ID,
 																$this->ModelName,
-																"original",
+																"profil",
 																$mime_type,
 																300,
 																300,
@@ -205,7 +205,106 @@ class PersonnelsController extends AppController
 
 					}
 					@unlink($tmp_images1_img);
-					debug($upload);
+					//debug($upload);
+				}
+				if(!empty($this->request->data[$this->ModelName]["image2"]["name"]))
+				{
+					$tmp_name							=	$this->request->data[$this->ModelName]["image2"]["name"];
+					$tmp									=	$this->request->data[$this->ModelName]["image2"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["image2"]["type"];
+
+					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
+						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
+
+					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images2_img			=	$path_tmp.$tmp_file_name.".".$ext;
+					$upload 							=	move_uploaded_file($tmp,$tmp_images2_img);
+					if($upload)
+					{
+						//RESIZE BIG
+						$error_upload["medical"]		=	"Sorry, there is problem when upload file.";
+						$resize							=	$this->General->ResizeImageContent(
+																$tmp_images2_img,
+																$this->settings["cms_url"],
+																$ID,
+																$this->ModelName,
+																"medical",
+																$mime_type,
+																300,
+																300,
+																"cropRatio"
+															);
+
+					}
+					@unlink($tmp_images2_img);
+					//debug($upload);
+				}
+				if(!empty($this->request->data[$this->ModelName]["image3"]["name"]))
+				{
+					$tmp_name							=	$this->request->data[$this->ModelName]["image3"]["name"];
+					$tmp									=	$this->request->data[$this->ModelName]["image3"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["image3"]["type"];
+
+					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
+						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
+
+					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images3_img			=	$path_tmp.$tmp_file_name.".".$ext;
+					$upload 							=	move_uploaded_file($tmp,$tmp_images3_img);
+					if($upload)
+					{
+						//RESIZE BIG
+						$error_upload["passport"]		=	"Sorry, there is problem when upload file.";
+						$resize							=	$this->General->ResizeImageContent(
+																$tmp_images3_img,
+																$this->settings["cms_url"],
+																$ID,
+																$this->ModelName,
+																"passport",
+																$mime_type,
+																300,
+																300,
+																"cropRatio"
+															);
+
+					}
+					@unlink($tmp_images3_img);
+					//debug($upload);
+				}
+				if(!empty($this->request->data[$this->ModelName]["image4"]["name"]))
+				{
+					$tmp_name							=	$this->request->data[$this->ModelName]["image4"]["name"];
+					$tmp									=	$this->request->data[$this->ModelName]["image4"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["image4"]["type"];
+
+					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
+						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
+
+					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images4_img			=	$path_tmp.$tmp_file_name.".".$ext;
+					$upload 							=	move_uploaded_file($tmp,$tmp_images4_img);
+					if($upload)
+					{
+						//RESIZE BIG
+						$error_upload["security"]		=	"Sorry, there is problem when upload file.";
+						$resize							=	$this->General->ResizeImageContent(
+																$tmp_images4_img,
+																$this->settings["cms_url"],
+																$ID,
+																$this->ModelName,
+																"security",
+																$mime_type,
+																300,
+																300,
+																"cropRatio"
+															);
+
+					}
+					@unlink($tmp_images4_img);
+					//debug($upload);
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				$this->redirect(array("action"=>"SuccessAdd",$ID));
@@ -246,29 +345,29 @@ class PersonnelsController extends AppController
 				$save		=	$this->{$this->ModelName}->save($this->data,false);
 
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
+				if(!empty($this->request->data[$this->ModelName]["image1"]["name"]))
 				{
-					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
-					$tmp								=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
+					$tmp_name							=	$this->request->data[$this->ModelName]["image1"]["name"];
+					$tmp									=	$this->request->data[$this->ModelName]["image1"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["image1"]["type"];
 
 					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
 						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
 
-					$ext								=	pathinfo($tmp_name,PATHINFO_EXTENSION);
-					$tmp_file_name						=	md5(time());
-					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
+					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images1_img			=	$path_tmp.$tmp_file_name.".".$ext;
 					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
 					if($upload)
 					{
 						//RESIZE BIG
-						$error_upload["original"]		=	"Sorry, there is problem when upload file.";
+						$error_upload["profil"]		=	"Sorry, there is problem when upload file.";
 						$resize							=	$this->General->ResizeImageContent(
 																$tmp_images1_img,
 																$this->settings["cms_url"],
 																$ID,
 																$this->ModelName,
-																"original",
+																"profil",
 																$mime_type,
 																300,
 																300,
@@ -277,6 +376,106 @@ class PersonnelsController extends AppController
 
 					}
 					@unlink($tmp_images1_img);
+					//debug($upload);
+				}
+				if(!empty($this->request->data[$this->ModelName]["image2"]["name"]))
+				{
+					$tmp_name							=	$this->request->data[$this->ModelName]["image2"]["name"];
+					$tmp									=	$this->request->data[$this->ModelName]["image2"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["image2"]["type"];
+
+					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
+						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
+
+					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images2_img			=	$path_tmp.$tmp_file_name.".".$ext;
+					$upload 							=	move_uploaded_file($tmp,$tmp_images2_img);
+					if($upload)
+					{
+						//RESIZE BIG
+						$error_upload["medical"]		=	"Sorry, there is problem when upload file.";
+						$resize							=	$this->General->ResizeImageContent(
+																$tmp_images2_img,
+																$this->settings["cms_url"],
+																$ID,
+																$this->ModelName,
+																"medical",
+																$mime_type,
+																300,
+																300,
+																"cropRatio"
+															);
+
+					}
+					@unlink($tmp_images2_img);
+					//debug($upload);
+				}
+				if(!empty($this->request->data[$this->ModelName]["image3"]["name"]))
+				{
+					$tmp_name							=	$this->request->data[$this->ModelName]["image3"]["name"];
+					$tmp									=	$this->request->data[$this->ModelName]["image3"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["image3"]["type"];
+
+					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
+						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
+
+					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images3_img			=	$path_tmp.$tmp_file_name.".".$ext;
+					$upload 							=	move_uploaded_file($tmp,$tmp_images3_img);
+					if($upload)
+					{
+						//RESIZE BIG
+						$error_upload["passport"]		=	"Sorry, there is problem when upload file.";
+						$resize							=	$this->General->ResizeImageContent(
+																$tmp_images3_img,
+																$this->settings["cms_url"],
+																$ID,
+																$this->ModelName,
+																"passport",
+																$mime_type,
+																300,
+																300,
+																"cropRatio"
+															);
+
+					}
+					@unlink($tmp_images3_img);
+					//debug($upload);
+				}
+				if(!empty($this->request->data[$this->ModelName]["image4"]["name"]))
+				{
+					$tmp_name							=	$this->request->data[$this->ModelName]["image4"]["name"];
+					$tmp									=	$this->request->data[$this->ModelName]["image4"]["tmp_name"];
+					$mime_type						=	$this->request->data[$this->ModelName]["image4"]["type"];
+
+					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
+						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
+
+					$ext									=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name				=	md5(time());
+					$tmp_images4_img			=	$path_tmp.$tmp_file_name.".".$ext;
+					$upload 							=	move_uploaded_file($tmp,$tmp_images4_img);
+					if($upload)
+					{
+						//RESIZE BIG
+						$error_upload["security"]		=	"Sorry, there is problem when upload file.";
+						$resize							=	$this->General->ResizeImageContent(
+																$tmp_images4_img,
+																$this->settings["cms_url"],
+																$ID,
+																$this->ModelName,
+																"security",
+																$mime_type,
+																300,
+																300,
+																"cropRatio"
+															);
+
+					}
+					@unlink($tmp_images4_img);
+					//debug($upload);
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 

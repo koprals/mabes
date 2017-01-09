@@ -5,7 +5,7 @@ class Personnel extends AppModel
 
 	public $primaryKey	= "id_personnel";
 
-	public function BindImageContent($reset	=	true)
+	public function BindImageProfil($reset	=	true)
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
@@ -14,14 +14,14 @@ class Personnel extends AppModel
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
 						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"original"
+						"Image.type"	=>	"profil"
 					)
 				)
 			)
 		),$reset);
 	}
 
-	public function BindDefault($reset	=	true)
+	public function BindImageMedical($reset	=	true)
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
@@ -30,7 +30,39 @@ class Personnel extends AppModel
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
 						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"original"
+						"Image.type"	=>	"medical"
+					)
+				)
+			)
+		),$reset);
+	}
+
+	public function BindImagePassport($reset	=	true)
+	{
+		$this->bindModel(array(
+			"hasOne"	=>	array(
+				"Image"	=>	array(
+					"className"	=>	"Content",
+					"foreignKey"	=>	"model_id",
+					"conditions"	=>	array(
+						"Image.model"	=>	$this->name,
+						"Image.type"	=>	"passport"
+					)
+				)
+			)
+		),$reset);
+	}
+
+	public function BindImageSecurity($reset	=	true)
+	{
+		$this->bindModel(array(
+			"hasOne"	=>	array(
+				"Image"	=>	array(
+					"className"	=>	"Content",
+					"foreignKey"	=>	"model_id",
+					"conditions"	=>	array(
+						"Image.model"	=>	$this->name,
+						"Image.type"	=>	"security"
 					)
 				)
 			)

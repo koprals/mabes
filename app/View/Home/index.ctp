@@ -16,14 +16,10 @@
 						<!-- START WIDGET SLIDER -->
 						<div class="widget widget-default widget-carousel">
 								<div class="owl-carousel" id="owl-example">
-									<?php 
-										if(!empty($list_personnel)) {
-										foreach($list_personnel as $lp) {	
-									?>
 										<div>
 												<div class="widget-title">Total Personel</div>
 												<div class="widget-title">Studi</div>
-												<div class="widget-int"><?php echo count($lp) - 1 ?> </div>
+												<div class="widget-int"><?php echo $totalPersonnelStudi['0']['0']['total_personnel']; ?></div>
 										</div>
 										<!--
 										<div>
@@ -37,16 +33,6 @@
 												<div class="widget-int">6</div>
 										</div>
 									-->
-									<?php
-										}
-										}else{
-									?>
-									<li>
-										No personel
-									</li>
-									<?php 
-									}	
-									?>
 								</div>
 								<div class="widget-controls">
 										<a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
@@ -82,7 +68,7 @@
 										<span class="fa fa-user"></span>
 								</div>
 								<div class="widget-data">
-										<div class="widget-int num-count">15</div>
+										<div class="widget-int num-count"><?php echo $totalPersonnelStudi['0']['0']['total_personnel']; ?></div>
 										<div class="widget-title">Personel Terdaftar</div>
 								</div>
 								<div class="widget-controls">
@@ -200,22 +186,23 @@
 																</tr>
 														</thead>
 														<tbody>
-															<?php if(!empty($list_personnel)) {
-																	foreach($list_personnel as $data) {
-															?>
-																	<tr>
-																			<td><strong><?php echo $data ?> </strong></td>
-																			
-																			<td><?php ?></td>
-																			
-																	</tr>
-																			
-															<?php 
-																}
-															}else{
-															?>	
-																<td>No Personel</td>
-															<?php } ?>	
+															<?php foreach($lastPersonnelStudi as $data): ?>
+																<tr>
+																	<td><strong><?php echo $data['Personnel']['personnel_name']; ?></strong></td>
+																	<td>
+																		<?php
+																			if($data['Process']['status'] == 0){
+																				echo "<span class='label label-success'>".$data['Process']['SStatus']."</span>";
+																			} elseif ($data['Process']['status'] == 1) {
+																				echo "<span class='label label-info'>".$data['Process']['SStatus']."</span>";
+																			} else {
+																				echo "<span class='label label-danger'>".$data['Process']['SStatus']."</span>";
+																			}
+																		?>
+
+																	</td>
+																</tr>
+															<?php endforeach; ?>
 														</tbody>
 												</table>
 										</div>

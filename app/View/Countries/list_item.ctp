@@ -70,6 +70,21 @@ function Delete(msg,id)
 													<th>
 														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
 													</th>
+													<th>
+														Telp Kedutaan
+													</th>
+													<th>
+														Alamat Kedutaan
+													</th>
+													<th>
+														Email Kedutaan
+													</th>
+													<th>
+														Telp Office
+													</th>
+													<th>
+														Fax
+													</th>
 													<?php
 													if(
 														$access[$aco_id]["_update"] == 1 or
@@ -90,6 +105,11 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
 												<td><?php echo $data[$ModelName]['country_name'] ?></td>
+												<td><?php echo $data[$ModelName]['telp_kedutaan']?></td>
+												<td><?php echo $data[$ModelName]['alamat_kedutaan']?></td>
+												<td><?php echo $data[$ModelName]['email_kedutaan']?></td>
+												<td><?php echo $data[$ModelName]['telp_office']?></td>
+												<td><?php echo $data[$ModelName]['fax']?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or

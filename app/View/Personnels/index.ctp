@@ -106,6 +106,7 @@ function ClearSearchAdvance()
                                                         'after'         =>  '</div>'
                                                 ));
                                         ?>
+                                        <?php //var_dump($this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance", "role"=>"form")))?>
                                         <?php
                                                     echo $this->Form->input('Search.contries_id', array(
                                                         'label'         =>  'Negara',

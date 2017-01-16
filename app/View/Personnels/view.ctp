@@ -191,47 +191,18 @@
                                         <div class="col-md-7 col-xs-7 line-height-30"><?php echo $detail[$ModelName]['bank_account_number']?></div>
                                     </div>
                                 </div>
-                                
                             </div>
-                            <!--
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <h3><span class="fa fa-cog"></span> Settings</h3>
-                                    <p>Sample of settings block</p>
-                                </div>
-                                <div class="panel-body form-horizontal form-group-separated">                                    
-                                    <div class="form-group">
-                                        <label class="col-md-6 col-xs-6 control-label">Notifications</label>
-                                        <div class="col-md-6 col-xs-6">
-                                            <label class="switch">
-                                                <input type="checkbox" checked value="1"/>
-                                                <span></span>
-                                            </label>
-                                        </div>
-                                    </div>                                    
-                                    <div class="form-group">
-                                        <label class="col-md-6 col-xs-6 control-label">Mailing</label>
-                                        <div class="col-md-6 col-xs-6">
-                                            <label class="switch">
-                                                <input type="checkbox" checked value="1"/>
-                                                <span></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-6 col-xs-6 control-label">Priority</label>
-                                        <div class="col-md-6 col-xs-6">
-                                            <label class="switch">
-                                                <input type="checkbox" value="0"/>
-                                                <span></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            -->
                         </div>
                         
+                        <div class="col-md-3">                        
+                            <div href="#" class="tile tile-primary">
+                                <p><br><?php 
+                                            echo $this->Time->nice($detail[$ModelName]['modified']);
+                                        ?></p>
+                                <p>Latest Update</p>
+                                <div class="informer informer-warning"></div>
+                            </div>
+                        </div>
                     </div>
 </div>
 <!-- END FORM -->

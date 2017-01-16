@@ -112,6 +112,7 @@ class CountriesController extends AppController
 		$page				=	empty($this->params['named']['page']) ? 1 : $this->params['named']['page'];
 		$this->Session->write('Search.'.$this->ControllerName.'Page',$page);
 		$this->set(compact('data','page','viewpage'));
+		
 	}
 
 

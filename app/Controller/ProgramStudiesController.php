@@ -23,6 +23,24 @@ class ProgramStudiesController extends AppController
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
+
+		//DEFINE COUNTRY
+		$this->loadModel('Country');
+		$country_list	=	$this->Country->find('list', array(
+				'order'	=>	'Country.country_name  ASC',
+				'fields'	=>	'Country.country_name'
+				)
+		);
+
+		//DEFINE JENIS PENDIDIDKAN
+		$this->loadModel('EducationType');
+		$study_list	=	$this->EducationType->find('list', array(
+				'order'	=>	'EducationType.edu_type ASC',
+				'fields'	=> 'EducationType.edu_type'
+			)
+		);
+
+		$this->set(compact('country_list', 'study_list'));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -174,6 +192,12 @@ class ProgramStudiesController extends AppController
 				//Configure::write('debug' , 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
+
+				if(!empty($save))
+				{
+					$this->request->data['AvailableCourse']['program_study_id']	= $this->{$this->ModelName}->id;
+					$this->{$this->ModelName}->AvailableCourse->save($this->request->data);
+				}
 
 				if(!empty($this->request->data[$this->ModelName]["file"]["name"])) {
  					$saveData[$this->ModelName] = array(

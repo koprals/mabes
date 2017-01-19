@@ -207,7 +207,7 @@ class ProgramStudiesController extends AppController
  	        );
 
  	        $saveFile = $this->{$this->ModelName}->save($saveData);
- 	        $url = 'content/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
+ 	        $url = 'contents/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
 
  	        $folder = ROOT.DS.'app'.DS.'webroot'.DS.'contents'.DS.$this->ModelName;
  	        if(!is_dir($folder)) mkdir($folder,0755);
@@ -270,7 +270,7 @@ class ProgramStudiesController extends AppController
  	        );
 
  	        $saveFile = $this->{$this->ModelName}->save($saveData);
- 	        $url = 'content/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
+ 	        $url = 'contents/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
 
  	        $folder = ROOT.DS.'app'.DS.'webroot'.DS.'contents'.DS.$this->ModelName;
  	        if(!is_dir($folder)) mkdir($folder,0755);

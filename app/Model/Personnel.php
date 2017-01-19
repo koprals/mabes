@@ -5,6 +5,13 @@ class Personnel extends AppModel
 
 	public $primaryKey	= "id_personnel";
 
+	public $hasMany	=	array(
+		'Process'	=>	array(
+			'className'	=>	'Process',
+			'order'	=>	'Process.id DESC'
+		)
+	);
+
 	public function BindImageProfil($reset	=	true)
 	{
 		$this->bindModel(array(

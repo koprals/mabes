@@ -235,7 +235,13 @@
 													));
 												?>
 										</div>
-										<input type="button" value="Browse FIle" class="btn btn-primary help-block" />
+										<?php
+											echo $this->Form->input('image2', array(
+												'type'					=>	'file',
+												'class'					=>	'fileinput btn-primary active help-block',
+												'label'					=>	false,
+											));
+										?>
 									</div>
 							</div>
 							<div class="form-group">
@@ -253,7 +259,13 @@
 													));
 												?>
 										</div>
-										<input type="button" value="Browse FIle" class="btn btn-primary help-block" />
+										<?php
+											echo $this->Form->input('image3', array(
+												'type'					=>	'file',
+												'class'					=>	'fileinput btn-primary active help-block',
+												'label'					=>	false,
+											));
+										?>
 									</div>
 							</div>
 							<div class="form-group">
@@ -271,7 +283,13 @@
 													));
 												?>
 										</div>
-										<input type="button" value="Browse FIle" class="btn btn-primary help-block" />
+										<?php
+											echo $this->Form->input('image4', array(
+												'type'					=>	'file',
+												'class'					=>	'fileinput btn-primary active help-block',
+												'label'					=>	false,
+											));
+										?>
 									</div>
 							</div>
 							<div class="form-group">
@@ -425,7 +443,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Foto Personel <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('images', array(
+													echo $this->Form->input('image1', array(
 														'type'					=>	'file',
 														'class'					=>	'fileinput btn-primary',
 														'label'					=>	false,

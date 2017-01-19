@@ -1,10 +1,29 @@
 <?php
+    Configure::write('CakePdf', array(
+        'engine' => 'CakePdf.Dompdf',
+        'options' => array(
+            'print-media-type' => false,
+            'outline' => true,
+            'dpi' => 96
+        ),
+        'margin' => array(
+            'bottom' => 15,
+            'left' => 50,
+            'right' => 30,
+            'top' => 45
+        ),
+        'orientation' => 'portrait',
+        'download' => true
+    ));
+?>
+<?php
 class PersonnelsController extends AppController
 {
 	var $ControllerName		=	"Personnels";
 	var $ModelName			=	"Personnel";
 	var $helpers			=	array("Text","Aimfox");
 	var $uses				=	"Personnel";
+	var $components = array("RequestHandler");
 
 	function beforeFilter()
 	{
@@ -493,14 +512,30 @@ class PersonnelsController extends AppController
 			return;
 		}
 
+		$this->pdfConfig = array(
+						'orientation' => 'portrait',//or landscape
+						'filename' => "testpdf",
+						'download' => false,
+						'margin' => array(
+              'bottom' => 15,
+              'left' => 50,
+              'right' => 30,
+              'top' => 45
+					),
+					'engine' => 'CakePdf.DomPdf',
+				);
+
 		$this->loadModel($this->ModelName);
+		$this->{$this->ModelName}->BindImageProfil();
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
 				"{$this->ModelName}.id_personnel"		=>	$ID
-			)
+			),
+			'recursive'	=>	1
 		));
+		//debug($detail);
 		if(empty($detail))
 		{
 			$this->layout	=	"ajax";
@@ -508,6 +543,41 @@ class PersonnelsController extends AppController
 			$this->render("/errors/error404");
 			return;
 		}
+		$this->set(compact("ID","detail"));
+	}
+
+  function Pdf($ID=NULL)
+	{
+		if($this->access[$this->aco_id]["_read"] != "1")
+		{
+			$this->layout	=	"no_access";
+			return;
+		}
+
+		$this->pdfConfig = array(
+						'orientation' => 'portrait',//or landscape
+						'filename' => "testpdf",
+						'download' => false,
+						'margin' => array(
+              'bottom' => 15,
+              'left' => 50,
+              'right' => 30,
+              'top' => 45
+					),
+					'engine' => 'CakePdf.DomPdf',
+				);
+
+		$this->loadModel($this->ModelName);
+		$this->{$this->ModelName}->BindImageProfil();
+		$this->{$this->ModelName}->VirtualFieldActivated();
+
+		$detail = $this->{$this->ModelName}->find('first', array(
+			'conditions' => array(
+				"{$this->ModelName}.id_personnel"		=>	$ID
+			),
+			'recursive'	=>	1
+		));
+		
 		$this->set(compact("ID","detail"));
 	}
 

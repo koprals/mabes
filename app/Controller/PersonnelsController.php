@@ -512,19 +512,6 @@ class PersonnelsController extends AppController
 			return;
 		}
 
-		$this->pdfConfig = array(
-						'orientation' => 'portrait',//or landscape
-						'filename' => "testpdf",
-						'download' => false,
-						'margin' => array(
-              'bottom' => 15,
-              'left' => 50,
-              'right' => 30,
-              'top' => 45
-					),
-					'engine' => 'CakePdf.DomPdf',
-				);
-
 		$this->loadModel($this->ModelName);
 		$this->{$this->ModelName}->BindImageProfil();
 		$this->{$this->ModelName}->VirtualFieldActivated();
@@ -535,7 +522,16 @@ class PersonnelsController extends AppController
 			),
 			'recursive'	=>	1
 		));
-		//debug($detail);
+
+    $this->loadModel('Process');
+		$historicalEdus	=	$this->Process->find('all', array(
+			'conditions'	=>	array(
+				'Process.personnel_id'	=> $ID
+			),
+			'recursive'	=>	2
+		));
+
+		//debug($historicalEdus);
 		if(empty($detail))
 		{
 			$this->layout	=	"ajax";
@@ -543,18 +539,18 @@ class PersonnelsController extends AppController
 			$this->render("/errors/error404");
 			return;
 		}
-		$this->set(compact("ID","detail"));
+		$this->set(compact("ID","detail","historicalEdus"));
 	}
 
-  function Pdf($ID=NULL)
-	{
-		if($this->access[$this->aco_id]["_read"] != "1")
-		{
-			$this->layout	=	"no_access";
-			return;
-		}
+	function Pdf($ID=NULL)
+  {
+    if($this->access[$this->aco_id]["_read"] != "1")
+    {
+      $this->layout	=	"no_access";
+      return;
+    }
 
-		$this->pdfConfig = array(
+    $this->pdfConfig = array(
 						'orientation' => 'portrait',//or landscape
 						'filename' => "testpdf",
 						'download' => false,
@@ -567,19 +563,21 @@ class PersonnelsController extends AppController
 					'engine' => 'CakePdf.DomPdf',
 				);
 
-		$this->loadModel($this->ModelName);
-		$this->{$this->ModelName}->BindImageProfil();
-		$this->{$this->ModelName}->VirtualFieldActivated();
+    $this->loadModel($this->ModelName);
+    $this->{$this->ModelName}->VirtualFieldActivated();
 
-		$detail = $this->{$this->ModelName}->find('first', array(
-			'conditions' => array(
-				"{$this->ModelName}.id_personnel"		=>	$ID
-			),
-			'recursive'	=>	1
-		));
-		
-		$this->set(compact("ID","detail"));
-	}
+    $detail = $this->{$this->ModelName}->find('first', array(
+      'conditions' => array(
+        "{$this->ModelName}.id_personnel"		=>	$ID
+      ),
+      'recursive' =>  2
+    ));
+
+    $title				=	$this->ModelName;
+		$filename			=	$this->ModelName."_".date("dMY");
+
+    $this->set(compact("ID","detail","title","filename"));
+  }
 
 	function ChangeStatus($ID=NULL,$status)
 	{

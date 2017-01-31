@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/cropper/cropper.min.css" />
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
   <li><a href="javascript:void(0)">Home</a></li>
@@ -14,11 +15,11 @@
 <!-- START FORM -->
 <div class="page-content-wrap">
 	<div class="row">
-    <div class="col-md-3 col-sm-4 col-xs-5">
+    <div class="col-md-4 col-sm-4 col-xs-5">
       <form action="#" class="form-horizontal">
         <div class="panel panel-default">
           <div class="panel-body">
-            <h3><span class="fa fa-user"></span> <?php echo $detail[$ModelName]['personnel_name']?></h3>
+            <h3><?php echo $detail[$ModelName]['personnel_name']?></h3>
               <p>SPERS TNI</p>
             <div class="text-center" id="user_image">
               <img src="<?php echo $detail["Image"]["host"].$detail["Image"]["url"]?>?time=<?php echo time()?>" class="img-thumbnail"/>
@@ -33,39 +34,49 @@
             </div>
           </div>
         </div>
-        <div class="panel panel-default">
-          <a target="_blank" href="<?php echo $settings["cms_url"].$ControllerName?>/Pdf/<?php echo $detail[$ModelName]['personnel_name'] ?>.pdf"  class="btn btn-danger btn-block" title="Export To PDF">
-            <span>Export To PDF</span>
-          </a>
-        </div>
-			<!--
+
         <div class="panel panel-default tabs">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab1" data-toggle="tab">Send Message</a></li>
+            <li class="active"><a href="#tab1" data-toggle="tab"><h3>Quick Info</h3></a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane panel-body active" id="tab1">
               <div class="tab-pane panel-body" id="tab1">
-                <p>Feel free to contact us for any issues you might have with our products.</p>
                 <div class="form-group">
-                  <label>Subject</label>
-                  <input type="email" class="form-control" placeholder="Message subject">
+                  <label>No. Passport</label>
+                  <h4><?php echo $this->Text->autoParagraph($detail[$ModelName]['passport'])?></h4>
                 </div>
                 <div class="form-group">
-                  <label>Message</label>
-                  <textarea class="form-control" placeholder="Your message" rows="3" ></textarea>
+                  <label>Rek. Mandiri</label>
+                  <h4><?php echo $this->Text->autoParagraph($detail[$ModelName]['bank_account_number'])?></h4>
                 </div>
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </form>
+      <div href="#" class="tile tile-default">
+          <p><br>
+            <h4 style="font-color:#ffffff">
+              <?php
+                  echo $this->Time->nice($detail[$ModelName]['modified']);
+              ?>
+            </h4>
+          </p>
+          <h3 style="font-color:#ffffff">Latest Update</h3>
+          <div class="informer informer-warning"></div>
+      </div>
+      <div class="panel panel-default">
+        <a target="_blank" href="<?php echo $settings["cms_url"].$ControllerName?>/Pdf/<?php echo $ID ?>.pdf"  class="btn btn-danger btn-block active" title="Export To PDF">
+          <p><h5 style="color:#FFFFFF">EXPORT TO PDF</h5></p>
+        </a>
+      </div>
     </div>
-    <div class="col-md-6 col-sm-8 col-xs-7">
+    <div class="col-md-8 col-sm-8 col-xs-7">
           <form action="#" class="form-horizontal">
           <div class="panel panel-default">
               <div class="panel-body">
-                  <h3><span class="fa fa-pencil"></span> Profile</h3>
+                  <h3>Biodata</h3>
               </div>
               <div class="panel-body form-group-separated">
 
@@ -162,45 +173,52 @@
               </div>
           </div>
           </form>
-
-      </div>
-
-      <div class="col-md-3">
-          <div class="panel panel-default form-horizontal">
-              <div class="panel-body">
-                  <h3><span class="fa fa-info-circle"></span> Quick Info</h3>
-                  <p>Some quick info about this personel</p>
-              </div>
-              <div class="panel-body form-group-separated">
-                  <div class="form-group">
-                      <label class="col-md-5 col-xs-5 control-label">Keberangkatan</label>
-                      <div class="col-md-7 col-xs-7 line-height-30"><?php echo $detail['Process']['0']['depart'] ?></div>
-                  </div>
-                  <div class="form-group">
-                      <label class="col-md-5 col-xs-5 control-label">Kepulangan</label>
-                      <div class="col-md-7 col-xs-7 line-height-30"><?php echo $detail['Process']['0']['arrive']?></div>
-                  </div>
-                  <div class="form-group">
-                      <label class="col-md-5 col-xs-5 control-label">No. Paspor</label>
-                      <div class="col-md-7 col-xs-7 line-height-30"><?php echo $detail[$ModelName]['passport']?></div>
-                  </div>
-                  <div class="form-group">
-                      <label class="col-md-5 col-xs-5 control-label">Rek. Mandiri</label>
-                      <div class="col-md-7 col-xs-7 line-height-30"><?php echo $detail[$ModelName]['bank_account_number']?></div>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-      <div class="col-md-3">
-          <div href="#" class="tile tile-primary">
-              <p><br><?php
-                          echo $this->Time->nice($detail[$ModelName]['modified']);
-                      ?></p>
-              <p>Latest Update</p>
-              <div class="informer informer-warning"></div>
-          </div>
       </div>
   </div>
+  <!-- START RESPONSIVE TABLES -->
+  <div class="row">
+      <div class="col-md-12">
+          <div class="panel panel-default">
+
+              <div class="panel-heading">
+                  <h3 class="panel-title">Riwayat Pendidkan</h3>
+              </div>
+
+              <div class="panel-body panel-body-table">
+
+                  <div class="table-responsive">
+                      <table class="table table-bordered table-striped table-actions">
+                          <thead>
+                              <tr>
+                                  <th width="50">NO</th>
+                                  <th>Nama Pendidikan</th>
+                                  <th width="100">Negara</th>
+                                  <th width="100">Keberangkatan</th>
+                                  <th width="100">Kedatangan</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <?php $count = 0;?>
+        										<?php foreach($historicalEdus as $historicalEdus): ?>
+        											<?php $count++;?>
+        											<?php $no		=	$count;?>
+        											<tr>
+        												<td class="text-center"><?php echo $no ?></td>
+        												<td><strong><?php echo $historicalEdus['AvailableCourse']['ProgramStudy']['edu_name'] ?></strong></td>
+        												<td><?php echo $historicalEdus['AvailableCourse']['Country']['country_name'] ?></td>
+                                <td><?php echo $historicalEdus['Process']['depart'] ?></td>
+                                <td><?php echo $historicalEdus['Process']['arrive'] ?></td>
+        											</tr>
+        										<?php endforeach; ?>
+                          </tbody>
+                      </table>
+                  </div>
+
+              </div>
+          </div>
+
+      </div>
+  </div>
+  <!-- END RESPONSIVE TABLES -->
 </div>
 <!-- END FORM -->

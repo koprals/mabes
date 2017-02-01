@@ -145,16 +145,41 @@
                 : <?php echo $detail[$ModelName]['bank_account_number'] ?>
             </td>
         </tr>
+        <tr>
+          <td><br></td>
+        </tr>
     </table>
 </div>
+<h2 align="center" style="font-family:Arial, Helvetica, sans-serif;font-weight:bold;margin:5px;">RIWAYAT PENDIDIKAN</h2>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family:Arial, Helvetica, sans-serif;">
+    <tr>
+      <td><br></td>
+    </tr>
+    <?php foreach ($historicalEdus as $historicalEdus): ?>
+        <tr align="center">
+            <td width="30%" style="font-size:14px;font-weight:bold;">
+                <?php echo $historicalEdus['AvailableCourse']['ProgramStudy']['edu_name']; ?>
+            </td>
+            <td width="30%" style="font-size:14px;font-weight:bold;">
+                -----
+            </td>
+            <td width="30%" style="font-size:14px;font-weight:bold;">
+                <?php echo $historicalEdus['AvailableCourse']['Country']['country_name']; ?>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td><br></td>
+    </tr>
+</table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family:Arial, Helvetica, sans-serif;">
     <tr align="right">
       <td>
         <h4 style="font-size:14px">Pelapor</h4>
       </td>
-    </tr>
-    <tr>
-      <td><br></td>
     </tr>
     <tr>
       <td><br></td>

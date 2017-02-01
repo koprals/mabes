@@ -573,10 +573,19 @@ class PersonnelsController extends AppController
       'recursive' =>  2
     ));
 
+    $this->loadModel('Process');
+		$historicalEdus	=	$this->Process->find('all', array(
+			'conditions'	=>	array(
+				'Process.personnel_id'	=> $ID
+			),
+			'recursive'	=>	2
+		));
+		//debug($historicalEdus);
+
     $title				=	$this->ModelName;
 		$filename			=	$this->ModelName."_".date("dMY");
 
-    $this->set(compact("ID","detail","title","filename"));
+    $this->set(compact("ID","detail","title","filename","historicalEdus"));
   }
 
 	function ChangeStatus($ID=NULL,$status)

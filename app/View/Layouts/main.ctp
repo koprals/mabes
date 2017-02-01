@@ -16,7 +16,7 @@
 	echo $this->fetch('css');
 
 	//************ JS NEEDED ******************/
-echo $this->Html->script(array(
+	/*echo $this->Html->script(array(
 	"jquery-1.7.2.min",
 	"jquery-ui-1.8.21.custom.min",
 	"/js/plugins/spinner/jquery.mousewheel.js",
@@ -69,13 +69,60 @@ echo $this->Html->script(array(
 ));
 //************ JS NEEDED ******************/
 
-	//BLOCK JAVASCRIPT
-	echo $this->fetch('script');
+	
+	?>
+    
+    <!-- START SCRIPTS -->
+			<!-- START PLUGINS -->
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/jquery/jquery.min.js"></script>
+            <script type="text/javascript" src="<?php echo $this->webroot?>js/plugins/jquery/jquery-migrate.min.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/jquery/jquery-ui.min.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap.min.js"></script>
+			<!-- END PLUGINS -->
+
+			<!-- START THIS PAGE PLUGINS-->
+			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/icheck/icheck.min.js'></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/scrolltotop/scrolltopcontrol.js"></script>
+
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/morris/raphael-min.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/morris/morris.min.js"></script>
+
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/rickshaw/d3.v3.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/rickshaw/rickshaw.min.js"></script>
+
+			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
+			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
+
+			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-datepicker.js'></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-file-input.js"></script>
+
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/owl/owl.carousel.min.js"></script>
+
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/moment.min.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/daterangepicker/daterangepicker.js"></script>
+			<!-- END THIS PAGE PLUGINS-->
+
+			<!-- START TEMPLATE -->
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/actions.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/faq.js"></script>
+			<!-- END TEMPLATE -->
+            
+            <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/ui/jquery.prettyPhoto.js'></script>
+            <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/forms/uniform.js'></script>
+            <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/ui/jquery.tipsy.js'></script>
+            
+            <script type='text/javascript' src='<?php echo $this->webroot; ?>/js/plugins/wizard/jquery.form.js   '></script>
+        
+            
+	<!-- END SCRIPTS -->
+    
+    <?php
+    	//BLOCK JAVASCRIPT
+		echo $this->fetch('script');
 	?>
 </head>
-<style>
-
-</style>
 
 <body>
 	<!-- START PAGE CONTAINER -->
@@ -176,41 +223,6 @@ echo $this->Html->script(array(
 
 	<?php echo $this->element('sql_dump'); ?>
 
-	<!-- START SCRIPTS -->
-			<!-- START PLUGINS -->
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/jquery/jquery.min.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/jquery/jquery-ui.min.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap.min.js"></script>
-			<!-- END PLUGINS -->
-
-			<!-- START THIS PAGE PLUGINS-->
-			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/icheck/icheck.min.js'></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/scrolltotop/scrolltopcontrol.js"></script>
-
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/morris/raphael-min.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/morris/morris.min.js"></script>
-
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/rickshaw/d3.v3.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/rickshaw/rickshaw.min.js"></script>
-
-			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
-			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
-
-			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-datepicker.js'></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-file-input.js"></script>
-
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/owl/owl.carousel.min.js"></script>
-
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/moment.min.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/daterangepicker/daterangepicker.js"></script>
-			<!-- END THIS PAGE PLUGINS-->
-
-			<!-- START TEMPLATE -->
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/actions.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/faq.js"></script>
-			<!-- END TEMPLATE -->
-	<!-- END SCRIPTS -->
+	
 </body>
 </html>

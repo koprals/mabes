@@ -1,4 +1,5 @@
 <script>
+
 $(document).ready(function(){
     $("#contents_area").css("opacity","1");
     $("#contents_area").load("<?php echo $settings['cms_url'] . $ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage?>/?time=<?php echo time()?>",function(){
@@ -145,7 +146,7 @@ function ClearSearchAdvance()
                         <div class="col-md-4">
                             <div class="panel-default">
                                 <div class="panel-body">
-                                    <?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance", "role"=>"form"))?>
+                                    <?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"", "role"=>"form"))?>
                                         <input name="data[Search][reset]" type="hidden" value="0" id="reset">
                                         <?php
                                                     echo $this->Form->input('Search.unity', array(
@@ -193,7 +194,7 @@ function ClearSearchAdvance()
                         <div class="col-md-4">
                             <div class="panel-default">
                                 <div class="panel-body">
-                                    <?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance", "role"=>"form"))?>
+                                    <?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"", "role"=>"form"))?>
                                         <input name="data[Search][reset]" type="hidden" value="0" id="reset">
                                         <?php
                                                     echo $this->Form->input('Search.unity', array(
@@ -247,7 +248,7 @@ function ClearSearchAdvance()
 
     <!-- START RESPONSIVE TABLES -->
     <div id="contents_area">
-         <!-- LIST ITEM START FROM HERE -->
+         
     </div>
     <!-- END RESPONSIVE TABLES -->
 

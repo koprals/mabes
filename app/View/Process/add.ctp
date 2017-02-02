@@ -114,9 +114,10 @@
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
+														'default'				=>	3,
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
-														'options'				=> array('0' => 'Berjalan', '1' => 'Selesai', '2' => 'Tidak Selesai'),
+														'options'				=> array('0' => 'Berjalan', '1' => 'Selesai', '2' => 'Tidak Selesai', '3' => 'Baru Daftar'),
 														'empty'					=> false,
 
 													));

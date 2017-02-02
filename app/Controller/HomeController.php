@@ -20,7 +20,18 @@ class HomeController extends AppController
 	        	$gpAco[$value['id']] = $value;
 	  }
 
-		//HITUNG PERSONNEL
+		//HITUNG PERSONNEL STUDI
+		$this->loadModel('Process');
+		$totalStudiAja = $this->Process->find('all', array(
+				'conditions'	=>	array(
+					'Process.status'	=>	0
+				),
+				'fields' => array(
+					'COUNT(Process.id) as total_studi',
+				)
+		));
+
+		//HITUNG PERSONNEL TOTAL
 		$this->loadModel('Personnel');
 		$totalPersonnelStudi = $this->Personnel->find('all', array(
 				'fields' => array(
@@ -38,7 +49,7 @@ class HomeController extends AppController
 
 		//debug($lastPersonnelStudi);
 
-		$this->set(compact('totalPersonnelStudi', 'lastPersonnelStudi'));
+		$this->set(compact('totalPersonnelStudi', 'lastPersonnelStudi', 'totalStudiAja'));
 	}
 
 }

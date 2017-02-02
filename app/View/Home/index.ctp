@@ -19,7 +19,7 @@
 										<div>
 												<div class="widget-title">Total Personel</div>
 												<div class="widget-title">Studi</div>
-												<div class="widget-int"><?php echo $totalPersonnelStudi['0']['0']['total_personnel']; ?></div>
+												<div class="widget-int"><?php echo $totalStudiAja['0']['0']['total_studi']; ?></div>
 										</div>
 										<!--
 										<div>
@@ -168,7 +168,7 @@
 						<div class="panel panel-default">
 								<div class="panel-heading">
 										<div class="panel-title-box">
-												<h3>Status Personel Studi Terbaru</h3>
+												<h3>Status Personel</h3>
 												<span>Aktivitas Personel Studi</span>
 										</div>
 										<ul class="panel-controls" style="margin-top: 2px;">

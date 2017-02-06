@@ -93,7 +93,7 @@ class PersonnelsController extends AppController
 
 			if(!empty($this->request->data['Search']['name']))
 			{
-				$cond_search["{$this->ModelName}.fullname LIKE "]			=	"%".$this->data['Search']['name']."%";
+				$cond_search["{$this->ModelName}.personnel_name LIKE "]			=	"%".$this->data['Search']['name']."%";
 			}
 
 			if($this->request->data["Search"]['reset']=="0")

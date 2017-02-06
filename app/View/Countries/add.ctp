@@ -32,6 +32,7 @@
 																'type'					=>	'text',
 																'class'					=>	'form-control',
 																'label'					=>	false,
+																'placeholder'			=> 'Name',
 																"required"			=>	"",
 																"autocomplete"	=>	"off",
 																"maxlength"			=>	20,
@@ -50,6 +51,7 @@
 																'type'					=>	'text',
 																'class'					=>	'form-control',
 																'label'					=>	false,
+																'placeholder'			=>  'Position Top',
 																"required"			=>	"",
 																"autocomplete"	=>	"off",
 																"maxlength"			=>	20,
@@ -68,6 +70,7 @@
 																'type'					=>	'text',
 																'class'					=>	'form-control',
 																'label'					=>	false,
+																'placeholder'			=> 'Position Bottom',
 																"required"			=>	"",
 																"autocomplete"	=>	"off",
 																"maxlength"			=>	20,
@@ -86,6 +89,7 @@
 																'type'					=>	'text',
 																'class'					=>	'form-control',
 																'label'					=>	false,
+																'placeholder'			=> 'Position Left',
 															));
 														?>
 											</div>
@@ -101,6 +105,7 @@
 																'type'					=>	'text',
 																'class'					=>	'form-control',
 																'label'					=>	false,
+																'placeholder'			=> 'Position Right',
 																"required"			=>	"",
 																"autocomplete"	=>	"off",
 																"maxlength"			=>	20,
@@ -119,6 +124,7 @@
 																'type'					=>	'text',
 																'class'					=>	'form-control',
 																'label'					=>	false,
+																'placeholder'			=> 'Telp Kedutaan',
 																"required"			=>	"",
 																"autocomplete"	=>	"off",
 															));
@@ -150,6 +156,7 @@
 																'type'					=>	'text',
 																'class'					=>	'form-control',
 																'label'					=>	false,
+																'placeholder'			=> 'Email Kedutaan',
 																"required"			=>	"",
 																"autocomplete"	=>	"off",
 															));
@@ -167,6 +174,7 @@
 																'type'					=>	'text',
 																'class'					=>	'form-control',
 																'label'					=>	false,
+																'placeholder'			=> 'Telp Office',
 																"required"			=>	"",
 																"autocomplete"	=>	"off",
 															));
@@ -184,6 +192,7 @@
 																'type'					=>	'text',
 																'class'					=>	'form-control',
 																'label'					=>	false,
+																'placeholder'			=> 'Fax',
 																"required"			=>	"",
 																"autocomplete"	=>	"off",
 															));

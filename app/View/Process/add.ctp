@@ -63,6 +63,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Lama Pendidikan',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -80,6 +81,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control datepicker',
 														'label'					=>	false,
+														'placeholder'			=> 'Berangkat',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
@@ -98,6 +100,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control datepicker',
 														'label'					=>	false,
+														'placeholder'			=> 'Kembali',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,

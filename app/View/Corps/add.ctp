@@ -31,6 +31,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Name',
 														"required"			=>	false,
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,

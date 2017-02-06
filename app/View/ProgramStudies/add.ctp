@@ -31,6 +31,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Program Studi',
 													));
 												?>
 											</div>
@@ -46,6 +47,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Nama Institusi',
 													));
 												?>
 											</div>

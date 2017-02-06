@@ -34,6 +34,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Name',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -51,6 +52,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Tempat Lahir',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -68,6 +70,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control datepicker',
 														'label'					=>	false,
+														'placeholder'			=> 'Tanggal Lahir',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -100,6 +103,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Pangkat',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -136,6 +140,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'NRP/NIP',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -153,6 +158,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Kesatuan/Jabatan',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -170,6 +176,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Sumber Dikma/Diktuk & TMT Prajurit',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -191,6 +198,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Keputusan Panglima TNI',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -208,6 +216,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Sprin Angkatan',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -225,6 +234,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Medical Record',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -249,6 +259,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Pasport',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -273,6 +284,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Security Clearance',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -311,6 +323,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'TELP Kantor',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -333,7 +346,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TLP Rumah/HP <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telp Rumah/HP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -342,6 +355,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Telp Rumah/HP',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -359,6 +373,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Email',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -379,6 +394,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Hubungan',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -410,6 +426,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'TLP Rumah/HP Keluarga',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -427,6 +444,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'No. Rekening Bank di Indonesia',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));

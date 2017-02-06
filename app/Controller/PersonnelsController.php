@@ -563,7 +563,9 @@ class PersonnelsController extends AppController
 					'engine' => 'CakePdf.DomPdf',
 				);
 
+    //$this->layout	=	"ajax";
     $this->loadModel($this->ModelName);
+		$this->{$this->ModelName}->BindImageProfil();
     $this->{$this->ModelName}->VirtualFieldActivated();
 
     $detail = $this->{$this->ModelName}->find('first', array(
@@ -580,7 +582,7 @@ class PersonnelsController extends AppController
 			),
 			'recursive'	=>	2
 		));
-		//debug($historicalEdus);
+		//debug($detail);
 
     $title				=	$this->ModelName;
 		$filename			=	$this->ModelName."_".date("dMY");

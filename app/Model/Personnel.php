@@ -16,12 +16,12 @@ class Personnel extends AppModel
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
-				"Image"	=>	array(
+				"ImageProfil"	=>	array(
 					"className"	=>	"Content",
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
-						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"profil"
+						"ImageProfil.model"	=>	$this->name,
+						"ImageProfil.type"	=>	"profil"
 					)
 				)
 			)
@@ -32,12 +32,12 @@ class Personnel extends AppModel
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
-				"Image"	=>	array(
+				"ImageMedical"	=>	array(
 					"className"	=>	"Content",
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
-						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"medical"
+						"ImageMedical.model"	=>	$this->name,
+						"ImageMedical.type"	=>	"medical"
 					)
 				)
 			)
@@ -48,12 +48,12 @@ class Personnel extends AppModel
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
-				"Image"	=>	array(
+				"ImagePassport"	=>	array(
 					"className"	=>	"Content",
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
-						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"passport"
+						"ImagePassport.model"	=>	$this->name,
+						"ImagePassport.type"	=>	"passport"
 					)
 				)
 			)
@@ -64,12 +64,12 @@ class Personnel extends AppModel
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
-				"Image"	=>	array(
+				"ImageSecurity"	=>	array(
 					"className"	=>	"Content",
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
-						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"security"
+						"ImageSecurity.model"	=>	$this->name,
+						"ImageSecurity.type"	=>	"security"
 					)
 				)
 			)

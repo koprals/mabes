@@ -514,6 +514,9 @@ class PersonnelsController extends AppController
 
 		$this->loadModel($this->ModelName);
 		$this->{$this->ModelName}->BindImageProfil();
+		$this->{$this->ModelName}->BindImageMedical();
+		$this->{$this->ModelName}->BindImagePassport();
+		$this->{$this->ModelName}->BindImageSecurity();
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 		$detail = $this->{$this->ModelName}->find('first', array(
@@ -523,6 +526,7 @@ class PersonnelsController extends AppController
 			'recursive'	=>	1
 		));
 
+		//debug($detail);
     $this->loadModel('Process');
 		$historicalEdus	=	$this->Process->find('all', array(
 			'conditions'	=>	array(

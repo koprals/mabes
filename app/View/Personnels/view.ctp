@@ -22,7 +22,7 @@
             <h3><?php echo $detail[$ModelName]['personnel_name']?></h3>
               <p>SPERS TNI</p>
             <div class="text-center" id="user_image">
-              <img src="<?php echo $detail["Image"]["host"].$detail["Image"]["url"]?>?time=<?php echo time()?>" class="img-thumbnail"/>
+              <img src="<?php echo $detail["ImageProfil"]["host"].$detail["ImageProfil"]["url"]?>?time=<?php echo time()?>" class="img-thumbnail"/>
             </div>
           </div>
           <div class="panel-body form-group-separated">
@@ -69,6 +69,21 @@
       <div class="panel panel-default">
         <a target="_blank" href="<?php echo $settings["cms_url"].$ControllerName?>/Pdf/<?php echo $ID ?>.pdf"  class="btn btn-danger btn-block active" title="Export To PDF">
           <p><h5 style="color:#FFFFFF">EXPORT TO PDF</h5></p>
+        </a>
+      </div>
+      <div class="panel panel-default">
+        <a href="<?php echo $detail["ImageMedical"]["host"].$detail["ImageMedical"]["url"]?>"  download="MedicalRecord" class="btn btn-primary btn-block active">
+            <p><h5 style="color:#FFFFFF">Download Medical Record File</h5></p>
+        </a>
+      </div>
+      <div class="panel panel-default">
+        <a href="<?php echo $detail["ImagePassport"]["host"].$detail["ImagePassport"]["url"]?>"  download="Passport" class="btn btn-primary btn-block active">
+            <p><h5 style="color:#FFFFFF">Download Passport File</h5></p>
+        </a>
+      </div>
+      <div class="panel panel-default">
+        <a href="<?php echo $detail["ImageSecurity"]["host"].$detail["ImageSecurity"]["url"]?>"  download="SecurityClearance" class="btn btn-primary btn-block active">
+            <p><h5 style="color:#FFFFFF">Download Security Celarance File</h5></p>
         </a>
       </div>
     </div>

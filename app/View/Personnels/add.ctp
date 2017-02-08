@@ -25,7 +25,7 @@
                 <label class="col-md-6 col-xs-12 control-label"><h5>Data Pribadi</h5></label>
               </div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Name <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Nama Lengkap <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon " style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -70,7 +70,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control datepicker',
 														'label'					=>	false,
-														'placeholder'			=> 'Tanggal Lahir',
+														'placeholder'			=> 'TTTT/BB/HH',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -112,7 +112,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Corps <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Korps <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('personel_corps', array(
@@ -125,7 +125,7 @@
 																								'9' => 'CTP', '10' => 'CKM', '11' => 'CHK', '12' => 'CPM', '13' => 'CPN', '14' => 'CPL', '15' => 'PELAUT', '16' => 'TEKNIK', '17' => 'ELEKTRONIKA', '18' => 'SUPLAI',
 																								'19' => 'MARINIR', '20' => 'POMAL', '21' => 'KESEHATAN', '22' => 'KHUSUS', '23' => 'PNB', '24' => 'NAV', '25' => 'TEK', '26' => 'LEK', '27' => 'KAL',
 																								'28' => 'ADM', '29' => 'KES', '30' => 'PAS', '31' => 'POM', '32' => 'SUS'),
-														'empty'					=> "Pilih Corps",
+														'empty'					=> "Pilih Korps",
 													));
 												?>
 										</div>
@@ -140,7 +140,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'NRP/NIP',
+														'placeholder'			=> 'NRP',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -158,7 +158,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'Kesatuan/Jabatan',
+														'placeholder'			=> 'Kesatuan',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -176,7 +176,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'Sumber Dikma/Diktuk & TMT Prajurit',
+														'placeholder'			=> 'Dikma/Diktuk',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -250,7 +250,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Pasport </label>
+								<label class="col-md-3 col-xs-12 control-label">Passport </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -259,7 +259,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'Pasport',
+														'placeholder'			=> 'Passport',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -307,6 +307,7 @@
 														'type'					=>	'textarea',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Alamat Kantor',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -314,7 +315,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TELP Kantor <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Kantor/HP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -323,7 +324,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'TELP Kantor',
+														'placeholder'			=> 'Telepon Kantor',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -338,6 +339,7 @@
 													echo $this->Form->input('home_address', array(
 														'type'					=>	'textarea',
 														'class'					=>	'form-control',
+														'placeholder'			=> 'Alamat Rumah',
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
@@ -346,7 +348,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Telp Rumah/HP <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Rumah/HP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -355,7 +357,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'Telp Rumah/HP',
+														'placeholder'			=> 'Telepon Rumah/HP',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -394,7 +396,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'Hubungan',
+														'placeholder'			=> 'Misalnya : Ayah/Ibu/Kakak',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -417,7 +419,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TLP Rumah/HP Keluarga<span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Rumah<span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -426,7 +428,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'TLP Rumah/HP Keluarga',
+														'placeholder'			=> 'Telepon Rumah',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -435,7 +437,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">No. Rekening Bank di Indonesia </label>
+								<label class="col-md-3 col-xs-12 control-label">Nomor Rekening Bank di Indonesia </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -444,7 +446,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'No. Rekening Bank di Indonesia',
+														'placeholder'			=> 'Nomer Rekening',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));

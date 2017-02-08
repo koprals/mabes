@@ -7,7 +7,7 @@
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-	<h2><span class="fa fa-pencil"></span> Tambah <?php echo $ModelName; ?></h2>
+	<h2><span class="fa fa-pencil"></span> Isian Data <?php //echo $ModelName; ?></h2>
 </div>
 <!-- END PAGE TITLE -->
 
@@ -18,11 +18,11 @@
 				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add"),'class' => 'form-horizontal',"type"=>"file")); ?>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-								<h3 class="panel-title"><strong>Tambah <?php echo $ModelName; ?></strong></h3>
+								<h3 class="panel-title"><strong>Isian Data <?php //echo $ModelName; ?></strong></h3>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-                <label class="col-md-6 col-xs-12 control-label"><h5>Data Pribadi</h5></label>
+                <label class="col-md-6 col-xs-12 control-label"><h5>Data Diri</h5></label>
               </div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Nama Lengkap <span style="color:red;">(*)</span></label>

@@ -12,6 +12,18 @@ class Personnel extends AppModel
 		)
 	);
 
+	public $belongsTo = array(
+		'Matra'	=>	array(
+			'className'	=>	'Matra',
+			'foreignKey'	=> 'personel_matra',
+			'order'	=>	'Matra.id ASC'
+		),
+		'Corp'	=>	array(
+			'className'	=>	'Corp',
+			'foreignKey'	=>	'personel_corps'
+		)
+	);
+
 	public function BindImageProfil($reset	=	true)
 	{
 		$this->bindModel(array(

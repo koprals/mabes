@@ -51,6 +51,12 @@ class PersonnelsController extends AppController
 			return;
 		}
 
+		$this->loadModel('Matra');
+		$matras	= $this->Matra->find('list');
+
+		$this->loadModel('Corp');
+		$corps	= $this->Corp->find('list');
+
 		$this->Session->delete("Search.".$this->ControllerName);
 		$this->Session->delete('Search.'.$this->ControllerName.'Operand');
 		$this->Session->delete('Search.'.$this->ControllerName.'ViewPage');
@@ -58,7 +64,7 @@ class PersonnelsController extends AppController
 		$this->Session->delete('Search.'.$this->ControllerName.'Page');
 		$this->Session->delete('Search.'.$this->ControllerName.'Conditions');
 		$this->Session->delete('Search.'.$this->ControllerName.'parent_id');
-		$this->set(compact("page","viewpage"));
+		$this->set(compact("page","viewpage","matras","corps"));
 	}
 
 	function ListItem()
@@ -76,7 +82,7 @@ class PersonnelsController extends AppController
 		$this->{$this->ModelName}->VirtualFieldActivated();
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.created" => "ASC");
+		$order				=	array("{$this->ModelName}.id_personnel" => "ASC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -86,14 +92,24 @@ class PersonnelsController extends AppController
 			$operand		=	$this->request->data[$this->ModelName]['operator'];
 			$this->Session->delete('Search.'.$this->ControllerName);
 
-			if(!empty($this->request->data['Search']['id']))
-			{
-				$cond_search["{$this->ModelName}.id"]					=	$this->data['Search']['id'];
-			}
-
 			if(!empty($this->request->data['Search']['name']))
 			{
 				$cond_search["{$this->ModelName}.personnel_name LIKE "]			=	"%".$this->data['Search']['name']."%";
+			}
+
+			if(!empty($this->request->data['Search']['personel_matra']))
+			{
+				$cond_search["{$this->ModelName}.personel_matra"]				=	$this->data['Search']['personel_matra'];
+			}
+
+			if(!empty($this->request->data['Search']['personel_corps']))
+			{
+				$cond_search["{$this->ModelName}.personel_corps"]				=	$this->data['Search']['personel_corps'];
+			}
+
+			if(!empty($this->request->data['Search']['personel_occupation']))
+			{
+				$cond_search["{$this->ModelName}.personel_occupation LIKE "]			=	"%".$this->data['Search']['personel_occupation']."%";
 			}
 
 			if($this->request->data["Search"]['reset']=="0")
@@ -122,7 +138,7 @@ class PersonnelsController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-		//debug($data);
+		debug($data);
 
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);

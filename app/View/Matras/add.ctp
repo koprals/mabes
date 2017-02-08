@@ -22,7 +22,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Name</label>
+								<label class="col-md-3 col-xs-12 control-label">Nama</label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -31,7 +31,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=>  'Name',
+														'placeholder'			=>  'Nama',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,

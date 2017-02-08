@@ -68,7 +68,7 @@ function Delete(msg,id)
 														No
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.edu_name",'Name');?>
+														<?php echo $this->Paginator->sort("$ModelName.edu_name",'Nama');?>
 													</th>
 													<th>
 														<?php echo $this->Paginator->sort("AvailableCourse.Country.country_name",'Negara');?>

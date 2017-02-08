@@ -68,10 +68,10 @@ function Delete(msg,id)
 														No
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.name",'Name');?>
+														<?php echo $this->Paginator->sort("$ModelName.name",'Nama');?>
 													</th>
 													<th>
-														Telp Kedutaan
+														Telepon Kedutaan
 													</th>
 													<th>
 														Alamat Kedutaan
@@ -80,7 +80,7 @@ function Delete(msg,id)
 														Email Kedutaan
 													</th>
 													<th>
-														Telp Office
+														Telepon Office
 													</th>
 													<th>
 														Fax

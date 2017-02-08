@@ -22,7 +22,7 @@
 						</div>
 							<div class="panel-body">
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Name</label>
+									<label class="col-md-3 col-xs-12 control-label">Nama</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -50,7 +50,7 @@
 											</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Position Top</label>
+									<label class="col-md-3 col-xs-12 control-label">Posisi Atas</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -68,7 +68,7 @@
 											</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Position Bottom</label>
+									<label class="col-md-3 col-xs-12 control-label">Posisi Bawah</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -86,7 +86,7 @@
 											</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Position Left</label>
+									<label class="col-md-3 col-xs-12 control-label">Posisi Kiri</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -101,7 +101,7 @@
 											</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Position Right</label>
+									<label class="col-md-3 col-xs-12 control-label">Posisi Kanan</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -119,7 +119,7 @@
 											</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Telp Kedutaan</label>
+									<label class="col-md-3 col-xs-12 control-label">Telepon Kedutaan</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -167,7 +167,7 @@
 											</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Telp Office</label>
+									<label class="col-md-3 col-xs-12 control-label">Telepon Kantor</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>

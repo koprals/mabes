@@ -28,7 +28,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Name</label>
+								<label class="col-md-3 col-xs-12 control-label">Nama</label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -46,7 +46,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Description</label>
+								<label class="col-md-3 col-xs-12 control-label">Status</label>
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('status', array(

@@ -34,7 +34,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'Name',
+														'placeholder'			=> 'Nama Lengkap',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));

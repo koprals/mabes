@@ -31,7 +31,7 @@
                 				<label class="col-md-6 col-xs-12 control-label"><h5>Data Pribadi</h5></label>
               				</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Name <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Nama Lengkap <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon " style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -114,7 +114,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Corps <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Korps <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('personel_corps', array(
@@ -245,7 +245,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Pasport </label>
+								<label class="col-md-3 col-xs-12 control-label">Passport </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -307,7 +307,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TELP Kantor <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Kantor <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -338,7 +338,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TLP Rumah/HP <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Rumah/HP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -406,7 +406,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TLP Rumah/HP Keluarga <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Rumah <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -423,7 +423,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">No. Rekening Bank di Indonesia </label>
+								<label class="col-md-3 col-xs-12 control-label">Nomor Rekening Bank di Indonesia </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>

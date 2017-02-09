@@ -68,7 +68,7 @@ function Delete(msg,id)
 														<?php echo $this->Paginator->sort("$ModelName.id",'NO');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.personnel_name",'Name Siswa');?>
+														<?php echo $this->Paginator->sort("$ModelName.personnel_name",'Nama Siswa');?>
 													</th>
 													<th>
 														<?php echo $this->Paginator->sort("$ModelName.personel_matra",'Matra Personel');?>

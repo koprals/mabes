@@ -69,9 +69,9 @@
 ));
 //************ JS NEEDED ******************/
 
-	
+
 	?>
-    
+
     <!-- START SCRIPTS -->
 			<!-- START PLUGINS -->
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/jquery/jquery.min.js"></script>
@@ -108,16 +108,16 @@
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/actions.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/faq.js"></script>
 			<!-- END TEMPLATE -->
-            
+
             <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/ui/jquery.prettyPhoto.js'></script>
             <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/forms/uniform.js'></script>
             <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/ui/jquery.tipsy.js'></script>
-            
+
             <script type='text/javascript' src='<?php echo $this->webroot; ?>/js/plugins/wizard/jquery.form.js   '></script>
-        
-            
+
+
 	<!-- END SCRIPTS -->
-    
+
     <?php
     	//BLOCK JAVASCRIPT
 		echo $this->fetch('script');
@@ -145,7 +145,7 @@
 			                <img src="<?php echo $this->webroot; ?>assets/images/users/avatars.jpg" alt="John Doe"/>
 			            </div>
 			            <div class="profile-data">
-			                <div class="profile-data-name">TNI ADMINISTRATOR</div>
+			                <div class="profile-data-name"><?php echo $profile["Admin"]["fullname"]?></div>
 			                <div class="profile-data-title">Superadmin</div>
 			            </div>
 			            <div class="profile-controls">
@@ -176,10 +176,7 @@
 					<!-- END SEARCH -->
 					<!-- POWER OFF -->
 					<li class="xn-icon-button pull-right last">
-							<a href="#"><span class="fa fa-power-off"></span></a>
-							<ul class="xn-drop-left animated zoomIn">
-									<li><a href="<?php echo $settings["cms_url"]?>Account/Logout ?>" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
-							</ul>
+							<a href="<?php echo $settings["cms_url"]?>Account/Logout"><span class="fa fa-power-off"></span></a>
 					</li>
 					<!-- END POWER OFF -->
 					<!-- MESSAGES -->
@@ -223,6 +220,6 @@
 
 	<?php echo $this->element('sql_dump'); ?>
 
-	
+
 </body>
 </html>

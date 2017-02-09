@@ -16,71 +16,75 @@
 	<div class="row">
 			<div class="col-md-12">
 				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add" ),'class' => 'form-horizontal',"type"=>"file")); ?>
-					<div class="panel panel-default">
-						
-						<div class="panel-body">
+					<div class="panel panel-primary">
+						<div class="block">
+						<form role="form" class="form-horizontal">
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Name</label>
-									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+                                <div class="col-md-12">
+                                </div>
+                            </div>
+							<div class="content-frame-body">
+								<div class="form-group">
+									<label class="col-md-2 control-label">To: Personel</label>
+										<div class="col-md-7">
+											<?php
+													echo $this->Form->input('matra_id', array(
+														'label'					=>	false,
+														'class'					=>	'form-control select',
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+														'options'				=>  $list_matra,
+														'empty'					=>	"Silakan Pilih",
+													));
+													?>
+										</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-2 control-label">Subject : </label>
+										<div class="col-md-7">
 												<?php
-													echo $this->Form->input('name', array(
+													echo $this->Form->input('place_of_birth', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'Name',
-														"required"			=>	false,
+														'placeholder'			=> 'Re: Subject',
+														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
 													));
 												?>
+										</div>
+								</div>
+								<div class="form-group">
+										<div class="col-md-12">
+												<?php
+													echo $this->Form->input('place_of_birth', array(
+														'type'					=>	'textarea',
+														'class'					=>	'form-control',
+														'label'					=>	false,
+														'placeholder'			=> '',
+														"required"			=>	"",
+														"autocomplete"	=>	"off",
+													));
+												?>
+										</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-10">
+										<div class="pull-right">
+											<button class="btn btn-success fa fa-envelopbtn btn-primary btn-file"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Browse<input type="file" multiple="" id="file-simple"></button>
+											<input type="submit" value="Send Message" class="btn btn-success" />
 										</div>
 									</div>
+								</div>
 							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Matra</label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-												echo $this->Form->input('matra_id', array(
-													'label'					=>	false,
-													'class'					=>	'form-control select',
-													"required"			=>	"",
-													"autocomplete"	=>	"off",
-													"maxlength"			=>	20,
-													'options'				=>  $list_matra,
-													'empty'					=>	"Pilih Matra",
-												));
-												?>
-										</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Status</label>
-									<div class="col-md-6 col-xs-12">
-												<?php
-													echo $this->Form->input('status', array(
-														'class'					=>	'form-control select',
-														'label'					=>	false,
-														"required"			=>	"",
-														'default'				=>	1,
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=> array("4"=>"Not Active","1"=>"Active"),
-														'empty'					=> false,
-													));
-												?>
-										</div>
-							</div>
-							<div class="panel-footer center-button">
-								<input type="submit" value="Add" class="btn btn-success active" />
-								<input type="reset" value="Reset" class="btn btn-info active"/>
-								<input type="button" value="Cancel" class="btn btn-danger active" onclick="location.href = '<?php echo $settings["cms_url"].$ControllerName?>/Index'"/>
-							</div>
-					</div>
+						</form>
+						</div>	
 				</div>
 				<?php echo $this->Form->end; ?>
 			</div>
 	</div>
 </div>
+
 <!-- <script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-select.js"></script> -->
 <!-- END FORM -->

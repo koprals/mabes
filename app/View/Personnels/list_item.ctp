@@ -71,6 +71,9 @@ function Delete(msg,id)
 														<?php echo $this->Paginator->sort("$ModelName.personnel_name",'Name Siswa');?>
 													</th>
 													<th>
+														<?php echo $this->Paginator->sort("$ModelName.personel_matra",'Matra Personel');?>
+													</th>
+													<th>
 														PANGKAT/KOPRS/NRP
 													</th>
 													<th>
@@ -96,6 +99,7 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
 												<td><a href="<?php echo $settings['cms_url'].$ControllerName?>/View/<?php echo $data[$ModelName]["id_personnel"]?>/"><?php echo $data[$ModelName]['personnel_name'] ?></td>
+												<td><?php echo $data['Matra']['name'] ?>
 												<td><?php echo $data[$ModelName]['personel_occupation'] ?>/<?php echo $data[$ModelName]['SCorps'] ?>/<?php echo $data[$ModelName]['personel_nrp'] ?></td>
 												<td><?php echo $data[$ModelName]['personel_unity'] ?>
 												<?php

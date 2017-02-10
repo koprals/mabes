@@ -96,6 +96,7 @@
 
 			<script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-datepicker.js'></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-file-input.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/bootstrap/bootstrap-select.js"></script>
 
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/owl/owl.carousel.min.js"></script>
 
@@ -103,17 +104,27 @@
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/daterangepicker/daterangepicker.js"></script>
 			<!-- END THIS PAGE PLUGINS-->
 
-			<!-- START TEMPLATE -->
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/actions.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/faq.js"></script>
-			<!-- END TEMPLATE -->
+			<!-- THIS PAGE PLUGINS -->
+        
+        
+         
+        
+                
+        
+        <!-- END PAGE PLUGINS -->  			
             
             <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/ui/jquery.prettyPhoto.js'></script>
             <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/forms/uniform.js'></script>
             <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/ui/jquery.tipsy.js'></script>
             
             <script type='text/javascript' src='<?php echo $this->webroot; ?>/js/plugins/wizard/jquery.form.js   '></script>
+
+            <!-- START TEMPLATE -->
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/actions.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/faq.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/summernote/summernote.js"></script>
+			<!-- END TEMPLATE -->
         
             
 	<!-- END SCRIPTS -->

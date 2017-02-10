@@ -7,7 +7,7 @@
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-	<h2><span class="fa fa-plus-circle"></span> Edit Korps</h2>
+	<h2><span class="fa fa-arrow-circle-o-left"></span> Edit Korps</h2>
 </div>
 <!-- END PAGE TITLE -->
 

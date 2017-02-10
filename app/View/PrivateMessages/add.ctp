@@ -1,4 +1,11 @@
 <!-- START BREADCRUMB -->
+<script type="text/javascript">
+$('.selectpicker').selectpicker({
+  style: 'btn-info',
+  size: 4
+});
+
+</script>
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
 	<li class="javascript:void(0)"><?php echo $ControllerName?></li>
@@ -15,15 +22,10 @@
 <div class="page-content-wrap">
 	<div class="row">
 			<div class="col-md-12">
-				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add" ),'class' => 'form-horizontal',"type"=>"file")); ?>
+				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add" ),'class' => 'form-horizontal',"type"=>"file", 'role' => 'form')); ?>
 					<div class="panel panel-primary">
 						<div class="block">
-						<form role="form" class="form-horizontal">
-							<div class="form-group">
-                                <div class="col-md-12">
-                                </div>
                             </div>
-							<div class="content-frame-body">
 								<div class="form-group">
 									<label class="col-md-2 control-label">To: Personel</label>
 										<div class="col-md-7">
@@ -60,7 +62,7 @@
 												<?php
 													echo $this->Form->input('place_of_birth', array(
 														'type'					=>	'textarea',
-														'class'					=>	'form-control',
+														'class'					=>	'summernote_email',
 														'label'					=>	false,
 														'placeholder'			=> '',
 														"required"			=>	"",

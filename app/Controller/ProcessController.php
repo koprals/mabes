@@ -48,7 +48,19 @@ class ProcessController extends AppController
       'fields'  =>  array('Personnel.personnel_name')
     ));
 
-		$this->set(compact('list_education', 'list_country', 'list_program', 'list_personnel', 'list_courses'));
+		//DEFINE PERSONEL
+    $this->loadModel('Country');
+    $list_country = $this->Country->find('list', array(
+      'fields'  =>  array('Country.country_name')
+    ));
+
+		$this->loadModel('Matra');
+    $matras = $this->Matra->find('list');
+
+		$this->loadModel('Corp');
+    $corps = $this->Corp->find('list');
+
+		$this->set(compact('list_education', 'list_country', 'list_program', 'list_personnel', 'list_courses','matras','corps'));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -95,14 +107,39 @@ class ProcessController extends AppController
 			$operand		=	$this->request->data[$this->ModelName]['operator'];
 			$this->Session->delete('Search.'.$this->ControllerName);
 
-			if(!empty($this->request->data['Search']['id']))
-			{
-				$cond_search["{$this->ModelName}.id"]					=	$this->data['Search']['id'];
-			}
-
 			if(!empty($this->request->data['Search']['name']))
 			{
-				$cond_search["{$this->ModelName}.fullname LIKE "]			=	"%".$this->data['Search']['name']."%";
+				$cond_search["Personnel.personnel_name LIKE "]			=	"%".$this->data['Search']['name']."%";
+			}
+
+			if(!empty($this->request->data['Search']['personel_matra']))
+			{
+				$cond_search["Personnel.personel_matra"]				=	$this->data['Search']['personel_matra'];
+			}
+
+			if(!empty($this->request->data['Search']['personel_corps']))
+			{
+				$cond_search["Personnel.personel_corps"]				=	$this->data['Search']['personel_corps'];
+			}
+
+			if(!empty($this->request->data['Search']['personel_occupation']))
+			{
+				$cond_search["Personnel.personel_occupation LIKE "]			=	"%".$this->data['Search']['personel_occupation']."%";
+			}
+
+			if(!empty($this->request->data['Search']['edu_type_id']))
+			{
+				$cond_search["AvailableCourse.edu_type_id"]			=	$this->data['Search']['edu_type_id'];
+			}
+
+			if(!empty($this->request->data['Search']['country_id']))
+			{
+				$cond_search["AvailableCourse.country_id"]			=	$this->data['Search']['country_id'];
+			}
+
+			if(!empty($this->request->data['Search']['status']))
+			{
+				$cond_search["Process.status"]			=	$this->data['Search']['status'];
 			}
 
 			if($this->request->data["Search"]['reset']=="0")
@@ -121,7 +158,7 @@ class ProcessController extends AppController
 									"{$this->ModelName}"	=>	array(
 										"order"				=>	$order,
 										'limit'				=>	$viewpage,
-                    'recursive'   =>  2
+										'recursive'		=>	2
 									)
 								);
 

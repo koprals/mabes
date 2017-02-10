@@ -92,158 +92,115 @@ function ClearSearchAdvance()
                         <span class="fa fa-angle-down"></span>Advance Search
                     </div>
                     <div class="faq-text">
-                        <!-- START VERTICAL FORM SAMPLE -->
-                        <div class="col-md-4">
-                            <div class="panel-default">
-                                <div class="panel-body">
-                                    <?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance", "role"=>"form"))?>
-                                        <input name="data[Search][reset]" type="hidden" value="0" id="reset">
-                                        <?php
-                                                    echo $this->Form->input('Search.name', array(
-                                                        'label'         =>  'Nama Siswa',
-                                                        'class'         =>  'form-control',
-                                                        'between'       =>  '<div class="form-group">',
-                                                        'after'         =>  '</div>'
-                                                ));
-                                        ?>
-                                        <?php
-                                                    echo $this->Form->input('Search.contries_id', array(
-                                                        'label'         =>  'Negara',
-                                                        'class'         =>  'form-control',
-                                                        "required"      =>  "",
-                                                        "autocomplete"  =>  "off",
-                                                        "maxlength"     =>  20,
-                                                        'options'       => $countries_id_list,
-                                                        'empty'         => "Pilih Matra",
-                                                        'between'       =>  '<div class="form-group">',
-                                                        'after'         =>  '</div>'
-                                                ));
-                                        ?>
-                                        <?php
-                                                    echo $this->Form->input('Search.education_status', array(
-                                                        'label'         =>  'Status Pendidikan',
-                                                        'class'         =>  'form-control',
-                                                        "required"      =>  "",
-                                                        "autocomplete"  =>  "off",
-                                                        "maxlength"     =>  20,
-                                                        'options'       => array("1"=>"Berjalan","2"=>"Selesai","3"=>"Tidak Selesai"),
-                                                        'empty'         => "Pilih Status Pendidikan",
-                                                        'between'       =>  '<div class="form-group">',
-                                                        'after'         =>  '</div>'
-                                                    ));
-                                        ?>
-                                    <?php echo $this->Form->end()?>
-                                    <div class="form-group">
-                                        <div class="pull-left">
-                                            <button type="button" class="btn btn-primary btn-rounded" href="javascript:void(0);" title="" onclick="return SearchAdvance();"><span class="fa fa-search"></span>Search</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="panel-default">
-                                <div class="panel-body">
-                                    <?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance", "role"=>"form"))?>
-                                        <input name="data[Search][reset]" type="hidden" value="0" id="reset">
-                                        <?php
-                                                    echo $this->Form->input('Search.unity', array(
-                                                        'label'         =>  'Kesatuan',
-                                                        'class'         =>  'form-control',
-                                                        'between'       =>  '<div class="form-group">',
-                                                        'after'         =>  '</div>'
-                                                ));
-                                        ?>
-                                        <?php
-                                                    echo $this->Form->input('Search.occupations_id', array(
-                                                        'label'         =>  'Pangkat',
-                                                        'class'         =>  'form-control',
-                                                        "required"      =>  "",
-                                                        "autocomplete"  =>  "off",
-                                                        "maxlength"     =>  20,
-                                                        'options'       => $occupation_id_list,
-                                                        'empty'         => "Pilih Pangkat",
-                                                        'between'       =>  '<div class="form-group">',
-                                                        'after'         =>  '</div>'
-                                                ));
-                                        ?>
-                                        <?php
-                                                    echo $this->Form->input('Search.education_status', array(
-                                                        'label'         =>  'Status Pendidikan',
-                                                        'class'         =>  'form-control',
-                                                        "required"      =>  "",
-                                                        "autocomplete"  =>  "off",
-                                                        "maxlength"     =>  20,
-                                                        'options'       => array("1"=>"Berjalan","2"=>"Selesai","3"=>"Tidak Selesai"),
-                                                        'empty'         => "Pilih Status Pendidikan",
-                                                        'between'       =>  '<div class="form-group">',
-                                                        'after'         =>  '</div>'
-                                                    ));
-                                        ?>
-                                    <?php echo $this->Form->end()?>
-                                    <div class="form-group">
-                                        <div class="pull-left">
-                                            <button type="button" class="btn btn-primary btn-rounded" href="javascript:void(0);" title="" onclick="return SearchAdvance();"><span class="fa fa-search"></span>Search</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="panel-default">
-                                <div class="panel-body">
-                                    <?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance", "role"=>"form"))?>
-                                        <input name="data[Search][reset]" type="hidden" value="0" id="reset">
-                                        <?php
-                                                    echo $this->Form->input('Search.unity', array(
-                                                        'label'         =>  'Nama Pendidikan',
-                                                        'class'         =>  'form-control',
-                                                        'between'       =>  '<div class="form-group">',
-                                                        'after'         =>  '</div>'
-                                                ));
-                                        ?>
-                                        <?php
-                                                    echo $this->Form->input('Search.occupations_id', array(
-                                                        'label'         =>  'Pangkat',
-                                                        'class'         =>  'form-control',
-                                                        "required"      =>  "",
-                                                        "autocomplete"  =>  "off",
-                                                        "maxlength"     =>  20,
-                                                        'options'       => $occupation_id_list,
-                                                        'empty'         => "Pilih Pangkat",
-                                                        'between'       =>  '<div class="form-group">',
-                                                        'after'         =>  '</div>'
-                                                ));
-                                        ?>
-                                        <?php
-                                                    echo $this->Form->input('Search.education_status', array(
-                                                        'label'         =>  'Status Pendidikan',
-                                                        'class'         =>  'form-control',
-                                                        "required"      =>  "",
-                                                        "autocomplete"  =>  "off",
-                                                        "maxlength"     =>  20,
-                                                        'options'       => array("1"=>"Berjalan","2"=>"Selesai","3"=>"Tidak Selesai"),
-                                                        'empty'         => "Pilih Status Pendidikan",
-                                                        'between'       =>  '<div class="form-group">',
-                                                        'after'         =>  '</div>'
-                                                    ));
-                                        ?>
-                                    <?php echo $this->Form->end()?>
-                                    <div class="form-group">
-                                        <div class="pull-left">
-                                            <button type="button" class="btn btn-primary btn-rounded" href="javascript:void(0);" title="" onclick="return SearchAdvance();"><span class="fa fa-search"></span>Search</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END VERTICAL FORM SAMPLE -->
+											<!-- START VERTICAL FORM SAMPLE -->
+													<div class="panel-default">
+															<div class="panel-body">
+																	<?php echo $this->Form->create("Search",array("onsubmit"=>"return SearchAdvance()","url"=>"","id"=>"SearchAdvance", "role"=>"form", "class" =>  "form-horizontal"))?>
+																			<input name="data[Search][reset]" type="hidden" value="0" id="reset">
+																			<div class="form-group">
+																					<div class="col-md-3">
+																							<?php
+																									echo $this->Form->input('Search.name', array(
+																											'label'         =>  'Nama Siswa',
+																											'class'         =>  'form-control'
+																									));
+																							?>
+																					</div>
+																					<div class="col-md-3">
+																							<?php
+																									echo $this->Form->input('Search.personel_matra', array(
+																											'label'         =>  'Matra Personel',
+																											'class'         =>  'form-control select',
+																											'options'       =>  $matras,
+																											'empty'         =>  "Pilih Matra",
+																									));
+																							?>
+																					</div>
+																					<div class="col-md-3">
+																							<?php
+																									echo $this->Form->input('Search.personel_corps', array(
+																											'label'         =>  'Korp Personel',
+																											'class'         =>  'form-control select',
+																											'options'       =>  $corps,
+																											'empty'         =>  "Pilih Korp",
+																									));
+																							?>
+																					</div>
+																					<div class="col-md-3">
+																							<?php
+																									echo $this->Form->input('Search.personel_occupation', array(
+																											'label'         =>  'Pangkat Personel',
+																											'class'         =>  'form-control'
+																									));
+																							?>
+																					</div>
+																			</div>
+																			<div class="form-group">
+																				<div class="col-md-4">
+																						<?php
+																								echo $this->Form->input('Search.nama_pendidikan', array(
+																										'label'         =>  'Nama Pendidikan',
+																										'class'         =>  'form-control'
+																								));
+																						?>
+																				</div>
+																				<div class="col-md-4">
+																						<?php
+																								echo $this->Form->input('Search.edu_type_id', array(
+																										'label'         =>  'Jenis Pendidikan',
+																										'class'         =>  'form-control select',
+																										'options'				=>	$list_education,
+																										'empty'					=>	'Pilih Jenis Pendidikan'
+																								));
+																						?>
+																				</div>
+																				<div class="col-md-4">
+																						<?php
+																								echo $this->Form->input('Search.status', array(
+																										'label'         =>  'Status Pendidikan',
+																										'class'         =>  'form-control select',
+																										'options'				=>	array('0'=>'Berjalan', '1'=>'Selesai', '2'=>'Tidak Selesai', '3'=>'Daftar Baru'),
+																										'empty'					=>	'Pilih Status Pendidikan'
+																								));
+																						?>
+																				</div>
+																			</div>
+																			<div class="form-group">
+																				<div class="col-md-6">
+																						<?php
+																								echo $this->Form->input('Search.country_id', array(
+																										'label'         =>  'Negara',
+																										'class'         =>  'form-control select',
+																										'options'				=>	$list_country,
+																										'empty'					=>	'Pilih Negara'
+																								));
+																						?>
+																				</div>
+																				<div class="col-md-6">
+																						<?php
+																								echo $this->Form->input('Search.year', array(
+																										'label'         =>  'Tahun',
+																										'class'         =>  'form-control',
+																										'options'				=>	array()
+																								));
+																						?>
+																				</div>
+																			</div>
+																	<?php echo $this->Form->end()?>
+																	<div class="form-group">
+																			<div class="col-md-4">
+																					<button type="button" class="btn btn-primary btn-rounded" href="javascript:void(0);" title="" onclick="return SearchAdvance();"><span class="fa fa-search"></span>Search</button>
+																			</div>
+																	</div>
+															</div>
+													</div>
+											<!-- END VERTICAL FORM SAMPLE -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-	
+
 	<!-- START RESPONSIVE TABLES -->
 	<div id="contents_area">
 		 <!-- LIST ITEM START FROM HERE -->

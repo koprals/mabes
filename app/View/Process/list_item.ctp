@@ -57,8 +57,8 @@ function Delete(msg,id)
 					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
 				</div>
 				<div class="pull-right">
-                                    <a href="<?php echo $settings['cms_url'].$ControllerName?>/Excel" type="submit" class="btn btn-danger">Export File</a>
-                                </div>
+          <a href="<?php echo $settings['cms_url'].$ControllerName?>/Excel" type="submit" class="btn btn-danger">Export File</a>
+        </div>
 			</div>
 
 			<div class="panel-body panel-body-table">
@@ -67,37 +67,40 @@ function Delete(msg,id)
 							<table class="table table-bordered table-striped table-actions">
 									<thead>
 										<tr>
-												<th>
+												<th width="20">
 													No
 												</th>
-												<th>
-													Nama Siswa
+												<th width="40">
+													Nama Siswa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</th>
-												<th>
-													PANGKAT/KOPRS/NRP
+												<th width="30">
+													Matra
 												</th>
-												<th>
+												<th width="60">
+													PANGKAT/KOPRS/NRP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</th>
+												<th width="50">
 													Kesatuan
 												</th>
-												<th>
+												<th width="40">
 													Lama Pendidikan
 												</th>
-												<th>
-													Nama Pendidikan
+												<th width="70">
+													Nama Pendidikan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</th>
-												<th>
+												<th width="40">
 													<?php echo $this->Paginator->sort("AvailableCourse.Country.name",'NEGARA');?>
 												</th>
-												<th>
+												<th width="30">
 													Jenis Pendidikan
 												</th>
-												<th>
-													Berangkat
+												<th width="30">
+													Berangkat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</th>
-												<th>
-													Kembali
+												<th width="30">
+													Kembali&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</th>
-												<th>
+												<th width="30">
 													<?php echo $this->Paginator->sort("$ModelName.SStatus",'STATUS PENDIDIKAN');?>
 												</th>
 												<?php
@@ -106,8 +109,8 @@ function Delete(msg,id)
 													$access[$aco_id]["_delete"] == 1
 												):
 												?>
-												<th width="120">
-													actions
+												<th width="40">
+													actions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</th>
 												<?php endif;?>
 										</tr>
@@ -120,22 +123,23 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
 												<td><?php echo $data['Personnel']['personnel_name'] ?></td>
-												<td><?php echo $data['Personnel']['personel_occupation'] ?>/<?php echo $data['Personnel']['SCorps'] ?>/<?php echo $data['Personnel']['personel_nrp'] ?></td>
+												<td class="text-center"><?php echo $data['Personnel']['Matra']['name'] ?></td>
+												<td><?php echo $data['Personnel']['personel_occupation'] ?>/<?php echo $data['Personnel']['Corp']['name'] ?>/<?php echo $data['Personnel']['personel_nrp'] ?></td>
 												<td><?php echo $data['Personnel']['personel_unity'] ?>
-												<td><?php echo $data[$ModelName]['long_term_education'] ?></td>
+												<td class="text-center"><?php echo $data[$ModelName]['long_term_education'] ?></td>
 												<td><?php echo $data['AvailableCourse']['ProgramStudy']['edu_name'] ?></td>
-												<td><?php echo $data['AvailableCourse']['Country']['country_name'] ?></td>
-												<td><?php echo $data['AvailableCourse']['EducationType']['edu_type'] ?></td>
-												<td><?php echo $data[$ModelName]['depart'] ?></td>
-												<td><?php echo $data[$ModelName]['arrive'] ?></td>
-												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
+												<td class="text-center"><?php echo $data['AvailableCourse']['Country']['country_name'] ?></td>
+												<td class="text-center"><?php echo $data['AvailableCourse']['EducationType']['edu_type'] ?></td>
+												<td class="text-center"><?php echo $data[$ModelName]['depart'] ?></td>
+												<td class="text-center"><?php echo $data[$ModelName]['arrive'] ?></td>
+												<td class="text-center"><?php echo $data[$ModelName]['SStatus'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or
 													$access[$aco_id]["_delete"] == 1
 												):
 												?>
-												<td>
+												<td class="text-center">
 													<?php if($access[$aco_id]["_update"] == 1):?>
 														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-success btn-condensed" title="Access Control">
 															<span class="fa fa-pencil"></span>

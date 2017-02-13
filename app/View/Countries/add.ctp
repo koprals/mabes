@@ -115,6 +115,44 @@
 										</div>
 							</div>
 							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Country Latitude</label>
+									<div class="col-md-6 col-xs-12">
+												<div class="input-group">
+														<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+														<?php
+															echo $this->Form->input('country_latitude', array(
+																'type'					=>	'text',
+																'class'					=>	'form-control',
+																'label'					=>	false,
+																'placeholder'			=> 'Country Latitude',
+																"required"			=>	"",
+																"autocomplete"	=>	"off",
+																"maxlength"			=>	20,
+															));
+														?>
+											</div>
+										</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Country Longitude</label>
+									<div class="col-md-6 col-xs-12">
+												<div class="input-group">
+														<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+														<?php
+															echo $this->Form->input('country_longitude', array(
+																'type'					=>	'text',
+																'class'					=>	'form-control',
+																'label'					=>	false,
+																'placeholder'			=> 'Country Longitude',
+																"required"			=>	"",
+																"autocomplete"	=>	"off",
+																"maxlength"			=>	20,
+															));
+														?>
+											</div>
+										</div>
+							</div>
+							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Telepon Kedutaan</label>
 									<div class="col-md-6 col-xs-12">
 												<div class="input-group">

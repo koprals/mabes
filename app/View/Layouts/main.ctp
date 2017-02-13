@@ -104,7 +104,6 @@
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/daterangepicker/daterangepicker.js"></script>
 			<!-- END THIS PAGE PLUGINS-->
 
-<<<<<<< HEAD
 			<!-- THIS PAGE PLUGINS -->
         
         
@@ -112,34 +111,26 @@
         
                 
         
-        <!-- END PAGE PLUGINS -->  			
+        	<!-- END PAGE PLUGINS -->  			
             
-=======
+
 			<!-- START TEMPLATE -->
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/actions.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/faq.js"></script>
 			<!-- END TEMPLATE -->
 
->>>>>>> c2fe340e729b419296fc0ff725a128b38bf0899c
+
             <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/ui/jquery.prettyPhoto.js'></script>
             <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/forms/uniform.js'></script>
             <script type='text/javascript' src='<?php echo $this->webroot; ?>js/plugins/ui/jquery.tipsy.js'></script>
 
             <script type='text/javascript' src='<?php echo $this->webroot; ?>/js/plugins/wizard/jquery.form.js   '></script>
 
-<<<<<<< HEAD
             <!-- START TEMPLATE -->
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/actions.js"></script>
-			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/faq.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/summernote/summernote.js"></script>
 			<!-- END TEMPLATE -->
         
-            
-=======
-
->>>>>>> c2fe340e729b419296fc0ff725a128b38bf0899c
 	<!-- END SCRIPTS -->
 
     <?php

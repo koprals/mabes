@@ -124,9 +124,48 @@ $(function(){
       gridLineColor: '#E5E5E5'
     });   
     /* EMD Line dashboard chart */
+
+    /* Vector Map */
+    $.get('http://localhost:8888/mabes/Countries/Api_CountriesSummary', function(results) {
+        try {
+            results = JSON.parse(results);
+        } catch (e) {
+            results = [];
+        }
+        var markers = results.map(function(result) {
+            var totalPersonnel = result[0].TotalPersonnel;
+            var countryName = result.countries.Negara;
+            var latitude = result.countries.Latitude;
+            var longitude = result.countries.Longitude;
+
+            return {
+                latLng: [latitude, longitude],
+                name: countryName + ' - ' + totalPersonnel
+            }
+        });
+
+        var jvm_wm = new jvm.WorldMap({
+            container: $('#dashboard-map-seles'),
+            map: 'world_mill_en',
+            backgroundColor: '#FFFFFF',
+            regionsSelectable: true,
+            regionStyle: {
+                selected: { fill: '#B64645' },
+                initial: { fill: '#33414E' }
+            },
+            markerStyle: {
+                initial: {
+                    fill: '#3FBAE4',
+                    stroke: '#3FBAE4'
+                }
+            },
+            markers: markers
+        });
+    });
+    /* END Vector Map */
     
     /* Vector Map */
-    var jvm_wm = new jvm.WorldMap({container: $('#dashboard-map-seles'),
+   /* var jvm_wm = new jvm.WorldMap({container: $('#dashboard-map-seles'),
                                     map: 'world_mill_en', 
                                     backgroundColor: '#FFFFFF',                                      
                                     regionsSelectable: true,
@@ -143,7 +182,8 @@ $(function(){
                                               {latLng: [37.78, -122.41], name: 'San Francisco - 8'},
                                               {latLng: [28.61, 77.20], name: 'New Delhi - 4'},
                                               {latLng: [39.91, 116.39], name: 'Beijing - 3'}]
-                                });    
+                                });   
+                                */ 
     /* END Vector Map */
 
     

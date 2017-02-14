@@ -1,66 +1,28 @@
 <?php
-class ProcessController extends AppController
+class RemindersController extends AppController
 {
-	var $ControllerName		=	"Process";
-	var $ModelName			=	"Process";
+	var $ControllerName		=	"Reminders";
+	var $ModelName			=	"Reminder";
 	var $helpers			=	array("Text","Aimfox");
-	var $uses				=	"Process";
+	var $uses				=	"Reminder";
 
 	function beforeFilter()
 	{
 		parent::beforeFilter();
 		$this->set("ControllerName",$this->ControllerName);
 		$this->set("ModelName",$this->ModelName);
-		$this->set('lft_menu_category_id',"10");
+		$this->set('lft_menu_category_id',"9");
 
 		//CHECK PRIVILEGES
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("Process")
+											"LOWER(MyAco.alias)"	=>	strtolower("Reminder")
 										)
 									));
+
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
-
-    //DEFINE COURSE
-    $this->loadModel('AvailableCourse');
-    $list_courses = $this->AvailableCourse->ProgramStudy->find('list', array(
-      'fields'  =>  array('ProgramStudy.edu_name'),
-    ));
-
-
-		//DEFINE JENIS PENDIDIKAN
-		$this->loadModel('EducationType');
-		$list_education	=	$this->EducationType->find('list', array(
-			'fields'	=> array('EducationType.edu_type')
-		));
-
-		//DEFINE PROGRAM STUDY
-		$this->loadModel('ProgramStudy');
-		$list_program	=	$this->ProgramStudy->find('list', array(
-			'fields'	=>	array('ProgramStudy.edu_name')
-		));
-
-    //DEFINE PERSONEL
-    $this->loadModel('Personnel');
-    $list_personnel = $this->Personnel->find('list', array(
-      'fields'  =>  array('Personnel.personnel_name')
-    ));
-
-		//DEFINE PERSONEL
-    $this->loadModel('Country');
-    $list_country = $this->Country->find('list', array(
-      'fields'  =>  array('Country.country_name')
-    ));
-
-		$this->loadModel('Matra');
-    $matras = $this->Matra->find('list');
-
-		$this->loadModel('Corp');
-    $corps = $this->Corp->find('list');
-
-		$this->set(compact('list_education', 'list_country', 'list_program', 'list_personnel', 'list_courses','matras','corps'));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -93,11 +55,16 @@ class ProcessController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
+    $this->{$this->ModelName}->BindDefault(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
-		$this->{$this->ModelName}->Personnel->VirtualFieldActivated();
+
+    //DEFINE PROCESS
+    $this->loadModel('Process');
+    $ListProcess
+
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.id" => "DESC");
+		$order				=	array("{$this->ModelName}.created" => "DESC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -107,39 +74,41 @@ class ProcessController extends AppController
 			$operand		=	$this->request->data[$this->ModelName]['operator'];
 			$this->Session->delete('Search.'.$this->ControllerName);
 
+			if(!empty($this->request->data['Search']['start_date'])) {
+				if(!empty($this->request->data['Search']['end_date'])) {
+
+
+					$startDateExplode = explode("-", $this->request->data['Search']['start_date']);
+					$startTime = date("Y-m-d H:i:s", mktime(3, 0, 0, $startDateExplode[1], $startDateExplode[2] ,$startDateExplode[0]));
+
+					$endDateExplode = explode("-", $this->request->data['Search']['end_date']);
+					$endTime = date("Y-m-d H:i:s", mktime(2, 59, 59, $endDateExplode[1], 1 + $endDateExplode[2], $endDateExplode[0]));
+
+					$cond_search["and"] = array("Customer.created >=" => $startTime, "Customer.created <=" => $endTime);
+				} else {
+
+					$startDateExplode = explode("-", $this->request->data['Search']['start_date']);
+					$startTime = date("Y-m-d H:i:s", mktime(3, 0, 0, $startDateExplode[1], $startDateExplode[2] ,$startDateExplode[0]));
+
+					$endDateExplode = explode("-", $this->request->data['Search']['start_date']);
+					$endTime = date("Y-m-d H:i:s", mktime(2, 59, 59, $endDateExplode[1], $endDateExplode[2] + 1 ,$endDateExplode[0]));
+
+					$cond_search["and"] = array("Customer.created >=" => $startTime, "Customer.created <=" => $endTime);
+				}
+			}
+
 			if(!empty($this->request->data['Search']['name']))
 			{
-				$cond_search["Personnel.personnel_name LIKE "]			=	"%".$this->data['Search']['name']."%";
+				$cond_search["{$this->ModelName}.name LIKE "]			=	"%".$this->data['Search']['name']."%";
+			}
+			if(!empty($this->request->data['Search']['email']))
+			{
+				$cond_search["{$this->ModelName}.email LIKE "]			=	"%".$this->data['Search']['email']."%";
 			}
 
-			if(!empty($this->request->data['Search']['personel_matra']))
+			if(!empty($this->request->data['Search']['customer_email_status_id']))
 			{
-				$cond_search["Personnel.personel_matra"]				=	$this->data['Search']['personel_matra'];
-			}
-
-			if(!empty($this->request->data['Search']['personel_corps']))
-			{
-				$cond_search["Personnel.personel_corps"]				=	$this->data['Search']['personel_corps'];
-			}
-
-			if(!empty($this->request->data['Search']['personel_occupation']))
-			{
-				$cond_search["Personnel.personel_occupation LIKE "]			=	"%".$this->data['Search']['personel_occupation']."%";
-			}
-
-			if(!empty($this->request->data['Search']['edu_type_id']))
-			{
-				$cond_search["AvailableCourse.edu_type_id"]			=	$this->data['Search']['edu_type_id'];
-			}
-
-			if(!empty($this->request->data['Search']['country_id']))
-			{
-				$cond_search["AvailableCourse.country_id"]			=	$this->data['Search']['country_id'];
-			}
-
-			if(!empty($this->request->data['Search']['status']))
-			{
-				$cond_search["Process.status"]			=	$this->data['Search']['status'];
+				$cond_search["{$this->ModelName}.customer_email_status_id"]				=	$this->data['Search']['customer_email_status_id'];
 			}
 
 			if($this->request->data["Search"]['reset']=="0")
@@ -154,11 +123,12 @@ class ProcessController extends AppController
 
 		$cond_search		=	array();
 		$filter_paginate	=	array();
+
 		$this->paginate		=	array(
 									"{$this->ModelName}"	=>	array(
 										"order"				=>	$order,
 										'limit'				=>	$viewpage,
-										'recursive'		=>	2
+										"recursive" 	=> 1
 									)
 								);
 
@@ -168,7 +138,7 @@ class ProcessController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-		debug($data);
+		//debug($data);
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
 
@@ -181,26 +151,6 @@ class ProcessController extends AppController
 		$this->set(compact('data','page','viewpage'));
 	}
 
-	function IndexReminder($page=1,$viewpage=50)
-	{
-		if($this->access[$this->aco_id]["_read"] != "1")
-		{
-			$this->layout	=	"no_access";
-			return;
-		}
-
-		$this->Session->delete("Search.".$this->ControllerName);
-		$this->Session->delete('Search.'.$this->ControllerName.'Operand');
-		$this->Session->delete('Search.'.$this->ControllerName.'ViewPage');
-		$this->Session->delete('Search.'.$this->ControllerName.'Sort');
-		$this->Session->delete('Search.'.$this->ControllerName.'Page');
-		$this->Session->delete('Search.'.$this->ControllerName.'Conditions');
-		$this->Session->delete('Search.'.$this->ControllerName.'parent_id');
-		$this->set(compact("page","viewpage"));
-	}
-
-	function ListItemReminder()
-	{
 
 	function Excel()
 	{
@@ -210,39 +160,8 @@ class ProcessController extends AppController
 			return;
 		}
 
-		$this->loadModel('AvailableCourse');
-   		$list_courses = $this->AvailableCourse->ProgramStudy->find('list', array(
-    		'fields'  =>  array('ProgramStudy.edu_name'),
-  		));
-
-		//DEFINE JENIS PENDIDIKAN
-		$this->loadModel('EducationType');
-		$list_education	=	$this->EducationType->find('list', array(
-			'fields'	=> array('EducationType.edu_type')
-		));
-
-		//DEFINE PROGRAM STUDY
-		$this->loadModel('ProgramStudy');
-		$list_program	=	$this->ProgramStudy->find('list', array(
-			'fields'	=>	array('ProgramStudy.edu_name')
-		));
-
-		//DEFINE PERSONEL
-   		$this->loadModel('Personnel');
-    	$list_personnel = $this->Personnel->find('list', array(
-      		'fields'  =>  array('Personnel.personnel_name')
-    	));
-
-
-		if(isset($_GET['debug']) && $_GET['debug'] == "1")
-			$this->layout		=	"ajax";
-		else
-			$this->layout		=	"xls";
-
-		$this->response->type(array('xls' => 'application/vnd.ms-excel'));
-    	$this->response->type('xls');
-
-		$this->{$this->ModelName}->BindDefault(false);
+		$this->layout		=	"ajax";
+		$this->{$this->ModelName}->BindDefault();
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 		$order				=	$this->Session->read("Search.".$this->ControllerName."Sort");
@@ -255,14 +174,15 @@ class ProcessController extends AppController
 										"order"				=>	$order,
 										"limit"				=>	$viewpage,
 										"conditions"		=>	$conditions,
-										"page"				=>	$page,
-										'recursive'  		=>  2
+										"page"				=>	$page
 									)
 								);
-		$data				=	$this->paginate("{$this->ModelName}",$conditions);
-		$title				=	$this->ModelName;
-		$filename			=	$this->ModelName."_".date("dMY");
-		$this->set(compact("data","title","page","viewpage","filename","list_courses","list_education","list_program","list_personnel"));
+
+
+		$data           =	$this->paginate("{$this->ModelName}",$conditions);
+		$title				  =	$this->ModelName;
+		$filename			  =	"Customer_Report_".date("dMY").".xlsx";
+		$this->set(compact("data","title","page","viewpage","filename"));
 	}
 
 	function Add()
@@ -278,7 +198,6 @@ class ProcessController extends AppController
 			$this->{$this->ModelName}->set($this->request->data);
 			if($this->{$this->ModelName}->validates())
 			{
-        Configure::write('debug', 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
@@ -316,11 +235,9 @@ class ProcessController extends AppController
 					@unlink($tmp_images1_img);
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				$this->redirect(array("action"=>"SuccessAdd",$ID));
+				$this->redirect(array("action"=>'SuccessAdd',$ID));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
-
-		$this->set(compact("aro_id_list"));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)
@@ -331,7 +248,8 @@ class ProcessController extends AppController
 			return;
 		}
 
-		$detail	=	$this->{$this->ModelName}->find('first', array(
+		$this->{$this->ModelName}->BindDefault(false);
+		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID
 									)
@@ -351,14 +269,48 @@ class ProcessController extends AppController
 		else
 		{
 			$this->{$this->ModelName}->set($this->data);
-
 			if($this->{$this->ModelName}->validates())
 			{
 				$save		=	$this->{$this->ModelName}->save($this->data,false);
+
+				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
+				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
+				{
+					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
+					$tmp								=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
+					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
+
+					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
+						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
+
+					$ext								=	pathinfo($tmp_name,PATHINFO_EXTENSION);
+					$tmp_file_name						=	md5(time());
+					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
+					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
+					if($upload)
+					{
+						//RESIZE BIG
+						$error_upload["original"]		=	"Sorry, there is problem when upload file.";
+						$resize							=	$this->General->ResizeImageContent(
+																$tmp_images1_img,
+																$this->settings["cms_url"],
+																$ID,
+																$this->ModelName,
+																"original",
+																$mime_type,
+																300,
+																300,
+																"cropRatio"
+															);
+
+					}
+					@unlink($tmp_images1_img);
+				}
+				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				$this->redirect(array('action' => 'SuccessEdit', $ID,$page,$viewpage));
 			}
 		}
-		$this->set(compact("ID","detail","page","viewpage"));
+		$this->set(compact("ID","detail","aro_id_list","page","viewpage"));
 	}
 
 	function View($ID=NULL)
@@ -393,13 +345,6 @@ class ProcessController extends AppController
 		if($this->access[$this->aco_id]["_update"] != "1")
 		{
 			echo json_encode(array("data"=>array("message"=>"No privileges")));
-			$this->autoRender	=	false;
-			return;
-		}
-
-		if($ID == $this->profile["Admin"]["id"])
-		{
-			echo json_encode(array("data"=>array("message"=>"Cannot change status for your self")));
 			$this->autoRender	=	false;
 			return;
 		}

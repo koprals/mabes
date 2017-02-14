@@ -17,7 +17,7 @@ class PrivateMessagesController extends AppController
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("Corp")
+											"LOWER(MyAco.alias)"	=>	strtolower("PrivateMessage")
 										)
 									));
 

@@ -60,7 +60,10 @@ class ProcessController extends AppController
 		$this->loadModel('Corp');
     $corps = $this->Corp->find('list');
 
-		$this->set(compact('list_education', 'list_country', 'list_program', 'list_personnel', 'list_courses','matras','corps'));
+		$this->loadModel('ProgramStudy');
+    $programstudies = $this->ProgramStudy->find('list');
+
+		$this->set(compact('list_education', 'list_country', 'list_program', 'list_personnel', 'list_courses','matras','corps','programstudies'));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -82,6 +85,129 @@ class ProcessController extends AppController
 	}
 
 	function ListItem()
+	{
+		$this->layout	=	"ajax";
+
+		if($this->access[$this->aco_id]["_read"] != "1")
+		{
+			$data			=	array();
+			$this->set(compact("data"));
+			return;
+		}
+
+		$this->loadModel($this->ModelName);
+		$this->{$this->ModelName}->VirtualFieldActivated();
+		$this->{$this->ModelName}->Personnel->VirtualFieldActivated();
+		//DEFINE LAYOUT, LIMIT AND OPERAND
+		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
+		$order				=	array("{$this->ModelName}.id" => "DESC");
+		$operand			=	"AND";
+
+		//DEFINE SEARCH DATA
+		if(!empty($this->request->data))
+		{
+			$cond_search	=	array();
+			$operand		=	$this->request->data[$this->ModelName]['operator'];
+			$this->Session->delete('Search.'.$this->ControllerName);
+
+			if(!empty($this->request->data['Search']['name']))
+			{
+				$cond_search["Personnel.personnel_name LIKE "]			=	"%".$this->data['Search']['name']."%";
+			}
+
+			if(!empty($this->request->data['Search']['nama_pendidikan']))
+			{
+				$cond_search["AvailableCourse.program_study_id"]			=	$this->data['Search']['nama_pendidikan'];
+			}
+
+			if(!empty($this->request->data['Search']['personel_matra']))
+			{
+				$cond_search["Personnel.personel_matra"]				=	$this->data['Search']['personel_matra'];
+			}
+
+			if(!empty($this->request->data['Search']['personel_corps']))
+			{
+				$cond_search["Personnel.personel_corps"]				=	$this->data['Search']['personel_corps'];
+			}
+
+			if(!empty($this->request->data['Search']['personel_occupation']))
+			{
+				$cond_search["Personnel.personel_occupation LIKE "]			=	"%".$this->data['Search']['personel_occupation']."%";
+			}
+
+			if(!empty($this->request->data['Search']['edu_type_id']))
+			{
+				$cond_search["AvailableCourse.edu_type_id"]			=	$this->data['Search']['edu_type_id'];
+			}
+
+			if(!empty($this->request->data['Search']['country_id']))
+			{
+				$cond_search["AvailableCourse.country_id"]			=	$this->data['Search']['country_id'];
+			}
+
+			if(!empty($this->request->data['Search']['status']))
+			{
+				$cond_search["Process.status"]			=	$this->data['Search']['status'];
+			}
+
+			if($this->request->data["Search"]['reset']=="0")
+			{
+				$this->Session->write("Search.".$this->ControllerName,$cond_search);
+				$this->Session->write('Search.'.$this->ControllerName.'Operand',$operand);
+			}
+		}
+
+		$this->Session->write('Search.'.$this->ControllerName.'Viewpage',$viewpage);
+		$this->Session->write('Search.'.$this->ControllerName.'Sort',(empty($this->params['named']['sort']) or !isset($this->params['named']['sort'])) ? $order : $this->params['named']['sort']." ".$this->params['named']['direction']);
+
+		$cond_search		=	array();
+		$filter_paginate	=	array();
+		$this->paginate		=	array(
+									"{$this->ModelName}"	=>	array(
+										"order"				=>	$order,
+										'limit'				=>	$viewpage,
+										'recursive'		=>	2,
+									),
+								);
+
+		$ses_cond			=	$this->Session->read("Search.".$this->ControllerName);
+		$cond_search		=	isset($ses_cond) ? $ses_cond : array();
+		$ses_operand		=	$this->Session->read("Search.".$this->ControllerName."Operand");
+		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
+		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
+		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
+		debug($data);
+
+		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
+
+		if(isset($this->params['named']['page']) && $this->params['named']['page'] > $this->params['paging'][$this->ModelName]['pageCount'])
+		{
+			$this->params['named']['page']	=	$this->params['paging'][$this->ModelName]['pageCount'];
+		}
+		$page				=	empty($this->params['named']['page']) ? 1 : $this->params['named']['page'];
+		$this->Session->write('Search.'.$this->ControllerName.'Page',$page);
+		$this->set(compact('data','page','viewpage'));
+	}
+
+	function IndexReminder($page=1,$viewpage=50)
+	{
+		if($this->access[$this->aco_id]["_read"] != "1")
+		{
+			$this->layout	=	"no_access";
+			return;
+		}
+
+		$this->Session->delete("Search.".$this->ControllerName);
+		$this->Session->delete('Search.'.$this->ControllerName.'Operand');
+		$this->Session->delete('Search.'.$this->ControllerName.'ViewPage');
+		$this->Session->delete('Search.'.$this->ControllerName.'Sort');
+		$this->Session->delete('Search.'.$this->ControllerName.'Page');
+		$this->Session->delete('Search.'.$this->ControllerName.'Conditions');
+		$this->Session->delete('Search.'.$this->ControllerName.'parent_id');
+		$this->set(compact("page","viewpage"));
+	}
+
+	function ListItemReminder()
 	{
 		$this->layout	=	"ajax";
 
@@ -156,6 +282,9 @@ class ProcessController extends AppController
 		$filter_paginate	=	array();
 		$this->paginate		=	array(
 									"{$this->ModelName}"	=>	array(
+										'conditions'	=> array(
+											"{$this->ModelName}.status" => 0
+										),
 										"order"				=>	$order,
 										'limit'				=>	$viewpage,
 										'recursive'		=>	2
@@ -181,26 +310,14 @@ class ProcessController extends AppController
 		$this->set(compact('data','page','viewpage'));
 	}
 
-	function IndexReminder($page=1,$viewpage=50)
+	function AddReminder($ID=NULL)
 	{
 		if($this->access[$this->aco_id]["_read"] != "1")
 		{
 			$this->layout	=	"no_access";
 			return;
 		}
-
-		$this->Session->delete("Search.".$this->ControllerName);
-		$this->Session->delete('Search.'.$this->ControllerName.'Operand');
-		$this->Session->delete('Search.'.$this->ControllerName.'ViewPage');
-		$this->Session->delete('Search.'.$this->ControllerName.'Sort');
-		$this->Session->delete('Search.'.$this->ControllerName.'Page');
-		$this->Session->delete('Search.'.$this->ControllerName.'Conditions');
-		$this->Session->delete('Search.'.$this->ControllerName.'parent_id');
-		$this->set(compact("page","viewpage"));
 	}
-
-	function ListItemReminder()
-	{
 
 	function Excel()
 	{

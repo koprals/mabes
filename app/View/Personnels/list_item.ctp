@@ -68,16 +68,16 @@ function Delete(msg,id)
 														<?php echo $this->Paginator->sort("$ModelName.id",'NO');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.personnel_name",'Nama Siswa');?>
+														<span style="padding-right:200px;" class="text-center"><?php echo $this->Paginator->sort("$ModelName.personnel_name",'Nama Siswa');?>
 													</th>
 													<th>
 														<?php echo $this->Paginator->sort("$ModelName.personel_matra",'Matra Personel');?>
 													</th>
 													<th>
-														PANGKAT/KOPRS/NRP
+														<span style="padding-right:200px;" class="text-center">PANGKAT/KOPRS/NRP
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.personel_unity",'KESATUAN');?>
+														<span style="padding-right:200px;" class="text-center"><?php echo $this->Paginator->sort("$ModelName.personel_unity",'KESATUAN');?>
 													</th>
 													<?php
 													if(
@@ -85,8 +85,8 @@ function Delete(msg,id)
 														$access[$aco_id]["_delete"] == 1
 													):
 													?>
-													<th width="120">
-														actions
+													<th>
+														<span style="padding-right:100px;" class="text-center">actions
 													</th>
 													<?php endif;?>
 											</tr>

@@ -140,7 +140,9 @@ function ClearSearchAdvance()
 																						<?php
 																								echo $this->Form->input('Search.nama_pendidikan', array(
 																										'label'         =>  'Nama Pendidikan',
-																										'class'         =>  'form-control'
+																										'options'				=>	$programstudies,
+																										'class'         =>  'form-control select',
+																										'empty'					=>	'Pilih Pendidikan'
 																								));
 																						?>
 																				</div>

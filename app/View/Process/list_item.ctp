@@ -67,41 +67,41 @@ function Delete(msg,id)
 							<table class="table table-bordered table-striped table-actions">
 									<thead>
 										<tr>
-												<th width="20">
+												<th>
 													No
 												</th>
-												<th width="40">
-													Nama Siswa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<th>
+													<span style="padding-right:200px;" class="text-center">Nama Siswa
 												</th>
-												<th width="30">
+												<th>
 													Matra
 												</th>
-												<th width="60">
-													PANGKAT/KOPRS/NRP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<th>
+													<span style="padding-right:270px;" class="text-center">PANGKAT/KOPRS/NRP
 												</th>
-												<th width="50">
-													Kesatuan
+												<th>
+													<span style="padding-right:200px;" class="text-center">Jabatan/Kesatuan
 												</th>
-												<th width="40">
-													Lama Pendidikan
+												<th>
+													<span style="padding-right:100px;" class="text-center">Lama Pendidikan
 												</th>
-												<th width="70">
-													Nama Pendidikan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<th>
+													<span style="padding-right:200px;" class="text-center">Nama Pendidikan
 												</th>
-												<th width="40">
-													<?php echo $this->Paginator->sort("AvailableCourse.Country.name",'NEGARA');?>
+												<th>
+													<span style="padding-right:50px;" class="text-center"><?php echo $this->Paginator->sort("AvailableCourse.Country.name",'NEGARA');?>
 												</th>
-												<th width="30">
-													Jenis Pendidikan
+												<th>
+													<span style="padding-right:50px;" class="text-center">Jenis Pendidikan
 												</th>
-												<th width="30">
-													Berangkat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<th>
+													<span style="padding-right:50px;" class="text-center">Berangkat
 												</th>
-												<th width="30">
-													Kembali&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<th>
+													<span style="padding-right:50px;" class="text-center">Kembali
 												</th>
-												<th width="30">
-													<?php echo $this->Paginator->sort("$ModelName.SStatus",'STATUS PENDIDIKAN');?>
+												<th>
+													<span style="padding-right:50px;" class="text-center"><?php echo $this->Paginator->sort("$ModelName.SStatus",'STATUS PENDIDIKAN');?>
 												</th>
 												<?php
 												if(
@@ -109,8 +109,8 @@ function Delete(msg,id)
 													$access[$aco_id]["_delete"] == 1
 												):
 												?>
-												<th width="40">
-													actions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<th>
+													<span style="padding-right:100px;" class="text-center">actions
 												</th>
 												<?php endif;?>
 										</tr>

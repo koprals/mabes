@@ -24,33 +24,17 @@ $('.selectpicker').selectpicker({
 			<div class="col-md-12">
 				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add" ),'class' => 'form-horizontal',"type"=>"file", 'role' => 'form')); ?>
 					<div class="panel panel-primary">
-						<div class="block">
+						<div class="panel-body panel-default">
                             </div>
 								<div class="form-group">
-									<label class="col-md-2 control-label">To: Personel</label>
-										<div class="col-md-7">
-											<?php
-													echo $this->Form->input('matra_id', array(
-														'label'					=>	false,
-														'class'					=>	'form-control select',
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-														"maxlength"			=>	20,
-														'options'				=>  $list_matra,
-														'empty'					=>	"Silakan Pilih",
-													));
-													?>
-										</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-2 control-label">Subject : </label>
-										<div class="col-md-7">
+									<label class="col-md-2 col-xs-12 control-label">Judul Berita </label>
+										<div class="col-md-8 col-xs-12">
 												<?php
-													echo $this->Form->input('place_of_birth', array(
+													echo $this->Form->input('title', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'Re: Subject',
+														'placeholder'			=> 'Judul Berita',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -58,11 +42,12 @@ $('.selectpicker').selectpicker({
 										</div>
 								</div>
 								<div class="form-group">
-										<div class="col-md-12">
+									<label class="col-md-2 col-xs-12 control-label"></label>
+										<div class="col-md-8 col-xs-12">
 												<?php
-													echo $this->Form->input('place_of_birth', array(
+													echo $this->Form->input('description', array(
 														'type'					=>	'textarea',
-														'class'					=>	'summernote_email',
+														'class'					=>	'summernote',
 														'label'					=>	false,
 														'placeholder'			=> '',
 														"required"			=>	"",
@@ -72,13 +57,38 @@ $('.selectpicker').selectpicker({
 										</div>
 								</div>
 								<div class="form-group">
-									<div class="col-md-10">
-										<div class="pull-right">
-											<button class="btn btn-success fa fa-envelopbtn btn-primary btn-file"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Browse<input type="file" multiple="" id="file-simple"></button>
-											<input type="submit" value="Send Message" class="btn btn-success" />
+									<label class="col-md-2 col-xs-12 control-label">Negara </label>
+										<div class="col-md-8 col-xs-12">
+												<?php
+												echo $this->Form->input('country_id', array(
+													'label'					=>	false,
+													'class'					=>	'form-control select',
+													"required"			=>	"",
+													"autocomplete"	=>	"off",
+													"maxlength"			=>	20,
+													'options'				=>  $list_country,
+													'empty'					=>	"Pilih Negara",
+												));
+												?>
 										</div>
-									</div>
 								</div>
+								<div class="form-group">
+									<label class="col-md-2 col-xs-12 control-label"></label>
+										<div class="col-md-8 col-xs-12">
+												<?php
+													echo $this->Form->input('image', array(
+														'type'					=>	'file',
+														'class'					=>	'fileinput btn-primary active help-block ',
+														'label'					=>	false,
+													));
+												?>
+										</div>
+								</div>
+								<div class="panel-footer center-button">
+								<input type="submit" value="Publish" class="btn btn-success active" />
+								<input type="reset" value="Reset" class="btn btn-info active"/>
+								<input type="button" value="Cancel" class="btn btn-danger active" onclick="location.href = '<?php echo $settings["cms_url"].$ControllerName?>/Index'"/>
+							</div>
 							</div>
 						</form>
 						</div>	

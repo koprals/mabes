@@ -69,7 +69,7 @@ function ClearSearchAdvance()
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-    <h2><span class="fa fa-envelope"></span> Pesan Pribadi</h2>
+    <h2><span class="fa fa-list-ul"></span> Berita</h2>
 </div>
 <!-- END PAGE TITLE -->
 
@@ -77,7 +77,9 @@ function ClearSearchAdvance()
 <div class="page-content-wrap">
     <div class="row">
         <div class="col-md-12">
-            
+            <div class="center-button center-block">
+                <a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" class="tile tile-primary "><span style="color:#ffffff;" class="fa fa-plus"></span><h3 style="color:#ffffff;">ADD</h3></a>
+            </div>
         </div>
     </div>
 

@@ -1,12 +1,12 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
-	<li class="active">Negara</li>
+	<li class="active">News</li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-	<h2>Success Edit Negara</h2>
+	<h2>Success Edit News</h2>
 </div>
 <!-- END PAGE TITLE -->
 
@@ -15,7 +15,7 @@
 			<div class="col-md-12">
         <div class="alert alert-success" role="alert">
             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <strong>SUCCESS:</strong> Edit Negara.
+            <strong>SUCCESS:</strong> Edit News.
         </div>
         <div class="panel panel-default">
           <div class="panel-body">

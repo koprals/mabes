@@ -14,17 +14,17 @@
 ?>
 
 <script>
-// function ChangeStatus(msg,id,status)
-// {
-// 	var a	=	confirm(msg);
-// 	if(a)
-// 	{
-// 		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
-// 			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
-// 		});
-// 	}
-// 	return false;
-// }
+function ChangeStatus(msg,id,status)
+{
+	var a	=	confirm(msg);
+	if(a)
+	{
+		$.getJSON("<?php echo $settings["cms_url"].$ControllerName?>/ChangeStatus/"+id+"/"+status,function(){
+			$("#contents_area").load("<?php echo $settings["cms_url"].$ControllerName?>/ListItem/page:<?php echo $page?>/limit:<?php echo $viewpage.$ordered?>");
+		});
+	}
+	return false;
+}
 
 function Delete(msg,id)
 {
@@ -71,19 +71,7 @@ function Delete(msg,id)
 														<?php echo $this->Paginator->sort("$ModelName.name",'Nama');?>
 													</th>
 													<th>
-														Telepon Kedutaan
-													</th>
-													<th>
-														Alamat Kedutaan
-													</th>
-													<th>
-														Email Kedutaan
-													</th>
-													<th>
-														Telepon Office
-													</th>
-													<th>
-														Fax
+														<?php echo $this->Paginator->sort("$ModelName.matra_id",'Matra');?>
 													</th>
 													<?php
 													if(
@@ -104,12 +92,8 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
-												<td><?php echo $data[$ModelName]['country_name'] ?></td>
-												<td><?php echo $data[$ModelName]['telp_kedutaan']?></td>
-												<td><?php echo $data[$ModelName]['alamat_kedutaan']?></td>
-												<td><?php echo $data[$ModelName]['email_kedutaan']?></td>
-												<td><?php echo $data[$ModelName]['telp_office']?></td>
-												<td><?php echo $data[$ModelName]['fax']?></td>
+												<td><?php echo $data[$ModelName]['name'] ?></td>
+												<td><?php echo $data['Matra']['name'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or
@@ -118,12 +102,12 @@ function Delete(msg,id)
 												?>
 												<td>
 													<?php if($access[$aco_id]["_update"] == 1):?>
-														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id_country"]?>/" class="btn btn-success btn-condensed" title="Access Control">
+														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-success btn-condensed" title="Access Control">
 															<span class="fa fa-pencil"></span>
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id_country']?>')" class="btn btn-danger btn-condensed" title="Access Control">
+															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
 																<span class="fa fa-times"></span>
 															</a>
 													<?php endif;?>
@@ -154,6 +138,7 @@ function Delete(msg,id)
 								)
 							);
 						?>
+
 						<?php
 							echo $this->Paginator->numbers(array(
 								'separator'		=>	null,
@@ -174,12 +159,6 @@ function Delete(msg,id)
 								)
 							);
 						?>
-						<!--li class="disabled"><a href="#"></a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">»</a></li-->
 					</ul>
 					<?php endif;?>
 				</div>

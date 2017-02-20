@@ -56,10 +56,6 @@ function Delete(msg,id)
 					<label>Show Entries</label>
 					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
 				</div>
-				<div class="pull-right">
-					<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" class="btn btn-success"><i class="fa fa-envelope"></i> Tulis Pesan Baru </a>
-                    <!-- <button type="submit" class="btn btn-success"> <i class="fa fa-envelope"></i>Compose New Message</button>-->
-                </div>
 			</div>
 
 			<div class="panel-body panel-body-table">
@@ -72,16 +68,10 @@ function Delete(msg,id)
 														No
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.name",'Nama Personel');?>
+														Judul Berita
 													</th>
 													<th>
-														Subject
-													</th>
-													<th>
-														Isi Pesan
-													</th>
-													<th>
-														Tanggal 
+														Isi Berita
 													</th>
 													<?php
 													if(
@@ -102,10 +92,8 @@ function Delete(msg,id)
 											<?php $no		=	(($page-1)*$viewpage) + $count;?>
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
-												<td><?php //echo $data[$ModelName]['name'] ?></td>
-												<td><?php //echo $data['Matra']['name'] ?></td>
-												<td><?php ?></td>
-												<td><?php ?></td>
+												<td><?php echo $data[$ModelName]['title'] ?></td>
+												<td><?php echo $data[$ModelName]['description'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or
@@ -115,7 +103,7 @@ function Delete(msg,id)
 												<td>
 													<?php if($access[$aco_id]["_update"] == 1):?>
 														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-success btn-condensed" title="Access Control">
-															<span class="fa fa-reply"></span>
+															<span class="fa fa-pencil"></span>
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>

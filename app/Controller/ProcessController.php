@@ -176,7 +176,7 @@ class ProcessController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-		debug($data);
+		//debug($data);
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
 
@@ -223,7 +223,7 @@ class ProcessController extends AppController
 		$this->{$this->ModelName}->Personnel->VirtualFieldActivated();
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.id" => "DESC");
+		$order				=	array("{$this->ModelName}.created" => "DESC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -297,7 +297,7 @@ class ProcessController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-		debug($data);
+		//debug($data);
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
 
@@ -316,6 +316,41 @@ class ProcessController extends AppController
 		{
 			$this->layout	=	"no_access";
 			return;
+		}
+
+		$detail	=	$this->{$this->ModelName}->find('first', array(
+			'conditions' => array(
+				"{$this->ModelName}.id"		=>	$ID
+			)
+		));
+
+		if(empty($detail))
+		{
+			$this->layout	=	"ajax";
+			$this->render("/errors/error404");
+			return;
+		}
+
+		if (empty($this->data))
+		{
+			$this->data = $detail;
+		}
+		else
+		{
+			$this->loadModel("Reminder");
+			if(!empty($this->request->data))
+			{
+				$this->Reminder->set($this->request->data);
+				if($this->Reminder->validates())
+				{
+					$saveData["Reminder"] = array(
+ 	          'personnel_id' => $ID,
+ 	          'date_reminder' => $this->data['date_reminder'],
+ 	        );
+					$save	=	$this->Reminder->save($saveData);
+					$this->redirect(array("controller" => "Process", "action"=>'IndexReminder'));
+				}//END IF VALIDATE
+			}//END IF NOT EMPTY
 		}
 	}
 
@@ -395,7 +430,7 @@ class ProcessController extends AppController
 			$this->{$this->ModelName}->set($this->request->data);
 			if($this->{$this->ModelName}->validates())
 			{
-        Configure::write('debug', 2);
+        //Configure::write('debug', 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 

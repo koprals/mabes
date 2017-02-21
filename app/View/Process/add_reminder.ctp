@@ -15,33 +15,42 @@
 <div class="page-content-wrap">
 	<div class="row">
 			<div class="col-md-12">
-				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add"),'class' => 'form-horizontal',"type"=>"file")); ?>
+				<?php echo $this->Form->create("Reminder", array('url' => array("controller"=>$ControllerName,"action"=>"AddReminder" ),'class' => 'form-horizontal',"type"=>"file")); ?>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-								<h3 class="panel-title"><strong><?php echo $personnels['Personnel']['personnel_name'];?></strong></h3>
+								<h3 class="panel-title"><strong>Tambah Korps</strong></h3>
 						</div>
 						<div class="panel-body">
-							<?php
-								echo $this->Form->input('personnel_id', array(
-									'type'					=>	'hidden',
-									'class'					=>	'form-control',
-									'default'				=>	$personnel_id
-								));
-							?>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Tanggal Pengigat</label>
+								<label class="col-md-3 col-xs-12 control-label">Matra</label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
 												<?php
-													echo $this->Form->input('date_reminder', array(
-														'type'					=>	'text',
-														'class'					=>	'form-control datepicker',
+												echo $this->Form->input('personnel_id', array(
+													'label'					=>	false,
+													'class'					=>	'form-control select',
+													"required"			=>	"",
+													"autocomplete"	=>	"off",
+													"maxlength"			=>	20,
+												));
+												?>
+										</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Status</label>
+									<div class="col-md-6 col-xs-12">
+												<?php
+													echo $this->Form->input('status', array(
+														'class'					=>	'form-control select',
 														'label'					=>	false,
+														"required"			=>	"",
+														'default'				=>	1,
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+														'options'				=> array("4"=>"Not Active","1"=>"Active"),
+														'empty'					=> false,
 													));
 												?>
 										</div>
-									</div>
 							</div>
 							<div class="panel-footer center-button">
 								<input type="submit" value="Add" class="btn btn-success active" />

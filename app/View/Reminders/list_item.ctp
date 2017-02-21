@@ -50,77 +50,87 @@ function Delete(msg,id)
 </script>
 <div class="row">
 	<div class="col-md-12">
-		<div class="panel panel-info">
+		<div class="panel panel-success">
 			<div class="panel-heading">
-				<div class="dataTables_length" id="DataTables_Table_0_length ">
+        <div class="dataTables_length" id="DataTables_Table_0_length ">
 					<label>Show Entries</label>
-					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
+					<?php echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
 				</div>
 			</div>
+      <div class="panel-body panel-body-table">
+          <div class="table-responsive">
+              <table class="table table-bordered table-striped table-actions">
+                  <thead>
+                    <tr>
+                        <th>
+                          No
+                        </th>
+                        <th>
+                          <span style="padding-right:200px;" class="text-center">Nama Siswa
+                        </th>
+                        <th>
+                          <span style="padding-right:200px;" class="text-center">PANGKAT/KOPRS/NRP
+                        </th>
+                        <th>
+                          <span style="padding-right:250px;" class="text-center">Jabatan/Kesatuan
+                        </th>
+                        <th>
+                          <span style="padding-right:200px;" class="text-center">Nama Pendidikan
+                        </th>
+                        <th>
+                          <span style="padding-right:50px;" class="text-center"><?php echo $this->Paginator->sort("AvailableCourse.Country.country_name",'NEGARA');?>
+                        </th>
+                        <th>
+                          <span style="padding-right:50px;" class="text-center">Jenis Pendidikan
+                        </th>
+                        <?php
+                        if(
+                          $access[$aco_id]["_update"] == 1 or
+                          $access[$aco_id]["_delete"] == 1
+                        ):
+                        ?>
+                        <th>
+                          <span style="padding-right:100px;" class="text-center">actions
+                        </th>
+                        <?php endif;?>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $count = 0;?>
+                    <?php foreach($data as $data): ?>
+                      <?php $count++;?>
+                      <?php $no		=	(($page-1)*$viewpage) + $count;?>
+                      <tr id="trow_1">
+                        <td class="text-center"><?php echo $no ?></td>
+                        <td><?php echo $data['Personnel']['personnel_name'] ?></td>
 
-			<div class="panel-body panel-body-table">
+                        <td><?php echo $data['Personnel']['personel_occupation'] ?>/<?php echo $data['Personnel']['Corp']['name'] ?>/<?php echo $data['Personnel']['personel_nrp'] ?></td>
+                        <td><?php echo $data['Personnel']['personel_unity'] ?>
 
-					<div class="table-responsive">
-							<table class="table table-bordered table-striped table-actions">
-									<thead>
-											<tr>
-													<th width="50">
-														No
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.name",'Nama');?>
-													</th>
-													<th>
-														<?php echo $this->Paginator->sort("$ModelName.matra_id",'Matra');?>
-													</th>
-													<?php
-													if(
-														$access[$aco_id]["_update"] == 1 or
-														$access[$aco_id]["_delete"] == 1
-													):
-													?>
-													<th width="120" class="text-center">
-														actions
-													</th>
-													<?php endif;?>
-											</tr>
-									</thead>
-									<tbody>
-										<?php $count = 0;?>
-										<?php foreach($data as $data): ?>
-											<?php $count++;?>
-											<?php $no		=	(($page-1)*$viewpage) + $count;?>
-											<tr>
-												<td class="text-center"><?php echo $no ?></td>
-												<td><?php echo $data[$ModelName]['name'] ?></td>
-												<td><?php echo $data['Matra']['name'] ?></td>
-												<?php
-												if(
-													$access[$aco_id]["_update"] == 1 or
-													$access[$aco_id]["_delete"] == 1
-												):
-												?>
-												<td>
-													<?php if($access[$aco_id]["_update"] == 1):?>
-														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-success btn-condensed" title="Access Control">
-															<span class="fa fa-pencil"></span>
+                        <td><?php echo $data['AvailableCourse']['ProgramStudy']['edu_name'] ?></td>
+                        <td class="text-center"><?php echo $data['AvailableCourse']['Country']['country_name'] ?></td>
+                        <td class="text-center"><?php echo $data['AvailableCourse']['EducationType']['edu_type'] ?></td>
+
+                        <?php
+                        if(
+                          $access[$aco_id]["_update"] == 1 or
+                          $access[$aco_id]["_delete"] == 1
+                        ):
+                        ?>
+                        <td class="text-center">
+                          <?php if($access[$aco_id]["_update"] == 1):?>
+														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Add/<?php echo $data['Personnel']["id_personnel"]?>/" class="btn btn-danger btn-condensed" title="Access Control">
+															Tambah Pengigat
 														</a>
-													<?php endif;?>
-													<?php if($access[$aco_id]["_delete"] == 1):?>
-															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
-																<span class="fa fa-times"></span>
-															</a>
-													<?php endif;?>
-												</td>
-												<?php endif;?>
-											</tr>
-										<?php endforeach; ?>
-									</tbody>
-							</table>
-					</div>
-
-			</div>
-
+                          <?php endif;?>
+                        </td>
+                        <?php endif;?>
+                      </tr>
+                    <?php endforeach; ?>
+                  </tbody>
+              </table>
+          </div>
+      </div>
 			<!-- START PAGINATION -->
 			<div class="panel-heading">
 				<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite"><?php echo $this->Paginator->counter(array('format' => 'Showing %start% to %end% of %count% entries'));?></div>
@@ -159,11 +169,16 @@ function Delete(msg,id)
 								)
 							);
 						?>
+						<!--li class="disabled"><a href="#"></a></li>
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">»</a></li-->
 					</ul>
 					<?php endif;?>
 				</div>
 			<!-- END PAGINATION -->
-
 		</div>
 	</div>
 </div>

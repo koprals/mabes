@@ -118,10 +118,10 @@ function Delete(msg,id)
                         ):
                         ?>
                         <td class="text-center">
-                          <?php if($access[$aco_id]["_delete"] == 1):?>
-                              <a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id_personnel']?>')" class="btn btn-danger btn-condensed" title="Access Control">
-                                Tambah Pengigat
-                              </a>
+                          <?php if($access[$aco_id]["_update"] == 1):?>
+														<a href="<?php echo $settings['cms_url'].$ControllerName?>/AddReminder/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-success btn-condensed" title="Access Control">
+															Tambah Pengigat
+														</a>
                           <?php endif;?>
                         </td>
                         <?php endif;?>

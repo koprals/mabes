@@ -14,7 +14,7 @@ $('.selectpicker').selectpicker({
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-	<h2><span class=""></span> Tulis Pesan Baru <?php //echo $ModelName; ?></h2>
+	<h2><span class="fa fa-pencil"></span> Tulis Pesan Baru</h2>
 </div>
 <!-- END PAGE TITLE -->
 
@@ -25,19 +25,18 @@ $('.selectpicker').selectpicker({
 				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add" ),'class' => 'form-horizontal',"type"=>"file", 'role' => 'form')); ?>
 					<div class="panel panel-primary">
 						<div class="block">
-                            </div>
 								<div class="form-group">
 									<label class="col-md-2 control-label">To: Personel</label>
 										<div class="col-md-7">
 											<?php
-													echo $this->Form->input('matra_id', array(
+													echo $this->Form->input('id_personel', array(
 														'label'					=>	false,
 														'class'					=>	'form-control select',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
-														'options'				=>  $list_matra,
-														'empty'					=>	"Silakan Pilih",
+														'options'				=>  $list_personnel,
+														'empty'					=>	"Pilih Personel",
 													));
 													?>
 										</div>
@@ -45,22 +44,23 @@ $('.selectpicker').selectpicker({
 								<div class="form-group">
 									<label class="col-md-2 control-label">Subject : </label>
 										<div class="col-md-7">
-												<?php
-													echo $this->Form->input('place_of_birth', array(
-														'type'					=>	'text',
-														'class'					=>	'form-control',
-														'label'					=>	false,
-														'placeholder'			=> 'Re: Subject',
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-													));
-												?>
+                      <?php
+                          echo $this->Form->input('judul_pesan', array(
+                            'label'					=>	false,
+                            'class'					=>	'form-control select',
+                            "required"			=>	"",
+                            "autocomplete"	=>	"off",
+                            "maxlength"			=>	20,
+                            'options'				=>  array('1'=>'Pesan Pribadi', '2'=>'Berita', '3'=>'Laporan Berkala'),
+                            'empty'					=>	"Pilih Subjek Email",
+                          ));
+                          ?>
 										</div>
 								</div>
 								<div class="form-group">
 										<div class="col-md-12">
 												<?php
-													echo $this->Form->input('place_of_birth', array(
+													echo $this->Form->input('pesan', array(
 														'type'					=>	'textarea',
 														'class'					=>	'summernote_email',
 														'label'					=>	false,
@@ -71,17 +71,17 @@ $('.selectpicker').selectpicker({
 												?>
 										</div>
 								</div>
-								<div class="form-group">
-									<div class="col-md-10">
-										<div class="pull-right">
-											<button class="btn btn-success fa fa-envelopbtn btn-primary btn-file"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Browse<input type="file" multiple="" id="file-simple"></button>
-											<input type="submit" value="Send Message" class="btn btn-success" />
-										</div>
-									</div>
-								</div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <button class="btn btn-primary btn-file"> <i class="glyphicon glyphicon-folder-open"></i> &nbsp;Browse … <input type="file" multiple="" id="file-simple"></button>
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-envelope"></i><a href="#" style="color:#ffffff;">Send Message</a></button>
+                        </div>
+                    </div>
+                </div>
 							</div>
 						</form>
-						</div>	
+					</div>
 				</div>
 				<?php echo $this->Form->end; ?>
 			</div>

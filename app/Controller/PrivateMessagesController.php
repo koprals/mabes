@@ -72,11 +72,6 @@ class PrivateMessagesController extends AppController
 			$operand		=	$this->request->data[$this->ModelName]['operator'];
 			$this->Session->delete('Search.'.$this->ControllerName);
 
-			/*if(!empty($this->request->data['Search']['id']))
-			{
-				$cond_search["{$this->ModelName}.id"]					=	$this->data['Search']['id'];
-			}*/
-
 			if(!empty($this->request->data['Search']['start_date'])) {
 				if(!empty($this->request->data['Search']['end_date'])) {
 
@@ -199,18 +194,16 @@ class PrivateMessagesController extends AppController
 			return;
 		}
 
-		$this->loadModel('Matra');
-		$list_matra = $this->Matra->find('list');
+		$this->loadModel('Personnel');
+		$list_personnel	=	$this->Personnel->find('list', array('fields'	=>	'personnel_name'));
 
 		if(!empty($this->request->data))
 		{
 			$this->{$this->ModelName}->set($this->request->data);
-			//$this->{$this->ModelName}->ValidateAdd();
 			if($this->{$this->ModelName}->validates())
 			{
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
-				$ID		=	$this->{$this->ModelName}->getLastInsertId();
-
+				
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
 				{
@@ -245,10 +238,10 @@ class PrivateMessagesController extends AppController
 					@unlink($tmp_images1_img);
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
-				$this->redirect(array("action"=>'SuccessAdd',$ID));
+				$this->redirect(array("action"=>'Index'));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
-		$this->set(compact('list_matra'));
+		$this->set(compact('list_personnel'));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)

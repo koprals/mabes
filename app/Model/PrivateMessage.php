@@ -1,7 +1,9 @@
 <?php
 class PrivateMessage extends AppModel
 {
-	public $name = "PrivateMessage";
+	public $useTable	=	"pesan_";
+	public $primaryKey	=	"id_pesan";
+	public $name	=	"PrivateMessage";
 /*
   public $belongsTo = array(
     'Matra' => array(
@@ -125,7 +127,7 @@ class PrivateMessage extends AppModel
 
 	function BindDefault($reset	=	true)
 	{
-			
+
 	}
 
 	function UnBindDefault($reset	=	true)

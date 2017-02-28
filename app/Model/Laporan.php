@@ -1,7 +1,7 @@
 <?php
-class EducationReport extends AppModel
+class Laporan extends AppModel
 {
-	public $name = "EducationReport";
+	public $name = "Laporan";
 /*
   public $belongsTo = array(
     'Matra' => array(

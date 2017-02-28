@@ -1,10 +1,10 @@
 <?php
-class EducationReportsController extends AppController
+class LaporansController extends AppController
 {
-	var $ControllerName		=	"EducationReports";
-	var $ModelName			=	"EducationReport";
+	var $ControllerName		=	"Laporans";
+	var $ModelName			=	"Laporan";
 	var $helpers			=	array("Text","Aimfox");
-	var $uses				=	"EducationReport";
+	var $uses				=	"Laporan";
 
 	function beforeFilter()
 	{
@@ -17,7 +17,7 @@ class EducationReportsController extends AppController
 		$this->loadModel("MyAco");
 		$find					=	$this->MyAco->find("first",array(
 										"conditions"	=>	array(
-											"LOWER(MyAco.alias)"	=>	strtolower("EducationReport")
+											"LOWER(MyAco.alias)"	=>	strtolower("Laporan")
 										)
 									));
 
@@ -221,7 +221,6 @@ class EducationReportsController extends AppController
 		}
 		$this->set(compact("ID","detail","aro_id_list","page","viewpage"));
 	}
-
 	function View($ID=NULL)
 	{
 		if($this->access[$this->aco_id]["_read"] != "1")
@@ -231,14 +230,29 @@ class EducationReportsController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-		$this->{$this->ModelName}->BindImageBig(false);
+		$this->{$this->ModelName}->BindImageProfil();
+		$this->{$this->ModelName}->BindImageMedical();
+		$this->{$this->ModelName}->BindImagePassport();
+		$this->{$this->ModelName}->BindImageSecurity();
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
-		$detail = $this->{$this->ControllerName}->find('first', array(
+		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ControllerName}.id"		=>	$ID
-			)
+				"{$this->ModelName}.id_personnel"		=>	$ID
+			),
+			'recursive'	=>	1
 		));
+
+		//debug($detail);
+    $this->loadModel('Process');
+		$historicalEdus	=	$this->Process->find('all', array(
+			'conditions'	=>	array(
+				'Process.personnel_id'	=> $ID
+			),
+			'recursive'	=>	2
+		));
+
+		//debug($historicalEdus);
 		if(empty($detail))
 		{
 			$this->layout	=	"ajax";
@@ -246,8 +260,56 @@ class EducationReportsController extends AppController
 			$this->render("/errors/error404");
 			return;
 		}
-		$this->set(compact("ID","detail"));
+		$this->set(compact("ID","detail","historicalEdus"));
 	}
+
+	function Pdf($ID=NULL)
+  {
+    if($this->access[$this->aco_id]["_read"] != "1")
+    {
+      $this->layout	=	"no_access";
+      return;
+    }
+
+    $this->pdfConfig = array(
+						'orientation' => 'portrait',//or landscape
+						'filename' => "testpdf",
+						'download' => false,
+						'margin' => array(
+              'bottom' => 15,
+              'left' => 50,
+              'right' => 30,
+              'top' => 45
+					),
+					'engine' => 'CakePdf.DomPdf',
+				);
+
+    //$this->layout	=	"ajax";
+    $this->loadModel($this->ModelName);
+		$this->{$this->ModelName}->BindImageProfil();
+    $this->{$this->ModelName}->VirtualFieldActivated();
+
+    $detail = $this->{$this->ModelName}->find('first', array(
+      'conditions' => array(
+        "{$this->ModelName}.id_personnel"		=>	$ID
+      ),
+      'recursive' =>  2
+    ));
+
+    $this->loadModel('Process');
+		$historicalEdus	=	$this->Process->find('all', array(
+			'conditions'	=>	array(
+				'Process.personnel_id'	=> $ID
+			),
+			'recursive'	=>	2
+		));
+		//debug($detail);
+
+    $title				=	$this->ModelName;
+		$filename			=	$this->ModelName."_".date("dMY");
+
+    $this->set(compact("ID","detail","title","filename","historicalEdus"));
+  }
 
 	function ChangeStatus($ID=NULL,$status)
 	{

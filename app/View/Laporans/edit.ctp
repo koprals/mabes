@@ -7,7 +7,7 @@
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-	<h2><span class="fa fa-plus-circle"></span> Edit News</h2>
+	<h2><span class="fa fa-plus-circle"></span> Edit Korps</h2>
 </div>
 <!-- END PAGE TITLE -->
 
@@ -18,73 +18,63 @@
 				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Edit" ),'class' => 'form-horizontal',"type"=>"file")); ?>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-								<h3 class="panel-title"><strong>Edit News</strong></h3>
+								<h3 class="panel-title"><strong>Edit Korps</strong></h3>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<label class="col-md-2 col-xs-12 control-label">Judul Berita</label>
-									<div class="col-md-8 col-xs-12">
+								<label class="col-md-3 col-xs-12 control-label">Nama</label>
+									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 												<?php echo $this->Form->input('id', array('type'	=>	'hidden')); ?>
 												<?php
-													echo $this->Form->input('title', array(
+													echo $this->Form->input('name', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'Judul Berita',
-														"required"			=>	"",
+														"required"			=>	false,
 														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
 													));
 												?>
 										</div>
 									</div>
 							</div>
 							<div class="form-group">
-									<label class="col-md-2 col-xs-12 control-label"></label>
-										<div class="col-md-8 col-xs-12">
+								<label class="col-md-3 col-xs-12 control-label">Matra</label>
+									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('description', array(
-														'type'					=>	'textarea',
-														'class'					=>	'summernote',
-														'label'					=>	false,
-														'placeholder'			=> '',
-														"required"			=>	"",
-														"autocomplete"	=>	"off",
-													));
-												?>
-										</div>
-								</div>
-							<div class="form-group">
-								<label class="col-md-2 col-xs-12 control-label">Negara</label>
-									<div class="col-md-8 col-xs-12">
-												<?php
-												echo $this->Form->input('country_id', array(
+												echo $this->Form->input('matra_id', array(
 													'label'					=>	false,
 													'class'					=>	'form-control select',
 													"required"			=>	"",
 													"autocomplete"	=>	"off",
 													"maxlength"			=>	20,
-													'options'				=>  $list_country,
-													'empty'					=>	"Pilih Negara",
+													'options'				=>  $list_matra,
+													'empty'					=>	"Pilih Matra"
 												));
 												?>
 										</div>
 							</div>
 							<div class="form-group">
-									<label class="col-md-2 col-xs-12 control-label"></label>
-										<div class="col-md-8 col-xs-12">
+								<label class="col-md-3 col-xs-12 control-label">Status</label>
+									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('image', array(
-														'type'					=>	'file',
-														'class'					=>	'fileinput btn-primary active help-block ',
+													echo $this->Form->input('status', array(
+														'class'					=>	'form-control select',
 														'label'					=>	false,
+														"required"			=>	"",
+														'default'				=>	1,
+														"autocomplete"	=>	"off",
+														"maxlength"			=>	20,
+														'options'				=> array("4"=>"Not Active","1"=>"Active"),
+														'empty'					=> false,
 													));
 												?>
 										</div>
-								</div>
+							</div>
 							<div class="panel-footer center-button">
-								<input type="submit" value="Publish" class="btn btn-success active" />
+								<input type="submit" value="Add" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>
 								<input type="button" value="Cancel" class="btn btn-danger active" onclick="location.href = '<?php echo $settings["cms_url"].$ControllerName?>/Index'"/>
 							</div>

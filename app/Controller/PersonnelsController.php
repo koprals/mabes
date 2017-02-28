@@ -41,6 +41,16 @@ class PersonnelsController extends AppController
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
+
+    //DEFINE MATRA
+    $this->loadModel('Matra');
+    $list_matra = $this->Matra->find('list');
+
+    //DEFINE CORPS
+    $this->loadModel('Corp');
+    $list_corp  = $this->Corp->find('list');
+
+    $this->set(compact('list_corp','list_matra'));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -79,7 +89,6 @@ class PersonnelsController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-		$this->{$this->ModelName}->VirtualFieldActivated();
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
 		$order				=	array("{$this->ModelName}.id_personnel" => "ASC");
@@ -131,6 +140,7 @@ class PersonnelsController extends AppController
 										'recursive'		=>	2
 									)
 								);
+                debug($data)ll
 
 		$ses_cond			=	$this->Session->read("Search.".$this->ControllerName);
 		$cond_search		=	isset($ses_cond) ? $ses_cond : array();

@@ -203,21 +203,26 @@ class PrivateMessagesController extends AppController
 			if($this->{$this->ModelName}->validates())
 			{
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
-				
+
+				if(!empty($save))
+				{
+					$this->request->data['DetailMessage']['id_pesan']	= $this->{$this->ModelName}->id;
+					$this->{$this->ModelName}->DetailMessage->save($this->request->data);
+				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////
 				if(!empty($this->request->data[$this->ModelName]["images"]["name"]))
 				{
-					$tmp_name							=	$this->request->data[$this->ModelName]["images"]["name"];
+					$tmp_name						=	$this->request->data[$this->ModelName]["images"]["name"];
 					$tmp								=	$this->request->data[$this->ModelName]["images"]["tmp_name"];
-					$mime_type							=	$this->request->data[$this->ModelName]["images"]["type"];
+					$mime_type					=	$this->request->data[$this->ModelName]["images"]["type"];
 
-					$path_tmp							=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
+					$path_tmp						=	ROOT.DS.'app'.DS.'tmp'.DS.'upload'.DS;
 						if(!is_dir($path_tmp)) mkdir($path_tmp,0777);
 
 					$ext								=	pathinfo($tmp_name,PATHINFO_EXTENSION);
-					$tmp_file_name						=	md5(time());
-					$tmp_images1_img					=	$path_tmp.$tmp_file_name.".".$ext;
-					$upload 							=	move_uploaded_file($tmp,$tmp_images1_img);
+					$tmp_file_name			=	md5(time());
+					$tmp_images1_img		=	$path_tmp.$tmp_file_name.".".$ext;
+					$upload 						=	move_uploaded_file($tmp,$tmp_images1_img);
 					if($upload)
 					{
 						//RESIZE BIG

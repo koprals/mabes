@@ -6,25 +6,6 @@ class CountriesController extends AppController
 	var $helpers			=	array("Text","Aimfox");
 	var $uses				=	"Country";
 
-	function Api_CountriesSummary() {
-    $this->autoRender = false;
-		$counts = $this->Country->query('
-			SELECT COUNT(*) as TotalPersonnel,
-				countries.country_name as Negara,
-				countries.country_latitude as Latitude,
-				countries.country_longitude as Longitude
-			FROM process
-			LEFT JOIN available_courses
-			ON process.course_id = available_courses.id_course
-			LEFT JOIN countries
-			ON available_courses.country_id = countries.id_country
-			WHERE process.status = 0 AND
-				countries.country_name IS NOT NULL
-			GROUP BY countries.id_country
-		');
-		return json_encode($counts);
-	}
-	
 	function beforeFilter()
 	{
 		parent::beforeFilter();
@@ -121,7 +102,6 @@ class CountriesController extends AppController
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
 
-
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
 
 		if(isset($this->params['named']['page']) && $this->params['named']['page'] > $this->params['paging'][$this->ModelName]['pageCount'])
@@ -131,7 +111,7 @@ class CountriesController extends AppController
 		$page				=	empty($this->params['named']['page']) ? 1 : $this->params['named']['page'];
 		$this->Session->write('Search.'.$this->ControllerName.'Page',$page);
 		$this->set(compact('data','page','viewpage'));
-		
+
 	}
 
 

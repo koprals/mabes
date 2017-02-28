@@ -90,7 +90,7 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														'options'				=>  array('0' => 'AD', '1' => 'AU', '2' => 'AL'),
+														'options'				=>  $list_matra,
 														'empty'					=> "Pilih Matra",
 													));
 												?>
@@ -122,10 +122,7 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														'options'				=> array('0' => 'INF', '1' => 'KAV', '2' => 'ARH', '3' => 'ARM', '4' => 'CZI', '5' => 'CHB', '6' => 'CBA', '7' => 'CKU', '8' => 'CAJ',
-																								'9' => 'CTP', '10' => 'CKM', '11' => 'CHK', '12' => 'CPM', '13' => 'CPN', '14' => 'CPL', '15' => 'PELAUT', '16' => 'TEKNIK', '17' => 'ELEKTRONIKA', '18' => 'SUPLAI',
-																								'19' => 'MARINIR', '20' => 'POMAL', '21' => 'KESEHATAN', '22' => 'KHUSUS', '23' => 'PNB', '24' => 'NAV', '25' => 'TEK', '26' => 'LEK', '27' => 'KAL',
-																								'28' => 'ADM', '29' => 'KES', '30' => 'PAS', '31' => 'POM', '32' => 'SUS'),
+														'options'				=> 	$list_corp,
 														'empty'					=> "Pilih Corps",
 													));
 												?>

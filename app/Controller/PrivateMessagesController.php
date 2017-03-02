@@ -199,14 +199,20 @@ class PrivateMessagesController extends AppController
 
 		if(!empty($this->request->data))
 		{
+			Configure::write('debug', 2);
 			$this->{$this->ModelName}->set($this->request->data);
+
 			if($this->{$this->ModelName}->validates())
 			{
+				Configure::write('debug' , 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
+				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
+				debug($save);
 				if(!empty($save))
 				{
 					$this->request->data['DetailMessage']['id_pesan']	= $this->{$this->ModelName}->id;
+					$this->request->data['DetailMessage']['id_personel']	=	$this->{$this->ModelName}->field('id_personel');
 					$this->{$this->ModelName}->DetailMessage->save($this->request->data);
 				}
 				//////////////////////////////////////START SAVE FOTO/////////////////////////////////////////////

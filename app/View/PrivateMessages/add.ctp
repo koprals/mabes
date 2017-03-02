@@ -57,6 +57,7 @@ $('.selectpicker').selectpicker({
                           ?>
 										</div>
 								</div>
+                <?php echo $this->Form->create('DetailMessage'); ?>
 								<div class="form-group">
 										<div class="col-md-12">
 												<?php
@@ -71,11 +72,23 @@ $('.selectpicker').selectpicker({
 												?>
 										</div>
 								</div>
+                <?php
+                  echo $this->Form->input('is_attach', array(
+                    'type'					=>	'hidden',
+                    'default'       =>  0
+                  ));
+                ?>
+                <?php
+                  echo $this->Form->input('read_status', array(
+                    'type'					=>	'hidden',
+                    'default'       =>  0
+                  ));
+                ?>
                 <div class="form-group">
                     <div class="col-md-12">
                         <div class="pull-right">
-                            <button class="btn btn-primary btn-file"> <i class="glyphicon glyphicon-folder-open"></i> &nbsp;Browse … <input type="file" multiple="" id="file-simple"></button>
-                            <button type="submit" class="btn btn-success"> <i class="fa fa-envelope"></i><a href="#" style="color:#ffffff;">Send Message</a></button>
+                            <!-- <button class="btn btn-primary btn-file"> <i class="glyphicon glyphicon-folder-open"></i> &nbsp;Browse … <input type="file" multiple="" id="file-simple"></button> -->
+                            <input type="submit" value="Send Message" class="btn btn-success active" />
                         </div>
                     </div>
                 </div>

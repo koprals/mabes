@@ -31,7 +31,6 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'Program Studi',
 													));
 												?>
 											</div>
@@ -47,7 +46,6 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
-														'placeholder'			=> 'Nama Institusi',
 													));
 												?>
 											</div>
@@ -66,7 +64,7 @@
 										</div>
 							</div>
 							<div class="form-group">
- 								<label class="col-md-3 col-xs-12 control-label">Pilih File</label>
+ 								<label class="col-md-3 col-xs-12 control-label">Browse File</label>
  									<div class="col-md-6 col-xs-12">
  											<?php
  												echo $this->Form->input('file', array(

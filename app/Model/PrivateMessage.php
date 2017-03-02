@@ -1,52 +1,21 @@
 <?php
 class PrivateMessage extends AppModel
 {
+	public $name	=	"PrivateMessage";
 	public $useTable	=	"pesan_";
 	public $primaryKey	=	"id_pesan";
-	public $name	=	"PrivateMessage";
-/*
-  public $belongsTo = array(
-    'Matra' => array(
-      'className' => 'Matra',
-      'foreignKey'  =>  'matra_id'
+
+  public $hasOne = array(
+    'DetailMessage' => array(
+      'className' => 'DetailMessage',
+      'foreignKey'  =>  'id_pesan'
     )
   );
-*/
-	public $validate 	= array(
-		/*
-		'id' => array(
-			'notEmpty' => array(
-				'rule' 		=>	"notEmpty",
-				'message' 	=>	"Data not found",
-				"on"		=>	"update"
-			)
-		),
-		'name' => array(
-			'notEmpty'		=>	array(
-				'rule' 		=>	"notEmpty",
-				'message' 	=>	"Please insert name"
-			),
-			'minLength' 	=>	array(
-				'rule' 		=>	array("minLength","3"),
-				'message'	=>	"Name is to sort"
-			),
-			'maxLength' 	=>	array(
-				'rule' 		=>	array("maxLength","100"),
-				'message'	=>	"Name is too long"
-			)
-		),
-		'matra_id' => array(
-				'notEmpty' => array(
-					'rule'				=>	"notEmpty",
-					'message'			=>	"Please select matra"
-				)
-			)
-			*/
-	);
+
 
 	public function BindImageBig($reset	=	true)
 	{
-		/*$this->bindModel(array(
+		$this->bindModel(array(
 			"hasOne"	=>	array(
 				"ImageBig"	=>	array(
 					"className"	=>	"Content",
@@ -57,7 +26,7 @@ class PrivateMessage extends AppModel
 					)
 				)
 			)
-		),$reset);*/
+		),$reset);
 	}
 
 	public function BindImageThumb($reset	=	true)
@@ -74,33 +43,6 @@ class PrivateMessage extends AppModel
 				)
 			)
 		),$reset);
-	}
-
-	public function beforeSave($options = array())
-	{
-		if(!empty($this->data))
-		{
-			foreach($this->data[$this->name] as $key => $name)
-			{
-				if(isset($this->data[$this->name][$key]) && !is_array($this->data[$this->name][$key]))
-					$this->data[$this->name][$key]		=	trim($this->data[$this->name][$key]);
-
-				if($key == "name")
-				{
-					$this->data[$this->name][$key]	=	Sanitize::html($this->data[$this->name][$key]);
-				}
-
-				if($key == "description")
-				{
-					$this->data[$this->name][$key]	=	Sanitize::html($this->data[$this->name][$key]);
-				}
-
-				if($key == "position")
-				{
-					$this->data[$this->name][$key]	=	Sanitize::html($this->data[$this->name][$key]);
-				}
-			}
-		}
 	}
 
 	public function afterFind($results, $primary = false)
@@ -123,6 +65,7 @@ class PrivateMessage extends AppModel
 
 	public function BindImage($reset	=	true)
 	{
+
 	}
 
 	function BindDefault($reset	=	true)
@@ -132,14 +75,7 @@ class PrivateMessage extends AppModel
 
 	function UnBindDefault($reset	=	true)
 	{
-	}
 
-	function VirtualFieldActivated()
-	{
-		/*$this->virtualFields = array(
-			'SStatus'		=> "IF((".$this->name.".status='0'), 'Hide', IF((".$this->name.".status='1'), 'Publish', 'Draft'))"
-
-		);*/
 	}
 
 	function rand_number( $length ) {

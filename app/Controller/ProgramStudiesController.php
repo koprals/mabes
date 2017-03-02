@@ -207,7 +207,7 @@ class ProgramStudiesController extends AppController
  	        );
 
  	        $saveFile = $this->{$this->ModelName}->save($saveData);
- 	        $url = 'contents/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
+ 	        $url = 'content/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
 
  	        $folder = ROOT.DS.'app'.DS.'webroot'.DS.'contents'.DS.$this->ModelName;
  	        if(!is_dir($folder)) mkdir($folder,0755);
@@ -240,8 +240,10 @@ class ProgramStudiesController extends AppController
 		$detail 			=	$this->{$this->ModelName}->find('first', array(
 									'conditions' => array(
 										"{$this->ModelName}.id"		=>	$ID
-									)
+									),
+									'recursive'	=>	1
 								));
+		debug($detail);
 
 		if(empty($detail))
 		{
@@ -260,7 +262,10 @@ class ProgramStudiesController extends AppController
 			if($this->{$this->ModelName}->validates())
 			{
 				//Configure::write('debug' , 2);
-				$save	=	$this->{$this->ModelName}->save($this->request->data);
+				$save	=	$this->{$this->ModelName}->save($this->data,false);
+				If(!empty($save)){
+
+				}
 
 				if(!empty($this->request->data[$this->ModelName]["file"]["name"])) {
  					$saveData[$this->ModelName] = array(
@@ -270,7 +275,7 @@ class ProgramStudiesController extends AppController
  	        );
 
  	        $saveFile = $this->{$this->ModelName}->save($saveData);
- 	        $url = 'contents/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
+ 	        $url = 'content/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
 
  	        $folder = ROOT.DS.'app'.DS.'webroot'.DS.'contents'.DS.$this->ModelName;
  	        if(!is_dir($folder)) mkdir($folder,0755);

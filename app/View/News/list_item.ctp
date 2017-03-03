@@ -93,7 +93,7 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
 												<td><?php echo $data[$ModelName]['title'] ?></td>
-												<td><?php echo $data[$ModelName]['description'] ?></td>
+												<td><?php echo $this->text->truncate($data[$ModelName]['description'],150)?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or

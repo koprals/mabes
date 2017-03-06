@@ -97,6 +97,18 @@ class ProcessController extends AppController
 		return json_encode($counts);
 	}
 
+	function Api_ProcessActivitiesSummary() {
+    	$this->autoRender = false;
+		$counts = $this->Process->query('
+			SELECT YEAR(depart) as Tahun,
+			SUM(CASE WHEN `status`= 1 then 1 else 0 end) as Selesai,
+			SUM(CASE WHEN `status`= 2 then 1 else 0 end) as TidakSelesai
+			FROM process
+			GROUP BY YEAR(depart)
+		');
+		return json_encode($counts);
+	}
+
 	function ListItem()
 	{
 		$this->layout	=	"ajax";

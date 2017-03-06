@@ -84,6 +84,19 @@ class ProcessController extends AppController
 		$this->set(compact("page","viewpage"));
 	}
 
+	function Api_ProcessSummary() {
+    	$this->autoRender = false;
+		$counts = $this->Process->query('
+			SELECT
+			SUM(CASE WHEN `status`= 0 OR 1 then 1 else 0 end) as TotalSiswa,
+			SUM(CASE WHEN `status`= 1 then 1 else 0 end) as SudahMelapor,
+			SUM(CASE WHEN `status`= 0 then 1 else 0 end) as BelumLapor,
+			SUM(CASE WHEN `status`= 1 then 1 else 0 end) * (100/count(*)) as TotalSaatIni
+			FROM process
+		');
+		return json_encode($counts);
+	}
+
 	function ListItem()
 	{
 		$this->layout	=	"ajax";

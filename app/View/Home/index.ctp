@@ -131,25 +131,25 @@
 										<div class="row stacked">
 												<div class="col-md-4">
 														<div class="progress-list">
-																<div class="pull-left"><strong>Total Laporan Bulan Ini</strong></div>
-																<div class="pull-right">75%</div>
-																<div class="progress progress-small progress-striped active">
-																		<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">75%</div>
-																</div>
+															<div class="pull-left"><strong>Total Laporan Bulan Ini</strong></div>
+															<div class="pull-right" id="process-summary-1"></div>
+															<div class="progress progress-small progress-striped active">
+																<div id="process-summary-1-bar" class="progress-bar progress-bar-primary" style="width: 0%;"></div>
+															</div>
 														</div>
 														<div class="progress-list">
-																<div class="pull-left"><strong>Sudah Melapor</strong></div>
-																<div class="pull-right">450/500</div>
-																<div class="progress progress-small progress-striped active">
-																		<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">90%</div>
-																</div>
+															<div class="pull-left"><strong>Sudah Melapor</strong></div>
+															<div class="pull-right" id="process-summary-2"></div>
+															<div class="progress progress-small progress-striped active">
+																<div id="process-summary-2-bar" class="progress-bar progress-bar-primary" style="width: 0%;"></div>
+															</div>
 														</div>
 														<div class="progress-list">
-																<div class="pull-left"><strong class="text-danger">Belum Melapor</strong></div>
-																<div class="pull-right">25/500</div>
-																<div class="progress progress-small progress-striped active">
-																		<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">5%</div>
-																</div>
+															<div class="pull-left"><strong class="text-danger">Belum Melapor</strong></div>
+															<div class="pull-right" id="process-summary-3"></div>
+															<div class="progress progress-small progress-striped active">
+																<div id="process-summary-3-bar" class="progress-bar progress-bar-danger" style="width: 0%;"></div>
+															</div>
 														</div>
 														<p style="text-align:justify"><span class="fa fa-warning"></span> Data akan di perbarui setiap jam. Anda dapat melihat update laporan dengan menekan tombol refresh di sisi kanan atas kolom ini.</p>
 												</div>

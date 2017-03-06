@@ -90,6 +90,39 @@ $(function(){
     });
     /* EMD Line dashboard chart */
 
+    /* Left Bars of Vector Map */
+    $.get('http://mabes.local/Process/Api_ProcessSummary', function(results) {
+        try {
+            results = JSON.parse(results);
+        } catch (e) {
+            results = [];
+        }
+        try {
+            var res = results[0][0];
+            var sum1 = $('#process-summary-1');
+            var sum1Percentage = res.TotalSiswa / res.TotalSaatIni * 100;
+            var sum1Bar = $('#process-summary-1-bar');
+            var sum2 = $('#process-summary-2');
+            var sum2Percentage = res.SudahMelapor / res.TotalSiswa * 100;
+            var sum2Bar = $('#process-summary-2-bar');
+            var sum3 = $('#process-summary-3');
+            var sum3Percentage = res.BelumLapor / res.TotalSiswa * 100;
+            var sum3Bar = $('#process-summary-3-bar');
+
+            sum1.text(res.TotalSiswa);
+            sum1Bar.css('width', sum1Percentage + '%');
+
+            sum2.text(res.SudahMelapor);
+            sum2Bar.css('width', sum2Percentage + '%');
+
+            sum3.text(res.BelumLapor);
+            sum3Bar.css('width', sum3Percentage + '%');
+        } catch(e) {
+            console.error(e);
+        }
+    });
+    /* END Left Bars of Vector Map */
+
     /* Vector Map */
     $.get('http://mabes.local/Countries/Api_CountriesSummary', function(results) {
         try {

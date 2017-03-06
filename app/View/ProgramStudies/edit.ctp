@@ -85,6 +85,13 @@
  							<?php echo $this->Form->create('AvailableCourse'); ?>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Negara</label>
+									<?php
+										echo $this->Form->input('id_course', array(
+											'type'					=>	'hidden',
+											'class'					=>	'form-control select',
+											'label'					=>	false,
+										));
+									?>
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('country_id', array(

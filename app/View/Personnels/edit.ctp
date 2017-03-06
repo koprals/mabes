@@ -448,14 +448,7 @@
 												?>
 									</div>
 							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label"></label>
-									<div class="col-md-6 col-xs-12">
-										<a href="#">
-												<img src="assets/images/gallery/music-2.jpg" class="img-responsive img-text"/>
-										</a>
-									</div>
-							</div>
+						
 							<div class="panel-footer center-button">
 								<input type="submit" value="Add" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

@@ -25,7 +25,6 @@ function ChangeStatus(msg,id,status)
 	}
 	return false;
 }
-
 function Delete(msg,id)
 {
 	var a	=	confirm(msg);
@@ -47,6 +46,7 @@ function Delete(msg,id)
 	}
 	return false;
 }
+
 </script>
 <div class="row">
 	<div class="col-md-12">
@@ -146,7 +146,7 @@ function Delete(msg,id)
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id_personnel']?>')" class="btn btn-danger btn-condensed" title="Access Control">
+															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
 																<span class="fa fa-times"></span>
 															</a>
 													<?php endif;?>

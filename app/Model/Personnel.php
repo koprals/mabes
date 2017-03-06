@@ -88,6 +88,7 @@ class Personnel extends AppModel
 		),$reset);
 	}
 
+	
 	function VirtualFieldActivated()
 	{
 		$this->virtualFields = array(

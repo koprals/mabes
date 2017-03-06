@@ -210,6 +210,7 @@
                                   <th width="100">Negara</th>
                                   <th width="100">Keberangkatan</th>
                                   <th width="100">Kedatangan</th>
+                                  <th width="100">Report Kedatangan</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -223,6 +224,12 @@
         												<td><?php echo $historicalEdus['AvailableCourse']['Country']['country_name'] ?></td>
                                 <td><?php echo $historicalEdus['Process']['depart'] ?></td>
                                 <td><?php echo $historicalEdus['Process']['arrive'] ?></td>
+
+                                <td class="text-center">
+                                      <a href="<?php echo $detail["Process"]["0"]["report_file_url"]?>"  download="ReportKedatangan" class="btn btn-primary btn-block active">
+                                          <p><h5 style="color:#FFFFFF">Download Laporan Kedatangan</h5></p>
+                                      </a>
+                                </td>
         											</tr>
         										<?php endforeach; ?>
                           </tbody>

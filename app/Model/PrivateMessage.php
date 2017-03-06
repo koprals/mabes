@@ -12,6 +12,20 @@ class PrivateMessage extends AppModel
     )
   );
 
+	public $belongsTo	=	array(
+		'Personnel'	=>	array(
+			'className'	=>	'Personnel',
+			'foreignKey'	=>	'id_personel'
+		)
+	);
+
+
+	function VirtualFieldActivated()
+	{
+		$this->virtualFields = array(
+			'SSubject'		=> "IF((".$this->name.".judul_pesan='1'), 'Pesan Pribadi', IF((".$this->name.".judul_pesan='2'), 'Berita', 'Laporan Berkala'))",
+		);
+	}
 
 	public function BindImageBig($reset	=	true)
 	{
@@ -61,21 +75,6 @@ class PrivateMessage extends AppModel
 	public function beforeValidate($options = array())
 	{
 		return true;
-	}
-
-	public function BindImage($reset	=	true)
-	{
-
-	}
-
-	function BindDefault($reset	=	true)
-	{
-
-	}
-
-	function UnBindDefault($reset	=	true)
-	{
-
 	}
 
 	function rand_number( $length ) {

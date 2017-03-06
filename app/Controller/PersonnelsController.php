@@ -140,7 +140,7 @@ class PersonnelsController extends AppController
 										'recursive'		=>	2
 									)
 								);
-                debug($data)ll
+                //debug($data)ll
 
 		$ses_cond			=	$this->Session->read("Search.".$this->ControllerName);
 		$cond_search		=	isset($ses_cond) ? $ses_cond : array();

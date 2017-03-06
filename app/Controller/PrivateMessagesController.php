@@ -56,13 +56,11 @@ class PrivateMessagesController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-    	$this->{$this->ModelName}->BindDefault(false);
 		$this->{$this->ModelName}->VirtualFieldActivated();
-
 
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.created" => "DESC");
+		$order				=	array("{$this->ModelName}.date_create" => "DESC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -138,7 +136,7 @@ class PrivateMessagesController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-		//debug($data);
+		debug($data);
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
 
@@ -199,16 +197,15 @@ class PrivateMessagesController extends AppController
 
 		if(!empty($this->request->data))
 		{
-			Configure::write('debug', 2);
 			$this->{$this->ModelName}->set($this->request->data);
 
 			if($this->{$this->ModelName}->validates())
 			{
-				Configure::write('debug' , 2);
+				//Configure::write('debug' , 2);
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
 
-				debug($save);
+				//debug($save);
 				if(!empty($save))
 				{
 					$this->request->data['DetailMessage']['id_pesan']	= $this->{$this->ModelName}->id;
@@ -346,7 +343,7 @@ class PrivateMessagesController extends AppController
 
 		$detail = $this->{$this->ControllerName}->find('first', array(
 			'conditions' => array(
-				"{$this->ControllerName}.id"		=>	$ID
+				"{$this->ControllerName}.id_pesan"		=>	$ID
 			)
 		));
 		if(empty($detail))
@@ -401,7 +398,7 @@ class PrivateMessagesController extends AppController
 
 		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
-				"{$this->ModelName}.id"		=>	$ID
+				"{$this->ModelName}.id_pesan"		=>	$ID
 			)
 		));
 		$resultStatus		=	"0";

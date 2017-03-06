@@ -100,7 +100,7 @@ function Delete(msg,id)
 												<td class="text-center"><?php echo $no ?></td>
 												<td><a href="<?php echo $settings['cms_url'].$ControllerName?>/View/<?php echo $data[$ModelName]["id_personnel"]?>/"><?php echo $data[$ModelName]['personnel_name'] ?></td>
 												<td><?php echo $data['Matra']['name'] ?>
-												<td><?php echo $data[$ModelName]['personel_occupation'] ?>/<?php echo $data[$ModelName]['SCorps'] ?>/<?php echo $data[$ModelName]['personel_nrp'] ?></td>
+												<td><?php echo $data[$ModelName]['personel_occupation'] ?>/<?php echo $data['Corp']['name'] ?>/<?php echo $data[$ModelName]['personel_nrp'] ?></td>
 												<td><?php echo $data[$ModelName]['personel_unity'] ?>
 												<?php
 												if(

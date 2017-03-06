@@ -77,6 +77,18 @@ class PersonnelsController extends AppController
 		$this->set(compact("page","viewpage","matras","corps"));
 	}
 
+	function Api_PersonnelStudiesSummary() {
+    	$this->autoRender = false;
+		$counts = $this->Personnel->query('
+			SELECT YEAR(depart) as Tahun,
+			SUM(CASE WHEN `status`= 0 then 1 else 0 end) as Berjalan,
+			SUM(CASE WHEN `status`= 3 then 1 else 0 end) as DaftarBaru
+			FROM process
+			GROUP BY YEAR(depart)
+		');
+		return json_encode($counts);
+	}
+
 	function ListItem()
 	{
 		$this->layout	=	"ajax";

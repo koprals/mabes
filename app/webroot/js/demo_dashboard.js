@@ -58,31 +58,40 @@ $(function(){
     /* END Bar dashboard chart */
     
     /* Line dashboard chart */
-    Morris.Line({
-      element: 'dashboard-line-1',
-      data: [
-        { y: '2014-10-10', a: 2,b: 4},
-        { y: '2014-10-11', a: 4,b: 6},
-        { y: '2014-10-12', a: 7,b: 10},
-        { y: '2014-10-13', a: 5,b: 7},
-        { y: '2014-10-14', a: 6,b: 9},
-        { y: '2014-10-15', a: 9,b: 12},
-        { y: '2014-10-16', a: 18,b: 20}
-      ],
-      xkey: 'y',
-      ykeys: ['a','b'],
-      labels: ['Sales','Event'],
-      resize: true,
-      hideHover: true,
-      xLabels: 'day',
-      gridTextSize: '10px',
-      lineColors: ['#3FBAE4','#33414E'],
-      gridLineColor: '#E5E5E5'
-    });   
+    $.get('http://mabes.local/Personnels/Api_PersonnelStudiesSummary', function(results) {
+        try {
+            results = JSON.parse(results);
+        } catch (e) {
+            results = [];
+        }
+
+        var totalPersonnelStudies = results.map(function(result) {
+            var res = result[0];
+            return {
+                y: res.Tahun,
+                a: res.Berjalan,
+                b: res.DaftarBaru
+            };
+        });
+
+        Morris.Line({
+            element: 'dashboard-line-1',
+            data: totalPersonnelStudies,
+            xkey: 'y',
+            ykeys: ['a','b'],
+            labels: ['Berjalan','Daftar Baru'],
+            resize: true,
+            hideHover: true,
+            xLabels: 'day',
+            gridTextSize: '10px',
+            lineColors: ['#3FBAE4','#33414E'],
+            gridLineColor: '#E5E5E5'
+        });
+    });
     /* EMD Line dashboard chart */
 
     /* Vector Map */
-    $.get('http://localhost:8888/mabes/Countries/Api_CountriesSummary', function(results) {
+    $.get('http://mabes.local/Countries/Api_CountriesSummary', function(results) {
         try {
             results = JSON.parse(results);
         } catch (e) {

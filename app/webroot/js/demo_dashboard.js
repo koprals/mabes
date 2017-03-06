@@ -31,7 +31,43 @@ $(function(){
     /* END Rickshaw dashboard chart */
     
     /* Donut dashboard chart */
-    
+    $.get('http://mabes.local/Process/Api_CandidateApplicationsSummary', function(results) {
+        try {
+            results = JSON.parse(results);
+        } catch (e) {
+            results = [];
+        }
+
+        var candidateApplicationsData = [];
+        try {
+            var res = results[0][0];
+            candidateApplicationsData.push({
+                label: 'Berjalan',
+                value: parseFloat(res.Berjalan)
+            });
+            candidateApplicationsData.push({
+                label: 'Daftar Baru',
+                value: parseFloat(res.DaftarBaru)
+            });
+            candidateApplicationsData.push({
+                label: 'Selesai',
+                value: parseFloat(res.Selesai)
+            });
+            candidateApplicationsData.push({
+                label: 'Tidak Selesai',
+                value: parseFloat(res.TidakSelesai)
+            });
+        } catch(e) {
+            console.error(e);
+        }
+
+        Morris.Donut({
+            element: 'dashboard-donut-1',
+            data: candidateApplicationsData,
+            colors: ['#33414E', '#3FBAE4', '#FEA223', '#5DCAA9'],
+            resize: true
+        });
+    });
     /* END Donut dashboard chart */
     
     /* Bar dashboard chart */

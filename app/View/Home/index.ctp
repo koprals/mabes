@@ -289,7 +289,7 @@
 										</ul>
 								</div>
 								<div class="panel-body padding-0">
-										<div class="chart-holder" id="" style="height: 200px;"></div>
+										<div class="chart-holder" id="dashboard-donut-1" style="height: 200px;"></div>
 								</div>
 						</div>
 						<!-- END VISITORS BLOCK -->

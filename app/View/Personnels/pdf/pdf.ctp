@@ -212,4 +212,42 @@
             </table>
         </td>
     </tr>
+    <tr style="page-break-before: auto;">
+        <td>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family:Arial, Helvetica, sans-serif;">
+                <tr>
+                    <td>
+                        <table width="100%" border="0" align="center" style="border-collapse:collapse;font-family:Arial, Helvetica, sans-serif;">
+                            <tr>
+                              <td><br></td>
+                            </tr>
+                            <tr>
+                              <td><br></td>
+                            </tr>
+                            <tr>
+                              <td><br></td>
+                            </tr>
+                            <tr>
+                              <td><br></td>
+                            </tr>
+                                <tr>
+                                    <td width="45%" align="center">
+                                        Nama Pendidikan
+                                    </td>
+                                    <td width="25%" align="center">
+                                        Negara
+                                    </td>
+                                    <td width="15%" align="center">
+                                        Berangkat
+                                    </td>
+                                    <td width="15%" align="center">
+                                        Kembali
+                                    </td>
+                                </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
 </table>

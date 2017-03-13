@@ -29,7 +29,7 @@ $('.selectpicker').selectpicker({
 									<label class="col-md-2 control-label">To: Personel</label>
 										<div class="col-md-7">
 											<?php
-													echo $this->Form->input('id_personel', array(
+													echo $this->Form->input('id_personnel', array(
 														'label'					=>	false,
 														'class'					=>	'form-control select',
 														"required"			=>	"",
@@ -50,9 +50,6 @@ $('.selectpicker').selectpicker({
                             'class'					=>	'form-control select',
                             "required"			=>	"",
                             "autocomplete"	=>	"off",
-                            "maxlength"			=>	20,
-                            'options'				=>  array('1'=>'Pesan Pribadi', '2'=>'Berita', '3'=>'Laporan Berkala'),
-                            'empty'					=>	"Pilih Subjek Email",
                           ));
                           ?>
 										</div>

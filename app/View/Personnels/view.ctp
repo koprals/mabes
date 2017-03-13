@@ -226,7 +226,7 @@
                                 <td><?php echo $historicalEdus['Process']['arrive'] ?></td>
 
                                 <td class="text-center">
-                                      <a href="<?php echo $detail["Process"]["0"]["report_file_url"]?>"  download="ReportKedatangan" class="btn btn-primary btn-block active">
+                                      <a href="<?php echo $historicalEdus["Process"]["report_file_url"]?>"  download="ReportKedatangan" class="btn btn-primary btn-block active">
                                           <p><h5 style="color:#FFFFFF">Download Laporan Kedatangan</h5></p>
                                       </a>
                                 </td>

@@ -103,7 +103,7 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
 												<td><?php echo $data['Personnel']['personnel_name'] ?></td>
-												<td><?php echo $data[$ModelName]['SSubject'] ?></td>
+												<td><?php echo $data[$ModelName]['judul_pesan'] ?></td>
 												<td><?php echo $data['DetailMessage']['pesan'];?></td>
 												<td><?php echo $this->Time->niceShort($data[$ModelName]['date_create']) ?></td>
 												<?php

@@ -557,8 +557,6 @@ class PersonnelsController extends AppController
 		$this->{$this->ModelName}->BindImageSecurity();
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
-		debug($detail->{$this->ModelName}->BindImageReport);
-
 		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
 				"{$this->ModelName}.id_personnel"		=>	$ID
@@ -566,8 +564,8 @@ class PersonnelsController extends AppController
 			'recursive'	=>	1
 		));
 
-		debug($detail);
-    	$this->loadModel('Process');
+		//debug($detail);
+    $this->loadModel('Process');
 		$historicalEdus	=	$this->Process->find('all', array(
 			'conditions'	=>	array(
 				'Process.personnel_id'	=> $ID
@@ -575,7 +573,7 @@ class PersonnelsController extends AppController
 			'recursive'	=>	2
 		));
 
-		//debug($historicalEdus);
+		debug($historicalEdus);
 		if(empty($detail))
 		{
 			$this->layout	=	"ajax";

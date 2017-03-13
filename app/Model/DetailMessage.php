@@ -5,10 +5,14 @@ class DetailMessage extends AppModel
 	public $primaryKey	=	"id_pesan_detail";
 	public $name	=	"DetailMessage";
 
-  public $belongsTo = array(
-    'PrivateMessage' => array(
-      'className' => 'PrivateMessage',
-      'foreignKey'  =>  'id_pesan'
-    ),
-  );
+	public $belongsTo	=	array(
+		'Personnel'	=>	array(
+			'className'	=>	'Personnel',
+			'foreignKey'	=>	'id_personel'
+		),
+		'PrivateMessage'	=>	array(
+			'className'	=>	'PrivateMessage',
+			'foreignKey'	=>	'id_pesan'
+		)
+	);
 }

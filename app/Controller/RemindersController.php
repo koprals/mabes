@@ -72,7 +72,7 @@ class RemindersController extends AppController
 									)
 								);
 		$data				=	$this->paginate("Process");
-		debug($data);
+		//debug($data);
 
 		if(isset($this->params['named']['page']) && $this->params['named']['page'] > $this->params['paging']['Process']['pageCount'])
 		{
@@ -125,6 +125,14 @@ class RemindersController extends AppController
 			return;
 		}
 
+		$this->loadModel($this->ModelName);
+		$listReminder	=	$this->{$this->ModelName}->find("all", array(
+			'conditions'	=>	array(
+				"{$this->ModelName}.personnel_id"	=>	$personnel_id
+			)
+		));
+		debug($listReminder);
+
 		$this->loadModel('Process');
 		$personnels	=	$this->Process->find('first',array(
 			'conditions'	=>	array(
@@ -145,7 +153,7 @@ class RemindersController extends AppController
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 
-		$this->set(compact("personnels", "personnel_id"));
+		$this->set(compact("personnels", "personnel_id", "listReminder"));
 	}
 
 	function Edit($ID=NULL,$page=1,$viewpage=50)

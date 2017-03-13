@@ -1,24 +1,7 @@
 <?php
-class PrivateMessage extends AppModel
+class Reminder extends AppModel
 {
-	public $name	=	"PrivateMessage";
-	public $useTable	=	"pesan_";
-	public $primaryKey	=	"id_pesan";
-
-  public $hasMany = array(
-    'DetailMessage' => array(
-      'className' => 'DetailMessage',
-      'foreignKey'  =>  'id_pesan'
-    )
-  );
-
-	public $belongsTo	=	array(
-		'Personnel'	=>	array(
-			'className'	=>	'Personnel',
-			'foreignKey'	=>	'id_personnel'
-		)
-	);
-
+	public $name	=	"Reminder";
 
 	function VirtualFieldActivated()
 	{

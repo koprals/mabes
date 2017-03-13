@@ -21,6 +21,14 @@
 								<h3 class="panel-title"><strong><?php echo $personnels['Personnel']['personnel_name'];?></strong></h3>
 						</div>
 						<div class="panel-body">
+							<?php foreach ($listReminder as $listReminder): ?>
+								<div class="form-group">
+										<label class="col-md-3 control-label">Tanggal</label>
+										<div class="col-md-5">
+												<h4 class="form-control-static"><strong><?php echo $this->Time->format($listReminder['Reminder']['date_reminder'], '%e %B, %Y') ?></strong></h4>
+										</div>
+								</div>
+							<?php endforeach; ?>
 							<?php
 								echo $this->Form->input('personnel_id', array(
 									'type'					=>	'hidden',
@@ -29,7 +37,7 @@
 								));
 							?>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Tanggal Pengigat</label>
+								<label class="col-md-3 col-xs-12 control-label">Tanggal Pengigat Baru</label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>

@@ -184,24 +184,7 @@
 												?>
 									</div>
 							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Email Kedutaan</label>
-									<div class="col-md-6 col-xs-12">
-												<div class="input-group">
-														<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
-														<?php
-															echo $this->Form->input('email_kedutaan', array(
-																'type'					=>	'text',
-																'class'					=>	'form-control',
-																'label'					=>	false,
-																'placeholder'			=> 'Email Kedutaan',
-																"required"			=>	"",
-																"autocomplete"	=>	"off",
-															));
-														?>
-											</div>
-										</div>
-							</div>
+							
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Telepon Kantor</label>
 									<div class="col-md-6 col-xs-12">
@@ -220,24 +203,7 @@
 											</div>
 										</div>
 							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Fax</label>
-									<div class="col-md-6 col-xs-12">
-												<div class="input-group">
-														<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
-														<?php
-															echo $this->Form->input('fax', array(
-																'type'					=>	'text',
-																'class'					=>	'form-control',
-																'label'					=>	false,
-																'placeholder'			=> 'Fax',
-																"required"			=>	"",
-																"autocomplete"	=>	"off",
-															));
-														?>
-											</div>
-										</div>
-							</div>
+							
 							<div class="panel-footer center-button">
 								<input type="submit" value="Add" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

@@ -73,15 +73,11 @@ function Delete(msg,id)
 													<th>
 														Alamat Kedutaan
 													</th>
-													<th>
-														Email Kedutaan
-													</th>
+													
 													<th>
 														Telepon Office
 													</th>
-													<th>
-														Fax
-													</th>
+													
 													<?php
 													if(
 														$access[$aco_id]["_update"] == 1 or
@@ -103,9 +99,9 @@ function Delete(msg,id)
 												<td class="text-center"><?php echo $no ?></td>
 												<td><?php echo $data[$ModelName]['country_name'] ?></td>
 												<td><?php echo $data[$ModelName]['alamat_kedutaan']?></td>
-												<td><?php echo $data[$ModelName]['email_kedutaan']?></td>
+												
 												<td><?php echo $data[$ModelName]['telp_office']?></td>
-												<td><?php echo $data[$ModelName]['fax']?></td>
+												
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or

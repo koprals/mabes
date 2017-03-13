@@ -16,6 +16,94 @@ class Process extends AppModel
     ),
   );
 
+  public $validate 	= array(
+		
+		'id' => array(
+			'notEmpty' => array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Data not found",
+				"on"		=>	"update"
+			)
+		),
+		'personnel_id' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert personel"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Personel is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Personel is too long"
+			)
+		),
+		'course_id' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert pendidikan"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Pendidikan is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Pendidikan is too long"
+			)
+		),
+		'long_term_education' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert lama pendidikan"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Lama pendidikan is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Lama pendidikan is too long"
+			)
+		),
+		'depart' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert berangkat"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Berangkat is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Berangkat is too long"
+			)
+		),
+		'arrive' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert kembali"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Kembali is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Kembali is too long"
+			)
+		),
+		'status' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert status"
+			)
+		)
+
+	);
+
   public function VirtualFieldActivated()
   {
     $this->virtualFields = array(

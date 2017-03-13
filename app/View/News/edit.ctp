@@ -24,24 +24,26 @@
 							<div class="form-group">
 								<label class="col-md-2 col-xs-12 control-label">Judul Berita</label>
 									<div class="col-md-8 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+										
+												
 												<?php echo $this->Form->input('id', array('type'	=>	'hidden')); ?>
 												<?php
 													echo $this->Form->input('title', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
 														'placeholder'			=> 'Judul Berita',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
+										
 									</div>
 							</div>
 							<div class="form-group">
-									<label class="col-md-2 col-xs-12 control-label"></label>
+									<label class="col-md-2 col-xs-12 control-label">Isi Berita</label>
 										<div class="col-md-8 col-xs-12">
 												<?php
 													echo $this->Form->input('description', array(

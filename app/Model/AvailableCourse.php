@@ -20,6 +20,59 @@ class AvailableCourse extends AppModel
     )
   );
 
+  public $validate 	= array(
+		
+		'id' => array(
+			'notEmpty' => array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Data not found",
+				"on"		=>	"update"
+			)
+		),
+		'country_id' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert negara"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Negara is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Negara is too long"
+			)
+		),
+		'edu_type_id' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert jenis pendidikan"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Negara is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Negara is too long"
+			)
+		),
+		'program_study_id' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert program pendidikan"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Program Study is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Program Study is too long"
+			)
+		)
+	);
+
   public function BindImageBig($reset	=	true)
 	{
 		$this->bindModel(array(

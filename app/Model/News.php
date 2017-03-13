@@ -11,7 +11,7 @@ class News extends AppModel
   );
 */
 	public $validate 	= array(
-		/*
+		
 		'id' => array(
 			'notEmpty' => array(
 				'rule' 		=>	"notEmpty",
@@ -19,27 +19,23 @@ class News extends AppModel
 				"on"		=>	"update"
 			)
 		),
-		'name' => array(
+		'title' => array(
 			'notEmpty'		=>	array(
 				'rule' 		=>	"notEmpty",
-				'message' 	=>	"Please insert name"
+				'message' 	=>	"Please insert judul berita"
 			),
 			'minLength' 	=>	array(
-				'rule' 		=>	array("minLength","3"),
+				'rule' 		=>	array("minLength","2"),
 				'message'	=>	"Name is to sort"
-			),
-			'maxLength' 	=>	array(
-				'rule' 		=>	array("maxLength","100"),
-				'message'	=>	"Name is too long"
 			)
 		),
-		'matra_id' => array(
+		'country_id' => array(
 				'notEmpty' => array(
 					'rule'				=>	"notEmpty",
-					'message'			=>	"Please select matra"
+					'message'			=>	"Please select negara"
 				)
 			)
-			*/
+			
 	);
 
 	public function BindImageBig($reset	=	true)

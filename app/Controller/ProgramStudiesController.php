@@ -243,7 +243,7 @@ class ProgramStudiesController extends AppController
 									),
 									'recursive'	=>	1
 								));
-		debug($detail);
+		//debug($detail);
 		if(empty($detail))
 		{
 			$this->layout	=	"ajax";
@@ -260,12 +260,11 @@ class ProgramStudiesController extends AppController
 			$this->{$this->ModelName}->set($this->data);
 			if($this->{$this->ModelName}->validates())
 			{
-				//Configure::write('debug' , 2);
 				$save	=	$this->{$this->ModelName}->save($this->data,false);
 
-				If(!empty($save)){
-					$this->data['AvailableCourse']['program_study_id']	= $this->{$this->ModelName}->id;
-					$this->{$this->ModelName}->AvailableCourse->save($this->data,false);
+				if(!empty($save)){
+					$this->request->data['AvailableCourse']['program_study_id']	= $this->{$this->ModelName}->id;
+					$this->{$this->ModelName}->AvailableCourse->save($this->request->data);
 				}
 
 				if(!empty($this->request->data[$this->ModelName]["file"]["name"])) {

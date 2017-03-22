@@ -1,8 +1,8 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
-	<li class="javascript:void(0)"><?php echo $ControllerName?></li>
-	<li class="javascript:void(0)"><?php echo "Tambah $ControllerName"?></li>
+	<li class="javascript:void(0)">Korps</li>
+	<li class="javascript:void(0)">Tambah Korps</li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
@@ -24,7 +24,7 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Nama</label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('name', array(
 														'type'					=>	'text',

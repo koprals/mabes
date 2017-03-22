@@ -64,7 +64,7 @@ function ClearSearchAdvance()
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
-	<li class="active">Reminders</li>
+	<li class="active">Pengingat Laporan</li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->

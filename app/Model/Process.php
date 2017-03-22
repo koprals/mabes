@@ -17,7 +17,7 @@ class Process extends AppModel
   );
 
   public $validate 	= array(
-		
+
 		'id' => array(
 			'notEmpty' => array(
 				'rule' 		=>	"notEmpty",
@@ -30,28 +30,12 @@ class Process extends AppModel
 				'rule' 		=>	"notEmpty",
 				'message' 	=>	"Please insert personel"
 			),
-			'minLength' 	=>	array(
-				'rule' 		=>	array("minLength","2"),
-				'message'	=>	"Personel is to sort"
-			),
-			'maxLength' 	=>	array(
-				'rule' 		=>	array("maxLength","100"),
-				'message'	=>	"Personel is too long"
-			)
 		),
 		'course_id' => array(
 			'notEmpty'		=>	array(
 				'rule' 		=>	"notEmpty",
 				'message' 	=>	"Please insert pendidikan"
 			),
-			'minLength' 	=>	array(
-				'rule' 		=>	array("minLength","2"),
-				'message'	=>	"Pendidikan is to sort"
-			),
-			'maxLength' 	=>	array(
-				'rule' 		=>	array("maxLength","100"),
-				'message'	=>	"Pendidikan is too long"
-			)
 		),
 		'long_term_education' => array(
 			'notEmpty'		=>	array(

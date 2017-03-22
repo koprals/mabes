@@ -131,7 +131,7 @@ class RemindersController extends AppController
 				"{$this->ModelName}.personnel_id"	=>	$personnel_id
 			)
 		));
-		debug($listReminder);
+		// debug($listReminder);
 
 		$this->loadModel('Process');
 		$personnels	=	$this->Process->find('first',array(
@@ -149,7 +149,7 @@ class RemindersController extends AppController
 			{
 				$save	=	$this->{$this->ModelName}->save($this->request->data);
 				$ID		=	$this->{$this->ModelName}->getLastInsertId();
-				$this->redirect(array("action"=>'SuccessAdd',$ID));
+				$this->redirect(array('action' => 'Index'));
 			}//END IF VALIDATE
 		}//END IF NOT EMPTY
 
@@ -319,7 +319,7 @@ class RemindersController extends AppController
 		$this->autoRender	=	false;
 	}
 
-	function SuccessAdd($ID=NULL)
+	function SuccessAdd($ID=NULL, $personnel_id = null)
 	{
 		$data = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(

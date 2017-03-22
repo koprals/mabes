@@ -65,7 +65,7 @@ function ClearSearchAdvance()
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li><a href="javascript:void(0)">Home</a></li>
-    <li class="active"><?php echo $ControllerName?></li>
+    <li class="active">Personnel</li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->

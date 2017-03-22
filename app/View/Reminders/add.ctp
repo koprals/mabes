@@ -1,8 +1,8 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
-	<li class="javascript:void(0)"><?php echo $ControllerName?></li>
-	<li class="javascript:void(0)"><?php echo "Tambah $ControllerName"?></li>
+	<li class="javascript:void(0)">Pengingat Laporan</li>
+	<li class="javascript:void(0)"><?php echo "Tambah Pengingat Laporan"?></li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->

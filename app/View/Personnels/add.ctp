@@ -1,8 +1,8 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
-	<li class="javascript:void(0)"><?php echo $ControllerName?></li>
-	<li class="javascript:void(0)"><?php echo "Tambah $ControllerName"?></li>
+	<li class="javascript:void(0)">Personnel</li>
+	<li class="javascript:void(0)"><?php echo "Tambah Personnel"?></li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
@@ -27,7 +27,7 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Nama Lengkap <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('personnel_name', array(
 														'type'					=>	'text',
@@ -45,7 +45,7 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Tempat Lahir <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('place_of_birth', array(
 														'type'					=>	'text',
@@ -63,7 +63,7 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Tanggal Lahir <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('date_of_birth', array(
 														'type'					=>	'text',
@@ -76,7 +76,7 @@
 														"autocomplete"	=>	"off",
 													));
 												?>
-										
+
 									</div>
 							</div>
 							<div class="form-group">
@@ -97,7 +97,7 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Pangkat <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('personel_occupation', array(
 														'type'					=>	'text',
@@ -131,7 +131,7 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">NRP/NIP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('personel_nrp', array(
 														'type'					=>	'text',
@@ -149,7 +149,7 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Kesatuan/Jabatan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('personel_unity', array(
 														'type'					=>	'text',
@@ -162,7 +162,7 @@
 														"autocomplete"	=>	"off",
 													));
 												?>
-										
+
 									</div>
 							</div>
 							<div class="form-group">
@@ -316,7 +316,7 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Telepon Kantor/HP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('office_phone_number', array(
 														'type'					=>	'text',
@@ -349,7 +349,7 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Telepon Rumah/HP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('home_phone_number', array(
 														'type'					=>	'text',
@@ -362,13 +362,13 @@
 														"autocomplete"	=>	"off",
 													));
 												?>
-										
+
 									</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Email <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('personel_email', array(
 														'type'					=>	'text',
@@ -381,7 +381,7 @@
 														"autocomplete"	=>	"off",
 													));
 												?>
-										
+
 									</div>
 							</div>
 							<div class="form-group">
@@ -390,7 +390,7 @@
               <div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Hubungan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('family_relationship', array(
 														'type'					=>	'text',
@@ -403,7 +403,7 @@
 														"autocomplete"	=>	"off",
 													));
 												?>
-										
+
 									</div>
 							</div>
 							<div class="form-group">
@@ -423,7 +423,7 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Telepon Rumah<span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										
+
 												<?php
 													echo $this->Form->input('family_phone_number', array(
 														'type'					=>	'text',
@@ -436,7 +436,7 @@
 														"autocomplete"	=>	"off",
 													));
 												?>
-										
+
 									</div>
 							</div>
 							<div class="form-group">

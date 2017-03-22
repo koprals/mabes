@@ -1,8 +1,8 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
-	<li class="javascript:void(0)"><?php echo $ControllerName?></li>
-	<li class="javascript:void(0)"><?php echo "Tambah $ControllerName"?></li>
+	<li class="javascript:void(0)">Negara</li>
+	<li class="javascript:void(0)">Edit Negara</li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
@@ -160,7 +160,7 @@
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
 															<?php
-																echo $this->Form->input('telp_kedutaan', array(
+																echo $this->Form->input('telp_office', array(
 																	'type'					=>	'text',
 																	'class'					=>	'form-control',
 																	'label'					=>	false,
@@ -185,25 +185,6 @@
 															?>
 											</div>
 								</div>
-								
-								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Telepon Kantor</label>
-										<div class="col-md-6 col-xs-12">
-													<div class="input-group">
-															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
-															<?php
-																echo $this->Form->input('telp_office', array(
-																	'type'					=>	'text',
-																	'class'					=>	'form-control',
-																	'label'					=>	false,
-																	"required"			=>	"",
-																	"autocomplete"	=>	"off",
-																));
-															?>
-												</div>
-											</div>
-								</div>
-								
 							<div class="panel-footer center-button">
 								<input type="submit" value="Edit" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

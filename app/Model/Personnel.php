@@ -18,10 +18,6 @@ class Personnel extends AppModel
 				'rule' 		=>	"notEmpty",
 				'message' 	=>	"Please insert nama lengkap"
 			),
-			'minLength' 	=>	array(
-				'rule' 		=>	array("minLength","2"),
-				'message'	=>	"Nama lengkap is to sort"
-			),
 			'maxLength' 	=>	array(
 				'rule' 		=>	array("maxLength","100"),
 				'message'	=>	"Nama lengkap is too long"
@@ -88,28 +84,12 @@ class Personnel extends AppModel
 				'rule' 		=>	"notEmpty",
 				'message' 	=>	"Please insert matra/PNS"
 			),
-			'minLength' 	=>	array(
-				'rule' 		=>	array("minLength","2"),
-				'message'	=>	"Matra is to sort"
-			),
-			'maxLength' 	=>	array(
-				'rule' 		=>	array("maxLength","100"),
-				'message'	=>	"Matra is too long"
-			)
 		),
 		'personel_corps' => array(
 			'notEmpty'		=>	array(
 				'rule' 		=>	"notEmpty",
 				'message' 	=>	"Please insert korps"
 			),
-			'minLength' 	=>	array(
-				'rule' 		=>	array("minLength","2"),
-				'message'	=>	"Sales name is to sort"
-			),
-			'maxLength' 	=>	array(
-				'rule' 		=>	array("maxLength","100"),
-				'message'	=>	"Sales name is too long"
-			)
 		),
 		'personel_occupation' => array(
 			'notEmpty'		=>	array(
@@ -364,7 +344,7 @@ class Personnel extends AppModel
 		),$reset);
 	}
 
-	
+
 	function VirtualFieldActivated()
 	{
 		$this->virtualFields = array(

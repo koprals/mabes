@@ -104,7 +104,7 @@ function Delete(msg,id)
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-														<a href="javascript:void(0);" onclick="Delete('All child from this module will be up one level, Do you realy want delete this Module?','<?php echo $data[$ModelName]['id_edu_type']?>')" class="btn btn-danger btn-condensed text-center" title="Access Control">
+														<a href="javascript:void(0);" onclick="Delete('Are you sure want to delete this data?','<?php echo $data[$ModelName]['id_edu_type']?>')" class="btn btn-danger btn-condensed text-center" title="Access Control">
 															<span class="fa fa-close"></span>
 														</a>
 													<?php endif;?>

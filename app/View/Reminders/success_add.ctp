@@ -20,7 +20,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="panel-footer center-button">
-        			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add" title="Back to List" class="btn btn-success active" style="margin: 5px;"><span>Add More</span></a>
+        			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Add/<?php echo $personnel_id?>" title="Back to List" class="btn btn-success active" style="margin: 5px;"><span>Add More</span></a>
         			<a href="<?php echo $settings["cms_url"].$ControllerName?>/Index" title="Back to List" class="btn btn-primary active" style="margin: 5px;"><span>Back to List</span></a>
             </div>
           </div>

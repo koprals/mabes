@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/datatables/jquery.dataTables.min.js"></script>
 <?php if(!empty($data)): ?>
 <?php
 	$order		=	array_keys($this->params['paging'][$ModelName]['order']);
@@ -52,17 +53,18 @@ function Delete(msg,id)
 	<div class="col-md-12">
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				<div class="dataTables_length" id="DataTables_Table_0_length ">
-					<label>Show Entries</label>
-					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
-				</div>
+				<form role="form" class="form-horizontal">
+					<div class="dataTables_length" id="DataTables_Table_0_length ">
+						<label>Show
+								<?php echo $this->Form->select("DataTables_Table_0_length",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
+						entries</label>
+					</div>
 				<div class="pull-right">
           <a href="<?php echo $settings['cms_url'].$ControllerName?>/Excel" type="submit" class="btn btn-danger">Export File</a>
         </div>
 			</div>
 
 			<div class="panel-body panel-body-table">
-
 					<div class="table-responsive">
 							<table class="table table-bordered table-striped table-actions">
 									<thead>
@@ -157,58 +159,19 @@ function Delete(msg,id)
 									</tbody>
 							</table>
 					</div>
-
 			</div>
-
-			<!-- START PAGINATION -->
-			<div class="panel-heading">
+			<div class="panel-footer">
 				<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite"><?php echo $this->Paginator->counter(array('format' => 'Showing %start% to %end% of %count% entries'));?></div>
+					<div class="pull-right">
 					<?php if($this->Paginator->hasPrev() or $this->Paginator->hasNext()):?>
-					<ul class="pagination pagination-sm pull-right">
-						<?php echo $this->Paginator->prev("",
-								array(
-									"escape"	=>	false,
-									'tag'		=>	"li",
-								),
-								"<a href='javascript:void(0)'></a>",
-								array(
-									'tag'		=>	"li",
-									"escape"	=>	false,
-								)
-							);
-						?>
-
-						<?php
-							echo $this->Paginator->numbers(array(
-								'separator'		=>	null,
-								'tag'			=>	"li",
-								'currentclass'	=>	'active',
-								'modulus'		=>	4
-							));
-						?>
-						<?php echo $this->Paginator->next("",
-								array(
-									"escape"	=>	false,
-									'tag'		=>	"li",
-								),
-								"<a href='javascript:void(0)'></a>",
-								array(
-									'tag'		=>"li",
-									"escape"	=>	false,
-								)
-							);
-						?>
-						<!--li class="disabled"><a href="#"></a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">»</a></li-->
-					</ul>
-					<?php endif;?>
+					<?php echo $this->Paginator->prev('Previous', array('style'	=>	'font-weight:bold;font-size:13px'))?>
+							<?php
+								echo $this->Paginator->numbers(array('style' => 'font-weight:bold;font-size:13px', 'modulus' => 4));
+							?>
+						<?php echo $this->Paginator->next('Next', array('style'	=>	'font-weight:bold;font-size:13px'))?>
+					<?php endif ?>
 				</div>
-			<!-- END PAGINATION -->
-
+			</div>
 		</div>
 	</div>
 </div>

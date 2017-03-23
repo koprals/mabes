@@ -23,13 +23,6 @@ class ProcessController extends AppController
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
 
-    //DEFINE COURSE
-    $this->loadModel('AvailableCourse');
-    $list_courses = $this->AvailableCourse->ProgramStudy->find('list', array(
-      'fields'  =>  array('ProgramStudy.edu_name'),
-    ));
-
-
 		//DEFINE JENIS PENDIDIKAN
 		$this->loadModel('EducationType');
 		$list_education	=	$this->EducationType->find('list', array(
@@ -40,7 +33,9 @@ class ProcessController extends AppController
 		$this->loadModel('ProgramStudy');
 		$list_program	=	$this->ProgramStudy->find('list', array(
 			'fields'	=>	array('ProgramStudy.edu_name')
-		));
+			)
+		);
+		//debug($list_program);
 
     //DEFINE PERSONEL
     $this->loadModel('Personnel');
@@ -60,10 +55,7 @@ class ProcessController extends AppController
 		$this->loadModel('Corp');
     $corps = $this->Corp->find('list');
 
-		$this->loadModel('ProgramStudy');
-    $programstudies = $this->ProgramStudy->find('list');
-
-		$this->set(compact('list_education', 'list_country', 'list_program', 'list_personnel', 'list_courses','matras','corps','programstudies'));
+		$this->set(compact('list_education', 'list_country', 'list_program', 'list_personnel', 'list_courses','matras','corps'));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -153,9 +145,9 @@ class ProcessController extends AppController
 				$cond_search["Personnel.personnel_name LIKE "]			=	"%".$this->data['Search']['name']."%";
 			}
 
-			if(!empty($this->request->data['Search']['nama_pendidikan']))
+			if(!empty($this->request->data['Search']['program_study_id']))
 			{
-				$cond_search["AvailableCourse.program_study_id"]			=	$this->data['Search']['nama_pendidikan'];
+				$cond_search["AvailableCourse.program_study_id"]			=	$this->data['Search']['program_study_id'];
 			}
 
 			if(!empty($this->request->data['Search']['personel_matra']))
@@ -183,7 +175,12 @@ class ProcessController extends AppController
 				$cond_search["AvailableCourse.country_id"]			=	$this->data['Search']['country_id'];
 			}
 
-			if(!empty($this->request->data['Search']['status']))
+			if(!empty($this->request->data['Search']['year']))
+			{
+				$cond_search["{$this->ModelName}.depart BETWEEN ? AND ?"] = array($this->request->data['Search']['year']."-01-01 00:00:00",$this->request->data['Search']['year']."-12-31 23:59:59");
+			}
+
+			if(strlen($this->request->data['Search']['status'] >= "0"))
 			{
 				$cond_search["Process.status"]			=	$this->data['Search']['status'];
 			}

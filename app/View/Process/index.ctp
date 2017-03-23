@@ -138,9 +138,9 @@ function ClearSearchAdvance()
 																			<div class="form-group">
 																				<div class="col-md-4">
 																						<?php
-																								echo $this->Form->input('Search.nama_pendidikan', array(
+																								echo $this->Form->input('Search.program_study_id', array(
 																										'label'         =>  'Nama Pendidikan',
-																										'options'				=>	$programstudies,
+																										'options'				=>	$list_program,
 																										'class'         =>  'form-control select',
 																										'empty'					=>	'Pilih Pendidikan'
 																								));
@@ -183,7 +183,6 @@ function ClearSearchAdvance()
 																								echo $this->Form->input('Search.year', array(
 																										'label'         =>  'Tahun',
 																										'class'         =>  'form-control',
-																										'options'				=>	array()
 																								));
 																						?>
 																				</div>

@@ -43,33 +43,9 @@
 							</ul>
 					</li>
 					<!-- END POWER OFF -->
-					<!-- MESSAGES -->
-					<li class="xn-icon-button pull-right">
-							<a href="#"><span class="fa fa-comments"></span></a>
-							<div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
-									<div class="panel-heading">
-											<h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>
-									</div>
-									<div class="panel-footer text-center">
-											<a href="pages-messages.html">Data Is Empty</a>
-									</div>
-							</div>
-					</li>
+					
 					<!-- END MESSAGES -->
-					<!-- TASKS -->
-					<li class="xn-icon-button pull-right">
-							<a href="#"><span class="fa fa-tasks"></span></a>
-							<div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
-									<div class="panel-heading">
-											<h3 class="panel-title"><span class="fa fa-tasks"></span> Tasks</h3>
-											<div class="pull-right">
-											</div>
-									</div>
-									<div class="panel-footer text-center">
-											<a href="pages-tasks.html">Data Is Empty</a>
-									</div>
-							</div>
-					</li>
+					
 					<!-- END TASKS -->
 			</ul>
 			<!-- END X-NAVIGATION VERTICAL -->

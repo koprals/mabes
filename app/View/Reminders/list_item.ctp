@@ -120,7 +120,7 @@ function Delete(msg,id)
                         <td class="text-center">
                           <?php if($access[$aco_id]["_update"] == 1):?>
 														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Add/<?php echo $data['Personnel']["id_personnel"]?>/" class="btn btn-danger btn-condensed" title="Access Control">
-															Tambah Pengigat
+															Tambah Pengingat
 														</a>
                           <?php endif;?>
                         </td>

@@ -40,6 +40,7 @@
 														"maxlength"			=>	20,
 														'options'				=>  $list_personnel,
 														'empty'					=> "Pilih Personel",
+														'disabled'				=> 'disabled',
 													));
 												?>
 										</div>
@@ -56,6 +57,7 @@
 														"maxlength"			=>	20,
 														'options'				=>  $list_courses,
 														'empty'					=> "Pilih Pendidikan",
+														'disabled'				=> 'disabled',
 													));
 												?>
 										</div>

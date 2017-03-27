@@ -4,7 +4,7 @@ class ProgramStudy extends AppModel
 {
 	public $name = "ProgramStudy";
 
-	/**public $validate 	= array(
+	public $validate 	= array(
 		'id' => array(
 			'notEmpty' => array(
 				'rule' 		=>	"notEmpty",
@@ -12,13 +12,13 @@ class ProgramStudy extends AppModel
 				"on"		=>	"update"
 			)
 		),
-		'name' => array(
+		'edu_name' => array(
 			'notEmpty'		=>	array(
 				'rule' 		=>	"notEmpty",
-				'message' 	=>	"Please insert sales name"
+				'message' 	=>	"Please insert program studi"
 			),
 			'minLength' 	=>	array(
-				'rule' 		=>	array("minLength","3"),
+				'rule' 		=>	array("minLength","2"),
 				'message'	=>	"Sales name is to sort"
 			),
 			'maxLength' 	=>	array(
@@ -26,16 +26,7 @@ class ProgramStudy extends AppModel
 				'message'	=>	"Sales name is too long"
 			)
 		),
-		'description' => array(
-			'notEmpty'		=>	array(
-				'rule' 		=>	"notEmpty",
-				'message' 	=>	"Please insert sales description"
-			),
-			'minLength' 	=>	array(
-				'rule' 		=>	array("minLength","10"),
-				'message'	=>	"Sales description is to sort"
-			)
-		),
+		
 		'sort' => array(
 			'notEmpty' => array(
 				'rule' 		=> 'notEmpty',
@@ -64,7 +55,7 @@ class ProgramStudy extends AppModel
 				'message' => 'Only (*.gif,*.jpeg,*.jpg,*.png) are allowed.'
 			)
 		)
-	);**/
+	);
 
 	public $hasOne = array(
 		'AvailableCourse'	=>	array(

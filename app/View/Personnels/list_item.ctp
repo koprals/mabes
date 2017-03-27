@@ -54,7 +54,7 @@ function Delete(msg,id)
 			<div class="panel-heading">
 				<div class="dataTables_length" id="DataTables_Table_0_length ">
 					<label>Show Entries</label>
-					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
+					<?PHP echo $this->Form->select("DataTables_Table_0_length",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
 				</div>
 			</div>
 
@@ -68,13 +68,16 @@ function Delete(msg,id)
 														<?php echo $this->Paginator->sort("$ModelName.id",'NO');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.personnel_name",'Name Siswa');?>
+														<span style="padding-right:200px;" class="text-center"><?php echo $this->Paginator->sort("$ModelName.personnel_name",'Nama Siswa');?>
 													</th>
 													<th>
-														PANGKAT/KOPRS/NRP
+														<?php echo $this->Paginator->sort("$ModelName.personel_matra",'Matra Personel');?>
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.personel_unity",'KESATUAN');?>
+														<span style="padding-right:200px;" class="text-center">PANGKAT/KOPRS/NRP
+													</th>
+													<th>
+														<span style="padding-right:200px;" class="text-center"><?php echo $this->Paginator->sort("$ModelName.personel_unity",'KESATUAN');?>
 													</th>
 													<?php
 													if(
@@ -82,8 +85,8 @@ function Delete(msg,id)
 														$access[$aco_id]["_delete"] == 1
 													):
 													?>
-													<th width="120">
-														actions
+													<th>
+														<span style="padding-right:100px;" class="text-center">actions
 													</th>
 													<?php endif;?>
 											</tr>
@@ -96,7 +99,8 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
 												<td><a href="<?php echo $settings['cms_url'].$ControllerName?>/View/<?php echo $data[$ModelName]["id_personnel"]?>/"><?php echo $data[$ModelName]['personnel_name'] ?></td>
-												<td><?php echo $data[$ModelName]['personel_occupation'] ?>/<?php echo $data[$ModelName]['SCorps'] ?>/<?php echo $data[$ModelName]['personel_nrp'] ?></td>
+												<td><?php echo $data['Matra']['name'] ?>
+												<td><?php echo $data[$ModelName]['personel_occupation'] ?>/<?php echo $data['Corp']['name'] ?>/<?php echo $data[$ModelName]['personel_nrp'] ?></td>
 												<td><?php echo $data[$ModelName]['personel_unity'] ?>
 												<?php
 												if(
@@ -128,42 +132,15 @@ function Delete(msg,id)
 			<!-- START PAGINATION -->
 			<div class="panel-heading">
 				<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite"><?php echo $this->Paginator->counter(array('format' => 'Showing %start% to %end% of %count% entries'));?></div>
-					<?php if($this->Paginator->hasPrev() or $this->Paginator->hasNext()):?>
-					<ul class="pagination pagination-sm pull-right">
-						<?php echo $this->Paginator->prev("",
-								array(
-									"escape"	=>	false,
-									'tag'		=>	"li",
-								),
-								"<a href='javascript:void(0)'></a>",
-								array(
-									'tag'		=>	"li",
-									"escape"	=>	false,
-								)
-							);
-						?>
+				<div class="pull-right">
+				<?php if($this->Paginator->hasPrev() or $this->Paginator->hasNext()):?>
+				<?php echo $this->Paginator->prev('Previous', array('style'	=>	'font-weight:bold;font-size:13px'))?>
 						<?php
-							echo $this->Paginator->numbers(array(
-								'separator'		=>	null,
-								'tag'			=>	"li",
-								'currentclass'	=>	'active',
-								'modulus'		=>	4
-							));
+							echo $this->Paginator->numbers(array('style' => 'font-weight:bold;font-size:13px', 'modulus' => 4));
 						?>
-						<?php echo $this->Paginator->next("",
-								array(
-									"escape"	=>	false,
-									'tag'		=>	"li",
-								),
-								"<a href='javascript:void(0)'></a>",
-								array(
-									'tag'		=>"li",
-									"escape"	=>	false,
-								)
-							);
-						?>
-					</ul>
-					<?php endif;?>
+					<?php echo $this->Paginator->next('Next', array('style'	=>	'font-weight:bold;font-size:13px'))?>
+				<?php endif ?>
+			</div>
 				</div>
 			<!-- END PAGINATION -->
 

@@ -31,7 +31,7 @@
                 				<label class="col-md-6 col-xs-12 control-label"><h5>Data Pribadi</h5></label>
               				</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Name <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Nama Lengkap <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon " style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -90,7 +90,7 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														'options'				=>  array('0' => 'AD', '1' => 'AU', '2' => 'AL'),
+														'options'				=>  $list_matra,
 														'empty'					=> "Pilih Matra",
 													));
 												?>
@@ -114,7 +114,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Corps <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Korps <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('personel_corps', array(
@@ -122,10 +122,7 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														'options'				=> array('0' => 'INF', '1' => 'KAV', '2' => 'ARH', '3' => 'ARM', '4' => 'CZI', '5' => 'CHB', '6' => 'CBA', '7' => 'CKU', '8' => 'CAJ',
-																								'9' => 'CTP', '10' => 'CKM', '11' => 'CHK', '12' => 'CPM', '13' => 'CPN', '14' => 'CPL', '15' => 'PELAUT', '16' => 'TEKNIK', '17' => 'ELEKTRONIKA', '18' => 'SUPLAI',
-																								'19' => 'MARINIR', '20' => 'POMAL', '21' => 'KESEHATAN', '22' => 'KHUSUS', '23' => 'PNB', '24' => 'NAV', '25' => 'TEK', '26' => 'LEK', '27' => 'KAL',
-																								'28' => 'ADM', '29' => 'KES', '30' => 'PAS', '31' => 'POM', '32' => 'SUS'),
+														'options'				=> 	$list_corp,
 														'empty'					=> "Pilih Corps",
 													));
 												?>
@@ -235,11 +232,17 @@
 													));
 												?>
 										</div>
-										<input type="button" value="Browse FIle" class="btn btn-primary help-block" />
+										<?php
+											echo $this->Form->input('image2', array(
+												'type'					=>	'file',
+												'class'					=>	'fileinput btn-primary active help-block',
+												'label'					=>	false,
+											));
+										?>
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Pasport </label>
+								<label class="col-md-3 col-xs-12 control-label">Passport </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -253,7 +256,13 @@
 													));
 												?>
 										</div>
-										<input type="button" value="Browse FIle" class="btn btn-primary help-block" />
+										<?php
+											echo $this->Form->input('image3', array(
+												'type'					=>	'file',
+												'class'					=>	'fileinput btn-primary active help-block',
+												'label'					=>	false,
+											));
+										?>
 									</div>
 							</div>
 							<div class="form-group">
@@ -271,7 +280,13 @@
 													));
 												?>
 										</div>
-										<input type="button" value="Browse FIle" class="btn btn-primary help-block" />
+										<?php
+											echo $this->Form->input('image4', array(
+												'type'					=>	'file',
+												'class'					=>	'fileinput btn-primary active help-block',
+												'label'					=>	false,
+											));
+										?>
 									</div>
 							</div>
 							<div class="form-group">
@@ -289,7 +304,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TELP Kantor <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Kantor <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -320,7 +335,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TLP Rumah/HP <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Rumah/HP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -388,7 +403,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TLP Rumah/HP Keluarga <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Rumah <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -405,7 +420,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">No. Rekening Bank di Indonesia </label>
+								<label class="col-md-3 col-xs-12 control-label">Nomor Rekening Bank di Indonesia </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -425,7 +440,7 @@
 								<label class="col-md-3 col-xs-12 control-label">Foto Personel <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
-													echo $this->Form->input('images', array(
+													echo $this->Form->input('image1', array(
 														'type'					=>	'file',
 														'class'					=>	'fileinput btn-primary',
 														'label'					=>	false,
@@ -433,14 +448,7 @@
 												?>
 									</div>
 							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label"></label>
-									<div class="col-md-6 col-xs-12">
-										<a href="#">
-												<img src="assets/images/gallery/music-2.jpg" class="img-responsive img-text"/>
-										</a>
-									</div>
-							</div>
+						
 							<div class="panel-footer center-button">
 								<input type="submit" value="Add" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

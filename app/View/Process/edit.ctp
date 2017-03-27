@@ -40,6 +40,7 @@
 														"maxlength"			=>	20,
 														'options'				=>  $list_personnel,
 														'empty'					=> "Pilih Personel",
+														'disabled'				=> 'disabled',
 													));
 												?>
 										</div>
@@ -56,6 +57,7 @@
 														"maxlength"			=>	20,
 														'options'				=>  $list_courses,
 														'empty'					=> "Pilih Pendidikan",
+														'disabled'				=> 'disabled',
 													));
 												?>
 										</div>
@@ -123,7 +125,7 @@
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
-														'options'				=> array('0' => 'Berjalan', '1' => 'Selesai', '2' => 'Tidak Selesai'),
+														'options'				=> array('0' => 'Berjalan', '1' => 'Selesai', '2' => 'Tidak Selesai', '3' => 'Daftar Baru'),
 														'empty'					=> false,
 
 													));

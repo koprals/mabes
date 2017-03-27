@@ -1,8 +1,8 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
-	<li class="javascript:void(0)"><?php echo $ControllerName?></li>
-	<li class="javascript:void(0)"><?php echo "Tambah $ControllerName"?></li>
+	<li class="javascript:void(0)">Negara</li>
+	<li class="javascript:void(0)">Edit Negara</li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
@@ -22,7 +22,7 @@
 						</div>
 							<div class="panel-body">
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Name</label>
+									<label class="col-md-3 col-xs-12 control-label">Nama</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -50,7 +50,7 @@
 											</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Position Top</label>
+									<label class="col-md-3 col-xs-12 control-label">Posisi Atas</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -68,7 +68,7 @@
 											</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Position Bottom</label>
+									<label class="col-md-3 col-xs-12 control-label">Posisi Bawah</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -86,7 +86,7 @@
 											</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Position Left</label>
+									<label class="col-md-3 col-xs-12 control-label">Posisi Kiri</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -101,7 +101,7 @@
 											</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 col-xs-12 control-label">Position Right</label>
+									<label class="col-md-3 col-xs-12 control-label">Posisi Kanan</label>
 										<div class="col-md-6 col-xs-12">
 													<div class="input-group">
 															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -116,6 +116,73 @@
 																));
 															?>
 												</div>
+											</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 col-xs-12 control-label">Country Latitude</label>
+										<div class="col-md-6 col-xs-12">
+													<div class="input-group">
+															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+															<?php
+																echo $this->Form->input('country_latitude', array(
+																	'type'					=>	'text',
+																	'class'					=>	'form-control',
+																	'label'					=>	false,
+																	"required"			=>	"",
+																	"autocomplete"	=>	"off",
+																	"maxlength"			=>	20,
+																));
+															?>
+												</div>
+											</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 col-xs-12 control-label">Country Longitude</label>
+										<div class="col-md-6 col-xs-12">
+													<div class="input-group">
+															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+															<?php
+																echo $this->Form->input('country_longitude', array(
+																	'type'					=>	'text',
+																	'class'					=>	'form-control',
+																	'label'					=>	false,
+																	"required"			=>	"",
+																	"autocomplete"	=>	"off",
+																	"maxlength"			=>	20,
+																));
+															?>
+												</div>
+											</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 col-xs-12 control-label">Telepon Kedutaan</label>
+										<div class="col-md-6 col-xs-12">
+													<div class="input-group">
+															<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+															<?php
+																echo $this->Form->input('telp_office', array(
+																	'type'					=>	'text',
+																	'class'					=>	'form-control',
+																	'label'					=>	false,
+																	"required"			=>	"",
+																	"autocomplete"	=>	"off",
+																));
+															?>
+												</div>
+											</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 col-xs-12 control-label">Alamat Kedutaan</label>
+										<div class="col-md-6 col-xs-12">
+															<?php
+																echo $this->Form->input('alamat_kedutaan', array(
+																	'type'					=>	'textarea',
+																	'class'					=>	'form-control',
+																	'label'					=>	false,
+																	"required"			=>	"",
+																	"autocomplete"	=>	"off",
+																));
+															?>
 											</div>
 								</div>
 							<div class="panel-footer center-button">

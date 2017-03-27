@@ -5,16 +5,291 @@ class Personnel extends AppModel
 
 	public $primaryKey	= "id_personnel";
 
+	public $validate 	= array(
+		'id' => array(
+			'notEmpty' => array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Data not found",
+				"on"		=>	"update"
+			)
+		),
+		'personnel_name' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert nama lengkap"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Nama lengkap is too long"
+			)
+		),
+		'place_of_birth' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert tempat lahir"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Tempat lahir is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Tempat lahir is too long"
+			)
+		),
+		'date_of_birth' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert tanggal lahir"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Tanggal lahir is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Tanggal lahir is too long"
+			)
+		),
+		'personel_nrp' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert NRP/NIP"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"NRP/NIP is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"NRP/NIP is too long"
+			)
+		),
+		'personel_unity' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert kesatuan/jabatan"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Kesatuan/jabatan is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Kesatuan/jabatan is too long"
+			)
+		),
+		'personel_matra' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert matra/PNS"
+			),
+		),
+		'personel_corps' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert korps"
+			),
+		),
+		'personel_occupation' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert pangkat"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Sales name is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Sales name is too long"
+			)
+		),
+		'office_address' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert alamat kantor"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Sales name is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Sales name is too long"
+			)
+		),
+		'office_phone_number' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert telepon kantor/HP"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Sales name is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Sales name is too long"
+			)
+		),
+		'home_address' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert alamat rumah"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Sales name is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Sales name is too long"
+			)
+		),
+		'home_phone_number' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert telepon rumah/HP"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Sales name is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Sales name is too long"
+			)
+		),
+		'personel_email' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert email"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Sales name is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Sales name is too long"
+			)
+		),
+		'family_relationship' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert hubungan"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Sales name is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Sales name is too long"
+			)
+		),
+		'family_address' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert alamat rumah"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Sales name is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Sales name is too long"
+			)
+		),
+		'family_phone_number' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert telepon rumah"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Sales name is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Sales name is too long"
+			)
+		),
+		'family_address' => array(
+			'notEmpty'		=>	array(
+				'rule' 		=>	"notEmpty",
+				'message' 	=>	"Please insert alamat rumah"
+			),
+			'minLength' 	=>	array(
+				'rule' 		=>	array("minLength","2"),
+				'message'	=>	"Sales name is to sort"
+			),
+			'maxLength' 	=>	array(
+				'rule' 		=>	array("maxLength","100"),
+				'message'	=>	"Sales name is too long"
+			)
+		),
+		'sort' => array(
+			'notEmpty' => array(
+				'rule' 		=> 'notEmpty',
+				'message' 	=> 'Sort cannot be empty'
+			),
+			'numeric' => array(
+				'rule' 		=> 'numeric',
+				'message' 	=> 'Please provide valid numbers'
+			),
+			'between' => array(
+				'rule'	=> array('between', 1, 999),
+				'message'	=> 'Between 1 to 999 numbers'
+			)
+		),
+		'image1' => array(
+			'imagewidth'	=> array(
+				'rule' 		=> array('imagewidth',600),
+				'message' 	=> 'Please upload image with minimum width is 600px'
+			),
+			'size' => array(
+				'rule' 		=> array('size',3145728),
+				'message' 	=> 'Your image size is too big, please upload less than 3 Mb.'
+			),
+			'extension' => array(
+				'rule' => array('validateName', array('gif','jpeg','jpg','png')),
+				'message' => 'Only (*.gif,*.jpeg,*.jpg,*.png) are allowed.'
+			)
+		)
+	);
+
+	public $hasMany	=	array(
+		'Process'	=>	array(
+			'className'	=>	'Process',
+			'order'	=>	'Process.id DESC'
+		)
+	);
+
+	public $belongsTo = array(
+		'Matra'	=>	array(
+			'className'	=>	'Matra',
+			'foreignKey'	=> 'personel_matra',
+			'order'	=>	'Matra.id ASC'
+		),
+		'Corp'	=>	array(
+			'className'	=>	'Corp',
+			'foreignKey'	=>	'personel_corps'
+		)
+	);
+
 	public function BindImageProfil($reset	=	true)
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
-				"Image"	=>	array(
+				"ImageProfil"	=>	array(
 					"className"	=>	"Content",
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
-						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"profil"
+						"ImageProfil.model"	=>	$this->name,
+						"ImageProfil.type"	=>	"profil"
 					)
 				)
 			)
@@ -25,12 +300,12 @@ class Personnel extends AppModel
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
-				"Image"	=>	array(
+				"ImageMedical"	=>	array(
 					"className"	=>	"Content",
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
-						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"medical"
+						"ImageMedical.model"	=>	$this->name,
+						"ImageMedical.type"	=>	"medical"
 					)
 				)
 			)
@@ -41,12 +316,12 @@ class Personnel extends AppModel
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
-				"Image"	=>	array(
+				"ImagePassport"	=>	array(
 					"className"	=>	"Content",
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
-						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"passport"
+						"ImagePassport.model"	=>	$this->name,
+						"ImagePassport.type"	=>	"passport"
 					)
 				)
 			)
@@ -57,17 +332,18 @@ class Personnel extends AppModel
 	{
 		$this->bindModel(array(
 			"hasOne"	=>	array(
-				"Image"	=>	array(
+				"ImageSecurity"	=>	array(
 					"className"	=>	"Content",
 					"foreignKey"	=>	"model_id",
 					"conditions"	=>	array(
-						"Image.model"	=>	$this->name,
-						"Image.type"	=>	"security"
+						"ImageSecurity.model"	=>	$this->name,
+						"ImageSecurity.type"	=>	"security"
 					)
 				)
 			)
 		),$reset);
 	}
+
 
 	function VirtualFieldActivated()
 	{

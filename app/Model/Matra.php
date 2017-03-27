@@ -5,7 +5,7 @@ class Matra extends AppModel
 	public $name = "Matra";
 
 	public $validate 	= array(
-	/*	
+		
 		'id' => array(
 			'notEmpty' => array(
 				'rule' 		=>	"notEmpty",
@@ -27,7 +27,7 @@ class Matra extends AppModel
 				'message'	=>	"Name is too long"
 			)
 		)
-		*/
+		
 	);
 
 	public function BindImageBig($reset	=	true)

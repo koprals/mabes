@@ -56,54 +56,63 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Lama Pendidikan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+										
+												
 												<?php
 													echo $this->Form->input('long_term_education', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Lama Pendidikan',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
+										
 									</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Berangkat <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
+										
+												
 												<?php
 													echo $this->Form->input('depart', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control datepicker',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Berangkat',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
 													));
 												?>
-										</div>
+										
 									</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Kembali <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
+										
+												
 												<?php
 													echo $this->Form->input('arrive', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control datepicker',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Kembali',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
 													));
 												?>
-										</div>
+										
 									</div>
 							</div>
 							<div class="form-group">
@@ -114,9 +123,10 @@
 														'class'					=>	'form-control select',
 														'label'					=>	false,
 														"required"			=>	"",
+														'default'				=>	3,
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
-														'options'				=> array('0' => 'Berjalan', '1' => 'Selesai', '2' => 'Tidak Selesai'),
+														'options'				=> array('0' => 'Berjalan', '1' => 'Selesai', '2' => 'Tidak Selesai', '3' => 'Baru Daftar'),
 														'empty'					=> false,
 
 													));

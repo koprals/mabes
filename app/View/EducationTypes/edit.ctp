@@ -1,8 +1,8 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
-	<li class="javascript:void(0)"><?php echo $ControllerName?></li>
-	<li class="javascript:void(0)"><?php echo "Edit $ControllerName"?></li>
+	<li class="javascript:void(0)">Jenis Pendidikan</li>
+	<li class="javascript:void(0)">Edit Jenis Pendidikan</li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
@@ -28,21 +28,23 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Name</label>
+								<label class="col-md-3 col-xs-12 control-label">Nama</label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
+
 												<?php
 													echo $this->Form->input('edu_type', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
 													));
 												?>
-										</div>
+
 									</div>
 							</div>
 							<div class="panel-footer center-button">

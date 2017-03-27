@@ -19,7 +19,7 @@
 										<div>
 												<div class="widget-title">Total Personel</div>
 												<div class="widget-title">Studi</div>
-												<div class="widget-int"><?php echo $totalPersonnelStudi['0']['0']['total_personnel']; ?></div>
+												<div class="widget-int"><?php echo $totalStudiAja['0']['0']['total_studi']; ?></div>
 										</div>
 										<!--
 										<div>
@@ -82,22 +82,10 @@
 
 						<!-- START WIDGET CLOCK -->
 						<div class="widget widget-danger widget-padding-sm">
+							<br>
 								<div class="widget-big-int plugin-clock">00:00</div>
 								<div class="widget-subtitle plugin-date">Loading...</div>
-								<div class="widget-controls">
-										<a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="left" title="Remove Widget"><span class="fa fa-times"></span></a>
-								</div>
-								<div class="widget-buttons widget-c3">
-										<div class="col">
-												<a href="#"><span class="fa fa-clock-o"></span></a>
-										</div>
-										<div class="col">
-												<a href="#"><span class="fa fa-bell"></span></a>
-										</div>
-										<div class="col">
-												<a href="#"><span class="fa fa-calendar"></span></a>
-										</div>
-								</div>
+							</br>
 						</div>
 						<!-- END WIDGET CLOCK -->
 
@@ -131,25 +119,25 @@
 										<div class="row stacked">
 												<div class="col-md-4">
 														<div class="progress-list">
-																<div class="pull-left"><strong>Total Laporan Bulan Ini</strong></div>
-																<div class="pull-right">75%</div>
-																<div class="progress progress-small progress-striped active">
-																		<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">75%</div>
-																</div>
+															<div class="pull-left"><strong>Total Laporan Bulan Ini</strong></div>
+															<div class="pull-right" id="process-summary-1"></div>
+															<div class="progress progress-small progress-striped active">
+																<div id="process-summary-1-bar" class="progress-bar progress-bar-primary" style="width: 0%;"></div>
+															</div>
 														</div>
 														<div class="progress-list">
-																<div class="pull-left"><strong>Sudah Melapor</strong></div>
-																<div class="pull-right">450/500</div>
-																<div class="progress progress-small progress-striped active">
-																		<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">90%</div>
-																</div>
+															<div class="pull-left"><strong>Sudah Melapor</strong></div>
+															<div class="pull-right" id="process-summary-2"></div>
+															<div class="progress progress-small progress-striped active">
+																<div id="process-summary-2-bar" class="progress-bar progress-bar-primary" style="width: 0%;"></div>
+															</div>
 														</div>
 														<div class="progress-list">
-																<div class="pull-left"><strong class="text-danger">Belum Melapor</strong></div>
-																<div class="pull-right">25/500</div>
-																<div class="progress progress-small progress-striped active">
-																		<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">5%</div>
-																</div>
+															<div class="pull-left"><strong class="text-danger">Belum Melapor</strong></div>
+															<div class="pull-right" id="process-summary-3"></div>
+															<div class="progress progress-small progress-striped active">
+																<div id="process-summary-3-bar" class="progress-bar progress-bar-danger" style="width: 0%;"></div>
+															</div>
 														</div>
 														<p style="text-align:justify"><span class="fa fa-warning"></span> Data akan di perbarui setiap jam. Anda dapat melihat update laporan dengan menekan tombol refresh di sisi kanan atas kolom ini.</p>
 												</div>
@@ -168,7 +156,7 @@
 						<div class="panel panel-default">
 								<div class="panel-heading">
 										<div class="panel-title-box">
-												<h3>Status Personel Studi Terbaru</h3>
+												<h3>Status Personel</h3>
 												<span>Aktivitas Personel Studi</span>
 										</div>
 										<ul class="panel-controls" style="margin-top: 2px;">
@@ -298,12 +286,12 @@
 		</div>
 
 		<!-- START DASHBOARD CHART -->
-		<div class="block-full-width">
+		<!-- <div class="block-full-width">
 				<div id="dashboard-chart" style="height: 250px; width: 100%; float: left;"></div>
 				<div class="chart-legend">
 						<div id="dashboard-legend"></div>
 				</div>
-		</div>
+		</div> -->
 		<!-- END DASHBOARD CHART -->
 
 </div>

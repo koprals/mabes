@@ -71,7 +71,7 @@
 										</div>
 							</div>
 							<div class="form-group">
- 								<label class="col-md-3 col-xs-12 control-label">Browse File</label>
+ 								<label class="col-md-3 col-xs-12 control-label">Pilih File</label>
  									<div class="col-md-6 col-xs-12">
  											<?php
  												echo $this->Form->input('file', array(
@@ -82,6 +82,40 @@
  											?>
  										</div>
  							</div>
+ 							<?php echo $this->Form->create('AvailableCourse'); ?>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Negara</label>
+									<?php
+										echo $this->Form->input('id_course', array(
+											'type'					=>	'hidden',
+											'class'					=>	'form-control select',
+											'label'					=>	false,
+										));
+									?>
+									<div class="col-md-6 col-xs-12">
+												<?php
+													echo $this->Form->input('country_id', array(
+														'label'					=>	false,
+														'class'					=>	'form-control select',
+														'options'				=>  $country_list,
+														'empty'					=>	"Pilih Negara",
+													));
+												?>
+										</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-xs-12 control-label">Jenis Pendidikan</label>
+									<div class="col-md-6 col-xs-12">
+												<?php
+													echo $this->Form->input('edu_type_id', array(
+														'label'					=>	false,
+														'class'					=>	'form-control select',
+														'options'				=>  $study_list,
+														'empty'					=>	"Jenis Pendidikan",
+													));
+												?>
+										</div>
+							</div>
 							<div class="panel-footer center-button">
 								<input type="submit" value="Edit" class="btn btn-success active" />
 								<input type="reset" value="Reset" class="btn btn-info active"/>

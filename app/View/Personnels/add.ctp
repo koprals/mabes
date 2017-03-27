@@ -1,13 +1,13 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
-	<li class="javascript:void(0)"><?php echo $ControllerName?></li>
-	<li class="javascript:void(0)"><?php echo "Tambah $ControllerName"?></li>
+	<li class="javascript:void(0)">Personnel</li>
+	<li class="javascript:void(0)"><?php echo "Tambah Personnel"?></li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
 <div class="page-title">
-	<h2><span class="fa fa-pencil"></span> Tambah <?php echo $ModelName; ?></h2>
+	<h2><span class="fa fa-pencil"></span> Isian Data <?php //echo $ModelName; ?></h2>
 </div>
 <!-- END PAGE TITLE -->
 
@@ -18,61 +18,65 @@
 				<?php echo $this->Form->create($ModelName, array('url' => array("controller"=>$ControllerName,"action"=>"Add"),'class' => 'form-horizontal',"type"=>"file")); ?>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-								<h3 class="panel-title"><strong>Tambah <?php echo $ModelName; ?></strong></h3>
+								<h3 class="panel-title"><strong>Isian Data <?php //echo $ModelName; ?></strong></h3>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-                <label class="col-md-6 col-xs-12 control-label"><h5>Data Pribadi</h5></label>
+                <label class="col-md-6 col-xs-12 control-label"><h5>Data Diri</h5></label>
               </div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Name <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Nama Lengkap <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon " style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
 												<?php
 													echo $this->Form->input('personnel_name', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Nama Lengkap',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
 									</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Tempat Lahir <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
 												<?php
 													echo $this->Form->input('place_of_birth', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Tempat Lahir',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
 									</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Tanggal Lahir <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>
+
 												<?php
 													echo $this->Form->input('date_of_birth', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control datepicker',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-calendar"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'TTTT/BB/HH',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
+
 									</div>
 							</div>
 							<div class="form-group">
@@ -84,7 +88,7 @@
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
-														'options'				=>  array('0' => 'AD', '1' => 'AU', '2' => 'AL'),
+														'options'				=>  $list_matra,
 														'empty'					=> "Pilih Matra",
 													));
 												?>
@@ -93,22 +97,23 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Pangkat <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon " style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
 												<?php
 													echo $this->Form->input('personel_occupation', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Pangkat',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Corps <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Korps <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('personel_corps', array(
@@ -117,11 +122,8 @@
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
-														'options'				=> array('0' => 'INF', '1' => 'KAV', '2' => 'ARH', '3' => 'ARM', '4' => 'CZI', '5' => 'CHB', '6' => 'CBA', '7' => 'CKU', '8' => 'CAJ',
-																								'9' => 'CTP', '10' => 'CKM', '11' => 'CHK', '12' => 'CPM', '13' => 'CPN', '14' => 'CPL', '15' => 'PELAUT', '16' => 'TEKNIK', '17' => 'ELEKTRONIKA', '18' => 'SUPLAI',
-																								'19' => 'MARINIR', '20' => 'POMAL', '21' => 'KESEHATAN', '22' => 'KHUSUS', '23' => 'PNB', '24' => 'NAV', '25' => 'TEK', '26' => 'LEK', '27' => 'KAL',
-																								'28' => 'ADM', '29' => 'KES', '30' => 'PAS', '31' => 'POM', '32' => 'SUS'),
-														'empty'					=> "Pilih Corps",
+														'options'				=> 	$list_corp,
+														'empty'					=> "Pilih Korps",
 													));
 												?>
 										</div>
@@ -129,35 +131,38 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">NRP/NIP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
 												<?php
 													echo $this->Form->input('personel_nrp', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'NRP',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
 									</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Kesatuan/Jabatan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
 												<?php
 													echo $this->Form->input('personel_unity', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Kesatuan',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
+
 									</div>
 							</div>
 							<div class="form-group">
@@ -170,6 +175,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Dikma/Diktuk',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -191,6 +197,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Keputusan Panglima TNI',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -208,6 +215,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Sprin Angkatan',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -225,6 +233,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Medical Record',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -240,7 +249,7 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Pasport </label>
+								<label class="col-md-3 col-xs-12 control-label">Passport </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -249,6 +258,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Passport',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -273,6 +283,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Security Clearance',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -295,6 +306,7 @@
 														'type'					=>	'textarea',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Alamat Kantor',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
@@ -302,20 +314,21 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TELP Kantor <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Kantor/HP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
 												<?php
 													echo $this->Form->input('office_phone_number', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Telepon Kantor',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
 									</div>
 							</div>
 							<div class="form-group">
@@ -325,6 +338,7 @@
 													echo $this->Form->input('home_address', array(
 														'type'					=>	'textarea',
 														'class'					=>	'form-control',
+														'placeholder'			=> 'Alamat Rumah',
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
@@ -333,37 +347,41 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TLP Rumah/HP <span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Rumah/HP <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
 												<?php
 													echo $this->Form->input('home_phone_number', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Telepon Rumah/HP',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
+
 									</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Email <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
 												<?php
 													echo $this->Form->input('personel_email', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Email',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
+
 									</div>
 							</div>
 							<div class="form-group">
@@ -372,18 +390,20 @@
               <div class="form-group">
 								<label class="col-md-3 col-xs-12 control-label">Hubungan <span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
 												<?php
 													echo $this->Form->input('family_relationship', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Misalnya : Ayah/Ibu/Kakak',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
+
 									</div>
 							</div>
 							<div class="form-group">
@@ -401,24 +421,26 @@
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">TLP Rumah/HP Keluarga<span style="color:red;">(*)</span></label>
+								<label class="col-md-3 col-xs-12 control-label">Telepon Rumah<span style="color:red;">(*)</span></label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
 												<?php
 													echo $this->Form->input('family_phone_number', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
+														'placeholder'			=> 'Telepon Rumah',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));
 												?>
-										</div>
+
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">No. Rekening Bank di Indonesia </label>
+								<label class="col-md-3 col-xs-12 control-label">Nomor Rekening Bank di Indonesia </label>
 									<div class="col-md-6 col-xs-12">
 										<div class="input-group">
 												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
@@ -427,6 +449,7 @@
 														'type'					=>	'text',
 														'class'					=>	'form-control',
 														'label'					=>	false,
+														'placeholder'			=> 'Nomer Rekening',
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 													));

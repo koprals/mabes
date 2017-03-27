@@ -54,7 +54,7 @@ function Delete(msg,id)
 			<div class="panel-heading">
 				<div class="dataTables_length" id="DataTables_Table_0_length ">
 					<label>Show Entries</label>
-					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
+					<?PHP echo $this->Form->select("DataTables_Table_0_length",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
 				</div>
 			</div>
 
@@ -68,7 +68,7 @@ function Delete(msg,id)
 														No
 													</th>
 													<th>
-														<?php echo $this->Paginator->sort("$ModelName.edu_name",'Name');?>
+														<?php echo $this->Paginator->sort("$ModelName.edu_name",'Nama');?>
 													</th>
 													<th>
 														<?php echo $this->Paginator->sort("AvailableCourse.Country.country_name",'Negara');?>
@@ -115,7 +115,7 @@ function Delete(msg,id)
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
+															<a href="javascript:void(0);" onclick="Delete('Are you sure want to delete this data?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
 																<span class="fa fa-times"></span>
 															</a>
 													<?php endif;?>
@@ -132,49 +132,15 @@ function Delete(msg,id)
 			<!-- START PAGINATION -->
 			<div class="panel-heading">
 				<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite"><?php echo $this->Paginator->counter(array('format' => 'Showing %start% to %end% of %count% entries'));?></div>
-					<?php if($this->Paginator->hasPrev() or $this->Paginator->hasNext()):?>
-					<ul class="pagination pagination-sm pull-right">
-						<?php echo $this->Paginator->prev("",
-								array(
-									"escape"	=>	false,
-									'tag'		=>	"li",
-								),
-								"<a href='javascript:void(0)'></a>",
-								array(
-									'tag'		=>	"li",
-									"escape"	=>	false,
-								)
-							);
-						?>
-
+				<div class="pull-right">
+				<?php if($this->Paginator->hasPrev() or $this->Paginator->hasNext()):?>
+				<?php echo $this->Paginator->prev('Previous', array('style'	=>	'font-weight:bold;font-size:13px'))?>
 						<?php
-							echo $this->Paginator->numbers(array(
-								'separator'		=>	null,
-								'tag'			=>	"li",
-								'currentclass'	=>	'active',
-								'modulus'		=>	4
-							));
+							echo $this->Paginator->numbers(array('style' => 'font-weight:bold;font-size:13px', 'modulus' => 4));
 						?>
-						<?php echo $this->Paginator->next("",
-								array(
-									"escape"	=>	false,
-									'tag'		=>	"li",
-								),
-								"<a href='javascript:void(0)'></a>",
-								array(
-									'tag'		=>"li",
-									"escape"	=>	false,
-								)
-							);
-						?>
-						<!--li class="disabled"><a href="#"></a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">»</a></li-->
-					</ul>
-					<?php endif;?>
+					<?php echo $this->Paginator->next('Next', array('style'	=>	'font-weight:bold;font-size:13px'))?>
+				<?php endif ?>
+			</div>
 				</div>
 			<!-- END PAGINATION -->
 

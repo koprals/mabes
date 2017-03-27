@@ -1,8 +1,8 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
 	<li><a href="javascript:void(0)">Home</a></li>
-	<li class="javascript:void(0)"><?php echo $ControllerName?></li>
-	<li class="javascript:void(0)"><?php echo "Edit $ControllerName"?></li>
+	<li class="javascript:void(0)">Matra</li>
+	<li class="javascript:void(0)">Edit Matra</li>
 </ul>
 <!-- END BREADCRUMB -->
 <!-- PAGE TITLE -->
@@ -28,25 +28,27 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Name</label>
+								<label class="col-md-3 col-xs-12 control-label">Nama</label>
 									<div class="col-md-6 col-xs-12">
-										<div class="input-group">
-												<span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>
+
+
 												<?php
 													echo $this->Form->input('name', array(
 														'type'					=>	'text',
 														'class'					=>	'form-control',
+														'between'				=> 	'<div class="input-group"><span class="input-group-addon" style="padding-bottom:6px;"><span class="fa fa-pencil"></span></span>',
+														'after'					=>	'</div>',
 														'label'					=>	false,
 														"required"			=>	"",
 														"autocomplete"	=>	"off",
 														"maxlength"			=>	20,
 													));
 												?>
-										</div>
+
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-3 col-xs-12 control-label">Description</label>
+								<label class="col-md-3 col-xs-12 control-label">Status</label>
 									<div class="col-md-6 col-xs-12">
 												<?php
 													echo $this->Form->input('status', array(

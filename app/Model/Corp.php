@@ -11,7 +11,7 @@ class Corp extends AppModel
   );
 
 	public $validate 	= array(
-		/*
+		
 		'id' => array(
 			'notEmpty' => array(
 				'rule' 		=>	"notEmpty",
@@ -39,7 +39,6 @@ class Corp extends AppModel
 					'message'			=>	"Please select matra"
 				)
 			)
-			*/
 	);
 
 	public function BindImageBig($reset	=	true)

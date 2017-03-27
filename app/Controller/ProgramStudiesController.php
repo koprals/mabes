@@ -207,7 +207,7 @@ class ProgramStudiesController extends AppController
  	        );
 
  	        $saveFile = $this->{$this->ModelName}->save($saveData);
- 	        $url = 'content/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
+ 	        $url = 'contents/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
 
  	        $folder = ROOT.DS.'app'.DS.'webroot'.DS.'contents'.DS.$this->ModelName;
  	        if(!is_dir($folder)) mkdir($folder,0755);
@@ -243,8 +243,12 @@ class ProgramStudiesController extends AppController
 									),
 									'recursive'	=>	1
 								));
+<<<<<<< HEAD
 		debug($detail);
 
+=======
+		//debug($detail);
+>>>>>>> 165b80e4d2f89148f330ac610a76d3ddf0316ac4
 		if(empty($detail))
 		{
 			$this->layout	=	"ajax";
@@ -261,10 +265,18 @@ class ProgramStudiesController extends AppController
 			$this->{$this->ModelName}->set($this->data);
 			if($this->{$this->ModelName}->validates())
 			{
+<<<<<<< HEAD
 				//Configure::write('debug' , 2);
 				$save	=	$this->{$this->ModelName}->save($this->data,false);
 				If(!empty($save)){
 					
+=======
+				$save	=	$this->{$this->ModelName}->save($this->data,false);
+
+				if(!empty($save)){
+					$this->request->data['AvailableCourse']['program_study_id']	= $this->{$this->ModelName}->id;
+					$this->{$this->ModelName}->AvailableCourse->save($this->request->data);
+>>>>>>> 165b80e4d2f89148f330ac610a76d3ddf0316ac4
 				}
 
 				if(!empty($this->request->data[$this->ModelName]["file"]["name"])) {
@@ -275,7 +287,7 @@ class ProgramStudiesController extends AppController
  	        );
 
  	        $saveFile = $this->{$this->ModelName}->save($saveData);
- 	        $url = 'content/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
+ 	        $url = 'contents/ProgramStudy/'.$this->{$this->ModelName}->id.'/';
 
  	        $folder = ROOT.DS.'app'.DS.'webroot'.DS.'contents'.DS.$this->ModelName;
  	        if(!is_dir($folder)) mkdir($folder,0755);

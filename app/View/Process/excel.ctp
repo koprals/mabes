@@ -25,7 +25,7 @@ tr.genap{
 </style>
 
 <h5 style="text-align:Left;"><?php echo "TENTARA NASIONAL INDONESIA"?> <br> <?php echo "MARKAS BESAR"?></h5>
-<h3 style="text-align:Center;"><?php echo "Control Siswa Luar Negeri Berdasarkan Negara untuk Periode 2016"?> <br> <?php echo "Nama Negara : Amerika Serikat"?></h3>
+<h3 style="text-align:Center;"><?php echo "Control Siswa Luar Negeri Berdasarkan Negara untuk Periode 2017"?> <br> <?php echo "Nama Negara : Amerika Serikat"?></h3>
 <table width="1350" border="1" cellspacing="0" cellpadding="0">
 	<tr class="header">
 		<td width="50">No</td>

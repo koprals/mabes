@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo $this->webroot; ?>js/plugins/datatables/jquery.dataTables.min.js"></script>
 <?php if(!empty($data)): ?>
 <?php
 	$order		=	array_keys($this->params['paging'][$ModelName]['order']);
@@ -25,7 +26,6 @@ function ChangeStatus(msg,id,status)
 	}
 	return false;
 }
-
 function Delete(msg,id)
 {
 	var a	=	confirm(msg);
@@ -47,22 +47,24 @@ function Delete(msg,id)
 	}
 	return false;
 }
+
 </script>
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				<div class="dataTables_length" id="DataTables_Table_0_length ">
-					<label>Show Entries</label>
-					<?PHP echo $this->Form->select("view",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
-				</div>
+				<form role="form" class="form-horizontal">
+					<div class="dataTables_length" id="DataTables_Table_0_length ">
+						<label>Show
+								<?php echo $this->Form->select("DataTables_Table_0_length",array(1=>1,5=>5,10=>10,20=>20,50=>50,100=>100,200=>200,1000=>1000),array("onchange"=>"onClickPage('".$settings["cms_url"].$ControllerName."/ListItem/limit:'+this.value+'".$ordered."','#contents_area')","empty"=>false,"default"=>$viewpage))?>
+						entries</label>
+					</div>
 				<div class="pull-right">
-                                    <a href="<?php echo $settings['cms_url'].$ControllerName?>/Excel" type="submit" class="btn btn-danger">Export File</a>
-                                </div>
+          <a href="<?php echo $settings['cms_url'].$ControllerName?>/Excel" type="submit" class="btn btn-danger">Export File</a>
+        </div>
 			</div>
 
 			<div class="panel-body panel-body-table">
-
 					<div class="table-responsive">
 							<table class="table table-bordered table-striped table-actions">
 									<thead>
@@ -71,34 +73,37 @@ function Delete(msg,id)
 													No
 												</th>
 												<th>
-													Nama Siswa
+													<span style="padding-right:200px;" class="text-center">Nama Siswa
 												</th>
 												<th>
-													PANGKAT/KOPRS/NRP
+													Matra
 												</th>
 												<th>
-													Kesatuan
+													<span style="padding-right:270px;" class="text-center">PANGKAT/KOPRS/NRP
 												</th>
 												<th>
-													Lama Pendidikan
+													<span style="padding-right:200px;" class="text-center">Jabatan/Kesatuan
 												</th>
 												<th>
-													Nama Pendidikan
+													<span style="padding-right:100px;" class="text-center">Lama Pendidikan
 												</th>
 												<th>
-													<?php echo $this->Paginator->sort("AvailableCourse.Country.name",'NEGARA');?>
+													<span style="padding-right:200px;" class="text-center">Nama Pendidikan
 												</th>
 												<th>
-													Jenis Pendidikan
+													<span style="padding-right:50px;" class="text-center"><?php echo $this->Paginator->sort("AvailableCourse.Country.name",'NEGARA');?>
 												</th>
 												<th>
-													Berangkat
+													<span style="padding-right:50px;" class="text-center">Jenis Pendidikan
 												</th>
 												<th>
-													Kembali
+													<span style="padding-right:50px;" class="text-center">Berangkat
 												</th>
 												<th>
-													<?php echo $this->Paginator->sort("$ModelName.SStatus",'STATUS PENDIDIKAN');?>
+													<span style="padding-right:50px;" class="text-center">Kembali
+												</th>
+												<th>
+													<span style="padding-right:50px;" class="text-center"><?php echo $this->Paginator->sort("$ModelName.SStatus",'STATUS PENDIDIKAN');?>
 												</th>
 												<?php
 												if(
@@ -106,8 +111,8 @@ function Delete(msg,id)
 													$access[$aco_id]["_delete"] == 1
 												):
 												?>
-												<th width="120">
-													actions
+												<th>
+													<span style="padding-right:100px;" class="text-center">actions
 												</th>
 												<?php endif;?>
 										</tr>
@@ -120,29 +125,30 @@ function Delete(msg,id)
 											<tr>
 												<td class="text-center"><?php echo $no ?></td>
 												<td><?php echo $data['Personnel']['personnel_name'] ?></td>
-												<td><?php echo $data['Personnel']['personel_occupation'] ?>/<?php echo $data['Personnel']['SCorps'] ?>/<?php echo $data['Personnel']['personel_nrp'] ?></td>
+												<td class="text-center"><?php echo $data['Personnel']['Matra']['name'] ?></td>
+												<td><?php echo $data['Personnel']['personel_occupation'] ?>/<?php echo $data['Personnel']['Corp']['name'] ?>/<?php echo $data['Personnel']['personel_nrp'] ?></td>
 												<td><?php echo $data['Personnel']['personel_unity'] ?>
-												<td><?php echo $data[$ModelName]['long_term_education'] ?></td>
+												<td class="text-center"><?php echo $data[$ModelName]['long_term_education'] ?></td>
 												<td><?php echo $data['AvailableCourse']['ProgramStudy']['edu_name'] ?></td>
-												<td><?php echo $data['AvailableCourse']['Country']['country_name'] ?></td>
-												<td><?php echo $data['AvailableCourse']['EducationType']['edu_type'] ?></td>
-												<td><?php echo $data[$ModelName]['depart'] ?></td>
-												<td><?php echo $data[$ModelName]['arrive'] ?></td>
-												<td><?php echo $data[$ModelName]['SStatus'] ?></td>
+												<td class="text-center"><?php echo $data['AvailableCourse']['Country']['country_name'] ?></td>
+												<td class="text-center"><?php echo $data['AvailableCourse']['EducationType']['edu_type'] ?></td>
+												<td class="text-center"><?php echo $data[$ModelName]['depart'] ?></td>
+												<td class="text-center"><?php echo $data[$ModelName]['arrive'] ?></td>
+												<td class="text-center"><?php echo $data[$ModelName]['SStatus'] ?></td>
 												<?php
 												if(
 													$access[$aco_id]["_update"] == 1 or
 													$access[$aco_id]["_delete"] == 1
 												):
 												?>
-												<td>
+												<td class="text-center">
 													<?php if($access[$aco_id]["_update"] == 1):?>
 														<a href="<?php echo $settings['cms_url'].$ControllerName?>/Edit/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-success btn-condensed" title="Access Control">
 															<span class="fa fa-pencil"></span>
 														</a>
 													<?php endif;?>
 													<?php if($access[$aco_id]["_delete"] == 1):?>
-															<a href="<?php echo $settings['cms_url'].$ControllerName?>/Delete/<?php echo $data[$ModelName]["id"]?>/" class="btn btn-danger btn-condensed" title="Access Control">
+															<a href="javascript:void(0);" onclick="Delete('Do you realy want to delete this item?','<?php echo $data[$ModelName]['id']?>')" class="btn btn-danger btn-condensed" title="Access Control">
 																<span class="fa fa-times"></span>
 															</a>
 													<?php endif;?>
@@ -153,58 +159,19 @@ function Delete(msg,id)
 									</tbody>
 							</table>
 					</div>
-
 			</div>
-
-			<!-- START PAGINATION -->
-			<div class="panel-heading">
+			<div class="panel-footer">
 				<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite"><?php echo $this->Paginator->counter(array('format' => 'Showing %start% to %end% of %count% entries'));?></div>
+					<div class="pull-right">
 					<?php if($this->Paginator->hasPrev() or $this->Paginator->hasNext()):?>
-					<ul class="pagination pagination-sm pull-right">
-						<?php echo $this->Paginator->prev("",
-								array(
-									"escape"	=>	false,
-									'tag'		=>	"li",
-								),
-								"<a href='javascript:void(0)'></a>",
-								array(
-									'tag'		=>	"li",
-									"escape"	=>	false,
-								)
-							);
-						?>
-
-						<?php
-							echo $this->Paginator->numbers(array(
-								'separator'		=>	null,
-								'tag'			=>	"li",
-								'currentclass'	=>	'active',
-								'modulus'		=>	4
-							));
-						?>
-						<?php echo $this->Paginator->next("",
-								array(
-									"escape"	=>	false,
-									'tag'		=>	"li",
-								),
-								"<a href='javascript:void(0)'></a>",
-								array(
-									'tag'		=>"li",
-									"escape"	=>	false,
-								)
-							);
-						?>
-						<!--li class="disabled"><a href="#"></a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">»</a></li-->
-					</ul>
-					<?php endif;?>
+					<?php echo $this->Paginator->prev('Previous', array('style'	=>	'font-weight:bold;font-size:13px'))?>
+							<?php
+								echo $this->Paginator->numbers(array('style' => 'font-weight:bold;font-size:13px', 'modulus' => 4));
+							?>
+						<?php echo $this->Paginator->next('Next', array('style'	=>	'font-weight:bold;font-size:13px'))?>
+					<?php endif ?>
 				</div>
-			<!-- END PAGINATION -->
-
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,10 +1,29 @@
 <?php
+    Configure::write('CakePdf', array(
+        'engine' => 'CakePdf.Dompdf',
+        'options' => array(
+            'print-media-type' => false,
+            'outline' => true,
+            'dpi' => 96
+        ),
+        'margin' => array(
+            'bottom' => 15,
+            'left' => 50,
+            'right' => 30,
+            'top' => 45
+        ),
+        'orientation' => 'portrait',
+        'download' => true
+    ));
+?>
+<?php
 class PersonnelsController extends AppController
 {
 	var $ControllerName		=	"Personnels";
 	var $ModelName			=	"Personnel";
 	var $helpers			=	array("Text","Aimfox");
 	var $uses				=	"Personnel";
+	var $components = array("RequestHandler");
 
 	function beforeFilter()
 	{
@@ -22,6 +41,16 @@ class PersonnelsController extends AppController
 									));
 		$this->aco_id			=	$find["MyAco"]["id"];
 		$this->set("aco_id",$this->aco_id);
+
+    //DEFINE MATRA
+    $this->loadModel('Matra');
+    $list_matra = $this->Matra->find('list');
+
+    //DEFINE CORPS
+    $this->loadModel('Corp');
+    $list_corp  = $this->Corp->find('list');
+
+    $this->set(compact('list_corp','list_matra'));
 	}
 
 	function Index($page=1,$viewpage=50)
@@ -32,6 +61,12 @@ class PersonnelsController extends AppController
 			return;
 		}
 
+		$this->loadModel('Matra');
+		$matras	= $this->Matra->find('list');
+
+		$this->loadModel('Corp');
+		$corps	= $this->Corp->find('list');
+
 		$this->Session->delete("Search.".$this->ControllerName);
 		$this->Session->delete('Search.'.$this->ControllerName.'Operand');
 		$this->Session->delete('Search.'.$this->ControllerName.'ViewPage');
@@ -39,7 +74,19 @@ class PersonnelsController extends AppController
 		$this->Session->delete('Search.'.$this->ControllerName.'Page');
 		$this->Session->delete('Search.'.$this->ControllerName.'Conditions');
 		$this->Session->delete('Search.'.$this->ControllerName.'parent_id');
-		$this->set(compact("page","viewpage"));
+		$this->set(compact("page","viewpage","matras","corps"));
+	}
+
+	function Api_PersonnelStudiesSummary() {
+    	$this->autoRender = false;
+		$counts = $this->Personnel->query('
+			SELECT YEAR(depart) as Tahun,
+			SUM(CASE WHEN `status`= 0 then 1 else 0 end) as Berjalan,
+			SUM(CASE WHEN `status`= 3 then 1 else 0 end) as DaftarBaru
+			FROM process
+			GROUP BY YEAR(depart)
+		');
+		return json_encode($counts);
 	}
 
 	function ListItem()
@@ -54,10 +101,9 @@ class PersonnelsController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
-		$this->{$this->ModelName}->VirtualFieldActivated();
 		//DEFINE LAYOUT, LIMIT AND OPERAND
 		$viewpage			=	empty($this->params['named']['limit']) ? 50 : $this->params['named']['limit'];
-		$order				=	array("{$this->ModelName}.created" => "ASC");
+		$order				=	array("{$this->ModelName}.id_personnel" => "ASC");
 		$operand			=	"AND";
 
 		//DEFINE SEARCH DATA
@@ -67,14 +113,24 @@ class PersonnelsController extends AppController
 			$operand		=	$this->request->data[$this->ModelName]['operator'];
 			$this->Session->delete('Search.'.$this->ControllerName);
 
-			if(!empty($this->request->data['Search']['id']))
-			{
-				$cond_search["{$this->ModelName}.id"]					=	$this->data['Search']['id'];
-			}
-
 			if(!empty($this->request->data['Search']['name']))
 			{
-				$cond_search["{$this->ModelName}.fullname LIKE "]			=	"%".$this->data['Search']['name']."%";
+				$cond_search["{$this->ModelName}.personnel_name LIKE "]			=	"%".$this->data['Search']['name']."%";
+			}
+
+			if(!empty($this->request->data['Search']['personel_matra']))
+			{
+				$cond_search["{$this->ModelName}.personel_matra"]				=	$this->data['Search']['personel_matra'];
+			}
+
+			if(!empty($this->request->data['Search']['personel_corps']))
+			{
+				$cond_search["{$this->ModelName}.personel_corps"]				=	$this->data['Search']['personel_corps'];
+			}
+
+			if(!empty($this->request->data['Search']['personel_occupation']))
+			{
+				$cond_search["{$this->ModelName}.personel_occupation LIKE "]			=	"%".$this->data['Search']['personel_occupation']."%";
 			}
 
 			if($this->request->data["Search"]['reset']=="0")
@@ -96,6 +152,7 @@ class PersonnelsController extends AppController
 										'recursive'		=>	2
 									)
 								);
+                //debug($data)ll
 
 		$ses_cond			=	$this->Session->read("Search.".$this->ControllerName);
 		$cond_search		=	isset($ses_cond) ? $ses_cond : array();
@@ -103,7 +160,7 @@ class PersonnelsController extends AppController
 		$operand			=	isset($ses_operand) ? $ses_operand : "AND";
 		$merge_cond			=	empty($cond_search) ? $filter_paginate : array_merge($filter_paginate,array($operand => $cond_search) );
 		$data				=	$this->paginate("{$this->ModelName}",$merge_cond);
-		//debug($data);
+		debug($data);
 
 
 		$this->Session->write('Search.'.$this->ControllerName.'Conditions',$merge_cond);
@@ -494,13 +551,29 @@ class PersonnelsController extends AppController
 		}
 
 		$this->loadModel($this->ModelName);
+		$this->{$this->ModelName}->BindImageProfil();
+		$this->{$this->ModelName}->BindImageMedical();
+		$this->{$this->ModelName}->BindImagePassport();
+		$this->{$this->ModelName}->BindImageSecurity();
 		$this->{$this->ModelName}->VirtualFieldActivated();
 
 		$detail = $this->{$this->ModelName}->find('first', array(
 			'conditions' => array(
 				"{$this->ModelName}.id_personnel"		=>	$ID
-			)
+			),
+			'recursive'	=>	1
 		));
+
+		//debug($detail);
+    $this->loadModel('Process');
+		$historicalEdus	=	$this->Process->find('all', array(
+			'conditions'	=>	array(
+				'Process.personnel_id'	=> $ID
+			),
+			'recursive'	=>	2
+		));
+
+		debug($historicalEdus);
 		if(empty($detail))
 		{
 			$this->layout	=	"ajax";
@@ -508,8 +581,56 @@ class PersonnelsController extends AppController
 			$this->render("/errors/error404");
 			return;
 		}
-		$this->set(compact("ID","detail"));
+		$this->set(compact("ID","detail","historicalEdus"));
 	}
+
+	function Pdf($ID=NULL)
+  {
+    if($this->access[$this->aco_id]["_read"] != "1")
+    {
+      $this->layout	=	"no_access";
+      return;
+    }
+
+    $this->pdfConfig = array(
+						'orientation' => 'portrait',//or landscape
+						'filename' => "testpdf",
+						'download' => false,
+						'margin' => array(
+              'bottom' => 15,
+              'left' => 50,
+              'right' => 30,
+              'top' => 45
+					),
+					'engine' => 'CakePdf.DomPdf',
+				);
+
+    //$this->layout	=	"ajax";
+    $this->loadModel($this->ModelName);
+		$this->{$this->ModelName}->BindImageProfil();
+    $this->{$this->ModelName}->VirtualFieldActivated();
+
+    $detail = $this->{$this->ModelName}->find('first', array(
+      'conditions' => array(
+        "{$this->ModelName}.id_personnel"		=>	$ID
+      ),
+      'recursive' =>  2
+    ));
+
+    $this->loadModel('Process');
+		$historicalEdus	=	$this->Process->find('all', array(
+			'conditions'	=>	array(
+				'Process.personnel_id'	=> $ID
+			),
+			'recursive'	=>	2
+		));
+		//debug($detail);
+
+    $title				=	$this->ModelName;
+		$filename			=	$this->ModelName."_".date("dMY");
+
+    $this->set(compact("ID","detail","title","filename","historicalEdus"));
+  }
 
 	function ChangeStatus($ID=NULL,$status)
 	{
